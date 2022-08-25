@@ -1,0 +1,47 @@
+@import "../../../assets/styles/sass/mixins";
+
+.error404Container {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-around !important;
+
+  height: 500px;
+
+  .error404Item {
+    display: flex;
+
+    .error404Content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+
+      margin-right: 62px;
+
+      .error404Header {
+
+        @include header-container;
+
+        margin: 0;
+
+        font-size: 50px;
+      }
+
+      .error404Description {
+
+        @include description-container;
+
+        font-size: 18px;
+
+        opacity: 1;
+      }
+
+      .error404Button {
+
+        @include button-container;
+
+        width: 218px;
+      }
+    }
+  }
+}

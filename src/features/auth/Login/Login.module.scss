@@ -1,0 +1,51 @@
+@import "../../../assets/styles/sass/mixins";
+
+.loginContainer {
+
+  @include global-container(552px);
+
+  .loginHeaderText {
+
+    @include header-container;
+  }
+
+  .fields {
+
+    @include fields-container;
+  }
+
+  .checkboxField {
+    width: 347px;
+    height: 35px !important;
+  }
+
+  .loginButton {
+    margin-bottom: 25px;
+
+    @include button-container;
+  }
+
+  .loginDescription {
+
+    @include description-container;
+  }
+
+  .loginForgotPassword {
+
+    @include link-container;
+
+    width: 150px;
+    display: flex;
+    justify-content: right;
+
+    margin: 29px 0 69px 200px;
+  }
+
+  .loginSignUp {
+
+    @include link-container;
+
+    width: 70px;
+    margin: auto;
+  }
+}

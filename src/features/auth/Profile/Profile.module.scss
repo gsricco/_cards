@@ -1,0 +1,157 @@
+@import "../../../assets/styles/sass/mixins";
+
+.profileReturnBack {
+  position: absolute;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  width: 155px;
+  margin-left: 100px;
+
+  .profileReturnBackImg {
+    width: 16px;
+    height: 11px;
+  }
+
+  .profileReturnBackText {
+
+    @include header-container;
+
+    font-size: 16px;
+  }
+}
+
+.container {
+  margin-top: 120px;
+
+  .gridItem {
+    flex-direction: column;
+    align-items: center;
+
+    height: 456px;
+
+    .gridItemPaper {
+
+      @include global-container(360px);
+
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      align-items: center;
+      justify-content: space-around;
+
+      padding: 2px;
+
+      .gridItemHeader {
+
+        @include header-container;
+      }
+
+      .gridItemImageContainer {
+        .gridItemImage {
+          position: relative;
+          left: 10px;
+
+          width: 96px;
+          height: 96px;
+        }
+
+        .gridItemIcon {
+          position: relative;
+          right: 20px;
+
+          width: 32px;
+          height: 32px;
+        }
+      }
+
+      .gridItemDescription {
+
+        @include description-container;
+
+        text-align: left;
+      }
+
+      .gridItemButton {
+        width: 127px;
+        height: 36px;
+        margin: 0 0 10px;
+
+        font-family: Montserrat, sans-serif;
+        font-size: 16px;
+        font-weight: 500;
+        font-style: normal;
+        line-height: 20px;
+        color: #000;
+        text-transform: none;
+        letter-spacing: 0.01em;
+
+        background: #fcfcfc;
+        border-color: transparent;
+        border-radius: 30px;
+        box-shadow: 1px 1px 2px rgb(0 0 0 / 50%), -1px -1px 2px rgb(0 0 0 / 30%);
+
+        &:hover {
+          color: #fcfcfc;
+
+          background: #366eff;
+        }
+      }
+
+      .gridItemQuestion {
+        font-size: 14px;
+        font-weight: 600;
+        font-style: normal;
+        line-height: 24px;
+        color: #000;
+        text-align: center;
+
+        opacity: 0.5;
+      }
+
+      .gridItemLink {
+        font-family: Montserrat, sans-serif;
+        font-size: 16px;
+        font-weight: 600;
+        font-style: normal;
+        line-height: 24px;
+        color: #366eff;
+        text-align: center;
+        text-decoration-line: underline;
+      }
+    }
+  }
+
+  .fields {
+
+    @include header-container;
+
+    width: 300px;
+
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+  }
+
+  .nikButton {
+    height: 25px;
+
+    font-size: 12px;
+    line-height: 24px;
+  }
+
+  .nikName {
+
+    @include header-container;
+
+    font-size: 20px;
+    font-weight: 600;
+  }
+
+  .pencilIcon {
+    width: 20px;
+    margin: 0 10px;
+  }
+}

@@ -1,0 +1,51 @@
+@import "../../../assets/styles/sass/mixins";
+
+.container {
+  margin-top: 120px;
+
+  .gridItem {
+    flex-direction: column;
+    align-items: center;
+
+    height: 408px;
+
+    .gridItemPaper {
+
+      @include global-container(408px);
+
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      align-items: center;
+      justify-content: space-around;
+
+      padding: 2px;
+
+      .gridItemHeader {
+
+        @include header-container;
+      }
+
+      .gridItemImageContainer {
+        .gridItemImage {
+          width: 108px;
+          height: 108px;
+        }
+      }
+
+      .gridItemDescription {
+
+        @include description-container;
+      }
+
+      .gridItemButtonContainer {
+        text-decoration: none;
+
+        .gridItemButton {
+
+          @include button-container;
+        }
+      }
+    }
+  }
+}

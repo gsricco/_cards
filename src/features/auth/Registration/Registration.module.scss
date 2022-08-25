@@ -1,0 +1,38 @@
+@import "../../../assets/styles/sass/mixins";
+
+.registrationContainer {
+
+  @include global-container(528px);
+
+  .registrationHeaderText {
+
+    @include header-container;
+  }
+
+  .fields {
+
+    @include fields-container;
+  }
+
+  .registrationButton {
+
+    @include button-container;
+
+    margin-top: 30px;
+  }
+
+  .registrationDescription {
+
+    @include description-container;
+
+    margin: 31px 0 11px;
+  }
+
+  .registrationSignUp {
+
+    @include link-container;
+
+    width: 70px;
+    margin: auto;
+  }
+}

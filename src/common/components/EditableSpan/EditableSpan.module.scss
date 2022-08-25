@@ -1,0 +1,35 @@
+@import "../../../assets/styles/sass/mixins";
+
+.fields {
+
+  @include header-container;
+
+  width: 300px;
+
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+
+  .nikButton {
+    height: 25px;
+
+    font-size: 12px;
+    line-height: 24px;
+  }
+}
+
+.nikName {
+
+  @include header-container;
+
+  width: 300px;
+
+  font-size: 20px;
+  font-weight: 600;
+  word-wrap: break-word;
+
+  .pencilIcon {
+    width: 20px;
+    margin: 0 10px;
+  }
+}

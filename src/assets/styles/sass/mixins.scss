@@ -1,0 +1,62 @@
+@import "variables";
+
+@mixin global-container($height) {
+  width: 413px !important;
+  height: $height;
+  margin: 120px auto 0;
+
+  background: #fff;
+  border-radius: 2px;
+  box-shadow: 1px 1px 2px rgb(0 0 0 / 20%), -1px -1px 2px rgb(0 0 0 / 20%);
+}
+
+@mixin header-container() {
+  font-family: $mainFont;
+  font-size: 26px;
+  font-weight: 500;
+  font-style: normal;
+  line-height: 32px;
+  color: #000;
+}
+
+@mixin fields-container() {
+  width: 347px;
+  height: 71px !important;
+  margin: 0 0 4px !important;
+}
+
+@mixin description-container() {
+  font-family: $mainFont;
+  font-size: 16px;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 24px;
+  color: #000;
+  text-align: center;
+
+  opacity: 0.5;
+}
+
+@mixin button-container() {
+  width: 347px;
+  height: 36px;
+
+  background: #366eff;
+  border-radius: 30px;
+  box-shadow: 0 4px 18px rgb(54 110 255 / 35%), inset 0 1px 0 rgb(255 255 255 / 30%);
+}
+
+@mixin link-container() {
+  font-family: $mainFont;
+  font-size: 16px;
+  font-weight: 500;
+  font-style: normal;
+  line-height: 24px;
+  color: #366eff;
+  text-align: center;
+  text-decoration-line: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
