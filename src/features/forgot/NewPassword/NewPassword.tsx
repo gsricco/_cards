@@ -15,8 +15,16 @@ import { useAppDispatch } from 'hooks';
 
 export const NewPassword: FC = () => {
   const dispatch = useAppDispatch();
+
   const { token } = useParams();
   const navigate = useNavigate();
+
+  const onFormSubmit = (password: string): void => {
+    if (token) {
+      dispatch(updatePassword({ password, resetPasswordToken: token }));
+    }
+    navigate(Path.LOGIN);
+  };
 
   return (
     <Grid container justifyContent="center" className={styles.newPasswordContainer}>
@@ -26,17 +34,7 @@ export const NewPassword: FC = () => {
           <Formik
             initialValues={{ password: '' } as NewPasswordType}
             validationSchema={validateNewPassword}
-            onSubmit={values => {
-              if (token) {
-                dispatch(
-                  updatePassword({
-                    password: values.password,
-                    resetPasswordToken: token,
-                  }),
-                );
-              }
-              navigate(Path.LOGIN);
-            }}
+            onSubmit={values => onFormSubmit(values.password)}
           >
             {formik => <NewPasswordForm formik={formik} />}
           </Formik>

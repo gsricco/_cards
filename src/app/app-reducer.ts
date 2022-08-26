@@ -1,11 +1,17 @@
 import { authAPI } from 'api';
-import { AppThunk, RequestStatus, AppReducerActionType, setNameEmail } from 'common';
+import {
+  AppThunk,
+  RequestStatus,
+  AppReducerActionType,
+  Nullable,
+  setNameEmail,
+} from 'common';
 import { setIsLoggedIn } from 'features';
 
 const initialState = {
   status: RequestStatus.IDLE,
-  error: null as string | null,
-  info: null as string | null,
+  error: null as Nullable<string>,
+  info: null as Nullable<string>,
   isInitialized: false,
 };
 
@@ -26,11 +32,11 @@ export const appReducer = (
 
 export const setAppStatus = (status: RequestStatus) =>
   ({ type: 'APP/SET-STATUS', payload: { status } } as const);
-export const setAppError = (error: string | null) =>
+export const setAppError = (error: Nullable<string>) =>
   ({ type: 'APP/SET-ERROR', payload: { error } } as const);
 export const setAppInitialized = (isInitialized: boolean) =>
   ({ type: 'APP/SET-APP-INITIALIZED', payload: { isInitialized } } as const);
-export const setAppInfo = (info: string | null) =>
+export const setAppInfo = (info: Nullable<string>) =>
   ({ type: 'APP/SET-APP-INFO', payload: { info } } as const);
 
 export const initialized = (): AppThunk => async dispatch => {
