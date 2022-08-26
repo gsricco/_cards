@@ -15,7 +15,13 @@ import { useAppDispatch } from 'hooks';
 
 export const ForgotPassword: FC = () => {
   const dispatch = useAppDispatch();
+
   const navigate = useNavigate();
+
+  const onFormSubmit = (email: string): void => {
+    dispatch(recoverPassword(email));
+    navigate(Path.CHECK_EMAIL);
+  };
 
   return (
     <Container maxWidth="md" className={styles.container}>
@@ -27,10 +33,7 @@ export const ForgotPassword: FC = () => {
           <Formik
             initialValues={{ email: '' } as ForgotPasswordType}
             validationSchema={validateForgotPassword}
-            onSubmit={(values: ForgotPasswordType) => {
-              dispatch(recoverPassword(values.email));
-              navigate(Path.CHECK_EMAIL);
-            }}
+            onSubmit={(values: ForgotPasswordType) => onFormSubmit(values.email)}
           >
             {formik => <ForgotPasswordForm formik={formik} />}
           </Formik>

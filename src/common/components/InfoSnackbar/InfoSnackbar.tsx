@@ -4,6 +4,7 @@ import MuiAlert, { AlertProps } from '@mui/material/Alert';
 import Snackbar from '@mui/material/Snackbar';
 
 import { getError, getInfo, setAppError, setAppInfo } from 'app';
+import { Nullable } from 'common';
 import { useAppDispatch, useAppSelector } from 'hooks';
 
 const Alert = forwardRef<HTMLDivElement, AlertProps>(function Alert(props, ref) {
@@ -12,8 +13,8 @@ const Alert = forwardRef<HTMLDivElement, AlertProps>(function Alert(props, ref) 
 
 export const InfoSnackbar: FC = () => {
   const dispatch = useAppDispatch();
-  const error = useAppSelector<string | null>(getError);
-  const info = useAppSelector<string | null>(getInfo);
+  const error = useAppSelector<Nullable<string>>(getError);
+  const info = useAppSelector<Nullable<string>>(getInfo);
 
   const handleClose = (event?: SyntheticEvent | Event, reason?: string): void => {
     if (reason === 'clickaway') {

@@ -20,7 +20,7 @@ export const RoutesPage: FC = () => {
     { path: Path.FORGOT_PASSWORD, component: <ForgotPassword /> },
     { path: `${Path.NEW_PASSWORD}/:token`, component: <NewPassword /> },
     { path: Path.CHECK_EMAIL, component: <CheckEmail /> },
-    { path: '*', component: <Error404 /> },
+    { path: Path.ERROR_404, component: <Error404 /> },
   ];
 
   return (
