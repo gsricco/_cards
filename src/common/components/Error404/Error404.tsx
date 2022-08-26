@@ -4,7 +4,7 @@ import { Button, Grid } from '@mui/material';
 
 import styles from './Error404.module.scss';
 
-import Error404Image from 'assets/images/404.png';
+import Error404Image from 'assets/images/404.svg';
 
 export const Error404: FC = () => {
   return (
