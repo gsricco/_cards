@@ -6,7 +6,7 @@ import { initialized } from './app-reducer';
 import { getIsInitialized } from './app-selectors';
 import styles from './App.module.css';
 
-import { RoutesPage, Header, InfoSnackbar } from 'common';
+import { Header, InfoSnackbar, RoutesPage } from 'common';
 import { useAppDispatch, useAppSelector } from 'hooks';
 
 export const App: FC = () => {

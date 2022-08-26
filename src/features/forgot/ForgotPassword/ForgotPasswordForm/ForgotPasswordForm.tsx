@@ -31,6 +31,7 @@ export const ForgotPasswordForm: FC<Props> = ({ formik }) => {
         disabled={!isValid || !dirty || isSubmitting}
         type="submit"
         variant="contained"
+        color="primary"
         className={styles.gridItemButton}
       >
         Send Instructions
