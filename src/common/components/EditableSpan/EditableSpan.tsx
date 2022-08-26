@@ -39,6 +39,7 @@ export const EditableSpan: FC = () => {
                   variant="contained"
                   onClick={activateViewMode}
                   size="small"
+                  disabled={!title}
                 >
                   SAVE
                 </Button>

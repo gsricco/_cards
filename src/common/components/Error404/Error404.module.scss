@@ -36,11 +36,15 @@
         opacity: 1;
       }
 
-      .error404Button {
+      .error404Link {
+        text-decoration-line: none !important;
 
-        @include button-container;
+        .error404Button {
 
-        width: 218px;
+          @include button-container;
+
+          width: 218px;
+        }
       }
     }
   }

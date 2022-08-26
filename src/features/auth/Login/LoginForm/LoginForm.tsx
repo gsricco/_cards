@@ -18,14 +18,16 @@ type Props = {
 export const LoginForm: FC<Props> = ({ formik }) => {
   const { showPassword, onButtonIconClick } = useShowEar();
 
-  const { isValid, dirty, isSubmitting, handleChange } = { ...formik };
+  const { isValid, dirty, isSubmitting, handleChange, values, handleBlur } = {
+    ...formik,
+  };
 
   return (
     <Form>
       <EmailForm
         name="email"
         label="Email"
-        onInputBlur={formik.handleBlur}
+        onInputBlur={handleBlur}
         className={styles.fields}
       />
       <PasswordForm
@@ -42,7 +44,7 @@ export const LoginForm: FC<Props> = ({ formik }) => {
           <Checkbox
             name="rememberMe"
             onChange={handleChange}
-            checked={formik.values.rememberMe}
+            checked={values.rememberMe}
           />
         }
       />

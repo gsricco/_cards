@@ -21,7 +21,7 @@ export const RegistrationForm: FC<Props> = ({ formik }) => {
     onButtonIconConfirmClick,
   } = useShowEar();
 
-  const { isValid, dirty, isSubmitting } = { ...formik };
+  const { isValid, dirty, isSubmitting, handleBlur, values } = { ...formik };
 
   return (
     <Form>
@@ -29,7 +29,7 @@ export const RegistrationForm: FC<Props> = ({ formik }) => {
         className={styles.fields}
         name="email"
         label="Email"
-        onInputBlur={formik.handleBlur}
+        onInputBlur={handleBlur}
       />
       <PasswordForm
         className={styles.fields}
@@ -46,7 +46,9 @@ export const RegistrationForm: FC<Props> = ({ formik }) => {
         onIconClick={onButtonIconConfirmClick}
       />
       <Button
-        disabled={!isValid || !dirty || isSubmitting}
+        disabled={
+          !isValid || !dirty || isSubmitting || values.password !== values.confirmPassword
+        }
         className={styles.registrationButton}
         type="submit"
         variant="contained"

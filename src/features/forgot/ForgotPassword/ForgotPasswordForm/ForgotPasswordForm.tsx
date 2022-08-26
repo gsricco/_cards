@@ -12,14 +12,14 @@ type Props = {
 };
 
 export const ForgotPasswordForm: FC<Props> = ({ formik }) => {
-  const { isValid, dirty, isSubmitting } = { ...formik };
+  const { isValid, dirty, isSubmitting, handleBlur } = { ...formik };
 
   return (
     <Form>
       <EmailForm
         name="email"
         label="Email"
-        onInputBlur={formik.handleBlur}
+        onInputBlur={handleBlur}
         className={styles.fields}
       />
       <Typography gutterBottom variant="subtitle1" className={styles.gridItemDescription}>

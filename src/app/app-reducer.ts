@@ -1,9 +1,9 @@
 import { authAPI } from 'api';
 import {
-  AppThunk,
-  RequestStatus,
   AppReducerActionType,
+  AppThunk,
   Nullable,
+  RequestStatus,
   setNameEmail,
 } from 'common';
 import { setIsLoggedIn } from 'features';

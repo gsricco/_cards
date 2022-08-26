@@ -20,10 +20,14 @@ export const useChangeSpan: () => {
   const activateEditMode = (): void => {
     setEditMode(true);
   };
+
   const activateViewMode = (): void => {
-    setEditMode(false);
-    dispatch(updateUser(title));
+    if (title) {
+      setEditMode(false);
+      dispatch(updateUser(title));
+    }
   };
+
   const changeTitle = (event: ChangeEvent<HTMLInputElement>): void => {
     setTitle(event.currentTarget.value);
   };
