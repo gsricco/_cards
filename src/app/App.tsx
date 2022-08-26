@@ -11,7 +11,7 @@ import { useAppDispatch, useAppSelector } from 'hooks';
 
 export const App: FC = () => {
   const dispatch = useAppDispatch();
-  const isInitialized = useAppSelector<boolean>(getIsInitialized);
+  const isInitialized = useAppSelector(getIsInitialized);
 
   useEffect(() => {
     dispatch(initialized());

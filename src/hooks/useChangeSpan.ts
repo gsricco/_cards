@@ -12,10 +12,10 @@ export const useChangeSpan: () => {
   onKeyPressHandler: (event: KeyboardEvent<HTMLInputElement>) => void;
 } = () => {
   const dispatch = useAppDispatch();
-  const name = useAppSelector<string>(getName);
+  const name = useAppSelector(getName);
 
-  const [editMode, setEditMode] = useState<boolean>(false);
-  const [title, setTitle] = useState<string>(name);
+  const [editMode, setEditMode] = useState(false);
+  const [title, setTitle] = useState(name);
 
   const activateEditMode = (): void => {
     setEditMode(true);

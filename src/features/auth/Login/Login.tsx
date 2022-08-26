@@ -15,7 +15,7 @@ import { useAppDispatch, useAppSelector } from 'hooks';
 
 export const Login: FC = () => {
   const dispatch = useAppDispatch();
-  const isLoggedIn = useAppSelector<boolean>(getIsLoggedIn);
+  const isLoggedIn = useAppSelector(getIsLoggedIn);
 
   if (isLoggedIn) {
     return <Navigate to={Path.PROFILE} />;

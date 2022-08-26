@@ -17,9 +17,9 @@ import { getIsLoggedIn, getName } from 'features';
 import { useAppSelector } from 'hooks';
 
 export const Header: FC = () => {
-  const status = useAppSelector<RequestStatus>(getStatus);
-  const name = useAppSelector<string>(getName);
-  const isLoggedIn = useAppSelector<boolean>(getIsLoggedIn);
+  const status = useAppSelector(getStatus);
+  const name = useAppSelector(getName);
+  const isLoggedIn = useAppSelector(getIsLoggedIn);
 
   const navigate = useNavigate();
 

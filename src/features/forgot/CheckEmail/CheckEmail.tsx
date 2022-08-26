@@ -3,10 +3,9 @@ import { FC } from 'react';
 import { Button, Container, Grid, Paper, Typography } from '@mui/material';
 import { Link } from 'react-router-dom';
 
-import checkEmailImage from '../../../assets/images/CheckEmail.png';
-
 import styles from './CheckEmail.module.scss';
 
+import checkEmailImage from 'assets/images/CheckEmail.png';
 import { Path } from 'common';
 
 export const CheckEmail: FC = () => {

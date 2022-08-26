@@ -1,7 +1,5 @@
 import { AxiosError } from 'axios';
 
-import { setName } from '../auth';
-
 import { forgotAPI } from 'api';
 import { setAppInfo, setAppStatus } from 'app';
 import {
@@ -13,25 +11,12 @@ import {
   ForgotActionsType,
   handleServerNetworkError,
 } from 'common';
+import { setName } from 'features';
 
 const initialState = {
   email: '',
   password: '',
-  user: {
-    _id: '',
-    email: '',
-    rememberMe: false,
-    isAdmin: false,
-    name: '',
-    verified: false,
-    publicCardPacksCount: 0,
-    created: '',
-    updated: '',
-    __v: 0,
-    token: '',
-    tokenDeathTime: 0,
-    avatar: '',
-  } as UserType,
+  user: {} as UserType,
 };
 
 export const forgotReducer = (

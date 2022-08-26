@@ -6,8 +6,8 @@ export const useShowEar: () => {
   onButtonIconClick: () => void;
   onButtonIconConfirmClick: () => void;
 } = () => {
-  const [showPassword, setShowPassword] = useState<boolean>(false);
-  const [showConfirmPassword, setShowConfirmPassword] = useState<boolean>(false);
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   const onButtonIconClick = (): void => {
     setShowPassword(!showPassword);

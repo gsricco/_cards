@@ -15,8 +15,8 @@ import { useAppDispatch, useAppSelector } from 'hooks';
 
 export const Profile: FC = () => {
   const dispatch = useAppDispatch();
-  const isLoggedIn = useAppSelector<boolean>(getIsLoggedIn);
-  const email = useAppSelector<string>(getEmail);
+  const isLoggedIn = useAppSelector(getIsLoggedIn);
+  const email = useAppSelector(getEmail);
 
   const onLogoutClick = (): void => {
     dispatch(logout());
