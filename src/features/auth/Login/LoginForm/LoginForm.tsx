@@ -18,18 +18,11 @@ type Props = {
 export const LoginForm: FC<Props> = ({ formik }) => {
   const { showPassword, onButtonIconClick } = useShowEar();
 
-  const { isValid, dirty, isSubmitting, handleChange, values, handleBlur } = {
-    ...formik,
-  };
+  const { isValid, dirty, isSubmitting, handleChange, values } = { ...formik };
 
   return (
     <Form>
-      <EmailForm
-        name="email"
-        label="Email"
-        onInputBlur={handleBlur}
-        className={styles.fields}
-      />
+      <EmailForm name="email" label="Email" className={styles.fields} />
       <PasswordForm
         className={styles.fields}
         showPass={showPassword}

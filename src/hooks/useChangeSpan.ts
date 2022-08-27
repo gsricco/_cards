@@ -24,7 +24,7 @@ export const useChangeSpan: () => {
   const activateViewMode = (): void => {
     if (title) {
       setEditMode(false);
-      dispatch(updateUser(title));
+      dispatch(updateUser({ name: title }));
     }
   };
 

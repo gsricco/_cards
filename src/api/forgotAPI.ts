@@ -1,14 +1,21 @@
+import { RecoverPasswordType } from '../common/types/DataTypes';
+
 import { instance, instanceHeroku } from './instance';
 
-import { InfoType, UpdatePasswordDataType, UpdateUserType } from 'common';
+import {
+  InfoType,
+  UpdatePasswordDataType,
+  UpdateUserDataType,
+  UpdateUserType,
+} from 'common';
 
 export const forgotAPI = {
-  updateUserName: (name: string, avatar?: string) =>
-    instance.put<UpdateUserType>('auth/me', { name, avatar }),
+  updateUserName: (data: UpdateUserDataType) =>
+    instance.put<UpdateUserType>('auth/me', data),
 
   updatePassword: (data: UpdatePasswordDataType) =>
     instance.post<InfoType>('auth/set-new-password', data),
 
-  recoverPassword: (email: string, from: string, message: string) =>
-    instanceHeroku.post<InfoType>('auth/forgot', { email, from, message }),
+  recoverPassword: (data: RecoverPasswordType) =>
+    instanceHeroku.post<InfoType>('auth/forgot', data),
 };

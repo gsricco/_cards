@@ -41,11 +41,13 @@ export const recoverUserPassword = (email: string) =>
   ({ type: 'FORGOT/RECOVER-USER-PASSWORD', payload: { email } } as const);
 
 export const updateUser =
-  (name: string): AppThunk =>
+  (data: UpdateUserDataType): AppThunk =>
   async dispatch => {
+    const { name } = { ...data };
+
     dispatch(setAppStatus(RequestStatus.LOADING));
     try {
-      await forgotAPI.updateUserName(name);
+      await forgotAPI.updateUserName({ name });
 
       dispatch(updateUserName({ name, avatar: '' }));
       dispatch(setName(name));
@@ -75,11 +77,11 @@ export const recoverPassword =
   async dispatch => {
     dispatch(setAppStatus(RequestStatus.LOADING));
     try {
-      const res = await forgotAPI.recoverPassword(
+      const res = await forgotAPI.recoverPassword({
         email,
-        'hello <suveikosasha@gmail.com',
-        'test',
-      );
+        from: 'hello <suveikosasha@gmail.com',
+        message: 'test',
+      });
 
       dispatch(recoverUserPassword(email));
       dispatch(setAppInfo(res.data.info));

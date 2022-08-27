@@ -15,3 +15,8 @@ export type UpdatePasswordDataType = {
   password: string;
   resetPasswordToken: string;
 };
+export type RecoverPasswordType = {
+  email: string;
+  from: string;
+  message: string;
+};

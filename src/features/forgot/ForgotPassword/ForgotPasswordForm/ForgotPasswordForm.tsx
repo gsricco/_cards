@@ -12,16 +12,11 @@ type Props = {
 };
 
 export const ForgotPasswordForm: FC<Props> = ({ formik }) => {
-  const { isValid, dirty, isSubmitting, handleBlur } = { ...formik };
+  const { isValid, dirty, isSubmitting } = { ...formik };
 
   return (
     <Form>
-      <EmailForm
-        name="email"
-        label="Email"
-        onInputBlur={handleBlur}
-        className={styles.fields}
-      />
+      <EmailForm name="email" label="Email" className={styles.fields} />
       <Typography gutterBottom variant="subtitle1" className={styles.gridItemDescription}>
         Enter your email address and we will send you
         <br />

@@ -21,16 +21,11 @@ export const RegistrationForm: FC<Props> = ({ formik }) => {
     onButtonIconConfirmClick,
   } = useShowEar();
 
-  const { isValid, dirty, isSubmitting, handleBlur, values } = { ...formik };
+  const { isValid, dirty, isSubmitting, values } = { ...formik };
 
   return (
     <Form>
-      <EmailForm
-        className={styles.fields}
-        name="email"
-        label="Email"
-        onInputBlur={handleBlur}
-      />
+      <EmailForm className={styles.fields} name="email" label="Email" />
       <PasswordForm
         className={styles.fields}
         showPass={showPassword}
