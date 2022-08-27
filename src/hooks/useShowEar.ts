@@ -1,11 +1,13 @@
 import { useState } from 'react';
 
-export const useShowEar: () => {
+interface ReturnType {
   showPassword: boolean;
   showConfirmPassword: boolean;
   onButtonIconClick: () => void;
   onButtonIconConfirmClick: () => void;
-} = () => {
+}
+
+export const useShowEar = (): ReturnType => {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 

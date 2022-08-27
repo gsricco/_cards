@@ -3,14 +3,16 @@ import { ChangeEvent, KeyboardEvent, useState } from 'react';
 import { getName, updateUser } from 'features';
 import { useAppDispatch, useAppSelector } from 'hooks';
 
-export const useChangeSpan: () => {
+interface ReturnType {
   editMode: boolean;
   title: string;
   activateEditMode: () => void;
   activateViewMode: () => void;
   changeTitle: (event: ChangeEvent<HTMLInputElement>) => void;
   onKeyPressHandler: (event: KeyboardEvent<HTMLInputElement>) => void;
-} = () => {
+}
+
+export const useChangeSpan = (): ReturnType => {
   const dispatch = useAppDispatch();
   const name = useAppSelector(getName);
 
