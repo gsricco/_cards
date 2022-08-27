@@ -1,0 +1,26 @@
+.tableContainer {
+  margin: 100px 149px 0 149px;
+  width: 1048px !important;
+  height: 466px !important;
+
+  border-radius: 2px;
+  box-shadow: 1px 1px 2px rgb(0 0 0 / 20%), -1px -1px 2px rgb(0 0 0 / 20%);
+
+  .table {
+    min-width: 650px;
+
+    .tableHead {
+      background-color: #EFEFEF;
+
+      .tableCellBody{
+
+      }
+    }
+
+    .tableCellBody {
+      padding: 5px 16px;
+    }
+  }
+
+
+}

@@ -6,6 +6,7 @@ export {
   PasswordForm,
   EmailForm,
   InfoSnackbar,
+  PaginationComponent,
 } from './components';
 
 export { Path, RequestStatus } from './enums';
