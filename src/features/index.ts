@@ -27,4 +27,4 @@ export {
   updateUser,
   recoverPassword,
 } from './forgot';
-export { PacksList } from './packs/PacksList.';
+export { PacksTable, PacksTableBody, PacksTableHeader } from './packs';

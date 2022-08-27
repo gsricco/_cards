@@ -2,7 +2,7 @@ import { FC } from 'react';
 
 import { Pagination } from '@mui/material';
 
-export const PaginationComponent: FC = () => {
+export const Paginator: FC = () => {
   return (
     <Pagination
       sx={{ ml: '133px' }}
