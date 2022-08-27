@@ -33,4 +33,5 @@ export type {
   ForgotActionsType,
   AppReducerActionType,
   Nullable,
+  RecoverPasswordType,
 } from './types';

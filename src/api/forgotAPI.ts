@@ -1,5 +1,3 @@
-import { RecoverPasswordType } from '../common/types/DataTypes';
-
 import { instance, instanceHeroku } from './instance';
 
 import {
@@ -7,6 +5,7 @@ import {
   UpdatePasswordDataType,
   UpdateUserDataType,
   UpdateUserType,
+  RecoverPasswordType,
 } from 'common';
 
 export const forgotAPI = {

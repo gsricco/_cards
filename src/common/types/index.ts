@@ -22,5 +22,6 @@ export type {
   RegisterDataType,
   UpdateUserDataType,
   UpdatePasswordDataType,
+  RecoverPasswordType,
 } from './DataTypes';
 export { Nullable } from './Nullable';
