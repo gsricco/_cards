@@ -7,9 +7,10 @@ import {
 } from '@mui/icons-material';
 import { IconButton, TableCell, TableRow } from '@mui/material';
 
-import { useAppDispatch } from '../../../../hooks';
-import { deletePacks } from '../../packs-reducer';
 import styles from '../../PacksTable.module.scss';
+
+import { deletePack } from 'features';
+import { useAppDispatch } from 'hooks';
 
 type Props = {
   id: string;
@@ -22,7 +23,7 @@ export const Pack: FC<Props> = ({ id, name, created, updated, cards }) => {
   const dispatch = useAppDispatch();
 
   const deletedPackHandler = (): void => {
-    dispatch(deletePacks(id));
+    dispatch(deletePack(id));
   };
 
   return (

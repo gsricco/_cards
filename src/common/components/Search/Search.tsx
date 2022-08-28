@@ -9,9 +9,7 @@ import styles from './Search.module.scss';
 
 export const Search: FC = () => {
   const handleChangeInput = (e: ChangeEvent<HTMLInputElement>): string => {
-    const valueInput = e.target.value;
-
-    return valueInput;
+    return e.target.value;
   };
 
   return (

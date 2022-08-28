@@ -31,7 +31,6 @@ export const packsReducer = (
     case 'PACKS/DELETE-PACKS':
       return {
         ...state,
-        // eslint-disable-next-line no-underscore-dangle
         cardPacks: state.cardPacks.filter(card => card._id !== action.payload.id),
       };
     default:
@@ -41,7 +40,7 @@ export const packsReducer = (
 
 export const setPacks = (data: CardsPacksType[]) =>
   ({ type: 'PACKS/SET-PACKS', payload: data } as const);
-export const deletePacksAC = (id: string) =>
+export const deletePacks = (id: string) =>
   ({ type: 'PACKS/DELETE-PACKS', payload: { id } } as const);
 
 export const getPacks =
@@ -58,13 +57,14 @@ export const getPacks =
       dispatch(setAppStatus(RequestStatus.SUCCEEDED));
     }
   };
-export const deletePacks =
+export const deletePack =
   (id: string): AppThunk =>
   async dispatch => {
     dispatch(setAppStatus(RequestStatus.LOADING));
     try {
       await packsAPI.deletePack(id);
-      dispatch(deletePacksAC(id));
+
+      dispatch(deletePacks(id));
     } catch (error) {
       handleServerNetworkError(error as AxiosError | Error, dispatch);
     } finally {

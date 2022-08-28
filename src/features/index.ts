@@ -33,4 +33,5 @@ export {
   PacksTableHeader,
   packsReducer,
   setPacks,
+  deletePack,
 } from './packs';

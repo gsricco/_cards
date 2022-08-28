@@ -43,6 +43,7 @@
     }
   ],
   "rules": {
+    "no-underscore-dangle": "off",
     "camelcase": "off",
     "import/order": [
       "error",
