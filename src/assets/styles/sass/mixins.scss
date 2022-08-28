@@ -10,50 +10,66 @@
   box-shadow: 1px 1px 2px rgb(0 0 0 / 20%), -1px -1px 2px rgb(0 0 0 / 20%);
 }
 
-@mixin header-container() {
-  font-family: $mainFont;
-  font-size: 26px;
-  font-weight: 500;
-  font-style: normal;
-  line-height: 32px;
-  color: #000;
-}
+@mixin attributes-container($width) {
+  display: flex;
+  flex-wrap: wrap;
+  width: $width;
+  height: 65px;
+  text-align: left;
 
-@mixin fields-container() {
-  width: 347px;
-  height: 71px !important;
-  margin: 0 0 4px !important;
-}
-
-@mixin description-container() {
-  font-family: $mainFont;
-  font-size: 16px;
-  font-weight: 400;
-  font-style: normal;
-  line-height: 24px;
-  color: #000;
-  text-align: center;
-
-  opacity: 0.5;
-}
-
-@mixin button-container() {
-  width: 347px;
-  height: 36px;
-  border-radius: 30px;
-}
-
-@mixin link-container() {
-  font-family: $mainFont;
-  font-size: 16px;
-  font-weight: 500;
-  font-style: normal;
-  line-height: 24px;
-  color: #366eff;
-  text-align: center;
-  text-decoration-line: none;
-
-  &:hover {
-    text-decoration: underline;
+  & span {
+    margin: 0 0 8px 0;
+    font-family: $mainFont;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
   }
 }
+  @mixin header-container() {
+    font-family: $mainFont;
+    font-size: 26px;
+    font-weight: 500;
+    font-style: normal;
+    line-height: 32px;
+    color: #000;
+  }
+
+  @mixin fields-container() {
+    width: 347px;
+    height: 71px !important;
+    margin: 0 0 4px !important;
+  }
+
+  @mixin description-container() {
+    font-family: $mainFont;
+    font-size: 16px;
+    font-weight: 400;
+    font-style: normal;
+    line-height: 24px;
+    color: #000;
+    text-align: center;
+
+    opacity: 0.5;
+  }
+
+  @mixin button-container() {
+    width: 347px;
+    height: 36px;
+    border-radius: 30px;
+  }
+
+  @mixin link-container() {
+    font-family: $mainFont;
+    font-size: 16px;
+    font-weight: 500;
+    font-style: normal;
+    line-height: 24px;
+    color: #366eff;
+    text-align: center;
+    text-decoration-line: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }

@@ -7,6 +7,9 @@ export {
   EmailForm,
   InfoSnackbar,
   PaginationComponent,
+  DiscreteSlider,
+  FilteredButton,
+  Search,
 } from './components';
 
 export { Path, RequestStatus } from './enums';
