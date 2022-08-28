@@ -54,8 +54,8 @@ export const Pack: FC<Props> = ({
         )}
 
         {packUserId === userId && (
-          <IconButton>
-            <DeleteForeverOutlined onClick={onDeletePackClick} />
+          <IconButton onClick={onDeletePackClick}>
+            <DeleteForeverOutlined />
           </IconButton>
         )}
       </TableCell>

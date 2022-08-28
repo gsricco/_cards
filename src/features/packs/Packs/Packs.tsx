@@ -42,7 +42,11 @@ export const Packs: FC = () => {
           <PacksTableBody />
         </Table>
       </TableContainer>
-      <Paginator pageCount={packsPerPage} totalElements={cardPacksTotalCount} />
+      <Paginator
+        pageCount={packsPerPage}
+        totalElements={cardPacksTotalCount}
+        page={page}
+      />
     </>
   );
 };
