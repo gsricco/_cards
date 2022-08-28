@@ -1,4 +1,4 @@
-export { PacksTable } from './PacksTable';
-export { PacksTableHeader } from './PacksTableHeader';
-export { PacksTableBody } from './PacksTableBody';
-export { setPacks, packsReducer, deletePack } from './packs-reducer';
+export { Packs } from './Packs/Packs';
+export { PacksTableBody } from './Packs/PacksTableBody';
+export { setPacks, packsReducer, deletePack, removePack } from './packs-reducer';
+export { getPacks, getPage, getCardPacksTotalCount } from './packs-selectors';

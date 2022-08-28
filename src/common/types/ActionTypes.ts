@@ -1,5 +1,3 @@
-import { deletePacks } from '../../features/packs/packs-reducer';
-
 import { setAppError, setAppInfo, setAppInitialized, setAppStatus } from 'app';
 import {
   setEmail,
@@ -10,6 +8,8 @@ import {
   setNewName,
   setNewPassword,
   setPacks,
+  setId,
+  removePack,
 } from 'features';
 
 export type ForgotActionsType =
@@ -20,7 +20,8 @@ export type AuthActionsType =
   | ReturnType<typeof setIsLoggedIn>
   | ReturnType<typeof setIsRegistration>
   | ReturnType<typeof setName>
-  | ReturnType<typeof setEmail>;
+  | ReturnType<typeof setEmail>
+  | ReturnType<typeof setId>;
 export type AppReducerActionType =
   | ReturnType<typeof setAppStatus>
   | ReturnType<typeof setAppError>
@@ -28,4 +29,4 @@ export type AppReducerActionType =
   | ReturnType<typeof setAppInfo>;
 export type PacksActionTypes =
   | ReturnType<typeof setPacks>
-  | ReturnType<typeof deletePacks>;
+  | ReturnType<typeof removePack>;

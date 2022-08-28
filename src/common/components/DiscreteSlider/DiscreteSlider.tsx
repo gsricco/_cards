@@ -6,8 +6,7 @@ import Slider from '@mui/material/Slider';
 import styles from './DiscreteSlider.module.scss';
 
 export const DiscreteSlider: FC = () => {
-  // eslint-disable-next-line no-magic-numbers
-  const [value, setValue] = useState<number[]>([22, 60]);
+  const [value, setValue] = useState<number[]>([0, 1]);
 
   const handleChange = (event: Event, newValue: number | number[]): void => {
     setValue(newValue as number[]);

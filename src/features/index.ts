@@ -14,6 +14,8 @@ export {
   setEmail,
   getEmail,
   getName,
+  setId,
+  getId,
 } from './auth';
 export {
   NewPassword,
@@ -28,10 +30,13 @@ export {
   recoverPassword,
 } from './forgot';
 export {
-  PacksTable,
+  Packs,
   PacksTableBody,
-  PacksTableHeader,
   packsReducer,
   setPacks,
   deletePack,
+  getPage,
+  getPacks,
+  getCardPacksTotalCount,
+  removePack,
 } from './packs';

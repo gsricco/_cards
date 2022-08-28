@@ -6,7 +6,7 @@ import {
   RequestStatus,
   setNameEmail,
 } from 'common';
-import { setIsLoggedIn } from 'features';
+import { setIsLoggedIn, setId } from 'features';
 
 const initialState = {
   status: RequestStatus.IDLE,
@@ -44,6 +44,7 @@ export const initialized = (): AppThunk => async dispatch => {
     const res = await authAPI.me();
 
     setNameEmail(res.data, dispatch);
+    dispatch(setId(res.data._id));
     dispatch(setIsLoggedIn(true));
   } finally {
     dispatch(setAppInitialized(true));

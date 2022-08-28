@@ -17,6 +17,7 @@ const initialState = {
   isRegistration: false,
   name: '',
   email: '',
+  _id: '',
 };
 
 export const authReducer = (
@@ -28,6 +29,7 @@ export const authReducer = (
     case 'LOGIN/SET-IS-REGISTRATION':
     case 'LOGIN/SET-USER-NAME':
     case 'LOGIN/SET-USER-EMAIL':
+    case 'LOGIN/SET-ID':
       return { ...state, ...action.payload };
     default:
       return state;
@@ -42,6 +44,8 @@ export const setName = (name: string) =>
   ({ type: 'LOGIN/SET-USER-NAME', payload: { name } } as const);
 export const setEmail = (email: string) =>
   ({ type: 'LOGIN/SET-USER-EMAIL', payload: { email } } as const);
+export const setId = (_id: string) =>
+  ({ type: 'LOGIN/SET-ID', payload: { _id } } as const);
 
 export const login =
   (data: LoginDataType): AppThunk =>

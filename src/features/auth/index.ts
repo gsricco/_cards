@@ -10,5 +10,12 @@ export {
   logout,
   setName,
   setEmail,
+  setId,
 } from './auth-reduser';
-export { getIsLoggedIn, getIsRegistration, getName, getEmail } from './auth-selectors';
+export {
+  getIsLoggedIn,
+  getIsRegistration,
+  getName,
+  getEmail,
+  getId,
+} from './auth-selectors';

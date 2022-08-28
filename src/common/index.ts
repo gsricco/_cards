@@ -10,6 +10,7 @@ export {
   DiscreteSlider,
   FilteredButton,
   Search,
+  TableHeader,
 } from './components';
 
 export { Path, RequestStatus } from './enums';

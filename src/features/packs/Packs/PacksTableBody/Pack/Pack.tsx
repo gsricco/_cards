@@ -7,23 +7,33 @@ import {
 } from '@mui/icons-material';
 import { IconButton, TableCell, TableRow } from '@mui/material';
 
-import styles from '../../PacksTable.module.scss';
+import styles from '../../Packs.module.scss';
 
-import { deletePack } from 'features';
-import { useAppDispatch } from 'hooks';
+import { getId, deletePack } from 'features';
+import { useAppDispatch, useAppSelector } from 'hooks';
 
 type Props = {
-  id: string;
+  packId: string;
   name: string;
   cards: number;
   updated: string;
   created: string;
+  packUserId: string;
 };
-export const Pack: FC<Props> = ({ id, name, created, updated, cards }) => {
-  const dispatch = useAppDispatch();
 
-  const deletedPackHandler = (): void => {
-    dispatch(deletePack(id));
+export const Pack: FC<Props> = ({
+  packId,
+  name,
+  created,
+  updated,
+  cards,
+  packUserId,
+}) => {
+  const dispatch = useAppDispatch();
+  const userId = useAppSelector(getId);
+
+  const onDeletePackClick = (): void => {
+    dispatch(deletePack(packId));
   };
 
   return (
@@ -36,12 +46,18 @@ export const Pack: FC<Props> = ({ id, name, created, updated, cards }) => {
         <IconButton>
           <SchoolOutlined />
         </IconButton>
-        <IconButton>
-          <BorderColorOutlined />
-        </IconButton>
-        <IconButton>
-          <DeleteForeverOutlined onClick={deletedPackHandler} />
-        </IconButton>
+
+        {packUserId === userId && (
+          <IconButton>
+            <BorderColorOutlined />
+          </IconButton>
+        )}
+
+        {packUserId === userId && (
+          <IconButton>
+            <DeleteForeverOutlined onClick={onDeletePackClick} />
+          </IconButton>
+        )}
       </TableCell>
     </TableRow>
   );

@@ -3,25 +3,26 @@ import { FC, useEffect } from 'react';
 import { TableContainer, Table } from '@mui/material';
 import { Navigate } from 'react-router-dom';
 
-import { getPacks } from './packs-reducer';
-import styles from './PacksTable.module.scss';
+import { getPacks } from '../packs-reducer';
 
-import { Paginator, Path } from 'common';
-import { PacksTableHeader, PacksTableBody, getIsLoggedIn } from 'features';
+import styles from './Packs.module.scss';
+
+import { Paginator, Path, TableHeader } from 'common';
+import { PacksTableBody, getIsLoggedIn, getPage, getCardPacksTotalCount } from 'features';
 import { useAppDispatch, useAppSelector } from 'hooks';
 
-export const PacksTable: FC = () => {
+export const Packs: FC = () => {
   const dispatch = useAppDispatch();
+
   const isLoggedIn = useAppSelector(getIsLoggedIn);
-  const page = useAppSelector<number>(state => state.packs.page);
-  const cardPacksTotalCount = useAppSelector<number>(
-    state => state.packs.cardPacksTotalCount,
-  );
+  const page = useAppSelector(getPage);
+  const cardPacksTotalCount = useAppSelector(getCardPacksTotalCount);
+
   const packsPerPage = 8;
 
   useEffect(() => {
     dispatch(getPacks({ page, pageCount: 8 }));
-  }, [page]);
+  }, [page, dispatch]);
 
   if (!isLoggedIn) {
     return <Navigate to={Path.LOGIN} />;
@@ -31,7 +32,13 @@ export const PacksTable: FC = () => {
     <>
       <TableContainer className={styles.tableContainer}>
         <Table className={styles.table} aria-label="simple table">
-          <PacksTableHeader />
+          <TableHeader
+            firstCell="Name"
+            secondCell="Cards"
+            thirdCell="Last Updated"
+            fourthCell="Created by"
+            fifthCell="Actions"
+          />
           <PacksTableBody />
         </Table>
       </TableContainer>
