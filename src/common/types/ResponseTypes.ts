@@ -52,6 +52,11 @@ export type CardsPacksType = {
   more_id: string;
   __v: number;
 };
+
+export type DeletedCardsPack = {
+  deletedCardsPack: CardsPacksType;
+} & TokenType;
+
 type TokenType = {
   token?: string;
   tokenDeathTime?: number;

@@ -6,4 +6,5 @@ export enum Path {
   NEW_PASSWORD = '/set-new-password',
   CHECK_EMAIL = '/check-email',
   ERROR_404 = '*',
+  PACKS = '/packs',
 }

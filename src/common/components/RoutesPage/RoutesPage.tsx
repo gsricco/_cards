@@ -8,6 +8,7 @@ import {
   ForgotPassword,
   Login,
   NewPassword,
+  PacksTable,
   Profile,
   Registration,
 } from 'features';
@@ -21,6 +22,7 @@ export const RoutesPage: FC = () => {
     { path: `${Path.NEW_PASSWORD}/:token`, component: <NewPassword /> },
     { path: Path.CHECK_EMAIL, component: <CheckEmail /> },
     { path: Path.ERROR_404, component: <Error404 /> },
+    { path: Path.PACKS, component: <PacksTable /> },
   ];
 
   return (

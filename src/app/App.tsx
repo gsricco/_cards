@@ -6,8 +6,7 @@ import { initialized } from './app-reducer';
 import { getIsInitialized } from './app-selectors';
 import styles from './App.module.css';
 
-import { InfoSnackbar, Header, RoutesPage } from 'common';
-import { PacksTable } from 'features';
+import { Header, InfoSnackbar, RoutesPage } from 'common';
 import { useAppDispatch, useAppSelector } from 'hooks';
 
 export const App: FC = () => {
@@ -30,7 +29,6 @@ export const App: FC = () => {
     <div className={styles.App}>
       <InfoSnackbar />
       <Header />
-      <PacksTable />
       <RoutesPage />
     </div>
   );

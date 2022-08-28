@@ -18,7 +18,7 @@ export const Login: FC = () => {
   const isLoggedIn = useAppSelector(getIsLoggedIn);
 
   if (isLoggedIn) {
-    return <Navigate to={Path.PROFILE} />;
+    return <Navigate to={Path.PACKS} />;
   }
 
   return (
