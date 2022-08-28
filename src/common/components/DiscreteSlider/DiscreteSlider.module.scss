@@ -1,0 +1,40 @@
+@import "src/assets/styles/sass/mixins";
+
+.discreteContainer {
+  @include attributes-container(196px);
+
+  .discreteItems {
+    width: 251px !important;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .discreteField {
+      width: 36px;
+      height: 36px;
+      font-weight: 600;
+      font-size: 16px;
+      line-height: 20px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid #D9D9D9;
+      border-radius: 2px;
+      box-shadow: 1px 1px 2px rgb(0 0 0 / 20%), -1px -1px 2px rgb(0 0 0 / 20%);
+    }
+
+    .slider {
+      width: 155px !important;
+      height: 5px !important;
+      margin: 0 12px;
+
+    }
+  }
+
+}
+
+
+
+
+
