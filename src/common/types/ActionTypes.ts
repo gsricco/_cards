@@ -7,6 +7,7 @@ import {
   recoverUserPassword,
   updateUserName,
   updateUserPassword,
+  getPacksAC,
 } from 'features';
 
 export type ForgotActionsType =
@@ -23,3 +24,4 @@ export type AppReducerActionType =
   | ReturnType<typeof setAppError>
   | ReturnType<typeof setAppInitialized>
   | ReturnType<typeof setAppInfo>;
+export type PacksActionTypes = ReturnType<typeof getPacksAC>;

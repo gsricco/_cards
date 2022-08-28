@@ -35,4 +35,8 @@ export type {
   AppReducerActionType,
   Nullable,
   RecoverPasswordType,
+  PacksActionTypes,
+  CardsPacksType,
+  PacksType,
+  PacksParamsType,
 } from './types';

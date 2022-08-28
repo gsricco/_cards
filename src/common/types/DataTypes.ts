@@ -20,3 +20,12 @@ export type RecoverPasswordType = {
   from: string;
   message: string;
 };
+export type PacksParamsType = {
+  packName?: string;
+  min?: number;
+  max?: number;
+  sortPacks?: string;
+  page?: number;
+  pageCount?: number;
+  user_id?: string;
+};

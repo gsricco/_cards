@@ -11,7 +11,7 @@ import styles from '../../PacksTable.module.scss';
 
 type Props = {
   name: string;
-  cards: string;
+  cards: number;
   updated: string;
   created: string;
 };

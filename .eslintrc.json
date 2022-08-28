@@ -43,6 +43,7 @@
     }
   ],
   "rules": {
+    "camelcase": "off",
     "import/order": [
       "error",
       {

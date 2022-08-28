@@ -2,6 +2,7 @@ export type {
   ForgotActionsType,
   AuthActionsType,
   AppReducerActionType,
+  PacksActionTypes,
 } from './ActionTypes';
 export type { AppThunk, AppDispatch, AppRootState } from './AppTypes';
 export type {
@@ -16,6 +17,8 @@ export type {
   InfoType,
   MeResponseType,
   UpdateUserType,
+  CardsPacksType,
+  PacksType,
 } from './ResponseTypes';
 export type {
   LoginDataType,
@@ -23,5 +26,6 @@ export type {
   UpdateUserDataType,
   UpdatePasswordDataType,
   RecoverPasswordType,
+  PacksParamsType,
 } from './DataTypes';
 export { Nullable } from './Nullable';
