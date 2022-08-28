@@ -7,16 +7,24 @@ import {
 } from '@mui/icons-material';
 import { IconButton, TableCell, TableRow } from '@mui/material';
 
+import { useAppDispatch } from '../../../../hooks';
+import { deletePacks } from '../../packs-reducer';
 import styles from '../../PacksTable.module.scss';
 
 type Props = {
+  id: string;
   name: string;
   cards: number;
   updated: string;
   created: string;
 };
+export const Pack: FC<Props> = ({ id, name, created, updated, cards }) => {
+  const dispatch = useAppDispatch();
 
-export const Pack: FC<Props> = ({ name, created, updated, cards }) => {
+  const deletedPackHandler = (): void => {
+    dispatch(deletePacks(id));
+  };
+
   return (
     <TableRow sx={{ height: '48px' }}>
       <TableCell className={styles.tableCellBody}>{name}</TableCell>
@@ -31,7 +39,7 @@ export const Pack: FC<Props> = ({ name, created, updated, cards }) => {
           <BorderColorOutlined />
         </IconButton>
         <IconButton>
-          <DeleteForeverOutlined />
+          <DeleteForeverOutlined onClick={deletedPackHandler} />
         </IconButton>
       </TableCell>
     </TableRow>

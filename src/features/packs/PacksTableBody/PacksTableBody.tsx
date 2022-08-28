@@ -15,6 +15,7 @@ export const PacksTableBody: FC = () => {
       {packs.map(({ _id, name, cardsCount, updated, user_name }) => (
         <Pack
           key={_id}
+          id={_id}
           name={name}
           cards={cardsCount}
           updated={updated.slice(0, 10)}
