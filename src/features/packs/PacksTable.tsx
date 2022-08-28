@@ -1,20 +1,25 @@
 import { FC, useEffect } from 'react';
 
-import { TableContainer, Table } from '@mui/material';
+import { Table, TableContainer } from '@mui/material';
 
 import { getPacks } from './packs-reducer';
 import styles from './PacksTable.module.scss';
 
 import { Paginator } from 'common';
-import { PacksTableHeader, PacksTableBody } from 'features';
-import { useAppDispatch } from 'hooks';
+import { PacksTableBody, PacksTableHeader } from 'features';
+import { useAppDispatch, useAppSelector } from 'hooks';
 
 export const PacksTable: FC = () => {
   const dispatch = useAppDispatch();
+  const page = useAppSelector<number>(state => state.packs.page);
+  const cardPacksTotalCount = useAppSelector<number>(
+    state => state.packs.cardPacksTotalCount,
+  );
+  const packsPerPage = 8;
 
   useEffect(() => {
-    dispatch(getPacks({ page: 1, pageCount: 8 }));
-  }, [dispatch]);
+    dispatch(getPacks({ page, pageCount: 8 }));
+  }, [page]);
 
   return (
     <>
@@ -24,7 +29,7 @@ export const PacksTable: FC = () => {
           <PacksTableBody />
         </Table>
       </TableContainer>
-      <Paginator />
+      <Paginator pageCount={packsPerPage} totalElements={cardPacksTotalCount} />
     </>
   );
 };

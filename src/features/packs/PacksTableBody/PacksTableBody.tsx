@@ -2,10 +2,11 @@ import { FC } from 'react';
 
 import { TableBody } from '@mui/material';
 
+import { useAppSelector } from '../../../hooks';
+
 import { Pack } from './Pack';
 
 import { CardsPacksType } from 'common';
-import { useAppSelector } from 'hooks';
 
 export const PacksTableBody: FC = () => {
   const packs = useAppSelector<CardsPacksType[]>(state => state.packs.cardPacks);
