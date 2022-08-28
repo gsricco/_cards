@@ -24,21 +24,21 @@ export const forgotReducer = (
   action: ForgotActionsType,
 ): InitialStateType => {
   switch (action.type) {
-    case 'FORGOT/UPDATE-USER-NAME':
-    case 'FORGOT/UPDATE-USER-PASSWORD':
-    case 'FORGOT/RECOVER-USER-PASSWORD':
+    case 'FORGOT/SET-NEW-NAME':
+    case 'FORGOT/SET-NEW-PASSWORD':
+    case 'FORGOT/RECOVER-NEW-PASSWORD':
       return { ...state, ...action.payload };
     default:
       return state;
   }
 };
 
-export const updateUserName = (data: UpdateUserDataType) =>
-  ({ type: 'FORGOT/UPDATE-USER-NAME', payload: data } as const);
-export const updateUserPassword = (password: string) =>
-  ({ type: 'FORGOT/UPDATE-USER-PASSWORD', payload: { password } } as const);
-export const recoverUserPassword = (email: string) =>
-  ({ type: 'FORGOT/RECOVER-USER-PASSWORD', payload: { email } } as const);
+export const setNewName = (data: UpdateUserDataType) =>
+  ({ type: 'FORGOT/SET-NEW-NAME', payload: data } as const);
+export const setNewPassword = (password: string) =>
+  ({ type: 'FORGOT/SET-NEW-PASSWORD', payload: { password } } as const);
+export const recoverNewPassword = (email: string) =>
+  ({ type: 'FORGOT/RECOVER-NEW-PASSWORD', payload: { email } } as const);
 
 export const updateUser =
   (data: UpdateUserDataType): AppThunk =>
@@ -49,7 +49,7 @@ export const updateUser =
     try {
       await forgotAPI.updateUserName({ name });
 
-      dispatch(updateUserName({ name, avatar: '' }));
+      dispatch(setNewName({ name, avatar: '' }));
       dispatch(setName(name));
     } catch (error) {
       handleServerNetworkError(error as AxiosError | Error, dispatch);
@@ -64,7 +64,7 @@ export const updatePassword =
     try {
       const res = await forgotAPI.updatePassword(data);
 
-      dispatch(updateUserPassword(res.data.info));
+      dispatch(setNewPassword(res.data.info));
       dispatch(setAppInfo(res.data.info));
     } catch (error) {
       handleServerNetworkError(error as AxiosError | Error, dispatch);
@@ -83,7 +83,7 @@ export const recoverPassword =
         message: 'test',
       });
 
-      dispatch(recoverUserPassword(email));
+      dispatch(recoverNewPassword(email));
       dispatch(setAppInfo(res.data.info));
     } catch (error) {
       handleServerNetworkError(error as AxiosError | Error, dispatch);

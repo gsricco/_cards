@@ -4,9 +4,9 @@ export { NewPassword } from './NewPassword/NewPassword';
 export {
   forgotReducer,
   recoverPassword,
-  recoverUserPassword,
-  updateUserPassword,
-  updateUserName,
+  recoverNewPassword,
+  setNewPassword,
+  setNewName,
   updateUser,
   updatePassword,
 } from './forgot-reducer';

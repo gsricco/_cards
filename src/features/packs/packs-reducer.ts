@@ -4,12 +4,12 @@ import { packsAPI } from 'api';
 import { setAppStatus } from 'app';
 import {
   AppThunk,
-  handleServerNetworkError,
   RequestStatus,
   PacksParamsType,
   PacksActionTypes,
   CardsPacksType,
   PacksType,
+  handleServerNetworkError,
 } from 'common';
 
 const initialState: PacksType = {
@@ -26,15 +26,15 @@ export const packsReducer = (
   action: PacksActionTypes,
 ): PacksType => {
   switch (action.type) {
-    case 'PACKS/GET-PACKS':
+    case 'PACKS/SET-PACKS':
       return { ...state, ...action.payload };
     default:
       return state;
   }
 };
 
-export const getPacksAC = (data: CardsPacksType[]) =>
-  ({ type: 'PACKS/GET-PACKS', payload: data } as const);
+export const setPacks = (data: CardsPacksType[]) =>
+  ({ type: 'PACKS/SET-PACKS', payload: data } as const);
 
 export const getPacks =
   (params: PacksParamsType): AppThunk =>
@@ -43,7 +43,7 @@ export const getPacks =
     try {
       const res = await packsAPI.getPacks(params);
 
-      dispatch(getPacksAC(res.data));
+      dispatch(setPacks(res.data));
     } catch (error) {
       handleServerNetworkError(error as AxiosError | Error, dispatch);
     } finally {

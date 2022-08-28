@@ -4,16 +4,16 @@ import {
   setIsLoggedIn,
   setIsRegistration,
   setName,
-  recoverUserPassword,
-  updateUserName,
-  updateUserPassword,
-  getPacksAC,
+  recoverNewPassword,
+  setNewName,
+  setNewPassword,
+  setPacks,
 } from 'features';
 
 export type ForgotActionsType =
-  | ReturnType<typeof updateUserName>
-  | ReturnType<typeof updateUserPassword>
-  | ReturnType<typeof recoverUserPassword>;
+  | ReturnType<typeof setNewName>
+  | ReturnType<typeof setNewPassword>
+  | ReturnType<typeof recoverNewPassword>;
 export type AuthActionsType =
   | ReturnType<typeof setIsLoggedIn>
   | ReturnType<typeof setIsRegistration>
@@ -24,4 +24,4 @@ export type AppReducerActionType =
   | ReturnType<typeof setAppError>
   | ReturnType<typeof setAppInitialized>
   | ReturnType<typeof setAppInfo>;
-export type PacksActionTypes = ReturnType<typeof getPacksAC>;
+export type PacksActionTypes = ReturnType<typeof setPacks>;
