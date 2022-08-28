@@ -21,7 +21,7 @@ export const PacksTable: FC = () => {
 
   useEffect(() => {
     dispatch(getPacks({ page, pageCount: 8 }));
-  }, [page]);
+  }, [dispatch, page]);
 
   if (!isLoggedIn) {
     return <Navigate to={Path.LOGIN} />;
@@ -35,7 +35,11 @@ export const PacksTable: FC = () => {
           <PacksTableBody />
         </Table>
       </TableContainer>
-      <Paginator pageCount={packsPerPage} totalElements={cardPacksTotalCount} />
+      <Paginator
+        pageCount={packsPerPage}
+        totalElements={cardPacksTotalCount}
+        page={page}
+      />
     </>
   );
 };

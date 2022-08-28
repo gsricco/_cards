@@ -19,6 +19,7 @@ type Props = {
   updated: string;
   created: string;
 };
+
 export const Pack: FC<Props> = ({ id, name, created, updated, cards }) => {
   const dispatch = useAppDispatch();
 
@@ -39,8 +40,8 @@ export const Pack: FC<Props> = ({ id, name, created, updated, cards }) => {
         <IconButton>
           <BorderColorOutlined />
         </IconButton>
-        <IconButton>
-          <DeleteForeverOutlined onClick={deletedPackHandler} />
+        <IconButton onClick={deletedPackHandler}>
+          <DeleteForeverOutlined />
         </IconButton>
       </TableCell>
     </TableRow>

@@ -34,4 +34,5 @@ export {
   packsReducer,
   setPacks,
   deletePack,
+  changePacksPage,
 } from './packs';

@@ -33,6 +33,8 @@ export const packsReducer = (
         ...state,
         cardPacks: state.cardPacks.filter(card => card._id !== action.payload.id),
       };
+    case 'PACKS/PACKS-PAGE':
+      return { ...state, page: action.page };
     default:
       return state;
   }
@@ -42,6 +44,8 @@ export const setPacks = (data: CardsPacksType[]) =>
   ({ type: 'PACKS/SET-PACKS', payload: data } as const);
 export const deletePacks = (id: string) =>
   ({ type: 'PACKS/DELETE-PACKS', payload: { id } } as const);
+export const setPacksPage = (page: number) =>
+  ({ type: 'PACKS/PACKS-PAGE', page } as const);
 
 export const getPacks =
   (params: PacksParamsType): AppThunk =>
@@ -50,6 +54,7 @@ export const getPacks =
     try {
       const res = await packsAPI.getPacks(params);
 
+      // @ts-ignore
       dispatch(setPacks(res.data));
     } catch (error) {
       handleServerNetworkError(error as AxiosError | Error, dispatch);
@@ -65,6 +70,18 @@ export const deletePack =
       await packsAPI.deletePack(id);
 
       dispatch(deletePacks(id));
+    } catch (error) {
+      handleServerNetworkError(error as AxiosError | Error, dispatch);
+    } finally {
+      dispatch(setAppStatus(RequestStatus.SUCCEEDED));
+    }
+  };
+export const changePacksPage =
+  (page: number): AppThunk =>
+  async dispatch => {
+    dispatch(setAppStatus(RequestStatus.LOADING));
+    try {
+      dispatch(setPacksPage(page));
     } catch (error) {
       handleServerNetworkError(error as AxiosError | Error, dispatch);
     } finally {
