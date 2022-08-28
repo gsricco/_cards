@@ -4,8 +4,8 @@ import {
   LoginDataType,
   RegisterDataType,
   MeResponseType,
-  RegisterType,
-  InfoType,
+  RegisterResponseType,
+  InfoResponseType,
 } from 'common';
 
 export const authAPI = {
@@ -13,8 +13,8 @@ export const authAPI = {
 
   login: (data: LoginDataType) => instance.post<MeResponseType>('auth/login', data),
 
-  logout: () => instance.delete<InfoType>('auth/me'),
+  logout: () => instance.delete<InfoResponseType>('auth/me'),
 
   register: (data: RegisterDataType) =>
-    instance.post<RegisterType>('auth/register', data),
+    instance.post<RegisterResponseType>('auth/register', data),
 };

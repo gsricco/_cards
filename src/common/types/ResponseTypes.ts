@@ -11,22 +11,22 @@ export type UserType = {
   __v: number;
   avatar: string | null;
 } & TokenType;
-export type RegisterType = {
+export type RegisterResponseType = {
   addedUser: UserType;
   error?: string;
 };
 export type MeResponseType = UserType & {
   error?: string;
 };
-export type UpdateUserType = {
+export type UpdateUserResponseType = {
   user: UserType;
   error?: string;
 } & TokenType;
-export type InfoType = {
+export type InfoResponseType = {
   info: string;
   error: string;
 };
-export type PacksType = {
+export type PacksResponseType = {
   cardPacks: CardsPacksType[];
   page: number;
   pageCount: number;
@@ -52,11 +52,9 @@ export type CardsPacksType = {
   more_id: string;
   __v: number;
 };
-
-export type DeletedCardsPack = {
+export type DeletePackResponseType = {
   deletedCardsPack: CardsPacksType;
 } & TokenType;
-
 type TokenType = {
   token?: string;
   tokenDeathTime?: number;

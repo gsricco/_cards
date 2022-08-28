@@ -12,13 +12,14 @@ export type {
   RegistrationType,
 } from './FormikTypes';
 export type {
-  RegisterType,
+  RegisterResponseType,
   UserType,
-  InfoType,
+  InfoResponseType,
   MeResponseType,
-  UpdateUserType,
+  UpdateUserResponseType,
   CardsPacksType,
-  PacksType,
+  PacksResponseType,
+  DeletePackResponseType,
 } from './ResponseTypes';
 export type {
   LoginDataType,

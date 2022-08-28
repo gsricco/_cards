@@ -8,11 +8,11 @@ import {
   PacksParamsType,
   PacksActionTypes,
   CardsPacksType,
-  PacksType,
+  PacksResponseType,
   handleServerNetworkError,
 } from 'common';
 
-const initialState: PacksType = {
+const initialState: PacksResponseType = {
   cardPacks: [] as CardsPacksType[],
   page: 1,
   pageCount: 0,
@@ -22,9 +22,9 @@ const initialState: PacksType = {
 };
 
 export const packsReducer = (
-  state: PacksType = initialState,
+  state: PacksResponseType = initialState,
   action: PacksActionTypes,
-): PacksType => {
+): PacksResponseType => {
   switch (action.type) {
     case 'PACKS/SET-PACKS':
       return { ...state, ...action.payload };
