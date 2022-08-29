@@ -1,4 +1,4 @@
-import { deletePacks, setPacksPage } from '../../features/packs/packs-reducer';
+import { deletePacks, postPacks, setPacksPage } from '../../features/packs/packs-reducer';
 
 import { setAppError, setAppInfo, setAppInitialized, setAppStatus } from 'app';
 import {
@@ -29,4 +29,5 @@ export type AppReducerActionType =
 export type PacksActionTypes =
   | ReturnType<typeof setPacks>
   | ReturnType<typeof deletePacks>
-  | ReturnType<typeof setPacksPage>;
+  | ReturnType<typeof setPacksPage>
+  | ReturnType<typeof postPacks>;

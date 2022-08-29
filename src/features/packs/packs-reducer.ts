@@ -27,6 +27,7 @@ export const packsReducer = (
 ): PacksResponseType => {
   switch (action.type) {
     case 'PACKS/SET-PACKS':
+    case 'PACKS/POST-PACKS':
       return { ...state, ...action.payload };
     case 'PACKS/DELETE-PACKS':
       return {
@@ -42,6 +43,8 @@ export const packsReducer = (
 
 export const setPacks = (data: CardsPacksType[]) =>
   ({ type: 'PACKS/SET-PACKS', payload: data } as const);
+export const postPacks = (data: CardsPacksType[]) =>
+  ({ type: 'PACKS/POST-PACKS', payload: data } as const);
 export const deletePacks = (id: string) =>
   ({ type: 'PACKS/DELETE-PACKS', payload: { id } } as const);
 export const setPacksPage = (page: number) =>
@@ -62,6 +65,19 @@ export const getPacks =
       dispatch(setAppStatus(RequestStatus.SUCCEEDED));
     }
   };
+export const addPacks = (): AppThunk => async dispatch => {
+  dispatch(setAppStatus(RequestStatus.LOADING));
+  try {
+    const res = await packsAPI.addPack();
+
+    // @ts-ignore
+    dispatch(postPacks(res.data));
+  } catch (error) {
+    handleServerNetworkError(error as AxiosError | Error, dispatch);
+  } finally {
+    dispatch(setAppStatus(RequestStatus.SUCCEEDED));
+  }
+};
 export const deletePack =
   (id: string): AppThunk =>
   async dispatch => {

@@ -29,3 +29,12 @@ export type PacksParamsType = {
   pageCount?: number;
   user_id?: string;
 };
+export type CardsPackType = {
+  name?: string;
+  deckCover?: string;
+  private?: boolean;
+  _id?: string;
+};
+export type AddCardsPackType = {
+  cardsPack: CardsPackType;
+};

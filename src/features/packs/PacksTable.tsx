@@ -1,13 +1,13 @@
 import { FC, useEffect } from 'react';
 
-import { TableContainer, Table } from '@mui/material';
+import { Table, TableContainer } from '@mui/material';
 import { Navigate } from 'react-router-dom';
 
 import { getPacks } from './packs-reducer';
 import styles from './PacksTable.module.scss';
 
 import { Paginator, Path } from 'common';
-import { PacksTableHeader, PacksTableBody, getIsLoggedIn } from 'features';
+import { getIsLoggedIn, PacksTableBody, PacksTableHeader } from 'features';
 import { useAppDispatch, useAppSelector } from 'hooks';
 
 export const PacksTable: FC = () => {
