@@ -1,44 +1,39 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
 
 import MenuItem from '@mui/material/MenuItem';
 import MenuList from '@mui/material/MenuList';
 import Paper from '@mui/material/Paper';
 import { useNavigate } from 'react-router-dom';
 
-import iconLogout from '../../../assets/images/logout.svg';
-import iconProfile from '../../../assets/images/user.svg';
-import { logout } from '../../../features';
-import { useAppDispatch } from '../../../hooks';
-import { Path } from '../../enums';
+import styles from './Select.module.scss';
 
-import styles from './SelectProfileLogout.module.scss';
+import iconLogout from 'assets/images/logout.svg';
+import iconProfile from 'assets/images/user.svg';
+import { Path } from 'common';
+import { logout } from 'features';
+import { useAppDispatch } from 'hooks';
 
-type Props = {
-  closeNav: (menu: boolean) => void;
-};
-
-export const SelectProfileLogout: FC<Props> = ({ closeNav }) => {
-  const navigate = useNavigate();
+export const Select: FC = () => {
   const dispatch = useAppDispatch();
+
+  const navigate = useNavigate();
 
   const onHandlerClick = (): void => {
     navigate(Path.PROFILE);
-    closeNav(false);
   };
   const onLogoutClick = (): void => {
     dispatch(logout());
-    closeNav(false);
   };
 
   return (
     <Paper className={styles.menuContainer}>
       <MenuList>
         <MenuItem onClick={onHandlerClick}>
-          <img src={iconProfile} alt="Sviat" />
+          <img src={iconProfile} alt="icon" />
           Profile
         </MenuItem>
         <MenuItem onClick={onLogoutClick}>
-          <img src={iconLogout} alt="Sviat" />
+          <img src={iconLogout} alt="logout icon" />
           Logout
         </MenuItem>
       </MenuList>

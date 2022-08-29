@@ -11,6 +11,7 @@ export {
   FilteredButton,
   Search,
   TableHeader,
+  Select,
 } from './components';
 
 export { Path, RequestStatus } from './enums';

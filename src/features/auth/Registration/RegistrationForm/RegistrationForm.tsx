@@ -7,19 +7,14 @@ import { Link } from 'react-router-dom';
 import styles from '../Registration.module.scss';
 
 import { Path, RegistrationType, EmailForm, PasswordForm } from 'common';
-import { useShowEar } from 'hooks';
+import { useShow } from 'hooks';
 
 type Props = {
   formik: FormikProps<RegistrationType>;
 };
 
 export const RegistrationForm: FC<Props> = ({ formik }) => {
-  const {
-    showPassword,
-    showConfirmPassword,
-    onButtonIconClick,
-    onButtonIconConfirmClick,
-  } = useShowEar();
+  const { show, showConfirm, onButtonIconClick, onButtonIconConfirmClick } = useShow();
 
   const { isValid, dirty, isSubmitting, values } = { ...formik };
 
@@ -28,14 +23,14 @@ export const RegistrationForm: FC<Props> = ({ formik }) => {
       <EmailForm className={styles.fields} name="email" label="Email" />
       <PasswordForm
         className={styles.fields}
-        showPass={showPassword}
+        showPass={show}
         name="password"
         label="Password"
         onIconClick={onButtonIconClick}
       />
       <PasswordForm
         className={styles.fields}
-        showPass={showConfirmPassword}
+        showPass={showConfirm}
         name="confirmPassword"
         label="Confirm Password"
         onIconClick={onButtonIconConfirmClick}

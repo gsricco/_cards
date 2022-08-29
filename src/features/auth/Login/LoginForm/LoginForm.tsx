@@ -9,14 +9,14 @@ import { Link } from 'react-router-dom';
 import styles from '../Login.module.scss';
 
 import { Path, LoginType, EmailForm, PasswordForm } from 'common';
-import { useShowEar } from 'hooks';
+import { useShow } from 'hooks';
 
 type Props = {
   formik: FormikProps<LoginType>;
 };
 
 export const LoginForm: FC<Props> = ({ formik }) => {
-  const { showPassword, onButtonIconClick } = useShowEar();
+  const { show, onButtonIconClick } = useShow();
 
   const { isValid, dirty, isSubmitting, handleChange, values } = { ...formik };
 
@@ -25,7 +25,7 @@ export const LoginForm: FC<Props> = ({ formik }) => {
       <EmailForm name="email" label="Email" className={styles.fields} />
       <PasswordForm
         className={styles.fields}
-        showPass={showPassword}
+        showPass={show}
         name="password"
         label="Password"
         onIconClick={onButtonIconClick}

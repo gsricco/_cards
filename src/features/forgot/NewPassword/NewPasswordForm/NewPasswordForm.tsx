@@ -7,21 +7,21 @@ import { Form, FormikProps } from 'formik';
 import styles from '../NewPassword.module.scss';
 
 import { NewPasswordType, PasswordForm } from 'common';
-import { useShowEar } from 'hooks';
+import { useShow } from 'hooks';
 
 type Props = {
   formik: FormikProps<NewPasswordType>;
 };
 
 export const NewPasswordForm: FC<Props> = ({ formik }) => {
-  const { showPassword, onButtonIconClick } = useShowEar();
+  const { show, onButtonIconClick } = useShow();
 
   const { isValid, dirty, isSubmitting } = { ...formik };
 
   return (
     <Form>
       <PasswordForm
-        showPass={showPassword}
+        showPass={show}
         name="password"
         label="Password"
         onIconClick={onButtonIconClick}
