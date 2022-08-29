@@ -1,6 +1,6 @@
 import { FC, useEffect } from 'react';
 
-import { TableContainer, Table } from '@mui/material';
+import { Table, TableContainer } from '@mui/material';
 import { Navigate } from 'react-router-dom';
 
 import { getPacks } from '../packs-reducer';
@@ -8,7 +8,7 @@ import { getPacks } from '../packs-reducer';
 import styles from './Packs.module.scss';
 
 import { Paginator, Path, TableHeader } from 'common';
-import { PacksTableBody, getIsLoggedIn, getPage, getCardPacksTotalCount } from 'features';
+import { getCardPacksTotalCount, getIsLoggedIn, getPage, PacksTableBody } from 'features';
 import { useAppDispatch, useAppSelector } from 'hooks';
 
 export const Packs: FC = () => {
@@ -29,7 +29,7 @@ export const Packs: FC = () => {
   }
 
   return (
-    <>
+    <div className={styles.container}>
       <TableContainer className={styles.tableContainer}>
         <Table className={styles.table} aria-label="simple table">
           <TableHeader
@@ -47,6 +47,6 @@ export const Packs: FC = () => {
         totalElements={cardPacksTotalCount}
         page={page}
       />
-    </>
+    </div>
   );
 };

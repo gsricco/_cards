@@ -45,4 +45,6 @@ export type {
   PacksResponseType,
   PacksParamsType,
   DeletePackResponseType,
+  AddPackResponseType,
+  UpdatePackResponseType,
 } from './types';

@@ -3,6 +3,8 @@
 .discreteContainer {
   @include attributes-container(196px);
 
+  margin-top: 100px;
+
   .discreteItems {
     width: 251px !important;
     display: flex;

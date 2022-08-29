@@ -55,10 +55,13 @@ export type CardsPacksType = {
 export type DeletePackResponseType = {
   deletedCardsPack: CardsPacksType;
 } & TokenType;
+export type AddPackResponseType = {
+  newCardsPack: CardsPacksType;
+} & TokenType;
+export type UpdatePackResponseType = {
+  updatedCardsPack: CardsPacksType;
+} & TokenType;
 type TokenType = {
   token?: string;
   tokenDeathTime?: number;
 };
-export type AddPackResponseType = {
-  newCardsPack: CardsPacksType;
-} & TokenType;

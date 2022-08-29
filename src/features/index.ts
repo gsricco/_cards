@@ -41,4 +41,8 @@ export {
   removePack,
   changePacksPage,
   setPacksPage,
+  postPacks,
+  addPacks,
+  updatePack,
+  changePacksName,
 } from './packs';

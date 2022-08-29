@@ -29,6 +29,7 @@ export const packsReducer = (
     case 'PACKS/SET-PACKS':
     case 'PACKS/SET-PACKS-PAGE':
     case 'PACKS/POST-PACKS':
+    case 'PACKS/UPDATE-PACK-NAME':
       return { ...state, ...action.payload };
     case 'PACKS/REMOVE-PACK':
       return {
@@ -43,9 +44,11 @@ export const packsReducer = (
 export const setPacks = (data: CardsPacksType[]) =>
   ({ type: 'PACKS/SET-PACKS', payload: { cardPacks: data } } as const);
 export const postPacks = (data: CardsPacksType[]) =>
-    ({ type: 'PACKS/POST-PACKS', payload: data } as const);
+  ({ type: 'PACKS/POST-PACKS', payload: { cardPacks: data } } as const);
 export const setPacksPage = (page: number) =>
   ({ type: 'PACKS/SET-PACKS-PAGE', payload: { page } } as const);
+export const updatePack = (id: string) =>
+  ({ type: 'PACKS/UPDATE-PACK-NAME', payload: { id } } as const);
 export const removePack = (id: string) =>
   ({ type: 'PACKS/REMOVE-PACK', payload: { id } } as const);
 
@@ -66,10 +69,9 @@ export const getPacks =
 export const addPacks = (): AppThunk => async dispatch => {
   dispatch(setAppStatus(RequestStatus.LOADING));
   try {
-    const res = await packsAPI.addPack();
+    await packsAPI.addPack();
 
-    // @ts-ignore
-    dispatch(postPacks(res.data));
+    dispatch(getPacks({ pageCount: 8 }));
   } catch (error) {
     handleServerNetworkError(error as AxiosError | Error, dispatch);
   } finally {
@@ -80,6 +82,7 @@ export const deletePack =
   (id: string): AppThunk =>
   async dispatch => {
     dispatch(setAppStatus(RequestStatus.LOADING));
+
     try {
       await packsAPI.deletePack(id);
 
@@ -87,6 +90,7 @@ export const deletePack =
     } catch (error) {
       handleServerNetworkError(error as AxiosError | Error, dispatch);
     } finally {
+      dispatch(getPacks({ pageCount: 8 }));
       dispatch(setAppStatus(RequestStatus.SUCCEEDED));
     }
   };
@@ -94,11 +98,29 @@ export const changePacksPage =
   (page: number): AppThunk =>
   async dispatch => {
     dispatch(setAppStatus(RequestStatus.LOADING));
+
     try {
       dispatch(setPacksPage(page));
     } catch (error) {
       handleServerNetworkError(error as AxiosError | Error, dispatch);
     } finally {
+      dispatch(getPacks({ pageCount: 8 }));
+      dispatch(setAppStatus(RequestStatus.SUCCEEDED));
+    }
+  };
+export const changePacksName =
+  (id: string): AppThunk =>
+  async dispatch => {
+    dispatch(setAppStatus(RequestStatus.LOADING));
+
+    try {
+      await packsAPI.updatePackName(id);
+
+      dispatch(updatePack(id));
+    } catch (error) {
+      handleServerNetworkError(error as AxiosError | Error, dispatch);
+    } finally {
+      dispatch(getPacks({ pageCount: 8 }));
       dispatch(setAppStatus(RequestStatus.SUCCEEDED));
     }
   };

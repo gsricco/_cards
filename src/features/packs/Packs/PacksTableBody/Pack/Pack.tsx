@@ -7,10 +7,9 @@ import {
 } from '@mui/icons-material';
 import { IconButton, TableCell, TableRow } from '@mui/material';
 
-import { addPacks } from '../../packs-reducer';
 import styles from '../../Packs.module.scss';
 
-import { getId, deletePack } from 'features';
+import { deletePack, getId, addPacks, changePacksName } from 'features';
 import { useAppDispatch, useAppSelector } from 'hooks';
 
 type Props = {
@@ -37,6 +36,14 @@ export const Pack: FC<Props> = ({
     dispatch(deletePack(packId));
   };
 
+  const onCreatePackClick = (): void => {
+    dispatch(addPacks());
+  };
+
+  const onPackNameChange = (): void => {
+    dispatch(changePacksName(packId));
+  };
+
   return (
     <TableRow sx={{ height: '48px' }}>
       <TableCell className={styles.tableCellBody}>{name}</TableCell>
@@ -44,16 +51,12 @@ export const Pack: FC<Props> = ({
       <TableCell className={styles.tableCellBody}>{updated}</TableCell>
       <TableCell className={styles.tableCellBody}>{created}</TableCell>
       <TableCell sx={{ p: '5px 16px', width: '130px' }}>
-        <IconButton
-          onClick={() => {
-            dispatch(addPacks());
-          }}
-        >
+        <IconButton onClick={onCreatePackClick}>
           <SchoolOutlined />
         </IconButton>
 
         {packUserId === userId && (
-          <IconButton>
+          <IconButton onClick={onPackNameChange}>
             <BorderColorOutlined />
           </IconButton>
         )}

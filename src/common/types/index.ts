@@ -20,6 +20,8 @@ export type {
   CardsPacksType,
   PacksResponseType,
   DeletePackResponseType,
+  AddPackResponseType,
+  UpdatePackResponseType,
 } from './ResponseTypes';
 export type {
   LoginDataType,
