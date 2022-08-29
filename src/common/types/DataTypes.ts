@@ -38,3 +38,23 @@ export type CardsPackType = {
 export type AddCardsPackType = {
   cardsPack: CardsPackType;
 };
+export type CardsParamsType = {
+  cardQuestion?: string;
+  cardsPack_id: string;
+  min?: number;
+  max?: number;
+  sortCards?: string;
+  page?: number;
+  pageCount?: number;
+};
+export type CreateCardType = {
+  cardsPack_id: string;
+  question: string;
+  answer: string;
+  grade?: number;
+  shots?: number;
+  answerImg?: string;
+  questionImg?: string;
+  questionVideo?: string;
+  answerVideo?: string;
+};
