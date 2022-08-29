@@ -2,6 +2,8 @@ import { FC } from 'react';
 
 import { Navigate, Route, Routes } from 'react-router-dom';
 
+import { Cards } from '../../../features/cardsPack/Cards/Cards';
+
 import { Error404, Path } from 'common';
 import {
   CheckEmail,
@@ -23,6 +25,7 @@ export const RoutesPage: FC = () => {
     { path: Path.CHECK_EMAIL, component: <CheckEmail /> },
     { path: Path.ERROR_404, component: <Error404 /> },
     { path: Path.PACKS, component: <Packs /> },
+    { path: Path.CARDS, component: <Cards /> },
   ];
 
   return (

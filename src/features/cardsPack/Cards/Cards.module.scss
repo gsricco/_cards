@@ -1,6 +1,5 @@
 @import "src/assets/styles/sass/mixins";
 
 .container {
-  @include table-container(1048px, 466px);
+  @include table-container(1008px, 432px);
 }
-

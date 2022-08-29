@@ -1,3 +1,11 @@
+import {
+  postCard,
+  removeCard,
+  setCard,
+  setCardPage,
+  updateCard,
+} from '../../features/cardsPack/cards-reducer';
+
 import { setAppError, setAppInfo, setAppInitialized, setAppStatus } from 'app';
 import {
   setEmail,
@@ -36,3 +44,9 @@ export type PacksActionTypes =
   | ReturnType<typeof setPacksPage>
   | ReturnType<typeof postPacks>
   | ReturnType<typeof updatePack>;
+export type CardsActionTypes =
+  | ReturnType<typeof setCard>
+  | ReturnType<typeof postCard>
+  | ReturnType<typeof setCardPage>
+  | ReturnType<typeof updateCard>
+  | ReturnType<typeof removeCard>;

@@ -7,4 +7,5 @@ export enum Path {
   CHECK_EMAIL = '/check-email',
   ERROR_404 = '*',
   PACKS = '/packs',
+  CARDS = '/cards',
 }
