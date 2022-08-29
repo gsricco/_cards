@@ -27,14 +27,13 @@ export const packsReducer = (
 ): PacksResponseType => {
   switch (action.type) {
     case 'PACKS/SET-PACKS':
+    case 'PACKS/SET-PACKS-PAGE':
       return { ...state, ...action.payload };
     case 'PACKS/REMOVE-PACK':
       return {
         ...state,
         cardPacks: state.cardPacks.filter(card => card._id !== action.payload.id),
       };
-    case 'PACKS/PACKS-PAGE':
-      return { ...state, page: action.page };
     default:
       return state;
   }
@@ -42,10 +41,10 @@ export const packsReducer = (
 
 export const setPacks = (data: CardsPacksType[]) =>
   ({ type: 'PACKS/SET-PACKS', payload: { cardPacks: data } } as const);
+export const setPacksPage = (page: number) =>
+  ({ type: 'PACKS/SET-PACKS-PAGE', payload: { page } } as const);
 export const removePack = (id: string) =>
   ({ type: 'PACKS/REMOVE-PACK', payload: { id } } as const);
-export const setPacksPage = (page: number) =>
-    ({ type: 'PACKS/PACKS-PAGE', page } as const);
 
 export const getPacks =
   (params: PacksParamsType): AppThunk =>

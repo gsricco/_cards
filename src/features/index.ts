@@ -40,4 +40,5 @@ export {
   getCardPacksTotalCount,
   removePack,
   changePacksPage,
+  setPacksPage,
 } from './packs';
