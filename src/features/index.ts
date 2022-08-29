@@ -39,7 +39,6 @@ export {
   getPacks,
   getCardPacksTotalCount,
   removePack,
-  changePacksPage,
   setPacksPage,
   postPacks,
   addPacks,

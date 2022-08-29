@@ -2,7 +2,7 @@ import { ChangeEvent, FC } from 'react';
 
 import { Pagination } from '@mui/material';
 
-import { changePacksPage } from 'features';
+import { setPacksPage } from 'features';
 import { useAppDispatch } from 'hooks';
 
 type PaginatorProps = {
@@ -16,7 +16,7 @@ export const Paginator: FC<PaginatorProps> = ({ pageCount, totalElements, page }
   const dispatch = useAppDispatch();
 
   const onPageChange = (_: ChangeEvent<unknown>, currentPage: number): void => {
-    dispatch(changePacksPage(currentPage));
+    dispatch(setPacksPage(currentPage));
   };
 
   return (

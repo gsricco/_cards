@@ -41,8 +41,8 @@ export const packsReducer = (
   }
 };
 
-export const setPacks = (data: CardsPacksType[]) =>
-  ({ type: 'PACKS/SET-PACKS', payload: { cardPacks: data } } as const);
+export const setPacks = (data: PacksResponseType) =>
+  ({ type: 'PACKS/SET-PACKS', payload: data } as const);
 export const postPacks = (data: CardsPacksType[]) =>
   ({ type: 'PACKS/POST-PACKS', payload: { cardPacks: data } } as const);
 export const setPacksPage = (page: number) =>
@@ -59,7 +59,7 @@ export const getPacks =
     try {
       const res = await packsAPI.getPacks(params);
 
-      dispatch(setPacks(res.data.cardPacks));
+      dispatch(setPacks(res.data));
     } catch (error) {
       handleServerNetworkError(error as AxiosError | Error, dispatch);
     } finally {
@@ -87,20 +87,6 @@ export const deletePack =
       await packsAPI.deletePack(id);
 
       dispatch(removePack(id));
-    } catch (error) {
-      handleServerNetworkError(error as AxiosError | Error, dispatch);
-    } finally {
-      dispatch(getPacks({ pageCount: 8 }));
-      dispatch(setAppStatus(RequestStatus.SUCCEEDED));
-    }
-  };
-export const changePacksPage =
-  (page: number): AppThunk =>
-  async dispatch => {
-    dispatch(setAppStatus(RequestStatus.LOADING));
-
-    try {
-      dispatch(setPacksPage(page));
     } catch (error) {
       handleServerNetworkError(error as AxiosError | Error, dispatch);
     } finally {

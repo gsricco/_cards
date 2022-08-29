@@ -5,7 +5,6 @@ export {
   packsReducer,
   deletePack,
   removePack,
-  changePacksPage,
   setPacksPage,
   postPacks,
   addPacks,
