@@ -1,4 +1,6 @@
 import { setAppError, setAppInfo, setAppInitialized, setAppStatus } from 'app';
+import { postPacks } from '../../features/packs/packs-reducer';
+
 import {
   setEmail,
   setIsLoggedIn,
@@ -31,4 +33,5 @@ export type AppReducerActionType =
 export type PacksActionTypes =
   | ReturnType<typeof setPacks>
   | ReturnType<typeof removePack>
-  | ReturnType<typeof setPacksPage>;
+  | ReturnType<typeof setPacksPage>
+    | ReturnType<typeof postPacks>;

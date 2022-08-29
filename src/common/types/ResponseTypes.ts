@@ -59,3 +59,6 @@ type TokenType = {
   token?: string;
   tokenDeathTime?: number;
 };
+export type AddPackResponseType = {
+  newCardsPack: CardsPacksType;
+} & TokenType;

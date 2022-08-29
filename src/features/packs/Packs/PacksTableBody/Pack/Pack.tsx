@@ -7,6 +7,7 @@ import {
 } from '@mui/icons-material';
 import { IconButton, TableCell, TableRow } from '@mui/material';
 
+import { addPacks } from '../../packs-reducer';
 import styles from '../../Packs.module.scss';
 
 import { getId, deletePack } from 'features';
@@ -43,7 +44,11 @@ export const Pack: FC<Props> = ({
       <TableCell className={styles.tableCellBody}>{updated}</TableCell>
       <TableCell className={styles.tableCellBody}>{created}</TableCell>
       <TableCell sx={{ p: '5px 16px', width: '130px' }}>
-        <IconButton>
+        <IconButton
+          onClick={() => {
+            dispatch(addPacks());
+          }}
+        >
           <SchoolOutlined />
         </IconButton>
 
