@@ -1,8 +1,9 @@
-import { FC } from 'react';
+import React, { FC } from 'react';
 
-import LogoutIcon from '@mui/icons-material/Logout';
 import { Button, Container, Grid, Paper, Typography } from '@mui/material';
 import { Navigate } from 'react-router-dom';
+
+import iconLogout from '../../../assets/images/logout.svg';
 
 import styles from './Profile.module.scss';
 
@@ -60,9 +61,10 @@ export const Profile: FC = () => {
             <Button
               onClick={onLogoutClick}
               variant="outlined"
-              startIcon={<LogoutIcon />}
+              // startIcon={<LogoutIcon />}
               className={styles.gridItemButton}
             >
+              <img src={iconLogout} alt="Sviat" />
               Log out
             </Button>
           </Paper>

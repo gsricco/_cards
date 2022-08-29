@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
 
 import { LinearProgress } from '@mui/material';
 import AppBar from '@mui/material/AppBar';
@@ -6,6 +6,8 @@ import Button from '@mui/material/Button';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import { useNavigate } from 'react-router-dom';
+
+import { SelectProfileLogout } from '../SelectProfileLogout/SelectProfileLogout';
 
 import styles from './Header.module.scss';
 
@@ -20,11 +22,15 @@ export const Header: FC = () => {
   const status = useAppSelector(getStatus);
   const name = useAppSelector(getName);
   const isLoggedIn = useAppSelector(getIsLoggedIn);
-
+  const [menu, setMenu] = useState<boolean>(false);
   const navigate = useNavigate();
 
   const onSignInButtonClick = (): void => {
     navigate(Path.LOGIN);
+  };
+
+  const closeNav = (menu: boolean): void => {
+    setMenu(menu);
   };
 
   return (
@@ -34,7 +40,11 @@ export const Header: FC = () => {
           <img className={styles.headerIcon} src={logo} alt="logo" />
         </Typography>
         {isLoggedIn ? (
-          <Typography className={styles.headerUserInfo} component="div">
+          <Typography
+            className={styles.headerUserInfo}
+            component="div"
+            onClick={() => setMenu(!menu)}
+          >
             <span className={styles.headerUserName}>{name}</span>
             <img className={styles.headerUserAvatar} src={UserAvatar} alt="logo" />
           </Typography>
@@ -48,6 +58,7 @@ export const Header: FC = () => {
           </Button>
         )}
       </Toolbar>
+      {menu && <SelectProfileLogout closeNav={closeNav} />}
       <div className={styles.headerLoader}>
         {status === RequestStatus.LOADING && <LinearProgress />}
       </div>
