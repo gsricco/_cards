@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 
 import { TableCell, TableRow } from '@mui/material';
 
-import styles from '../../../../packs/Packs/Packs.module.scss';
+import styles from '../../Cards.module.scss';
 
 type Props = {
   question: string;

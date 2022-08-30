@@ -12,6 +12,7 @@ export {
   Search,
   TableHeader,
   Select,
+  TableButton,
 } from './components';
 
 export { Path, RequestStatus } from './enums';

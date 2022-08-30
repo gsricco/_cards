@@ -1,0 +1,23 @@
+@import "src/assets/styles/sass/mixins";
+
+.tableHead {
+  background: #EFEFEF !important;
+  font-family: $mainFont !important;
+  font-style: normal !important;
+  font-weight: 500 !important;
+  font-size: 14px !important;
+  line-height: 17px !important;
+
+  
+  .tableFirstCell {
+    width: 186px;
+  }
+
+  .tableSecondCell {
+    width: 222px;
+  }
+
+  .tableSortLabel {
+    width: 153px;
+  }
+}
