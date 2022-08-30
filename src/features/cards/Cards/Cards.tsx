@@ -54,6 +54,15 @@ export const Cards: FC = () => {
         <span className={styles.profileReturnBackText}> Back to Packs List</span>
       </div>
       {cards.length === 0 ? (
+        <div className={styles.pagePackEmpty}>
+          <p className={styles.pagePackEmptyDescription}>
+            This pack is empty. Click add new card to fill this pack
+          </p>
+          <Button className={styles.pagePackEmptyBtn} variant="contained">
+            Add new card
+          </Button>
+        </div>
+      ) : (
         <>
           <TableButton
             title="Friend’s Pack"
@@ -81,15 +90,6 @@ export const Cards: FC = () => {
             setPage={onPageChange}
           />
         </>
-      ) : (
-        <div className={styles.pagePackEmpty}>
-          <p className={styles.pagePackEmptyDescription}>
-            This pack is empty. Click add new card to fill this pack
-          </p>
-          <Button className={styles.pagePackEmptyBtn} variant="contained">
-            Add new card
-          </Button>
-        </div>
       )}
     </div>
   );
