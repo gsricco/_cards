@@ -1,6 +1,29 @@
 @import "src/assets/styles/sass/mixins";
 
+
 .container {
-  @include table-container(1048px, 466px);
+  height: 590px;
+  width: 1048px;
+  margin: 80px auto 0 auto;
+
+  .interaction {
+    height: 100px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin: 10px;
+
+    .filterRemoveBtn{
+      width: 18.88px;
+      height: 21.5px;
+    }
+  }
+
+  .tableContainer {
+    @include table-container(1048px, 466px);
+
+  }
 }
+
 

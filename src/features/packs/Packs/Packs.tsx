@@ -5,12 +5,21 @@ import { Navigate } from 'react-router-dom';
 
 import styles from './Packs.module.scss';
 
-import { Paginator, Path, TableHeader, TableButton } from 'common';
+import FilterRemoveBtn from 'assets/images/FilterRemoveBtn.svg';
+import {
+  DiscreteSlider,
+  FilteredButton,
+  Paginator,
+  Path,
+  Search,
+  TableButton,
+  TableHeader,
+} from 'common';
 import {
   addPacks,
-  getPacks,
   getCardPacksTotalCount,
   getIsLoggedIn,
+  getPacks,
   getPage,
   PacksTableBody,
   setPacksPage,
@@ -39,28 +48,36 @@ export const Packs: FC = () => {
   }
 
   return (
-    <>
+    <div className={styles.container}>
       <TableButton title="Packs list" nameButton="Add new pack" onAddClick={addPacks} />
-      <div className={styles.container}>
-        <TableContainer className={styles.tableContainer}>
-          <Table className={styles.table} aria-label="simple table">
-            <TableHeader
-              firstCell="Name"
-              secondCell="Cards"
-              thirdCell="Last Updated"
-              fourthCell="Created by"
-              fifthCell="Actions"
-            />
-            <PacksTableBody />
-          </Table>
-        </TableContainer>
-        <Paginator
-          pageCount={packsPerPage}
-          totalElements={cardPacksTotalCount}
-          page={page}
-          setPage={onPageChange}
+      <div className={styles.interaction}>
+        <Search />
+        <FilteredButton />
+        <DiscreteSlider />
+        <img
+          className={styles.FilterRemoveBtn}
+          src={FilterRemoveBtn}
+          alt="delete filter button "
         />
       </div>
-    </>
+      <TableContainer className={styles.tableContainer}>
+        <Table className={styles.table} aria-label="simple table">
+          <TableHeader
+            firstCell="Name"
+            secondCell="Cards"
+            thirdCell="Last Updated"
+            fourthCell="Created by"
+            fifthCell="Actions"
+          />
+          <PacksTableBody />
+        </Table>
+      </TableContainer>
+      <Paginator
+        pageCount={packsPerPage}
+        totalElements={cardPacksTotalCount}
+        page={page}
+        setPage={onPageChange}
+      />
+    </div>
   );
 };
