@@ -4,11 +4,8 @@ export {
   setPacks,
   packsReducer,
   deletePack,
-  removePack,
   setPacksPage,
-  postPacks,
   addPacks,
-  updatePack,
   changePacksName,
   getPacks,
 } from './packs-reducer';

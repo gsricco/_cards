@@ -1,9 +1,7 @@
+import { setAppError, setAppInfo, setAppInitialized, setAppStatus } from 'app';
 import {
-  postCard,
-  removeCard,
   setCard,
   setCardPage,
-  updateCard,
   setEmail,
   setIsLoggedIn,
   setIsRegistration,
@@ -13,13 +11,8 @@ import {
   setNewPassword,
   setPacks,
   setId,
-  removePack,
   setPacksPage,
-  postPacks,
-  updatePack,
-} from '../../features';
-
-import { setAppError, setAppInfo, setAppInitialized, setAppStatus } from 'app';
+} from 'features';
 
 export type ForgotActionsType =
   | ReturnType<typeof setNewName>
@@ -38,13 +31,7 @@ export type AppReducerActionType =
   | ReturnType<typeof setAppInfo>;
 export type PacksActionTypes =
   | ReturnType<typeof setPacks>
-  | ReturnType<typeof removePack>
-  | ReturnType<typeof setPacksPage>
-  | ReturnType<typeof postPacks>
-  | ReturnType<typeof updatePack>;
+  | ReturnType<typeof setPacksPage>;
 export type CardsActionTypes =
   | ReturnType<typeof setCard>
-  | ReturnType<typeof postCard>
-  | ReturnType<typeof setCardPage>
-  | ReturnType<typeof updateCard>
-  | ReturnType<typeof removeCard>;
+  | ReturnType<typeof setCardPage>;
