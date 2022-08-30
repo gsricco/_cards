@@ -13,7 +13,7 @@ import {
 } from 'common';
 
 const initialState: PacksResponseType = {
-  cardPacks: [] as CardsPacksType[],
+  cardPacks: [],
   page: 1,
   pageCount: 0,
   cardPacksTotalCount: 0,

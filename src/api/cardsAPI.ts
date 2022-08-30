@@ -14,11 +14,11 @@ export const cardsAPI = {
   getCards: (params: CardsParamsType) =>
     instance.get<CardsResponseType>('cards/card', { params }),
 
-  createCard: (data: CreateCardType) =>
-    instance.post<CreateCardResponseType>('cards/card', data),
+  createCard: (card: CreateCardType) =>
+    instance.post<CreateCardResponseType>('cards/card', { card }),
 
-  updateCard: (data: UpdateCardDataType) =>
-    instance.put<UpdateCardResponseType>('cards/card', data),
+  updateCard: (card: UpdateCardDataType) =>
+    instance.put<UpdateCardResponseType>('cards/card', { card }),
 
   removeCard: (id: string) =>
     instance.delete<RemoveCardResponseType>(`cards/card?id=${id}`),

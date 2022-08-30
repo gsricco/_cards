@@ -1,4 +1,4 @@
-import { FC, useEffect } from 'react';
+import { ChangeEvent, FC, useEffect } from 'react';
 
 import { Table, TableContainer } from '@mui/material';
 import { Navigate } from 'react-router-dom';
@@ -7,7 +7,13 @@ import styles from './Cards.module.scss';
 import { CardsTableBody } from './CardsTableBody';
 
 import { Paginator, Path, TableHeader } from 'common';
-import { getCards, getCardsPage, getCardsTotalCount, getIsLoggedIn } from 'features';
+import {
+  getCards,
+  getCardsPage,
+  getCardsTotalCount,
+  getIsLoggedIn,
+  setCardPage,
+} from 'features';
 import { useAppDispatch, useAppSelector } from 'hooks';
 
 export const Cards: FC = () => {
@@ -19,9 +25,19 @@ export const Cards: FC = () => {
 
   const cardsPerPage = 8;
 
+  const onPageChange = (_: ChangeEvent<unknown>, currentPage: number): void => {
+    dispatch(setCardPage(currentPage));
+  };
+
   useEffect(() => {
-    dispatch(getCards({ cardsPack_id: '630d34521e20dab66ce7203d' }));
-  }, [dispatch]);
+    dispatch(
+      getCards({
+        cardsPack_id: '630d34521e20dab66ce7203d',
+        page,
+        pageCount: cardsPerPage,
+      }),
+    );
+  }, [dispatch, page]);
 
   if (!isLoggedIn) {
     return <Navigate to={Path.LOGIN} />;
@@ -40,7 +56,12 @@ export const Cards: FC = () => {
           <CardsTableBody />
         </Table>
       </TableContainer>
-      <Paginator pageCount={cardsPerPage} totalElements={cardTotalCount} page={page} />
+      <Paginator
+        pageCount={cardsPerPage}
+        totalElements={cardTotalCount}
+        page={page}
+        setPage={onPageChange}
+      />
     </div>
   );
 };

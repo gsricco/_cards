@@ -76,6 +76,7 @@ export type CardsType = {
 };
 export type CardsResponseType = {
   cards: CardsType[];
+  cardsPack_id: string;
   packUserId?: string;
   packName?: string;
   packPrivate?: false;

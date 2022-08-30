@@ -57,4 +57,7 @@ export {
   updateCard,
   cardsReducer,
   getPackCards,
+  deleteCard,
+  addCard,
+  changeCard,
 } from './cards';

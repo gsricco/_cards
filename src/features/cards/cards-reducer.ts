@@ -14,7 +14,8 @@ import {
 
 const initialState: CardsResponseType = {
   cards: [],
-  page: 0,
+  cardsPack_id: '',
+  page: 1,
   pageCount: 0,
   cardsTotalCount: 0,
   minGrade: 0,
@@ -44,7 +45,7 @@ export const cardsReducer = (
 export const setCard = (data: CardsResponseType) =>
   ({ type: 'CARDS/SET-CARDS', payload: data } as const);
 export const postCard = (data: CardsType[]) =>
-  ({ type: 'CARDS/SET-CARDS-PAGE', payload: { cardPacks: data } } as const);
+  ({ type: 'CARDS/SET-CARDS-PAGE', payload: { cards: data } } as const);
 export const setCardPage = (page: number) =>
   ({ type: 'CARDS/POST-CARDS', payload: { page } } as const);
 export const updateCard = (id: string) =>
@@ -60,6 +61,56 @@ export const getCards =
       const res = await cardsAPI.getCards(params);
 
       dispatch(setCard(res.data));
+    } catch (error) {
+      handleServerNetworkError(error as AxiosError | Error, dispatch);
+    } finally {
+      dispatch(setAppStatus(RequestStatus.SUCCEEDED));
+    }
+  };
+export const addCard = (): AppThunk => async dispatch => {
+  dispatch(setAppStatus(RequestStatus.LOADING));
+
+  const newCard = {
+    cardsPack_id: '630d34521e20dab66ce7203d',
+    question: 'how are you?',
+    answer: 'good',
+  };
+
+  try {
+    await cardsAPI.createCard(newCard);
+
+    dispatch(getCards({ cardsPack_id: '630d34521e20dab66ce7203d', pageCount: 8 }));
+  } catch (error) {
+    handleServerNetworkError(error as AxiosError | Error, dispatch);
+  } finally {
+    dispatch(setAppStatus(RequestStatus.SUCCEEDED));
+  }
+};
+export const changeCard =
+  (id: string): AppThunk =>
+  async dispatch => {
+    dispatch(setAppStatus(RequestStatus.LOADING));
+
+    try {
+      await cardsAPI.updateCard({ _id: id, question: 'change?', answer: 'change' });
+
+      dispatch(getCards({ cardsPack_id: '630d34521e20dab66ce7203d', pageCount: 8 }));
+    } catch (error) {
+      handleServerNetworkError(error as AxiosError | Error, dispatch);
+    } finally {
+      dispatch(setAppStatus(RequestStatus.SUCCEEDED));
+    }
+  };
+
+export const deleteCard =
+  (id: string): AppThunk =>
+  async dispatch => {
+    dispatch(setAppStatus(RequestStatus.LOADING));
+
+    try {
+      await cardsAPI.removeCard(id);
+
+      dispatch(getCards({ cardsPack_id: '630d34521e20dab66ce7203d', pageCount: 8 }));
     } catch (error) {
       handleServerNetworkError(error as AxiosError | Error, dispatch);
     } finally {

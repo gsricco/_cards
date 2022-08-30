@@ -1,4 +1,4 @@
-import { FC, useEffect } from 'react';
+import { ChangeEvent, FC, useEffect } from 'react';
 
 import { Table, TableContainer } from '@mui/material';
 import { Navigate } from 'react-router-dom';
@@ -13,6 +13,7 @@ import {
   getIsLoggedIn,
   getPage,
   PacksTableBody,
+  setPacksPage,
 } from 'features';
 import { useAppDispatch, useAppSelector } from 'hooks';
 
@@ -25,8 +26,12 @@ export const Packs: FC = () => {
 
   const packsPerPage = 8;
 
+  const onPageChange = (_: ChangeEvent<unknown>, currentPage: number): void => {
+    dispatch(setPacksPage(currentPage));
+  };
+
   useEffect(() => {
-    dispatch(getPacks({ page, pageCount: 8 }));
+    dispatch(getPacks({ page, pageCount: packsPerPage }));
   }, [page, dispatch]);
 
   if (!isLoggedIn) {
@@ -53,6 +58,7 @@ export const Packs: FC = () => {
           pageCount={packsPerPage}
           totalElements={cardPacksTotalCount}
           page={page}
+          setPage={onPageChange}
         />
       </div>
     </>
