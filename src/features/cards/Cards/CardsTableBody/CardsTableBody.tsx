@@ -2,13 +2,14 @@ import React, { FC } from 'react';
 
 import { TableBody } from '@mui/material';
 
-import { useAppSelector } from '../../../../hooks';
-import { getCards } from '../../cards-selectors';
+import { getPackCards } from '../../cards-selectors';
 
-import { Card } from './Card/Card';
+import { Card } from './Card';
+
+import { useAppSelector } from 'hooks';
 
 export const CardsTableBody: FC = () => {
-  const cards = useAppSelector(getCards);
+  const cards = useAppSelector(getPackCards);
 
   return (
     <TableBody>
