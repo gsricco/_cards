@@ -14,14 +14,14 @@
     align-items: flex-end;
     margin: 10px;
 
-    .filterRemoveBtn{
+    .filterRemoveBtn {
       width: 18.88px;
       height: 21.5px;
     }
   }
 
   .tableContainer {
-    @include table-container(1048px, 466px);
+    @include table-container(1048px);
 
   }
 }

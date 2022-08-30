@@ -3,11 +3,10 @@ import { ChangeEvent, FC, useEffect } from 'react';
 import { Button, Table, TableContainer } from '@mui/material';
 import { Navigate } from 'react-router-dom';
 
-import arrowImage from '../../../assets/images/Arrow.png';
-
 import styles from './Cards.module.scss';
 import { CardsTableBody } from './CardsTableBody';
 
+import arrowImage from 'assets/images/Arrow.png';
 import { Paginator, Path, Search, TableButton, TableHeader } from 'common';
 import {
   addPacks,
@@ -16,6 +15,7 @@ import {
   getCardsTotalCount,
   getIsLoggedIn,
   getPackCards,
+  setCardPage,
 } from 'features';
 import { useAppDispatch, useAppSelector } from 'hooks';
 
