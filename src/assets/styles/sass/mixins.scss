@@ -85,12 +85,13 @@
   .table {
     min-width: 650px;
 
-    .tableHead {
-      background-color: #EFEFEF;
-    }
-
     .tableCellBody {
       padding: 5px 16px;
+      font-family: $mainFont !important;
+      font-style: normal !important;
+      font-weight: 400 !important;
+      font-size: 13px !important;
+      line-height: 16px !important;
     }
   }
 }

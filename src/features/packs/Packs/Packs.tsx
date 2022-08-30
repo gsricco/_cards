@@ -3,11 +3,11 @@ import { FC, useEffect } from 'react';
 import { Table, TableContainer } from '@mui/material';
 import { Navigate } from 'react-router-dom';
 
-import { getPacks } from '../packs-reducer';
+import { addPacks, getPacks } from '../packs-reducer';
 
 import styles from './Packs.module.scss';
 
-import { Paginator, Path, TableHeader } from 'common';
+import { Paginator, Path, TableHeader, TableButton } from 'common';
 import { getCardPacksTotalCount, getIsLoggedIn, getPage, PacksTableBody } from 'features';
 import { useAppDispatch, useAppSelector } from 'hooks';
 
@@ -29,24 +29,27 @@ export const Packs: FC = () => {
   }
 
   return (
-    <div className={styles.container}>
-      <TableContainer className={styles.tableContainer}>
-        <Table className={styles.table} aria-label="simple table">
-          <TableHeader
-            firstCell="Name"
-            secondCell="Cards"
-            thirdCell="Last Updated"
-            fourthCell="Created by"
-            fifthCell="Actions"
-          />
-          <PacksTableBody />
-        </Table>
-      </TableContainer>
-      <Paginator
-        pageCount={packsPerPage}
-        totalElements={cardPacksTotalCount}
-        page={page}
-      />
-    </div>
+    <>
+      <TableButton title="Packs list" nameButton="Add new pack" onAddClick={addPacks} />
+      <div className={styles.container}>
+        <TableContainer className={styles.tableContainer}>
+          <Table className={styles.table} aria-label="simple table">
+            <TableHeader
+              firstCell="Name"
+              secondCell="Cards"
+              thirdCell="Last Updated"
+              fourthCell="Created by"
+              fifthCell="Actions"
+            />
+            <PacksTableBody />
+          </Table>
+        </TableContainer>
+        <Paginator
+          pageCount={packsPerPage}
+          totalElements={cardPacksTotalCount}
+          page={page}
+        />
+      </div>
+    </>
   );
 };

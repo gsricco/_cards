@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 
 import { TableCell, TableHead, TableRow, TableSortLabel } from '@mui/material';
 
-import styles from 'features/packs/Packs/Packs.module.scss';
+import styles from './TableHeader.module.scss';
 
 type Props = {
   firstCell: string;
@@ -22,10 +22,10 @@ export const TableHeader: FC<Props> = ({
   return (
     <TableHead className={styles.tableHead}>
       <TableRow>
-        <TableCell sx={{ width: '186px' }}>{firstCell}</TableCell>
-        <TableCell sx={{ width: '222px' }}>{secondCell}</TableCell>
+        <TableCell className={styles.tableFirstCell}>{firstCell}</TableCell>
+        <TableCell className={styles.tableSecondCell}>{secondCell}</TableCell>
         <TableCell>
-          <TableSortLabel sx={{ width: '153px' }} active direction="desc">
+          <TableSortLabel className={styles.tableSortLabel} active direction="desc">
             {thirdCell}
           </TableSortLabel>
         </TableCell>
