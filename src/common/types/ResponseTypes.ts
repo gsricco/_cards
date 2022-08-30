@@ -26,6 +26,7 @@ export type InfoResponseType = {
   info: string;
   error: string;
 };
+
 export type PacksResponseType = {
   cardPacks: CardsPacksType[];
   page: number;
@@ -61,6 +62,7 @@ export type AddPackResponseType = {
 export type UpdatePackResponseType = {
   updatedCardsPack: CardsPacksType;
 } & TokenType;
+
 export type CardsType = {
   answer: string;
   question: string;
@@ -84,6 +86,35 @@ export type CardsResponseType = {
   cardsTotalCount: number;
   minGrade: number;
   maxGrade: number;
+} & TokenType;
+export type CardResponseType = {
+  _id: string;
+  cardsPack_id: string;
+  user_id: string;
+  answer: string;
+  question: string;
+  grade: number;
+  shots: number;
+  questionImg: string;
+  answerImg: string;
+  answerVideo: string;
+  questionVideo: string;
+  comments: string;
+  type: string;
+  rating: number;
+  more_id: string;
+  created: string;
+  updated: string;
+  __v: number;
+};
+export type CreateCardResponseType = {
+  newCard: CardResponseType;
+} & TokenType;
+export type RemoveCardResponseType = {
+  deletedCard: CardResponseType;
+} & TokenType;
+export type UpdateCardResponseType = {
+  updatedCard: CardResponseType;
 } & TokenType;
 type TokenType = {
   token?: string;

@@ -2,7 +2,7 @@ import { FC } from 'react';
 
 import { Navigate, Route, Routes } from 'react-router-dom';
 
-import { Cards } from '../../../features/cardsPack/Cards/Cards';
+import { Cards } from '../../../features/cards/Cards/Cards';
 
 import { Error404, Path } from 'common';
 import {

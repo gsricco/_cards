@@ -4,7 +4,7 @@ import {
   setCard,
   setCardPage,
   updateCard,
-} from '../../features/cardsPack/cards-reducer';
+} from '../../features/cards/cards-reducer';
 
 import { setAppError, setAppInfo, setAppInitialized, setAppStatus } from 'app';
 import {

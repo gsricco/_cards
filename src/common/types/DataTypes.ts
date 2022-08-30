@@ -58,3 +58,9 @@ export type CreateCardType = {
   questionVideo?: string;
   answerVideo?: string;
 };
+export type UpdateCardDataType = {
+  _id: string;
+  answer?: string;
+  question?: string;
+  comments?: string;
+};

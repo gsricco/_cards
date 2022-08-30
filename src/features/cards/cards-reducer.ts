@@ -1,12 +1,16 @@
 import { AxiosError } from 'axios';
 
-import { cardsAPI } from '../../api/cardsAPI';
-import { CardsActionTypes } from '../../common/types/ActionTypes';
-import { CardsParamsType } from '../../common/types/DataTypes';
-import { CardsResponseType, CardsType } from '../../common/types/ResponseTypes';
-
+import { cardsAPI } from 'api';
 import { setAppStatus } from 'app';
-import { AppThunk, handleServerNetworkError, RequestStatus } from 'common';
+import {
+  CardsResponseType,
+  CardsType,
+  CardsParamsType,
+  CardsActionTypes,
+  AppThunk,
+  RequestStatus,
+  handleServerNetworkError,
+} from 'common';
 
 const initialState: CardsResponseType = {
   cards: [],

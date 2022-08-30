@@ -5,7 +5,7 @@ import {
 } from 'redux';
 import thunk from 'redux-thunk';
 
-import { cardsReducer } from '../features/cardsPack/cards-reducer';
+import { cardsReducer } from '../features/cards/cards-reducer';
 
 import { appReducer } from './app-reducer';
 
