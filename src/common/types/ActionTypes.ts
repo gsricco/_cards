@@ -4,10 +4,6 @@ import {
   setCard,
   setCardPage,
   updateCard,
-} from '../../features/cards/cards-reducer';
-
-import { setAppError, setAppInfo, setAppInitialized, setAppStatus } from 'app';
-import {
   setEmail,
   setIsLoggedIn,
   setIsRegistration,
@@ -21,7 +17,9 @@ import {
   setPacksPage,
   postPacks,
   updatePack,
-} from 'features';
+} from '../../features';
+
+import { setAppError, setAppInfo, setAppInitialized, setAppStatus } from 'app';
 
 export type ForgotActionsType =
   | ReturnType<typeof setNewName>

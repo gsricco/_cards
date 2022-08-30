@@ -76,7 +76,7 @@
 }
 
 @mixin table-container( $width,$height) {
-  margin: 100px 149px 0 149px;
+  margin: 0 auto;
   width: $width !important;
   height: $height !important;
   border-radius: 2px;

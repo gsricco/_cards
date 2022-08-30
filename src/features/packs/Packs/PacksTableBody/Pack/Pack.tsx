@@ -1,15 +1,13 @@
 import { FC } from 'react';
 
-import {
-  BorderColorOutlined,
-  DeleteForeverOutlined,
-  SchoolOutlined,
-} from '@mui/icons-material';
 import { IconButton, TableCell, TableRow } from '@mui/material';
 
 import styles from '../../Packs.module.scss';
 
-import { deletePack, getId, addPacks, changePacksName } from 'features';
+import DeleteICon from 'assets/images/Delete.svg';
+import EditIcon from 'assets/images/Edit.svg';
+import TeacherIcon from 'assets/images/teacher.svg';
+import { changePacksName, deletePack, getId } from 'features';
 import { useAppDispatch, useAppSelector } from 'hooks';
 
 type Props = {
@@ -36,10 +34,6 @@ export const Pack: FC<Props> = ({
     dispatch(deletePack(packId));
   };
 
-  const onCreatePackClick = (): void => {
-    dispatch(addPacks());
-  };
-
   const onPackNameChange = (): void => {
     dispatch(changePacksName(packId));
   };
@@ -51,19 +45,19 @@ export const Pack: FC<Props> = ({
       <TableCell className={styles.tableCellBody}>{updated}</TableCell>
       <TableCell className={styles.tableCellBody}>{created}</TableCell>
       <TableCell sx={{ p: '5px 16px', width: '130px' }}>
-        <IconButton onClick={onCreatePackClick}>
-          <SchoolOutlined />
+        <IconButton>
+          <img alt="Teacher Button" src={TeacherIcon} />
         </IconButton>
 
         {packUserId === userId && (
           <IconButton onClick={onPackNameChange}>
-            <BorderColorOutlined />
+            <img alt="Teacher Button" src={EditIcon} />
           </IconButton>
         )}
 
         {packUserId === userId && (
           <IconButton onClick={onDeletePackClick}>
-            <DeleteForeverOutlined />
+            <img alt="Teacher Button" src={DeleteICon} />
           </IconButton>
         )}
       </TableCell>

@@ -6,7 +6,7 @@
   margin-top: 100px;
 
   .discreteItems {
-    width: 251px !important;
+    width: 210px !important;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -21,9 +21,6 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      border: 1px solid #D9D9D9;
-      border-radius: 2px;
-      box-shadow: 1px 1px 2px rgb(0 0 0 / 20%), -1px -1px 2px rgb(0 0 0 / 20%);
     }
 
     .slider {
