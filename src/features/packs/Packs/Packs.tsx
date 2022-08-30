@@ -3,12 +3,17 @@ import { FC, useEffect } from 'react';
 import { Table, TableContainer } from '@mui/material';
 import { Navigate } from 'react-router-dom';
 
-import { addPacks, getPacks } from '../packs-reducer';
-
 import styles from './Packs.module.scss';
 
 import { Paginator, Path, TableHeader, TableButton } from 'common';
-import { getCardPacksTotalCount, getIsLoggedIn, getPage, PacksTableBody } from 'features';
+import {
+  addPacks,
+  getPacks,
+  getCardPacksTotalCount,
+  getIsLoggedIn,
+  getPage,
+  PacksTableBody,
+} from 'features';
 import { useAppDispatch, useAppSelector } from 'hooks';
 
 export const Packs: FC = () => {

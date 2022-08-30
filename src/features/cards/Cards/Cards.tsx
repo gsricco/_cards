@@ -1,16 +1,13 @@
-import React, { FC, useEffect } from 'react';
+import { FC, useEffect } from 'react';
 
 import { Table, TableContainer } from '@mui/material';
 import { Navigate } from 'react-router-dom';
-
-import { getCards } from '../cards-reducer';
-import { getCardsPage, getCardsTotalCount } from '../cards-selectors';
 
 import styles from './Cards.module.scss';
 import { CardsTableBody } from './CardsTableBody';
 
 import { Paginator, Path, TableHeader } from 'common';
-import { getIsLoggedIn } from 'features';
+import { getCards, getCardsPage, getCardsTotalCount, getIsLoggedIn } from 'features';
 import { useAppDispatch, useAppSelector } from 'hooks';
 
 export const Cards: FC = () => {

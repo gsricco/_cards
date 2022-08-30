@@ -2,10 +2,9 @@ import React, { FC } from 'react';
 
 import { TableBody } from '@mui/material';
 
-import { getPackCards } from '../../cards-selectors';
-
 import { Card } from './Card';
 
+import { getPackCards } from 'features';
 import { useAppSelector } from 'hooks';
 
 export const CardsTableBody: FC = () => {

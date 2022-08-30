@@ -4,11 +4,11 @@ import { TableBody } from '@mui/material';
 
 import { Pack } from './Pack';
 
-import { getPacks } from 'features';
+import { getCardPacks } from 'features';
 import { useAppSelector } from 'hooks';
 
 export const PacksTableBody: FC = () => {
-  const packs = useAppSelector(getPacks);
+  const packs = useAppSelector(getCardPacks);
 
   return (
     <TableBody>

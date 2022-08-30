@@ -10,5 +10,6 @@ export {
   addPacks,
   updatePack,
   changePacksName,
+  getPacks,
 } from './packs-reducer';
-export { getPacks, getPage, getCardPacksTotalCount } from './packs-selectors';
+export { getCardPacks, getPage, getCardPacksTotalCount } from './packs-selectors';
