@@ -13,6 +13,7 @@ import {
 
 const initialState: CardsResponseType = {
   cards: [],
+  packUserId: '',
   cardsPack_id: '',
   page: 1,
   pageCount: 0,

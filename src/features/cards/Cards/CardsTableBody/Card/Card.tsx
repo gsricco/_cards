@@ -1,12 +1,13 @@
 import { FC } from 'react';
 
-import { BorderColorOutlined, DeleteForeverOutlined } from '@mui/icons-material';
 import { IconButton, TableCell, TableRow } from '@mui/material';
 
 import styles from '../../Cards.module.scss';
 
+import DeleteICon from 'assets/images/Delete.svg';
+import EditIcon from 'assets/images/Edit.svg';
 import { changeCard, deleteCard } from 'features';
-import { useAppDispatch } from 'hooks';
+import { useAppDispatch, useAppSelector } from 'hooks';
 
 type Props = {
   question: string;
@@ -18,6 +19,9 @@ type Props = {
 
 export const Card: FC<Props> = ({ id, question, answer, updated, grade }) => {
   const dispatch = useAppDispatch();
+
+  const packUserId = useAppSelector(state => state.cards.packUserId);
+  const userId = useAppSelector(state => state.auth._id);
 
   const onCardNameChange = (): void => {
     dispatch(changeCard(id));
@@ -34,12 +38,17 @@ export const Card: FC<Props> = ({ id, question, answer, updated, grade }) => {
       <TableCell className={styles.tableCellBody}>{updated}</TableCell>
       <TableCell className={styles.tableCellBody}>{grade}</TableCell>
       <TableCell>
-        <IconButton onClick={onCardNameChange}>
-          <BorderColorOutlined />
-        </IconButton>
-        <IconButton onClick={onDeleteCardClick}>
-          <DeleteForeverOutlined />
-        </IconButton>
+        {packUserId === userId && (
+          <IconButton onClick={onCardNameChange}>
+            <img alt="Edit Button" src={EditIcon} />
+          </IconButton>
+        )}
+
+        {packUserId === userId && (
+          <IconButton onClick={onDeleteCardClick}>
+            <img alt="Delete Button" src={DeleteICon} />
+          </IconButton>
+        )}
       </TableCell>
     </TableRow>
   );

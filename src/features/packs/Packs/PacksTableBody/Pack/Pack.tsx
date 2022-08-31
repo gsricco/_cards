@@ -1,14 +1,14 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
 
 import { IconButton, TableCell, TableRow } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 
-import { Path } from '../../../../../common';
 import styles from '../../Packs.module.scss';
 
 import DeleteICon from 'assets/images/Delete.svg';
 import EditIcon from 'assets/images/Edit.svg';
 import TeacherIcon from 'assets/images/teacher.svg';
+import { Path } from 'common';
 import { changePacksName, deletePack, getCards, getId } from 'features';
 import { useAppDispatch, useAppSelector } from 'hooks';
 
