@@ -1,7 +1,7 @@
 import { ChangeEvent, FC } from 'react';
 
 import { Button, Table, TableContainer } from '@mui/material';
-import { Navigate } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 
 import styles from './Cards.module.scss';
 import { CardsTableBody } from './CardsTableBody';
@@ -37,8 +37,10 @@ export const Cards: FC = () => {
   return (
     <div className={styles.container}>
       <div className={styles.profileReturnBack}>
-        <img alt="arrow" src={arrowImage} className={styles.profileReturnBackImg} />
-        <span className={styles.profileReturnBackText}> Back to Packs List</span>
+        <Link to={Path.PACKS} className={styles.profileLinkContainer}>
+          <img alt="arrow" src={arrowImage} className={styles.profileReturnBackImg} />
+          <span className={styles.profileReturnBackText}> Back to Packs List</span>
+        </Link>
       </div>
       {cardTotalCount === 0 ? (
         <div className={styles.pagePackEmpty}>

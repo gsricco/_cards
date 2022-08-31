@@ -5,3 +5,7 @@ export const getCardPacks = (state: AppRootState): CardsPacksType[] =>
 export const getPage = (state: AppRootState): number => state.packs.page;
 export const getCardPacksTotalCount = (state: AppRootState): number =>
   state.packs.cardPacksTotalCount;
+export const getMinPacksCount = (state: AppRootState): number =>
+  state.packs.minCardsCount;
+export const getMaxPacksCount = (state: AppRootState): number =>
+  state.packs.maxCardsCount;

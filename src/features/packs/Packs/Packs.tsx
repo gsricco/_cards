@@ -3,6 +3,8 @@ import { ChangeEvent, FC, useEffect } from 'react';
 import { Table, TableContainer } from '@mui/material';
 import { Navigate } from 'react-router-dom';
 
+import { getMaxPacksCount, getMinPacksCount } from '../packs-selectors';
+
 import styles from './Packs.module.scss';
 
 import FilterRemoveBtn from 'assets/images/FilterRemoveBtn.svg';
@@ -10,10 +12,10 @@ import {
   DiscreteSlider,
   FilteredButton,
   Paginator,
-  Path,
   Search,
   TableButton,
   TableHeader,
+  Path,
 } from 'common';
 import {
   addPacks,
@@ -32,6 +34,8 @@ export const Packs: FC = () => {
   const isLoggedIn = useAppSelector(getIsLoggedIn);
   const page = useAppSelector(getPage);
   const cardPacksTotalCount = useAppSelector(getCardPacksTotalCount);
+  const minCardsCount = useAppSelector(getMinPacksCount);
+  const maxCardsCount = useAppSelector(getMaxPacksCount);
 
   const packsPerPage = 8;
 
@@ -53,13 +57,14 @@ export const Packs: FC = () => {
       <div className={styles.interaction}>
         <Search />
         <FilteredButton />
-        <DiscreteSlider />
+        <DiscreteSlider minCardsCount={minCardsCount} maxCardsCount={maxCardsCount} />
         <img
           className={styles.FilterRemoveBtn}
           src={FilterRemoveBtn}
           alt="delete filter button "
         />
       </div>
+
       <TableContainer className={styles.tableContainer}>
         <Table className={styles.table} aria-label="simple table">
           <TableHeader
@@ -72,6 +77,7 @@ export const Packs: FC = () => {
           <PacksTableBody />
         </Table>
       </TableContainer>
+
       <Paginator
         pageCount={packsPerPage}
         totalElements={cardPacksTotalCount}

@@ -14,16 +14,20 @@
 
     width: 155px;
 
-    .profileReturnBackImg {
-      width: 16px;
-      height: 11px;
-    }
+    .profileLinkContainer {
+      text-decoration: none;
 
-    .profileReturnBackText {
+      .profileReturnBackImg {
+        width: 16px;
+        height: 11px;
+      }
 
-      @include header-container;
+      .profileReturnBackText {
 
-      font-size: 16px;
+        @include header-container;
+
+        font-size: 16px;
+      }
     }
   }
 
@@ -46,8 +50,8 @@
     @include description-container()
   }
 
-  .pagePackEmptyBtn{
-   @include button-container();
+  .pagePackEmptyBtn {
+    @include button-container();
     width: 171px;
   }
 }
