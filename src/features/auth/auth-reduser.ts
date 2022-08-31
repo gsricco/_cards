@@ -56,6 +56,7 @@ export const login =
 
       setNameEmail(res.data, dispatch);
       dispatch(setIsLoggedIn(true));
+      dispatch(setId(res.data._id));
     } catch (error) {
       handleServerNetworkError(error as AxiosError | Error, dispatch);
     } finally {

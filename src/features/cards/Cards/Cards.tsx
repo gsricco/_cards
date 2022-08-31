@@ -10,10 +10,13 @@ import arrowImage from 'assets/images/Arrow.png';
 import { Paginator, Path, Search, TableButton, TableHeader } from 'common';
 import {
   addPacks,
+  getCards,
   getCardsPage,
   getCardsTotalCount,
   getIsLoggedIn,
   setCardPage,
+  getCardsPageCount,
+  getCardsQueryParams,
 } from 'features';
 import { useAppDispatch, useAppSelector } from 'hooks';
 
@@ -23,8 +26,8 @@ export const Cards: FC = () => {
   const isLoggedIn = useAppSelector(getIsLoggedIn);
   const page = useAppSelector(getCardsPage);
   const cardTotalCount = useAppSelector(getCardsTotalCount);
-
-  const cardsPerPage = 8;
+  const queryParams = useAppSelector(getCardsQueryParams);
+  const pageCount = useAppSelector(getCardsPageCount);
 
   const onPageChange = (_: ChangeEvent<unknown>, currentPage: number): void => {
     dispatch(setCardPage(currentPage));
@@ -42,11 +45,13 @@ export const Cards: FC = () => {
           <span className={styles.profileReturnBackText}> Back to Packs List</span>
         </Link>
       </div>
+
       {cardTotalCount === 0 ? (
         <div className={styles.pagePackEmpty}>
           <p className={styles.pagePackEmptyDescription}>
             This pack is empty. Click add new card to fill this pack
           </p>
+
           <Button className={styles.pagePackEmptyBtn} variant="contained">
             Add new card
           </Button>
@@ -58,9 +63,16 @@ export const Cards: FC = () => {
             nameButton="Learn to pack"
             onAddClick={addPacks}
           />
+
           <div className={styles.interaction}>
-            <Search widthField="1007px" />
+            <Search
+              width="1007px"
+              getData={getCards}
+              queryParams={queryParams}
+              searchParam="cardQuestion"
+            />
           </div>
+
           <TableContainer className={styles.tableContainer}>
             <Table className={styles.table} aria-label="simple table">
               <TableHeader
@@ -72,8 +84,9 @@ export const Cards: FC = () => {
               <CardsTableBody />
             </Table>
           </TableContainer>
+
           <Paginator
-            pageCount={cardsPerPage}
+            pageCount={pageCount}
             totalElements={cardTotalCount}
             page={page}
             setPage={onPageChange}

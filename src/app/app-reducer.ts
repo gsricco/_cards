@@ -46,6 +46,7 @@ export const initialized = (): AppThunk => async dispatch => {
     setNameEmail(res.data, dispatch);
     dispatch(setId(res.data._id));
     dispatch(setIsLoggedIn(true));
+    dispatch(setAppInitialized(true));
   } finally {
     dispatch(setAppInitialized(true));
   }

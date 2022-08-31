@@ -6,7 +6,7 @@ import styles from '../../Cards.module.scss';
 
 import DeleteICon from 'assets/images/Delete.svg';
 import EditIcon from 'assets/images/Edit.svg';
-import { changeCard, deleteCard } from 'features';
+import { changeCard, deleteCard, getId, getCardUserId } from 'features';
 import { useAppDispatch, useAppSelector } from 'hooks';
 
 type Props = {
@@ -20,8 +20,8 @@ type Props = {
 export const Card: FC<Props> = ({ id, question, answer, updated, grade }) => {
   const dispatch = useAppDispatch();
 
-  const packUserId = useAppSelector(state => state.cards.packUserId);
-  const userId = useAppSelector(state => state.auth._id);
+  const packUserId = useAppSelector(getCardUserId);
+  const userId = useAppSelector(getId);
 
   const onCardNameChange = (): void => {
     dispatch(changeCard(id));

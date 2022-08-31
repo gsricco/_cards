@@ -5,7 +5,7 @@ export { EditableSpan } from './EditableSpan';
 export { PasswordForm, EmailForm } from './Forms';
 export { InfoSnackbar } from './InfoSnackbar';
 export { Paginator } from './Paginator';
-export { DiscreteSlider } from './DiscreteSlider';
+export { NumberOfCards } from './NumberOfCards';
 export { FilteredButton } from './FilteredButton';
 export { Search } from './Search';
 export { TableHeader } from './TableHeader';

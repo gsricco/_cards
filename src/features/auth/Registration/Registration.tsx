@@ -15,6 +15,7 @@ import { useAppDispatch, useAppSelector } from 'hooks';
 
 export const Registration: FC = () => {
   const dispatch = useAppDispatch();
+
   const isRegistration = useAppSelector(getIsRegistration);
 
   if (isRegistration) {

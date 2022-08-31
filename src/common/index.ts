@@ -7,16 +7,16 @@ export {
   EmailForm,
   InfoSnackbar,
   Paginator,
-  DiscreteSlider,
   FilteredButton,
   Search,
   TableHeader,
   Select,
   TableButton,
+  NumberOfCards,
 } from './components';
 
 export { Path, RequestStatus } from './enums';
-export { MIN_PASSWORD_LENGTH } from './constants';
+export { MIN_PASSWORD_LENGTH, DELAY_TIME } from './constants';
 export { handleServerNetworkError, setNameEmail } from './utils';
 
 export type {

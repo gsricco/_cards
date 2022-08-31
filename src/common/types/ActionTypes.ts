@@ -1,17 +1,19 @@
 import { setAppError, setAppInfo, setAppInitialized, setAppStatus } from 'app';
 import {
-  setCard,
+  recoverNewPassword,
   setCardPage,
+  setCards,
+  setCardsParams,
   setEmail,
+  setId,
   setIsLoggedIn,
   setIsRegistration,
   setName,
-  recoverNewPassword,
   setNewName,
   setNewPassword,
   setPacks,
-  setId,
   setPacksPage,
+  setPacksParams,
 } from 'features';
 
 export type ForgotActionsType =
@@ -31,7 +33,9 @@ export type AppReducerActionType =
   | ReturnType<typeof setAppInfo>;
 export type PacksActionTypes =
   | ReturnType<typeof setPacks>
-  | ReturnType<typeof setPacksPage>;
+  | ReturnType<typeof setPacksPage>
+  | ReturnType<typeof setPacksParams>;
 export type CardsActionTypes =
-  | ReturnType<typeof setCard>
-  | ReturnType<typeof setCardPage>;
+  | ReturnType<typeof setCards>
+  | ReturnType<typeof setCardPage>
+  | ReturnType<typeof setCardsParams>;

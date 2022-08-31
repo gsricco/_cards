@@ -3,11 +3,10 @@ import React, { FC } from 'react';
 import { Button, Container, Grid, Paper, Typography } from '@mui/material';
 import { Link, Navigate } from 'react-router-dom';
 
-import iconLogout from '../../../assets/images/logout.svg';
-
 import styles from './Profile.module.scss';
 
 import arrowImage from 'assets/images/Arrow.png';
+import iconLogout from 'assets/images/logout.svg';
 import photoIconImage from 'assets/images/PhotoIconPhotos.png';
 import profileUserImage from 'assets/images/UserAvatar.png';
 import { EditableSpan, Path } from 'common';
@@ -16,6 +15,7 @@ import { useAppDispatch, useAppSelector } from 'hooks';
 
 export const Profile: FC = () => {
   const dispatch = useAppDispatch();
+
   const isLoggedIn = useAppSelector(getIsLoggedIn);
   const email = useAppSelector(getEmail);
 
@@ -63,10 +63,9 @@ export const Profile: FC = () => {
             <Button
               onClick={onLogoutClick}
               variant="outlined"
-              // startIcon={<LogoutIcon />}
               className={styles.gridItemButton}
             >
-              <img src={iconLogout} alt="Sviat" />
+              <img src={iconLogout} alt="icon" />
               Log out
             </Button>
           </Paper>

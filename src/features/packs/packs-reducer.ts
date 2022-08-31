@@ -8,25 +8,28 @@ import {
   PacksParamsType,
   PacksActionTypes,
   PacksResponseType,
+  CardsPacksType,
   handleServerNetworkError,
 } from 'common';
 
-const initialState: PacksResponseType = {
-  cardPacks: [],
+const initialState = {
+  cardPacks: [] as CardsPacksType[],
   page: 1,
   pageCount: 0,
   cardPacksTotalCount: 0,
   minCardsCount: 0,
   maxCardsCount: 0,
+  queryParams: {} as PacksParamsType,
 };
 
 export const packsReducer = (
-  state: PacksResponseType = initialState,
+  state: InitialStateType = initialState,
   action: PacksActionTypes,
-): PacksResponseType => {
+): InitialStateType => {
   switch (action.type) {
     case 'PACKS/SET-PACKS':
     case 'PACKS/SET-PACKS-PAGE':
+    case 'PACKS/SET-PACKS-PARAMS':
       return { ...state, ...action.payload };
     default:
       return state;
@@ -37,27 +40,28 @@ export const setPacks = (data: PacksResponseType) =>
   ({ type: 'PACKS/SET-PACKS', payload: data } as const);
 export const setPacksPage = (page: number) =>
   ({ type: 'PACKS/SET-PACKS-PAGE', payload: { page } } as const);
+export const setPacksParams = (params: PacksParamsType) =>
+  ({ type: 'PACKS/SET-PACKS-PARAMS', payload: { queryParams: params } } as const);
 
-export const getPacks =
-  (params: PacksParamsType): AppThunk =>
-  async dispatch => {
-    dispatch(setAppStatus(RequestStatus.LOADING));
-    try {
-      const res = await packsAPI.getPacks(params);
+export const getPacks = (): AppThunk => async (dispatch, getState) => {
+  const params = getState().packs.queryParams;
 
-      dispatch(setPacks(res.data));
-    } catch (error) {
-      handleServerNetworkError(error as AxiosError | Error, dispatch);
-    } finally {
-      dispatch(setAppStatus(RequestStatus.SUCCEEDED));
-    }
-  };
+  try {
+    const res = await packsAPI.getPacks(params);
+
+    dispatch(setPacks(res.data));
+  } catch (error) {
+    handleServerNetworkError(error as AxiosError | Error, dispatch);
+  } finally {
+    dispatch(setAppStatus(RequestStatus.SUCCEEDED));
+  }
+};
 export const addPacks = (): AppThunk => async dispatch => {
   dispatch(setAppStatus(RequestStatus.LOADING));
   try {
     await packsAPI.addPack();
 
-    dispatch(getPacks({ pageCount: 8 }));
+    dispatch(getPacks());
   } catch (error) {
     handleServerNetworkError(error as AxiosError | Error, dispatch);
   } finally {
@@ -72,7 +76,7 @@ export const deletePack =
     try {
       await packsAPI.deletePack(id);
 
-      dispatch(getPacks({ pageCount: 8 }));
+      dispatch(getPacks());
     } catch (error) {
       handleServerNetworkError(error as AxiosError | Error, dispatch);
     } finally {
@@ -87,10 +91,12 @@ export const changePacksName =
     try {
       await packsAPI.updatePackName(id);
 
-      dispatch(getPacks({ pageCount: 8 }));
+      dispatch(getPacks());
     } catch (error) {
       handleServerNetworkError(error as AxiosError | Error, dispatch);
     } finally {
       dispatch(setAppStatus(RequestStatus.SUCCEEDED));
     }
   };
+
+type InitialStateType = typeof initialState;

@@ -1,1 +1,1 @@
-export { MIN_PASSWORD_LENGTH } from './constants';
+export { MIN_PASSWORD_LENGTH, DELAY_TIME } from './constants';

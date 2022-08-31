@@ -4,9 +4,9 @@ import Box from '@mui/material/Box';
 import Slider from '@mui/material/Slider';
 import { useSearchParams } from 'react-router-dom';
 
-import styles from './DiscreteSlider.module.scss';
+import styles from './NumberOfCards.module.scss';
 
-import { getPacks } from 'features';
+import { getPacks, setPacksParams } from 'features/packs/packs-reducer';
 import { useAppDispatch } from 'hooks';
 
 type Props = {
@@ -14,7 +14,7 @@ type Props = {
   maxCardsCount: number;
 };
 
-export const DiscreteSlider: FC<Props> = ({ maxCardsCount, minCardsCount }) => {
+export const NumberOfCards: FC<Props> = ({ maxCardsCount, minCardsCount }) => {
   const dispatch = useAppDispatch();
 
   const [searchParams, setSearchParams] = useSearchParams();
@@ -27,36 +27,31 @@ export const DiscreteSlider: FC<Props> = ({ maxCardsCount, minCardsCount }) => {
     setValue(newValue as number[]);
   };
 
-  const onChangeCommittedHandle = (): void => {
-    const queryParams: { min?: string; max?: string } = {};
+  const onCommittedChange = (): void => {
+    const params: { min?: string; max?: string } = {};
 
     if (value[0] !== minCardsCount) {
-      queryParams.min = String(value[0]);
+      params.min = String(value[0]);
     } else {
       searchParams.delete('min');
     }
 
     if (value[1] !== maxCardsCount) {
-      queryParams.max = String(value[1]);
+      params.max = String(value[1]);
     } else {
       searchParams.delete('max');
     }
 
     setSearchParams({
       ...Object.fromEntries(searchParams),
-      ...queryParams,
+      ...params,
     });
   };
 
   useEffect(() => {
-    dispatch(
-      getPacks({
-        min: value[0],
-        max: value[1],
-        pageCount: 8,
-      }),
-    );
-  }, [minCardsCount, maxCardsCount, searchParams]);
+    dispatch(setPacksParams({ min: value[0], max: value[1] }));
+    dispatch(getPacks());
+  }, [searchParams]);
 
   return (
     <div className={styles.discreteContainer}>
@@ -69,7 +64,7 @@ export const DiscreteSlider: FC<Props> = ({ maxCardsCount, minCardsCount }) => {
           className={styles.slider}
           value={value}
           onChange={handleChange}
-          onChangeCommitted={onChangeCommittedHandle}
+          onChangeCommitted={onCommittedChange}
         />
         <div className={styles.discreteField}>{value[1] || maxCardsCount}</div>
       </Box>

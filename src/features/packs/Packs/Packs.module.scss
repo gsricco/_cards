@@ -23,6 +23,11 @@
   .tableContainer {
     @include table-container(1048px);
 
+    .teachIcon {
+      &:disabled {
+        opacity: 0.2;
+      }
+    }
   }
 }
 

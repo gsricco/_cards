@@ -4,11 +4,12 @@ import { TableBody } from '@mui/material';
 
 import { Pack } from './Pack';
 
-import { getCardPacks } from 'features';
+import { getCardPacks, getId } from 'features';
 import { useAppSelector } from 'hooks';
 
 export const PacksTableBody: FC = () => {
   const packs = useAppSelector(getCardPacks);
+  const userId = useAppSelector(getId);
 
   return (
     <TableBody>
@@ -16,7 +17,7 @@ export const PacksTableBody: FC = () => {
         <Pack
           key={`${_id}-${user_id}`}
           packId={_id}
-          packUserId={user_id}
+          isMyCard={userId === user_id}
           name={name}
           cards={cardsCount}
           updated={updated.slice(0, 10)}
