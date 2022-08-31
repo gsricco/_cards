@@ -1,4 +1,4 @@
-import { ChangeEvent, FC, useEffect } from 'react';
+import { ChangeEvent, FC } from 'react';
 
 import { Button, Table, TableContainer } from '@mui/material';
 import { Navigate } from 'react-router-dom';
@@ -10,11 +10,9 @@ import arrowImage from 'assets/images/Arrow.png';
 import { Paginator, Path, Search, TableButton, TableHeader } from 'common';
 import {
   addPacks,
-  getCards,
   getCardsPage,
   getCardsTotalCount,
   getIsLoggedIn,
-  getPackCards,
   setCardPage,
 } from 'features';
 import { useAppDispatch, useAppSelector } from 'hooks';
@@ -23,7 +21,6 @@ export const Cards: FC = () => {
   const dispatch = useAppDispatch();
 
   const isLoggedIn = useAppSelector(getIsLoggedIn);
-  const cards = useAppSelector(getPackCards);
   const page = useAppSelector(getCardsPage);
   const cardTotalCount = useAppSelector(getCardsTotalCount);
 
@@ -32,16 +29,6 @@ export const Cards: FC = () => {
   const onPageChange = (_: ChangeEvent<unknown>, currentPage: number): void => {
     dispatch(setCardPage(currentPage));
   };
-
-  useEffect(() => {
-    dispatch(
-      getCards({
-        cardsPack_id: '630d34521e20dab66ce7203d',
-        page,
-        pageCount: cardsPerPage,
-      }),
-    );
-  }, [dispatch, page]);
 
   if (!isLoggedIn) {
     return <Navigate to={Path.LOGIN} />;
@@ -53,7 +40,7 @@ export const Cards: FC = () => {
         <img alt="arrow" src={arrowImage} className={styles.profileReturnBackImg} />
         <span className={styles.profileReturnBackText}> Back to Packs List</span>
       </div>
-      {cards.length === 0 ? (
+      {cardTotalCount === 0 ? (
         <div className={styles.pagePackEmpty}>
           <p className={styles.pagePackEmptyDescription}>
             This pack is empty. Click add new card to fill this pack

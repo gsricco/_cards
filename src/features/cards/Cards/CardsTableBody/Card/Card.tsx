@@ -33,12 +33,14 @@ export const Card: FC<Props> = ({ id, question, answer, updated, grade }) => {
       <TableCell className={styles.tableCellBody}>{answer}</TableCell>
       <TableCell className={styles.tableCellBody}>{updated}</TableCell>
       <TableCell className={styles.tableCellBody}>{grade}</TableCell>
-      <IconButton onClick={onCardNameChange}>
-        <BorderColorOutlined />
-      </IconButton>
-      <IconButton onClick={onDeleteCardClick}>
-        <DeleteForeverOutlined />
-      </IconButton>
+      <TableCell>
+        <IconButton onClick={onCardNameChange}>
+          <BorderColorOutlined />
+        </IconButton>
+        <IconButton onClick={onDeleteCardClick}>
+          <DeleteForeverOutlined />
+        </IconButton>
+      </TableCell>
     </TableRow>
   );
 };

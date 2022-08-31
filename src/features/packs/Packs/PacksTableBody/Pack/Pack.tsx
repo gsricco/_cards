@@ -1,13 +1,15 @@
-import { FC } from 'react';
+import React, { FC } from 'react';
 
 import { IconButton, TableCell, TableRow } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 
+import { Path } from '../../../../../common';
 import styles from '../../Packs.module.scss';
 
 import DeleteICon from 'assets/images/Delete.svg';
 import EditIcon from 'assets/images/Edit.svg';
 import TeacherIcon from 'assets/images/teacher.svg';
-import { changePacksName, deletePack, getId } from 'features';
+import { changePacksName, deletePack, getCards, getId } from 'features';
 import { useAppDispatch, useAppSelector } from 'hooks';
 
 type Props = {
@@ -28,7 +30,14 @@ export const Pack: FC<Props> = ({
   packUserId,
 }) => {
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
   const userId = useAppSelector(getId);
+
+  const onGetCards = (): void => {
+    dispatch(getCards({ cardsPack_id: packId, page: 1, pageCount: 8 }));
+
+    return navigate(Path.CARDS);
+  };
 
   const onDeletePackClick = (): void => {
     dispatch(deletePack(packId));
@@ -45,19 +54,19 @@ export const Pack: FC<Props> = ({
       <TableCell className={styles.tableCellBody}>{updated}</TableCell>
       <TableCell className={styles.tableCellBody}>{created}</TableCell>
       <TableCell sx={{ p: '5px 16px', width: '130px' }}>
-        <IconButton>
+        <IconButton onClick={onGetCards}>
           <img alt="Teacher Button" src={TeacherIcon} />
         </IconButton>
 
         {packUserId === userId && (
           <IconButton onClick={onPackNameChange}>
-            <img alt="Teacher Button" src={EditIcon} />
+            <img alt="Edit Button" src={EditIcon} />
           </IconButton>
         )}
 
         {packUserId === userId && (
           <IconButton onClick={onDeletePackClick}>
-            <img alt="Teacher Button" src={DeleteICon} />
+            <img alt="Delete Button" src={DeleteICon} />
           </IconButton>
         )}
       </TableCell>
