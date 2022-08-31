@@ -59,7 +59,7 @@ export const Cards: FC = () => {
             onAddClick={addPacks}
           />
           <div className={styles.interaction}>
-            <Search />
+            <Search widthField="1007px" />
           </div>
           <TableContainer className={styles.tableContainer}>
             <Table className={styles.table} aria-label="simple table">
