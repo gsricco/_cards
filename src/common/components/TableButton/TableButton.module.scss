@@ -2,8 +2,10 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-height: 40px;
+  height: 40px;
+
   .titleButton {
+    display: flex;
     font-family: Montserrat, sans-serif !important;
     font-style: normal !important;
     font-weight: 600;
@@ -13,9 +15,8 @@ height: 40px;
   }
 
   .tableButton {
-    width: 175px;
+    width: 184px;
     height: 36px;
-    padding: 8px 28px !important;
 
     font-family: Montserrat, sans-serif !important;
     font-weight: 500;
@@ -24,9 +25,10 @@ height: 40px;
     text-align: center !important;
     letter-spacing: 0.01em !important;
     text-transform: none !important;
-
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
     border-radius: 30px !important;
   }
 }
+
 
 

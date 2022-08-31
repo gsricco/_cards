@@ -4,7 +4,6 @@
   @include attributes-container(413px);
 
   .searchField {
-    padding: 2px 4px;
     display: flex;
     align-items: center;
     width: 413px;
@@ -24,6 +23,7 @@
     }
 
     .searchInput {
+      width:413px;
     }
   }
 }

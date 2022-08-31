@@ -2,21 +2,13 @@ import React, { FC } from 'react';
 
 import { TableBody } from '@mui/material';
 
-import { addCard } from '../../cards-reducer';
-
 import { Card } from './Card';
 
 import { getPackCards } from 'features';
-import { useAppDispatch, useAppSelector } from 'hooks';
+import { useAppSelector } from 'hooks';
 
 export const CardsTableBody: FC = () => {
-  const dispatch = useAppDispatch();
-
   const cards = useAppSelector(getPackCards);
-
-  const onCreateCardClick = (): void => {
-    dispatch(addCard());
-  };
 
   return (
     <TableBody>
@@ -30,9 +22,6 @@ export const CardsTableBody: FC = () => {
           grade={grade}
         />
       ))}
-      <button type="submit" onClick={onCreateCardClick}>
-        add card
-      </button>
     </TableBody>
   );
 };

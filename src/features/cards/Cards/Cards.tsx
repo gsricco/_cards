@@ -1,7 +1,7 @@
 import { ChangeEvent, FC, useEffect } from 'react';
 
 import { Button, Table, TableContainer } from '@mui/material';
-import { Navigate } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 
 import styles from './Cards.module.scss';
 import { CardsTableBody } from './CardsTableBody';
@@ -36,7 +36,7 @@ export const Cards: FC = () => {
   useEffect(() => {
     dispatch(
       getCards({
-        cardsPack_id: '630d34521e20dab66ce7203d',
+        cardsPack_id: '630e7878c6ac49ed2c7681d6',
         page,
         pageCount: cardsPerPage,
       }),
@@ -51,7 +51,9 @@ export const Cards: FC = () => {
     <div className={styles.container}>
       <div className={styles.profileReturnBack}>
         <img alt="arrow" src={arrowImage} className={styles.profileReturnBackImg} />
-        <span className={styles.profileReturnBackText}> Back to Packs List</span>
+        <Link to={Path.PACKS} className={styles.loginForgotPassword}>
+          <span className={styles.profileReturnBackText}> Back to Packs List</span>
+        </Link>
       </div>
       {cards.length === 0 ? (
         <div className={styles.pagePackEmpty}>
@@ -70,7 +72,7 @@ export const Cards: FC = () => {
             onAddClick={addPacks}
           />
           <div className={styles.interaction}>
-            <Search />
+            <Search widthField="1007px" />
           </div>
           <TableContainer className={styles.tableContainer}>
             <Table className={styles.table} aria-label="simple table">

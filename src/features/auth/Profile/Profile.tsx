@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 
 import { Button, Container, Grid, Paper, Typography } from '@mui/material';
-import { Navigate } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 
 import iconLogout from '../../../assets/images/logout.svg';
 
@@ -31,7 +31,9 @@ export const Profile: FC = () => {
     <>
       <div className={styles.profileReturnBack}>
         <img alt="arrow" src={arrowImage} className={styles.profileReturnBackImg} />
-        <span className={styles.profileReturnBackText}> Back to Packs List</span>
+        <Link to={Path.PACKS} className={styles.loginForgotPassword}>
+          <span className={styles.profileReturnBackText}> Back to Packs List</span>
+        </Link>
       </div>
       <Container maxWidth="md" className={styles.container}>
         <Grid item className={styles.gridItem}>

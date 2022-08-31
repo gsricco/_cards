@@ -19,11 +19,12 @@ export const Paginator: FC<PaginatorProps> = ({
 
   return (
     <Pagination
-      sx={{ ml: '133px' }}
+      sx={{ mt: '40px' }}
+      color="primary"
       count={pageNumbers}
       page={page}
       shape="rounded"
-      size="large"
+      size="medium"
       onChange={setPage}
       showFirstButton
       showLastButton
