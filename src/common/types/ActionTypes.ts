@@ -1,3 +1,5 @@
+import { setPacksPageCount } from '../../features/packs/packs-reducer';
+
 import { setAppError, setAppInfo, setAppInitialized, setAppStatus } from 'app';
 import {
   recoverNewPassword,
@@ -34,6 +36,7 @@ export type AppReducerActionType =
 export type PacksActionTypes =
   | ReturnType<typeof setPacks>
   | ReturnType<typeof setPacksPage>
+  | ReturnType<typeof setPacksPageCount>
   | ReturnType<typeof setPacksParams>;
 export type CardsActionTypes =
   | ReturnType<typeof setCards>
