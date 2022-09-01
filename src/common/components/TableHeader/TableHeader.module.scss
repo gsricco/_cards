@@ -10,14 +10,14 @@
 
   
   .tableFirstCell {
-    width: 186px;
+    width: 200px;
   }
 
   .tableSecondCell {
-    width: 222px;
+    max-width: 222px;
   }
 
   .tableSortLabel {
-    width: 153px;
+    max-width: 153px;
   }
 }
