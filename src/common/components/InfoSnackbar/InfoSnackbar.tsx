@@ -29,7 +29,7 @@ export const InfoSnackbar: FC = () => {
     <Snackbar open={isOpen} autoHideDuration={2000} onClose={handleClose}>
       <Alert
         onClose={handleClose}
-        severity={error ? 'error' : 'info'}
+        severity={error ? 'error' : 'success'}
         sx={{ width: '100%' }}
       >
         {error || info}

@@ -10,12 +10,12 @@ import {
   FilteredButton,
   NumberOfCards,
   Paginator,
+  Path,
   Search,
+  sortPacks,
+  SortPacks,
   TableButton,
   TableHeader,
-  sortPacks,
-  Path,
-  SortPacks,
 } from 'common';
 import {
   addPacks,
