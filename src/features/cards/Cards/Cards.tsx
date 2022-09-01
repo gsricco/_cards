@@ -45,6 +45,7 @@ export const Cards: FC = () => {
       title="My Pack"
       nameButton="Add new card"
       onAddClick={onAddNewCardHandle}
+      menuMyPack
     />
   ) : (
     <TableButton
@@ -71,7 +72,7 @@ export const Cards: FC = () => {
 
       <div className={styles.interaction}>
         <Search
-          width="1007px"
+          width="100%"
           getData={getCards}
           queryParams={queryParams}
           searchParam="cardQuestion"

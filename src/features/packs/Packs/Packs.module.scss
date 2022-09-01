@@ -14,10 +14,17 @@
     align-items: flex-end;
     margin: 10px 0;
 
-    .filterRemoveBtn {
-      width: 18.88px;
-      height: 21.5px;
+    .buttonRemoveBtn {
+      background: #FFFFFF;
+      border: none;
+      cursor: pointer;
+
+      .filterRemoveBtn {
+        width: 40px;
+        height: 36px;
+      }
     }
+
   }
 
   .tableContainer {

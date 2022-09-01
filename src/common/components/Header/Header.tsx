@@ -12,7 +12,7 @@ import styles from './Header.module.scss';
 import { getStatus } from 'app';
 import logo from 'assets/images/cardLogo.png';
 import UserAvatar from 'assets/images/UserAvatar.png';
-import { Select, Path, RequestStatus } from 'common';
+import { SelectHeader, Path, RequestStatus } from 'common';
 import { getIsLoggedIn, getName } from 'features';
 import { useAppSelector, useShow } from 'hooks';
 
@@ -43,7 +43,10 @@ export const Header: FC = () => {
             onClick={onButtonIconClick}
           >
             <span className={styles.headerUserName}>{name}</span>
-            <img className={styles.headerUserAvatar} src={UserAvatar} alt="logo" />
+            <div className={styles.wrap}>
+              <img className={styles.headerUserAvatar} src={UserAvatar} alt="logo" />
+              {show && <SelectHeader stylesRules={styles.customSelect} />}
+            </div>
           </Typography>
         ) : (
           <Button
@@ -55,8 +58,6 @@ export const Header: FC = () => {
           </Button>
         )}
       </Toolbar>
-
-      {show && <Select />}
 
       <div className={styles.headerLoader}>
         {status === RequestStatus.LOADING && <LinearProgress />}

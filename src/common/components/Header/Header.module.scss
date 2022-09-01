@@ -22,6 +22,7 @@
       display: flex;
       align-items: center;
       justify-content: flex-end;
+      cursor: pointer;
 
       width: 600px;
 
@@ -36,6 +37,15 @@
         height: 36px;
         margin-left: 15px;
       }
+    }
+
+    .wrap {
+      position: relative;
+    }
+
+    .customSelect {
+      left:-80px;
+      height: 104px;
     }
 
     .headerButton {

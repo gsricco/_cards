@@ -41,7 +41,7 @@ export const Search: FC<Props> = ({ getData, searchParam, queryParams, width }) 
   }, [queryParams]);
 
   return (
-    <div className={styles.searchContainer}>
+    <div className={styles.searchContainer} style={{ width }}>
       <span>Search</span>
       <Paper className={styles.searchField} component="form">
         <IconButton className={styles.searchIcon} type="button" aria-label="search">
