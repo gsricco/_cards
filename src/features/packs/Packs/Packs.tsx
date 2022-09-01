@@ -73,7 +73,16 @@ export const Packs: FC = () => {
     );
   };
   const resetFilter = (): void => {
-    sortPacks(dispatch, changeSortPack, setChangeSortPack, SortPacks.RESET);
+    dispatch(
+      setPacksParams({
+        sortPacks: undefined,
+        min: 0,
+        max: 110,
+        page: undefined,
+        packName: undefined,
+        pageCount: undefined,
+      }),
+    );
   };
 
   const onPageChange = (_: ChangeEvent<unknown>, currentPage: number): void => {
