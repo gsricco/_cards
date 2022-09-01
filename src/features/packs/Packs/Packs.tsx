@@ -8,26 +8,24 @@ import styles from './Packs.module.scss';
 import FilterRemoveBtn from 'assets/images/FilterRemoveBtn.svg';
 import {
   FilteredButton,
+  NumberOfCards,
   Paginator,
+  Search,
   TableButton,
   TableHeader,
-  Search,
-  NumberOfCards,
   Path,
 } from 'common';
 import {
   addPacks,
   getCardPacksTotalCount,
   getIsLoggedIn,
-  getMaxPacksCount,
-  getMinPacksCount,
+  getPackQueryParams,
   getPacks,
+  getPacksPageCount,
   getPage,
   PacksTableBody,
   setPacksPage,
   setPacksParams,
-  getPackQueryParams,
-  getPacksPageCount,
 } from 'features';
 import { useAppDispatch, useAppSelector } from 'hooks';
 
@@ -37,8 +35,6 @@ export const Packs: FC = () => {
   const isLoggedIn = useAppSelector(getIsLoggedIn);
   const page = useAppSelector(getPage);
   const cardPacksTotalCount = useAppSelector(getCardPacksTotalCount);
-  const minCardsCount = useAppSelector(getMinPacksCount);
-  const maxCardsCount = useAppSelector(getMaxPacksCount);
   const queryParams = useAppSelector(getPackQueryParams);
   const pageCount = useAppSelector(getPacksPageCount);
 
@@ -60,7 +56,7 @@ export const Packs: FC = () => {
       <div className={styles.interaction}>
         <Search getData={getPacks} searchParam="packName" queryParams={queryParams} />
         <FilteredButton />
-        <NumberOfCards minCardsCount={minCardsCount} maxCardsCount={maxCardsCount} />
+        <NumberOfCards />
         <img
           className={styles.FilterRemoveBtn}
           src={FilterRemoveBtn}
