@@ -5,11 +5,10 @@ import IconButton from '@mui/material/IconButton';
 import InputBase from '@mui/material/InputBase';
 import Paper from '@mui/material/Paper';
 
-import { DELAY_TIME } from '../../constants';
-
 import styles from './Search.module.scss';
 
 import { AppThunk, CardsParamsType, PacksParamsType } from 'common';
+import { DELAY_TIME } from 'common/constants/constants';
 import { setCardsParams, setPacksParams, getCardsPackId } from 'features';
 import { useAppDispatch, useAppSelector } from 'hooks';
 
@@ -20,7 +19,7 @@ type Props = {
   queryParams: PacksParamsType | CardsParamsType;
 };
 
-export const Search: FC<Props> = ({ width, getData, searchParam, queryParams }) => {
+export const Search: FC<Props> = ({ getData, searchParam, queryParams, width }) => {
   const dispatch = useAppDispatch();
 
   const cardsPack_id = useAppSelector(getCardsPackId);
