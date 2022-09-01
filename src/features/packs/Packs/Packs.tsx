@@ -43,29 +43,47 @@ export const Packs: FC = () => {
   const [changeSortPack, setChangeSortPack] = useState(true);
 
   const getSortDatePack = (): void => {
-    sortPacks(dispatch, changeSortPack, setChangeSortPack, SortPacks.UPDATED);
+    sortPacks(
+      dispatch,
+      changeSortPack,
+      setChangeSortPack,
+      SortPacks.UPDATED,
+      queryParams,
+    );
   };
   const getSortCardPack = (): void => {
-    sortPacks(dispatch, changeSortPack, setChangeSortPack, SortPacks.CARDS_COUNT);
+    sortPacks(
+      dispatch,
+      changeSortPack,
+      setChangeSortPack,
+      SortPacks.CARDS_COUNT,
+      queryParams,
+    );
   };
   const getSortNamePack = (): void => {
-    sortPacks(dispatch, changeSortPack, setChangeSortPack, SortPacks.NAME);
+    sortPacks(dispatch, changeSortPack, setChangeSortPack, SortPacks.NAME, queryParams);
   };
   const getSortUserNamePack = (): void => {
-    sortPacks(dispatch, changeSortPack, setChangeSortPack, SortPacks.USER_NAME);
+    sortPacks(
+      dispatch,
+      changeSortPack,
+      setChangeSortPack,
+      SortPacks.USER_NAME,
+      queryParams,
+    );
   };
 
   const onPageChange = (_: ChangeEvent<unknown>, currentPage: number): void => {
     dispatch(setPacksPage(currentPage));
   };
 
-  useEffect(() => {
-    dispatch(setPacksParams({ page }));
-  }, [dispatch, page]);
-
   const onCreatePackHandle = (): void => {
     dispatch(addPacks());
   };
+
+  useEffect(() => {
+    dispatch(setPacksParams({ ...queryParams, page }));
+  }, [dispatch, page]);
 
   if (!isLoggedIn) {
     return <Navigate to={Path.LOGIN} />;

@@ -6,7 +6,12 @@ import Slider from '@mui/material/Slider';
 import styles from './NumberOfCards.module.scss';
 
 import { DELAY_TIME, MAX_NUMBER_OF_PACKS } from 'common/constants/constants';
-import { getMaxPacksCount, getMinPacksCount, setPacksParams } from 'features';
+import {
+  getMaxPacksCount,
+  getMinPacksCount,
+  getPackQueryParams,
+  setPacksParams,
+} from 'features';
 import { useAppDispatch, useAppSelector } from 'hooks';
 
 export const NumberOfCards: FC = () => {
@@ -14,6 +19,7 @@ export const NumberOfCards: FC = () => {
 
   const min = useAppSelector(getMinPacksCount);
   const max = useAppSelector(getMaxPacksCount);
+  const queryParams = useAppSelector(getPackQueryParams);
 
   const [value, setValue] = useState<number[]>([0, max || MAX_NUMBER_OF_PACKS]);
   const [timerId, setTimerId] = useState(0);
@@ -22,7 +28,7 @@ export const NumberOfCards: FC = () => {
     const value = newValue as number[];
 
     const id = +setTimeout(() => {
-      dispatch(setPacksParams({ min: value[0], max: value[1] }));
+      dispatch(setPacksParams({ ...queryParams, min: value[0], max: value[1] }));
     }, DELAY_TIME);
 
     setValue(value);

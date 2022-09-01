@@ -26,7 +26,7 @@ export const Search: FC<Props> = ({ getData, searchParam, queryParams, width }) 
 
   const handleChangeInput = (e: ChangeEvent<HTMLInputElement>): void => {
     if (searchParam === 'packName') {
-      dispatch(setPacksParams({ [searchParam]: e.currentTarget.value }));
+      dispatch(setPacksParams({ ...queryParams, [searchParam]: e.currentTarget.value }));
     } else {
       dispatch(setCardsParams({ [searchParam]: e.currentTarget.value, cardsPack_id }));
     }
