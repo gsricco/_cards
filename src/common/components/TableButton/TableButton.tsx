@@ -1,26 +1,24 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
 
 import { Icon } from '@mui/material';
 import Button from '@mui/material/Button';
 
-import iconMenuMyPack from '../../../assets/images/menuMyPack.svg';
-import { useAppDispatch, useShow } from '../../../hooks';
-import { AppThunk } from '../../types';
 import { Select } from '../Select';
 
 import styles from './TableButton.module.scss';
 
+import iconMenuMyPack from 'assets/images/menuMyPack.svg';
+import { useShow } from 'hooks';
+
 type Props = {
   title: string;
   nameButton: string;
-  onAddClick: () => AppThunk;
+  onAddClick: () => void;
   menuMyPack?: boolean;
 };
 export const TableButton: FC<Props> = ({ title, nameButton, onAddClick, menuMyPack }) => {
-  const dispatch = useAppDispatch();
-
   const onCreatePackClick = (): void => {
-    dispatch(onAddClick());
+    onAddClick();
   };
   const { show, onButtonIconClick } = useShow();
 
@@ -34,7 +32,9 @@ export const TableButton: FC<Props> = ({ title, nameButton, onAddClick, menuMyPa
           </Icon>
         )}
       </div>
+
       {show && <Select />}
+
       <Button
         className={styles.tableButton}
         variant="contained"

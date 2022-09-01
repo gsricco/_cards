@@ -60,7 +60,7 @@ export const getCards = (): AppThunk => async (dispatch, getState) => {
   }
 };
 export const addCard = (): AppThunk => async (dispatch, getState) => {
-  const { cardsPack_id } = getState().cards;
+  const { cardsPack_id } = getState().cards.queryParams;
 
   dispatch(setAppStatus(RequestStatus.LOADING));
 

@@ -9,7 +9,6 @@ import { CardsTableBody } from './CardsTableBody';
 import arrowImage from 'assets/images/Arrow.png';
 import { Paginator, Path, Search, TableButton, TableHeader } from 'common';
 import {
-  addPacks,
   getCards,
   getCardsPage,
   getCardsTotalCount,
@@ -18,6 +17,7 @@ import {
   getCardsPageCount,
   getCardsQueryParams,
   getId,
+  addCard,
 } from 'features';
 import { useAppDispatch, useAppSelector } from 'hooks';
 
@@ -34,6 +34,24 @@ export const Cards: FC = () => {
   const onPageChange = (_: ChangeEvent<unknown>, currentPage: number): void => {
     dispatch(setCardPage(currentPage));
   };
+
+  const onAddNewCardHandle = (): void => {
+    dispatch(addCard());
+  };
+
+  const packTitle = userId ? (
+    <TableButton
+      title="My Pack"
+      nameButton="Add new card"
+      onAddClick={onAddNewCardHandle}
+    />
+  ) : (
+    <TableButton
+      title="Friend’s Pack"
+      nameButton="Learn to pack"
+      onAddClick={onAddNewCardHandle}
+    />
+  );
 
   if (!isLoggedIn) {
     return <Navigate to={Path.LOGIN} />;
@@ -54,25 +72,18 @@ export const Cards: FC = () => {
             This pack is empty. Click add new card to fill this pack
           </p>
 
-          <Button className={styles.pagePackEmptyBtn} variant="contained">
+          <Button
+            onClick={onAddNewCardHandle}
+            className={styles.pagePackEmptyBtn}
+            variant="contained"
+          >
             Add new card
           </Button>
         </div>
       ) : (
         <>
-          {userId ? (
-            <TableButton
-              title="My Pack"
-              nameButton="Add new card"
-              onAddClick={addPacks}
-            />
-          ) : (
-            <TableButton
-              title="Friend’s Pack"
-              nameButton="Learn to pack"
-              onAddClick={addPacks}
-            />
-          )}
+          {packTitle}
+
           <div className={styles.interaction}>
             <Search
               width="1007px"

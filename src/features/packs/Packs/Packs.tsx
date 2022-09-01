@@ -46,13 +46,21 @@ export const Packs: FC = () => {
     dispatch(setPacksParams({ page }));
   }, [dispatch, page]);
 
+  const onCreatePackHandle = (): void => {
+    dispatch(addPacks());
+  };
+
   if (!isLoggedIn) {
     return <Navigate to={Path.LOGIN} />;
   }
 
   return (
     <div className={styles.container}>
-      <TableButton title="Packs list" nameButton="Add new pack" onAddClick={addPacks} />
+      <TableButton
+        title="Packs list"
+        nameButton="Add new pack"
+        onAddClick={onCreatePackHandle}
+      />
       <div className={styles.interaction}>
         <Search getData={getPacks} searchParam="packName" queryParams={queryParams} />
         <FilteredButton />
