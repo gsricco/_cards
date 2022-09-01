@@ -30,6 +30,7 @@ export const packsReducer = (
     case 'PACKS/SET-PACKS':
     case 'PACKS/SET-PACKS-PAGE':
     case 'PACKS/SET-PACKS-PARAMS':
+    case 'PACKS/SET-PACKS-PAGE-COUNT':
       return { ...state, ...action.payload };
     default:
       return state;
@@ -40,6 +41,8 @@ export const setPacks = (data: PacksResponseType) =>
   ({ type: 'PACKS/SET-PACKS', payload: data } as const);
 export const setPacksPage = (page: number) =>
   ({ type: 'PACKS/SET-PACKS-PAGE', payload: { page } } as const);
+export const setPacksPageCount = (pageCount: number) =>
+  ({ type: 'PACKS/SET-PACKS-PAGE-COUNT', payload: { pageCount } } as const);
 export const setPacksParams = (params: PacksParamsType) =>
   ({ type: 'PACKS/SET-PACKS-PARAMS', payload: { queryParams: params } } as const);
 

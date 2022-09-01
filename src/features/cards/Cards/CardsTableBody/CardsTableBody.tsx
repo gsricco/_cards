@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import { TableBody } from '@mui/material';
+import { CircularProgress, TableBody, TableCell, TableRow } from '@mui/material';
 
 import { Card } from './Card';
 
@@ -9,6 +9,19 @@ import { useAppSelector } from 'hooks';
 
 export const CardsTableBody: FC = () => {
   const cards = useAppSelector(getPackCards);
+
+  if (cards.length === 0) {
+    return (
+      <TableBody>
+        <TableRow>
+          <TableCell rowSpan={3} />
+          <TableCell align="right">
+            <CircularProgress />
+          </TableCell>
+        </TableRow>
+      </TableBody>
+    );
+  }
 
   return (
     <TableBody>

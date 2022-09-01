@@ -3,6 +3,8 @@ import { ChangeEvent, FC, useEffect, useState } from 'react';
 import { Table, TableContainer } from '@mui/material';
 import { Navigate } from 'react-router-dom';
 
+import MenuPageCount from '../../../common/components/MenuPageCount/MenuPageCount';
+
 import styles from './Packs.module.scss';
 
 import FilterRemoveBtn from 'assets/images/FilterRemoveBtn.svg';
@@ -94,7 +96,7 @@ export const Packs: FC = () => {
   };
 
   useEffect(() => {
-    dispatch(setPacksParams({ ...queryParams, page }));
+    dispatch(setPacksParams({ ...queryParams, page, pageCount: 5 }));
   }, [dispatch, page]);
 
   if (!isLoggedIn) {
@@ -120,7 +122,6 @@ export const Packs: FC = () => {
           />
         </button>
       </div>
-
       <TableContainer className={styles.tableContainer}>
         <Table className={styles.table} aria-label="simple table">
           <TableHeader
@@ -137,13 +138,15 @@ export const Packs: FC = () => {
           <PacksTableBody />
         </Table>
       </TableContainer>
-
-      <Paginator
-        pageCount={pageCount}
-        totalElements={cardPacksTotalCount}
-        page={page}
-        setPage={onPageChange}
-      />
+      <div className={styles.pageManagement}>
+        <Paginator
+          pageCount={pageCount}
+          totalElements={cardPacksTotalCount}
+          page={page}
+          setPage={onPageChange}
+        />
+        <MenuPageCount pageCount={pageCount} />
+      </div>
     </div>
   );
 };
