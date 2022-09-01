@@ -21,7 +21,7 @@ export const Paginator: FC<PaginatorProps> = ({
     <Pagination
       sx={{ mt: '40px' }}
       color="primary"
-      count={pageNumbers}
+      count={pageNumbers || 0}
       page={page}
       shape="rounded"
       size="medium"

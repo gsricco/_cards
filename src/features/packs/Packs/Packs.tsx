@@ -3,8 +3,6 @@ import { ChangeEvent, FC, useEffect, useState } from 'react';
 import { Table, TableContainer } from '@mui/material';
 import { Navigate } from 'react-router-dom';
 
-import MenuPageCount from '../../../common/components/MenuPageCount/MenuPageCount';
-
 import styles from './Packs.module.scss';
 
 import FilterRemoveBtn from 'assets/images/FilterRemoveBtn.svg';
@@ -19,6 +17,7 @@ import {
   TableButton,
   TableHeader,
 } from 'common';
+import MenuPageCount from 'common/components/MenuPageCount/MenuPageCount';
 import {
   addPacks,
   getCardPacksTotalCount,
@@ -96,7 +95,7 @@ export const Packs: FC = () => {
   };
 
   useEffect(() => {
-    dispatch(setPacksParams({ ...queryParams, page, pageCount: 5 }));
+    dispatch(setPacksParams({ ...queryParams, page, pageCount }));
   }, [dispatch, page]);
 
   if (!isLoggedIn) {

@@ -2,6 +2,7 @@ import { FC } from 'react';
 
 import { Box, FormControl, MenuItem, Select, SelectChangeEvent } from '@mui/material';
 
+import { MIN_SELECT_VALUE } from 'common/constants/constants';
 import { getPackQueryParams, setPacksParams } from 'features';
 import { useAppDispatch, useAppSelector } from 'hooks';
 
@@ -25,7 +26,7 @@ const MenuPageCount: FC<Props> = ({ pageCount }) => {
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
-          value={`${pageCount}`}
+          value={`${pageCount || MIN_SELECT_VALUE}`}
           onChange={changeCardsSelectHandler}
         >
           <MenuItem value={5}>5</MenuItem>
