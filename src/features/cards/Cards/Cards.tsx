@@ -17,6 +17,7 @@ import {
   setCardPage,
   getCardsPageCount,
   getCardsQueryParams,
+  getId,
 } from 'features';
 import { useAppDispatch, useAppSelector } from 'hooks';
 
@@ -28,6 +29,7 @@ export const Cards: FC = () => {
   const cardTotalCount = useAppSelector(getCardsTotalCount);
   const queryParams = useAppSelector(getCardsQueryParams);
   const pageCount = useAppSelector(getCardsPageCount);
+  const userId = useAppSelector(getId);
 
   const onPageChange = (_: ChangeEvent<unknown>, currentPage: number): void => {
     dispatch(setCardPage(currentPage));
@@ -58,12 +60,19 @@ export const Cards: FC = () => {
         </div>
       ) : (
         <>
-          <TableButton
-            title="Friend’s Pack"
-            nameButton="Learn to pack"
-            onAddClick={addPacks}
-          />
-
+          {userId ? (
+            <TableButton
+              title="My Pack"
+              nameButton="Add new card"
+              onAddClick={addPacks}
+            />
+          ) : (
+            <TableButton
+              title="Friend’s Pack"
+              nameButton="Learn to pack"
+              onAddClick={addPacks}
+            />
+          )}
           <div className={styles.interaction}>
             <Search
               width="1007px"

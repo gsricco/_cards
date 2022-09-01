@@ -51,7 +51,7 @@ export const Packs: FC = () => {
       dispatch(setPacksParams({ page }));
       dispatch(getPacks());
     }
-  }, [dispatch, page]);
+  }, [page]);
 
   if (!isLoggedIn) {
     return <Navigate to={Path.LOGIN} />;
