@@ -12,17 +12,25 @@
     line-height: 17px !important;
     text-transform: capitalize;
     color: #000000;
-    background: #FFFFFF;
+    background: #ffffff;
     border: 1px solid #D9D9D9 !important;
     border-radius: 2px !important;
 
-    &:focus {
-      background: #366EFF;
-      border: none !important;
-      color: #FFFFFF !important;
-    }
   }
 
+  .active {
+    color: #fff;
+    background: #1976d2;
+    border: 1px solid #1976d2 !important;
+
+    &:focus {
+      background: #1976d2;
+    }
+
+    &:hover {
+      background: #1976d2;
+    }
+  }
 }
 
 
