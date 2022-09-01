@@ -95,7 +95,6 @@ export const changeCard =
       dispatch(setAppStatus(RequestStatus.SUCCEEDED));
     }
   };
-
 export const deleteCard =
   (id: string): AppThunk =>
   async dispatch => {

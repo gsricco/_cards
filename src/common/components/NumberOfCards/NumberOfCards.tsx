@@ -6,7 +6,7 @@ import { useSearchParams } from 'react-router-dom';
 
 import styles from './NumberOfCards.module.scss';
 
-import { getPacks, setPacksParams } from 'features/packs/packs-reducer';
+import { setPacksParams } from 'features/packs/packs-reducer';
 import { useAppDispatch } from 'hooks';
 
 type Props = {
@@ -50,7 +50,6 @@ export const NumberOfCards: FC<Props> = ({ maxCardsCount, minCardsCount }) => {
 
   useEffect(() => {
     dispatch(setPacksParams({ min: value[0], max: value[1] }));
-    dispatch(getPacks());
   }, [searchParams]);
 
   return (

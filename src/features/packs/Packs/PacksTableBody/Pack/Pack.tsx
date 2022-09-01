@@ -9,7 +9,7 @@ import DeleteICon from 'assets/images/Delete.svg';
 import EditIcon from 'assets/images/Edit.svg';
 import TeacherIcon from 'assets/images/teacher.svg';
 import { Path } from 'common';
-import { setCardsParams, changePacksName, deletePack, getCards } from 'features';
+import { setCardsParams, changePacksName, deletePack } from 'features';
 import { useAppDispatch } from 'hooks';
 
 type Props = {
@@ -28,7 +28,6 @@ export const Pack: FC<Props> = ({ packId, name, created, updated, cards, isMyCar
 
   const onGetCards = (): void => {
     dispatch(setCardsParams({ cardsPack_id: packId }));
-    dispatch(getCards());
 
     navigate(Path.CARDS);
   };

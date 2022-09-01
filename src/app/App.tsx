@@ -21,7 +21,7 @@ export const App: FC = () => {
     if (!isLoggedIn) {
       dispatch(initialized());
     }
-  }, [dispatch]);
+  }, [dispatch, isLoggedIn]);
 
   if (!isInitialized) {
     return (

@@ -47,10 +47,7 @@ export const Packs: FC = () => {
   };
 
   useEffect(() => {
-    if (isLoggedIn) {
-      dispatch(setPacksParams({ page }));
-      dispatch(getPacks());
-    }
+    dispatch(setPacksParams({ page }));
   }, [dispatch, page]);
 
   if (!isLoggedIn) {
