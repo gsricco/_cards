@@ -15,9 +15,9 @@ export {
   NumberOfCards,
 } from './components';
 
-export { Path, RequestStatus } from './enums';
+export { Path, RequestStatus, SortPacks } from './enums';
 export { MIN_PASSWORD_LENGTH, DELAY_TIME } from './constants';
-export { handleServerNetworkError, setNameEmail } from './utils';
+export { handleServerNetworkError, setNameEmail, sortPacks } from './utils';
 
 export type {
   AppThunk,

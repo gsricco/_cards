@@ -1,9 +1,6 @@
-import React, { FC, useState } from 'react';
+import { FC } from 'react';
 
 import { TableCell, TableHead, TableRow, TableSortLabel } from '@mui/material';
-
-import { setPacksParams } from '../../../features';
-import { useAppDispatch } from '../../../hooks';
 
 import styles from './TableHeader.module.scss';
 
@@ -13,6 +10,10 @@ type Props = {
   thirdCell: string;
   fourthCell: string;
   fifthCell?: string;
+  sortFirstCell?: () => void;
+  sortSecondCell?: () => void;
+  sortThirdCell?: () => void;
+  sortFourthCell?: () => void;
 };
 
 export const TableHeader: FC<Props> = ({
@@ -21,31 +22,11 @@ export const TableHeader: FC<Props> = ({
   thirdCell,
   fourthCell,
   fifthCell,
+  sortFirstCell,
+  sortSecondCell,
+  sortThirdCell,
+  sortFourthCell,
 }) => {
-  const dispatch = useAppDispatch();
-  const [changeSortPack, setChangeSortPack] = useState(true);
-
-  const getSortDatePack = (): void => {
-    setChangeSortPack(!changeSortPack);
-    const sortPacks = changeSortPack ? '1updated' : '0updated';
-
-    dispatch(setPacksParams({ sortPacks }));
-  };
-
-  const getSortNamePack = (): void => {
-    setChangeSortPack(!changeSortPack);
-    const sortPacks = changeSortPack ? '1name' : '0name';
-
-    dispatch(setPacksParams({ sortPacks }));
-  };
-
-  const getSortCardPack = (): void => {
-    setChangeSortPack(!changeSortPack);
-    const sortPacks = changeSortPack ? '1cardsCount' : '0cardsCount';
-
-    dispatch(setPacksParams({ sortPacks }));
-  };
-
   return (
     <TableHead className={styles.tableHead}>
       <TableRow>
@@ -54,7 +35,7 @@ export const TableHeader: FC<Props> = ({
             className={styles.tableFirstCell}
             active
             direction="desc"
-            onClick={getSortNamePack}
+            onClick={sortFirstCell}
           >
             {firstCell}
           </TableSortLabel>
@@ -64,7 +45,7 @@ export const TableHeader: FC<Props> = ({
             className={styles.tableSecondCell}
             active
             direction="desc"
-            onClick={getSortCardPack}
+            onClick={sortSecondCell}
           >
             {secondCell}
           </TableSortLabel>
@@ -74,12 +55,21 @@ export const TableHeader: FC<Props> = ({
             className={styles.tableSortLabel}
             active
             direction="desc"
-            onClick={getSortDatePack}
+            onClick={sortThirdCell}
           >
             {thirdCell}
           </TableSortLabel>
         </TableCell>
-        <TableCell>{fourthCell}</TableCell>
+        <TableCell>
+          <TableSortLabel
+            className={styles.tableSortLabel}
+            active
+            direction="desc"
+            onClick={sortFourthCell}
+          >
+            {fourthCell}
+          </TableSortLabel>
+        </TableCell>
         <TableCell>{fifthCell}</TableCell>
       </TableRow>
     </TableHead>

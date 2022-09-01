@@ -1,4 +1,4 @@
-import { ChangeEvent, FC, useEffect } from 'react';
+import { ChangeEvent, FC, useEffect, useState } from 'react';
 
 import { Table, TableContainer } from '@mui/material';
 import { Navigate } from 'react-router-dom';
@@ -13,7 +13,9 @@ import {
   Search,
   TableButton,
   TableHeader,
+  sortPacks,
   Path,
+  SortPacks,
 } from 'common';
 import {
   addPacks,
@@ -37,6 +39,21 @@ export const Packs: FC = () => {
   const cardPacksTotalCount = useAppSelector(getCardPacksTotalCount);
   const queryParams = useAppSelector(getPackQueryParams);
   const pageCount = useAppSelector(getPacksPageCount);
+
+  const [changeSortPack, setChangeSortPack] = useState(true);
+
+  const getSortDatePack = (): void => {
+    sortPacks(dispatch, changeSortPack, setChangeSortPack, SortPacks.UPDATED);
+  };
+  const getSortCardPack = (): void => {
+    sortPacks(dispatch, changeSortPack, setChangeSortPack, SortPacks.CARDS_COUNT);
+  };
+  const getSortNamePack = (): void => {
+    sortPacks(dispatch, changeSortPack, setChangeSortPack, SortPacks.NAME);
+  };
+  const getSortUserNamePack = (): void => {
+    sortPacks(dispatch, changeSortPack, setChangeSortPack, SortPacks.USER_NAME);
+  };
 
   const onPageChange = (_: ChangeEvent<unknown>, currentPage: number): void => {
     dispatch(setPacksPage(currentPage));
@@ -80,6 +97,10 @@ export const Packs: FC = () => {
             thirdCell="Last Updated"
             fourthCell="Created by"
             fifthCell="Actions"
+            sortFirstCell={getSortDatePack}
+            sortSecondCell={getSortCardPack}
+            sortThirdCell={getSortNamePack}
+            sortFourthCell={getSortUserNamePack}
           />
           <PacksTableBody />
         </Table>
