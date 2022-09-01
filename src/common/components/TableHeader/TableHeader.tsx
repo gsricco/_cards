@@ -25,9 +25,23 @@ export const TableHeader: FC<Props> = ({
   const dispatch = useAppDispatch();
   const [changeSortPack, setChangeSortPack] = useState(true);
 
-  const getSortPack = (): void => {
+  const getSortDatePack = (): void => {
     setChangeSortPack(!changeSortPack);
     const sortPacks = changeSortPack ? '1updated' : '0updated';
+
+    dispatch(setPacksParams({ sortPacks }));
+  };
+
+  const getSortNamePack = (): void => {
+    setChangeSortPack(!changeSortPack);
+    const sortPacks = changeSortPack ? '1name' : '0name';
+
+    dispatch(setPacksParams({ sortPacks }));
+  };
+
+  const getSortCardPack = (): void => {
+    setChangeSortPack(!changeSortPack);
+    const sortPacks = changeSortPack ? '1cardsCount' : '0cardsCount';
 
     dispatch(setPacksParams({ sortPacks }));
   };
@@ -35,14 +49,32 @@ export const TableHeader: FC<Props> = ({
   return (
     <TableHead className={styles.tableHead}>
       <TableRow>
-        <TableCell className={styles.tableFirstCell}>{firstCell}</TableCell>
-        <TableCell className={styles.tableSecondCell}>{secondCell}</TableCell>
+        <TableCell>
+          <TableSortLabel
+            className={styles.tableFirstCell}
+            active
+            direction="desc"
+            onClick={getSortNamePack}
+          >
+            {firstCell}
+          </TableSortLabel>
+        </TableCell>
+        <TableCell>
+          <TableSortLabel
+            className={styles.tableSecondCell}
+            active
+            direction="desc"
+            onClick={getSortCardPack}
+          >
+            {secondCell}
+          </TableSortLabel>
+        </TableCell>
         <TableCell>
           <TableSortLabel
             className={styles.tableSortLabel}
             active
             direction="desc"
-            onClick={getSortPack}
+            onClick={getSortDatePack}
           >
             {thirdCell}
           </TableSortLabel>

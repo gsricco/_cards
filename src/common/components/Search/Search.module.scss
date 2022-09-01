@@ -7,7 +7,7 @@
     display: flex;
     align-items: center;
     width: 413px;
-    height: 36px;
+    height: 34px;
     font-family: $mainFont;
     font-style: normal;
     font-weight: 400;
@@ -15,7 +15,8 @@
     line-height: 24px;
     color: #d7cbcb !important;
 
-    border: 1px solid;
+    background: #FFFFFF;
+    border: 1px solid #D9D9D9;
     border-radius: 2px;
 
     .searchIcon {
@@ -23,7 +24,7 @@
     }
 
     .searchInput {
-      width:413px;
+      width: 413px;
     }
   }
 }

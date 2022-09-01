@@ -42,10 +42,10 @@ export const Pack: FC<Props> = ({ packId, name, created, updated, cards, isMyCar
 
   return (
     <TableRow sx={{ height: '48px' }}>
-      <TableCell className={styles.tableCellBody}>{name}</TableCell>
-      <TableCell className={styles.tableCellBody}>{cards}</TableCell>
-      <TableCell className={styles.tableCellBody}>{updated}</TableCell>
-      <TableCell className={styles.tableCellBody}>{created}</TableCell>
+      <TableCell className={styles.tableFirstCellBody}>{name}</TableCell>
+      <TableCell className={styles.tableSecondCellBody}>{cards}</TableCell>
+      <TableCell className={styles.tableThirdCellBody}>{updated}</TableCell>
+      <TableCell className={styles.tableFourthCellBody}>{created}</TableCell>
       <TableCell sx={{ p: '5px 16px', width: '130px' }}>
         <IconButton onClick={onGetCards} className={styles.teachIcon}>
           <img alt="Teacher Button" src={TeacherIcon} />
