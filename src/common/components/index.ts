@@ -9,5 +9,5 @@ export { NumberOfCards } from './NumberOfCards';
 export { FilteredButton } from './FilteredButton';
 export { Search } from './Search';
 export { TableHeader } from './TableHeader';
-export { Select } from './Select';
+export { SelectHeader } from './Select';
 export { TableButton } from './TableButton';

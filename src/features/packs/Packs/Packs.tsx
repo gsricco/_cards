@@ -54,6 +54,9 @@ export const Packs: FC = () => {
   const getSortUserNamePack = (): void => {
     sortPacks(dispatch, changeSortPack, setChangeSortPack, SortPacks.USER_NAME);
   };
+  const resetFilter = (): void => {
+    sortPacks(dispatch, changeSortPack, setChangeSortPack, SortPacks.RESET);
+  };
 
   const onPageChange = (_: ChangeEvent<unknown>, currentPage: number): void => {
     dispatch(setPacksPage(currentPage));
@@ -82,11 +85,13 @@ export const Packs: FC = () => {
         <Search getData={getPacks} searchParam="packName" queryParams={queryParams} />
         <FilteredButton />
         <NumberOfCards />
-        <img
-          className={styles.FilterRemoveBtn}
-          src={FilterRemoveBtn}
-          alt="delete filter button "
-        />
+        <button className={styles.buttonRemoveBtn} type="button" onClick={resetFilter}>
+          <img
+            className={styles.filterRemoveBtn}
+            src={FilterRemoveBtn}
+            alt="delete filter button "
+          />
+        </button>
       </div>
 
       <TableContainer className={styles.tableContainer}>

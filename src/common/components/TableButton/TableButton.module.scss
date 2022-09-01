@@ -12,23 +12,41 @@
     font-size: 22px;
     line-height: 27px;
     color: #000000;
+    cursor: pointer;
+    .wrap{
+      position: absolute;
+
+    }
+    .customSelect{
+      height: 150px;
+      left:-100px;
+      top:30px;
+      z-index: 111;
+    }
   }
 
-  .tableButton {
-    width: 184px;
-    height: 36px;
 
-    font-family: Montserrat, sans-serif !important;
-    font-weight: 500;
-    font-size: 16px !important;
-    line-height: 20px !important;
-    text-align: center !important;
-    letter-spacing: 0.01em !important;
-    text-transform: none !important;
-    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
-    border-radius: 30px !important;
-  }
+}
+
+.tableButton {
+  width: 184px;
+  height: 36px;
+
+  font-family: Montserrat, sans-serif !important;
+  font-weight: 500;
+  font-size: 16px !important;
+  line-height: 20px !important;
+  text-align: center !important;
+  letter-spacing: 0.01em !important;
+  text-transform: none !important;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.25);
+  border-radius: 30px !important;
 }
 
 
+
+.customSelect {
+  top: 180px;
+  left: 130px;
+}
 

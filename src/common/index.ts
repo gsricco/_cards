@@ -10,7 +10,7 @@ export {
   FilteredButton,
   Search,
   TableHeader,
-  Select,
+  SelectHeader,
   TableButton,
   NumberOfCards,
 } from './components';

@@ -1,30 +1,33 @@
 @import "src/assets/styles/sass/mixins";
 
-.profileReturnBack {
-  position: absolute;
-
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  width: 155px;
-  margin-left: 100px;
-
-  .profileReturnBackImg {
-    width: 16px;
-    height: 11px;
-  }
-
-  .profileReturnBackText {
-
-    @include header-container;
-
-    font-size: 16px;
-  }
-}
 
 .container {
+  position: relative;
   margin-top: 120px;
+
+  .profileReturnBack {
+    position: absolute;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    width: 155px;
+    left: -70px;
+    top: -10px;
+
+    .profileReturnBackImg {
+      width: 16px;
+      height: 11px;
+    }
+
+    .profileReturnBackText {
+
+      @include header-container;
+
+      font-size: 16px;
+    }
+  }
 
   .gridItem {
     flex-direction: column;
@@ -98,8 +101,9 @@
 
           background: #366eff;
         }
+
         & img {
-          margin:10px
+          margin: 10px
         }
       }
 

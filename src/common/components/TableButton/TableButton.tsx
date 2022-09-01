@@ -1,9 +1,9 @@
 import { FC } from 'react';
 
-import { Icon } from '@mui/material';
+import { Icon, Typography } from '@mui/material';
 import Button from '@mui/material/Button';
 
-import { Select } from '../Select';
+import { SelectMyCards } from '../Select/SelectMyCards';
 
 import styles from './TableButton.module.scss';
 
@@ -24,16 +24,21 @@ export const TableButton: FC<Props> = ({ title, nameButton, onAddClick, menuMyPa
 
   return (
     <div className={styles.containerButton}>
-      <div className={styles.titleButton}>
+      <Typography
+        className={styles.titleButton}
+        component="div"
+        onClick={onButtonIconClick}
+      >
         {title}
         {menuMyPack && (
-          <Icon onClick={onButtonIconClick}>
-            <img src={iconMenuMyPack} alt="Sviat" />
+          <Icon>
+            <div className={styles.wrap}>
+              <img src={iconMenuMyPack} alt="Sviat" />
+              {show && <SelectMyCards stylesRules={styles.customSelect} />}
+            </div>
           </Icon>
         )}
-      </div>
-
-      {show && <Select />}
+      </Typography>
 
       <Button
         className={styles.tableButton}

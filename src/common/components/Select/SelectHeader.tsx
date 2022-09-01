@@ -13,7 +13,11 @@ import { Path } from 'common';
 import { logout } from 'features';
 import { useAppDispatch } from 'hooks';
 
-export const Select: FC = () => {
+type SelectType = {
+  stylesRules?: string;
+};
+
+export const SelectHeader: FC<SelectType> = ({ stylesRules }) => {
   const dispatch = useAppDispatch();
 
   const navigate = useNavigate();
@@ -26,7 +30,7 @@ export const Select: FC = () => {
   };
 
   return (
-    <Paper className={styles.menuContainer}>
+    <Paper className={`${styles.menuContainer} ${stylesRules}`}>
       <MenuList>
         <MenuItem onClick={onHandlerClick}>
           <img src={iconProfile} alt="icon" />
