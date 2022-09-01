@@ -1,41 +1,37 @@
-// @ts-ignore
-import { FC, SelectChangeEvent, useState } from 'react';
+import { FC } from 'react';
 
-import { Box, FormControl, MenuItem, Select } from '@mui/material';
+import { Box, FormControl, MenuItem, Select, SelectChangeEvent } from '@mui/material';
 
-import { getPackQueryParams, setPacksParams } from '../../../features';
-import { useAppDispatch, useAppSelector } from '../../../hooks';
+import { getPackQueryParams, setPacksParams } from 'features';
+import { useAppDispatch, useAppSelector } from 'hooks';
 
-// import styles from './MenuPageCount.module.scss';
-
-type MenuPageCountProps = {
+type Props = {
   pageCount: number;
 };
 
-const MenuPageCount: FC<MenuPageCountProps> = ({ pageCount }) => {
-  // eslint-disable-next-line no-magic-numbers
-  const [selectedNumber, setSelectedNumber] = useState(5 || pageCount);
-  const queryParams = useAppSelector(getPackQueryParams);
+const MenuPageCount: FC<Props> = ({ pageCount }) => {
   const dispatch = useAppDispatch();
+  const queryParams = useAppSelector(getPackQueryParams);
 
-  const onChangeSelect = (e: SelectChangeEvent<HTMLInputElement>): void => {
-    setSelectedNumber(e.target.value);
-    dispatch(setPacksParams({ ...queryParams, pageCount: selectedNumber }));
+  const changeCardsSelectHandler = (event: SelectChangeEvent): void => {
+    const pageCount = +event.target.value;
+
+    dispatch(setPacksParams({ ...queryParams, pageCount }));
   };
 
   return (
     <Box sx={{ minWidth: 120 }}>
-      <FormControl sx={{ mt: '35px' }} size="small">
+      <FormControl sx={{ mt: '35px' }} size="small" variant="outlined">
         <Select
-          value={selectedNumber}
           labelId="demo-simple-select-label"
           id="demo-simple-select"
-          label="Age"
-          onChange={onChangeSelect}
+          value={`${pageCount}`}
+          onChange={changeCardsSelectHandler}
         >
           <MenuItem value={5}>5</MenuItem>
           <MenuItem value={10}>10</MenuItem>
           <MenuItem value={20}>20</MenuItem>
+          <MenuItem value={50}>50</MenuItem>
         </Select>
       </FormControl>
     </Box>
