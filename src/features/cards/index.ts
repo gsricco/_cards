@@ -2,7 +2,6 @@ export {
   cardsReducer,
   getCards,
   setCards,
-  setCardPage,
   deleteCard,
   changeCard,
   addCard,

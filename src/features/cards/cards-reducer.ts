@@ -30,7 +30,6 @@ export const cardsReducer = (
 ): InitialStateType => {
   switch (action.type) {
     case 'CARDS/SET-CARDS':
-    case 'CARDS/SET-CARDS-PAGE':
     case 'CARDS/SET-CARDS-PARAMS':
       return { ...state, ...action.payload };
     default:
@@ -40,8 +39,6 @@ export const cardsReducer = (
 
 export const setCards = (data: CardsResponseType) =>
   ({ type: 'CARDS/SET-CARDS', payload: data } as const);
-export const setCardPage = (page: number) =>
-  ({ type: 'CARDS/SET-CARDS-PAGE', payload: { page } } as const);
 export const setCardsParams = (params: CardsParamsType) =>
   ({ type: 'CARDS/SET-CARDS-PARAMS', payload: { queryParams: params } } as const);
 

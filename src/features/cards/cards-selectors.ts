@@ -7,5 +7,6 @@ export const getCardsTotalCount = (state: AppRootState): number =>
 export const getCardsQueryParams = (state: AppRootState): CardsParamsType =>
   state.cards.queryParams;
 export const getCardUserId = (state: AppRootState): string => state.cards.packUserId;
-export const getCardsPackId = (state: AppRootState): string => state.cards.cardsPack_id;
 export const getCardsPageCount = (state: AppRootState): number => state.cards.pageCount;
+export const getCardsPackId = (state: AppRootState): string =>
+  state.cards.queryParams.cardsPack_id;

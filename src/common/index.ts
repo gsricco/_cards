@@ -13,6 +13,7 @@ export {
   SelectHeader,
   TableButton,
   NumberOfCards,
+  MenuPageCount,
 } from './components';
 
 export { Path, RequestStatus, SortPacks } from './enums';

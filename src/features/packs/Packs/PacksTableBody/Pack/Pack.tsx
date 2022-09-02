@@ -9,8 +9,13 @@ import DeleteICon from 'assets/images/Delete.svg';
 import EditIcon from 'assets/images/Edit.svg';
 import TeacherIcon from 'assets/images/teacher.svg';
 import { Path } from 'common';
-import { changePacksName, deletePack, setCardsParams } from 'features';
-import { useAppDispatch } from 'hooks';
+import {
+  changePacksName,
+  deletePack,
+  getCardsQueryParams,
+  setCardsParams,
+} from 'features';
+import { useAppDispatch, useAppSelector } from 'hooks';
 
 type Props = {
   packId: string;
@@ -25,9 +30,10 @@ export const Pack: FC<Props> = ({ packId, name, created, updated, cards, isMyCar
   const dispatch = useAppDispatch();
 
   const navigate = useNavigate();
+  const queryParams = useAppSelector(getCardsQueryParams);
 
   const onGetCards = (): void => {
-    dispatch(setCardsParams({ cardsPack_id: packId }));
+    dispatch(setCardsParams({ ...queryParams, cardsPack_id: packId, pageCount: 5 }));
 
     navigate(Path.CARDS);
   };
@@ -47,7 +53,11 @@ export const Pack: FC<Props> = ({ packId, name, created, updated, cards, isMyCar
       <TableCell className={styles.tableThirdCellBody}>{updated}</TableCell>
       <TableCell className={styles.tableFourthCellBody}>{created}</TableCell>
       <TableCell sx={{ p: '5px 16px', width: '130px' }}>
-        <IconButton onClick={onGetCards} className={styles.teachIcon}>
+        <IconButton
+          onClick={onGetCards}
+          className={styles.teachIcon}
+          disabled={cards === 0 && !isMyCard}
+        >
           <img alt="Teacher Button" src={TeacherIcon} />
         </IconButton>
 

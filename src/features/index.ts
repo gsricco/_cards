@@ -35,7 +35,6 @@ export {
   packsReducer,
   setPacks,
   deletePack,
-  getPage,
   getCardPacks,
   getCardPacksTotalCount,
   setPacksPage,
@@ -47,13 +46,14 @@ export {
   setPacksParams,
   getPacksPageCount,
   getPackQueryParams,
+  getPage,
+  setPacksPageCount,
 } from './packs';
 export {
   getCardsPage,
   getCardsTotalCount,
   getCards,
   setCards,
-  setCardPage,
   cardsReducer,
   getPackCards,
   deleteCard,

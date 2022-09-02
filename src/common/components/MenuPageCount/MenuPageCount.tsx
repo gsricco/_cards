@@ -10,7 +10,7 @@ type Props = {
   pageCount: number;
 };
 
-const MenuPageCount: FC<Props> = ({ pageCount }) => {
+export const MenuPageCount: FC<Props> = ({ pageCount }) => {
   const dispatch = useAppDispatch();
   const queryParams = useAppSelector(getPackQueryParams);
 
@@ -38,5 +38,3 @@ const MenuPageCount: FC<Props> = ({ pageCount }) => {
     </Box>
   );
 };
-
-export default MenuPageCount;

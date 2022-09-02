@@ -8,6 +8,7 @@ import styles from './Packs.module.scss';
 import FilterRemoveBtn from 'assets/images/FilterRemoveBtn.svg';
 import {
   FilteredButton,
+  MenuPageCount,
   NumberOfCards,
   Paginator,
   Path,
@@ -17,7 +18,7 @@ import {
   TableButton,
   TableHeader,
 } from 'common';
-import MenuPageCount from 'common/components/MenuPageCount/MenuPageCount';
+import { MIN_SELECT_VALUE } from 'common/constants/constants';
 import {
   addPacks,
   getCardPacksTotalCount,
@@ -27,7 +28,6 @@ import {
   getPacksPageCount,
   getPage,
   PacksTableBody,
-  setPacksPage,
   setPacksParams,
 } from 'features';
 import { useAppDispatch, useAppSelector } from 'hooks';
@@ -81,13 +81,13 @@ export const Packs: FC = () => {
         max: 110,
         page: undefined,
         packName: undefined,
-        pageCount: undefined,
+        pageCount: MIN_SELECT_VALUE,
       }),
     );
   };
 
-  const onPageChange = (_: ChangeEvent<unknown>, currentPage: number): void => {
-    dispatch(setPacksPage(currentPage));
+  const onPageChange = (_: ChangeEvent<unknown>, page: number): void => {
+    dispatch(setPacksParams({ ...queryParams, page }));
   };
 
   const onCreatePackHandle = (): void => {
@@ -95,7 +95,13 @@ export const Packs: FC = () => {
   };
 
   useEffect(() => {
-    dispatch(setPacksParams({ ...queryParams, page, pageCount }));
+    dispatch(
+      setPacksParams({
+        ...queryParams,
+        page: queryParams.page,
+        pageCount: pageCount || MIN_SELECT_VALUE,
+      }),
+    );
   }, [dispatch, page]);
 
   if (!isLoggedIn) {

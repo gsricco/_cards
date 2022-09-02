@@ -11,6 +11,7 @@ import { Paginator, Path, Search, TableButton, TableHeader } from 'common';
 import {
   addCard,
   getCards,
+  getCardsPackId,
   getCardsPage,
   getCardsPageCount,
   getCardsQueryParams,
@@ -18,7 +19,7 @@ import {
   getCardUserId,
   getId,
   getIsLoggedIn,
-  setCardPage,
+  setCardsParams,
 } from 'features';
 import { useAppDispatch, useAppSelector } from 'hooks';
 
@@ -31,9 +32,10 @@ export const Cards: FC = () => {
   const queryParams = useAppSelector(getCardsQueryParams);
   const pageCount = useAppSelector(getCardsPageCount);
   const myPack = useAppSelector(getId) === useAppSelector(getCardUserId);
+  const cardsPack_id = useAppSelector(getCardsPackId);
 
-  const onPageChange = (_: ChangeEvent<unknown>, currentPage: number): void => {
-    dispatch(setCardPage(currentPage));
+  const onPageChange = (_: ChangeEvent<unknown>, page: number): void => {
+    dispatch(setCardsParams({ ...queryParams, page, cardsPack_id }));
   };
 
   const onAddNewCardHandle = (): void => {

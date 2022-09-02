@@ -5,7 +5,7 @@ import { Pagination } from '@mui/material';
 type PaginatorProps = {
   pageCount: number;
   totalElements: number;
-  page: number;
+  page?: number;
   setPage: (_: ChangeEvent<unknown>, currentPage: number) => void;
 };
 
