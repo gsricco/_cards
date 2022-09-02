@@ -1,4 +1,4 @@
-import { instance, instanceHeroku } from './instance';
+import { instanceHeroku } from './instance';
 
 import {
   InfoResponseType,
@@ -10,10 +10,10 @@ import {
 
 export const forgotAPI = {
   updateUserName: (data: UpdateUserDataType) =>
-    instance.put<UpdateUserResponseType>('auth/me', data),
+    instanceHeroku.put<UpdateUserResponseType>('auth/me', data),
 
   updatePassword: (data: UpdatePasswordDataType) =>
-    instance.post<InfoResponseType>('auth/set-new-password', data),
+    instanceHeroku.post<InfoResponseType>('auth/set-new-password', data),
 
   recoverPassword: (data: RecoverPasswordType) =>
     instanceHeroku.post<InfoResponseType>('auth/forgot', data),

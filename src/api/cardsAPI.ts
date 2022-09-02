@@ -1,25 +1,25 @@
-import { instance } from './instance';
+import { instanceHeroku } from './instance';
 
 import {
   CardsParamsType,
-  CreateCardType,
-  UpdateCardDataType,
   CardsResponseType,
   CreateCardResponseType,
+  CreateCardType,
   RemoveCardResponseType,
+  UpdateCardDataType,
   UpdateCardResponseType,
 } from 'common';
 
 export const cardsAPI = {
   getCards: (params: CardsParamsType) =>
-    instance.get<CardsResponseType>('cards/card', { params }),
+    instanceHeroku.get<CardsResponseType>('cards/card', { params }),
 
   createCard: (card: CreateCardType) =>
-    instance.post<CreateCardResponseType>('cards/card', { card }),
+    instanceHeroku.post<CreateCardResponseType>('cards/card', { card }),
 
   updateCard: (card: UpdateCardDataType) =>
-    instance.put<UpdateCardResponseType>('cards/card', { card }),
+    instanceHeroku.put<UpdateCardResponseType>('cards/card', { card }),
 
   removeCard: (id: string) =>
-    instance.delete<RemoveCardResponseType>(`cards/card?id=${id}`),
+    instanceHeroku.delete<RemoveCardResponseType>(`cards/card?id=${id}`),
 };

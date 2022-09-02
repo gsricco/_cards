@@ -102,7 +102,7 @@ export const Packs: FC = () => {
         pageCount: pageCount || MIN_SELECT_VALUE,
       }),
     );
-  }, [dispatch, page]);
+  }, []);
 
   if (!isLoggedIn) {
     return <Navigate to={Path.LOGIN} />;

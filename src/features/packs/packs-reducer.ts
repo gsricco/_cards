@@ -50,6 +50,7 @@ export const getPacks = (): AppThunk => async (dispatch, getState) => {
   const params = getState().packs.queryParams;
 
   try {
+    dispatch(setAppStatus(RequestStatus.LOADING));
     const res = await packsAPI.getPacks(params);
 
     dispatch(setPacks(res.data));
