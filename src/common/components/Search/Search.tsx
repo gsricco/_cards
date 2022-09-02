@@ -9,7 +9,7 @@ import styles from './Search.module.scss';
 
 import { AppThunk, CardsParamsType, PacksParamsType } from 'common';
 import { DELAY_TIME } from 'common/constants/constants';
-import { setCardsParams, setPacksParams } from 'features';
+import { getCardsPackId, setCardsParams, setPacksParams } from 'features';
 import { useAppDispatch, useAppSelector } from 'hooks';
 
 type Props = {
@@ -22,13 +22,19 @@ type Props = {
 export const Search: FC<Props> = ({ getData, searchParam, queryParams, width }) => {
   const dispatch = useAppDispatch();
 
-  const cardsPack_id = useAppSelector(state => state.cards.queryParams.cardsPack_id);
+  const cardsPack_id = useAppSelector(getCardsPackId);
 
   const handleChangeInput = (e: ChangeEvent<HTMLInputElement>): void => {
     if (searchParam === 'packName') {
       dispatch(setPacksParams({ ...queryParams, [searchParam]: e.currentTarget.value }));
     } else {
-      dispatch(setCardsParams({ [searchParam]: e.currentTarget.value, cardsPack_id }));
+      dispatch(
+        setCardsParams({
+          ...queryParams,
+          [searchParam]: e.currentTarget.value,
+          cardsPack_id,
+        }),
+      );
     }
   };
 
