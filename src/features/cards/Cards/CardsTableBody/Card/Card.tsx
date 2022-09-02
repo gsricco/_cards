@@ -4,6 +4,8 @@ import { IconButton, TableCell, TableRow } from '@mui/material';
 
 import styles from '../../Cards.module.scss';
 
+import { Grade } from './Grade/Grade';
+
 import DeleteICon from 'assets/images/Delete.svg';
 import EditIcon from 'assets/images/Edit.svg';
 import { changeCard, deleteCard, getId, getCardUserId } from 'features';
@@ -36,7 +38,9 @@ export const Card: FC<Props> = ({ id, question, answer, updated, grade }) => {
       <TableCell className={styles.tableCellBody}>{question}</TableCell>
       <TableCell className={styles.tableCellBody}>{answer}</TableCell>
       <TableCell className={styles.tableCellBody}>{updated}</TableCell>
-      <TableCell className={styles.tableCellBody}>{grade}</TableCell>
+      <TableCell className={styles.tableCellBody}>
+        <Grade grade={grade} />
+      </TableCell>
       <TableCell>
         {packUserId === userId && (
           <IconButton onClick={onCardNameChange}>

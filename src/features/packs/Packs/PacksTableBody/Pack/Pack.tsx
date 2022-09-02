@@ -48,9 +48,7 @@ export const Pack: FC<Props> = ({ packId, name, created, updated, cards, isMyCar
 
   return (
     <TableRow sx={{ height: '48px' }}>
-      <TableCell className={styles.tableFirstCellBody}>
-        <div style={{ display: 'flex', width: '200px', flexWrap: 'wrap' }}>{name}</div>
-      </TableCell>
+      <TableCell className={styles.tableFirstCellBody}>{name}</TableCell>
       <TableCell className={styles.tableSecondCellBody}>{cards}</TableCell>
       <TableCell className={styles.tableThirdCellBody}>{updated}</TableCell>
       <TableCell className={styles.tableFourthCellBody}>{created}</TableCell>
