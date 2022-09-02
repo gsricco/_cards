@@ -17,10 +17,11 @@ type Props = {
   menuMyPack?: boolean;
 };
 export const TableButton: FC<Props> = ({ title, nameButton, onAddClick, menuMyPack }) => {
+  const { show, onButtonIconClick } = useShow();
+
   const onCreatePackClick = (): void => {
     onAddClick();
   };
-  const { show, onButtonIconClick } = useShow();
 
   return (
     <div className={styles.containerButton}>
@@ -33,7 +34,7 @@ export const TableButton: FC<Props> = ({ title, nameButton, onAddClick, menuMyPa
         {menuMyPack && (
           <Icon>
             <div className={styles.wrap}>
-              <img src={iconMenuMyPack} alt="Sviat" />
+              <img src={iconMenuMyPack} alt="Icon" />
               {show && <SelectMyCards stylesRules={styles.customSelect} />}
             </div>
           </Icon>

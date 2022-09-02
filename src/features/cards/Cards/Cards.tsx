@@ -31,7 +31,7 @@ export const Cards: FC = () => {
   const cardTotalCount = useAppSelector(getCardsTotalCount);
   const queryParams = useAppSelector(getCardsQueryParams);
   const pageCount = useAppSelector(getCardsPageCount);
-  const myPack = useAppSelector(getId) === useAppSelector(getCardUserId);
+  const isMyPack = useAppSelector(getId) === useAppSelector(getCardUserId);
   const cardsPack_id = useAppSelector(getCardsPackId);
 
   const onPageChange = (_: ChangeEvent<unknown>, page: number): void => {
@@ -42,7 +42,7 @@ export const Cards: FC = () => {
     dispatch(addCard());
   };
 
-  const packTitle = myPack ? (
+  const packTitle = isMyPack ? (
     <TableButton
       title="My Pack"
       nameButton="Add new card"

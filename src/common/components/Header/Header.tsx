@@ -17,13 +17,13 @@ import { getIsLoggedIn, getName } from 'features';
 import { useAppSelector, useShow } from 'hooks';
 
 export const Header: FC = () => {
-  const status = useAppSelector(getStatus);
-  const name = useAppSelector(getName);
-  const isLoggedIn = useAppSelector(getIsLoggedIn);
-
   const { show, onButtonIconClick } = useShow();
 
   const navigate = useNavigate();
+
+  const status = useAppSelector(getStatus);
+  const name = useAppSelector(getName);
+  const isLoggedIn = useAppSelector(getIsLoggedIn);
 
   const onSignInButtonClick = (): void => {
     navigate(Path.LOGIN);

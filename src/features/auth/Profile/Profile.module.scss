@@ -21,11 +21,15 @@
       height: 11px;
     }
 
-    .profileReturnBackText {
+    .loginForgotPassword {
+      text-decoration: none;
 
-      @include header-container;
+      .profileReturnBackText {
 
-      font-size: 16px;
+        @include header-container;
+
+        font-size: 16px;
+      }
     }
   }
 

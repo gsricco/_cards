@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import { CircularProgress, TableBody, TableCell, TableRow } from '@mui/material';
+import { TableBody, TableCell, TableRow } from '@mui/material';
 
 import { Pack } from './Pack';
 
@@ -18,7 +18,7 @@ export const PacksTableBody: FC = () => {
           <TableCell rowSpan={3} />
           <TableCell rowSpan={3} />
           <TableCell>
-            <CircularProgress />
+            <h3>Nothing found for your request</h3>
           </TableCell>
         </TableRow>
       </TableBody>

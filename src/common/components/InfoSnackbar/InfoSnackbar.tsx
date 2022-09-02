@@ -12,6 +12,7 @@ const Alert = forwardRef<HTMLDivElement, AlertProps>(function Alert(props, ref) 
 
 export const InfoSnackbar: FC = () => {
   const dispatch = useAppDispatch();
+
   const error = useAppSelector(getError);
   const info = useAppSelector(getInfo);
 

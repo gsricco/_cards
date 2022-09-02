@@ -33,7 +33,7 @@ export const TableHeader: FC<Props> = ({
         <TableCell>
           <TableSortLabel
             className={styles.tableFirstCell}
-            active
+            active={false}
             direction="desc"
             onClick={sortFirstCell}
           >
@@ -43,7 +43,7 @@ export const TableHeader: FC<Props> = ({
         <TableCell>
           <TableSortLabel
             className={styles.tableSecondCell}
-            active
+            active={false}
             direction="desc"
             onClick={sortSecondCell}
           >
@@ -53,7 +53,7 @@ export const TableHeader: FC<Props> = ({
         <TableCell>
           <TableSortLabel
             className={styles.tableSortLabel}
-            active
+            active={false}
             direction="desc"
             onClick={sortThirdCell}
           >
@@ -63,7 +63,7 @@ export const TableHeader: FC<Props> = ({
         <TableCell>
           <TableSortLabel
             className={styles.tableSortLabel}
-            active
+            active={false}
             direction="desc"
             onClick={sortFourthCell}
           >

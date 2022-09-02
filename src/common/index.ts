@@ -17,7 +17,6 @@ export {
 } from './components';
 
 export { Path, RequestStatus, SortPacks } from './enums';
-export { MIN_PASSWORD_LENGTH, DELAY_TIME } from './constants';
 export { handleServerNetworkError, setNameEmail, sortPacks } from './utils';
 
 export type {
