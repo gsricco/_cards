@@ -10,41 +10,25 @@ type Props = {
 
 export const Grade: FC<Props> = ({ grade }) => {
   const star = starBorder;
-  const stars = [star, star, star, star, star];
+  let stars = [star, star, star, star, star];
   // eslint-disable-next-line no-magic-numbers
   const sur = grade - Math.trunc(grade) >= 0.5 ? 0.5 : 0;
 
-  let i = 0;
-
-  // eslint-disable-next-line no-magic-numbers,no-plusplus
-  for (let k = 0; k < 5; k++) {
-    if (grade <= 0) stars[k] = starBorder;
+  stars = stars.map((star, index) => {
+    if (grade >= index + 1) return starFull;
     // eslint-disable-next-line no-magic-numbers
-    else if (sur === 0.5 || sur === 0) {
-      // eslint-disable-next-line no-plusplus
-      i++;
-      if (i <= Math.trunc(grade)) {
-        stars[k] = starFull;
-        // eslint-disable-next-line no-magic-numbers
-      } else if (sur === 0.5) {
-        if (i === 1 + Math.trunc(grade)) stars[k] = starHalf;
-      } else stars[k] = starBorder;
-    } else stars[k] = starBorder;
+    if (sur === 0.5 && Math.trunc(grade) === index) return starHalf;
 
-    if (stars[k] === '') stars[k] = starBorder;
-  }
+    return starBorder;
+  });
 
   return (
     <div>
       {grade}
-      <img src={stars[0]} alt="rating" />
-      <img src={stars[1]} alt="rating" />
-      {/* eslint-disable-next-line no-magic-numbers */}
-      <img src={stars[2]} alt="rating" />
-      {/* eslint-disable-next-line no-magic-numbers */}
-      <img src={stars[3]} alt="rating" />
-      {/* eslint-disable-next-line no-magic-numbers */}
-      <img src={stars[4]} alt="rating" />
+      {stars.map((star, index) => (
+        // eslint-disable-next-line react/no-array-index-key
+        <img key={index} src={star} alt="rating" />
+      ))}
     </div>
   );
 };
