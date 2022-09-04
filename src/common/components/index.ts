@@ -12,3 +12,4 @@ export { TableHeader } from './TableHeader';
 export { SelectHeader } from './Select';
 export { TableButton } from './TableButton';
 export { MenuPageCount } from './MenuPageCount';
+export { CustomModal } from './CustomModal';
