@@ -1,7 +1,9 @@
-import { ChangeEvent, FC, useEffect, useState } from 'react';
+import React, { ChangeEvent, FC, useEffect, useState } from 'react';
 
 import { Table, TableContainer } from '@mui/material';
 import { Navigate } from 'react-router-dom';
+
+import { CustomModal } from '../../../common/components';
 
 import styles from './Packs.module.scss';
 
@@ -20,7 +22,6 @@ import {
 } from 'common';
 import { MIN_SELECT_VALUE } from 'common/constants/constants';
 import {
-  addPacks,
   getCardPacksTotalCount,
   getIsLoggedIn,
   getPackQueryParams,
@@ -42,6 +43,7 @@ export const Packs: FC = () => {
   const pageCount = useAppSelector(getPacksPageCount);
 
   const [changeSortPack, setChangeSortPack] = useState(true);
+  const [activeModal, setActiveModal] = useState(false);
 
   const getSortDatePack = (): void => {
     sortPacks(
@@ -90,8 +92,8 @@ export const Packs: FC = () => {
     dispatch(setPacksParams({ ...queryParams, page }));
   };
 
-  const onCreatePackHandle = (): void => {
-    dispatch(addPacks());
+  const handleActiveModal = (): void => {
+    setActiveModal(true);
   };
 
   useEffect(() => {
@@ -113,8 +115,12 @@ export const Packs: FC = () => {
       <TableButton
         title="Packs list"
         nameButton="Add new pack"
-        onAddClick={onCreatePackHandle}
+        onAddClick={handleActiveModal}
       />
+      <CustomModal value={activeModal}>
+        <h2>Add Pack</h2>
+        <div> Modal Window on the spot</div>
+      </CustomModal>
       <div className={styles.interaction}>
         <Search getData={getPacks} searchParam="packName" queryParams={queryParams} />
         <FilteredButton />
