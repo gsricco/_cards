@@ -10,6 +10,7 @@ import {
   RequestStatus,
   CardsType,
   handleServerNetworkError,
+  CreateCardType,
 } from 'common';
 
 const initialState = {
@@ -56,27 +57,23 @@ export const getCards = (): AppThunk => async (dispatch, getState) => {
     dispatch(setAppStatus(RequestStatus.SUCCEEDED));
   }
 };
-export const addCard = (): AppThunk => async (dispatch, getState) => {
-  const { cardsPack_id } = getState().cards.queryParams;
+export const addCard =
+  (data: CreateCardType): AppThunk =>
+  async dispatch => {
+    // const { cardsPack_id } = getState().cards.queryParams;
 
-  dispatch(setAppStatus(RequestStatus.LOADING));
+    dispatch(setAppStatus(RequestStatus.LOADING));
 
-  const newCard = {
-    cardsPack_id,
-    question: 'how are you?',
-    answer: 'good',
+    try {
+      await cardsAPI.createCard({ ...data });
+
+      dispatch(getCards());
+    } catch (error) {
+      handleServerNetworkError(error as AxiosError | Error, dispatch);
+    } finally {
+      dispatch(setAppStatus(RequestStatus.SUCCEEDED));
+    }
   };
-
-  try {
-    await cardsAPI.createCard(newCard);
-
-    dispatch(getCards());
-  } catch (error) {
-    handleServerNetworkError(error as AxiosError | Error, dispatch);
-  } finally {
-    dispatch(setAppStatus(RequestStatus.SUCCEEDED));
-  }
-};
 export const changeCard =
   (_id: string): AppThunk =>
   async dispatch => {

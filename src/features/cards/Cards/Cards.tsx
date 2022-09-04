@@ -1,7 +1,11 @@
 import { ChangeEvent, FC } from 'react';
 
-import { Table, TableContainer } from '@mui/material';
+import { Table, TableContainer, TextField } from '@mui/material';
+import FormControl from '@mui/material/FormControl';
+import { useFormik } from 'formik';
 import { Link, Navigate } from 'react-router-dom';
+
+import { CardsModal } from '../../modals';
 
 import styles from './Cards.module.scss';
 import { CardsTableBody } from './CardsTableBody';
@@ -10,6 +14,7 @@ import arrowImage from 'assets/images/Arrow.png';
 import { Paginator, Path, Search, TableButton, TableHeader } from 'common';
 import {
   addCard,
+  // addCard,
   getCards,
   getCardsPackId,
   getCardsPage,
@@ -39,8 +44,19 @@ export const Cards: FC = () => {
   };
 
   const onAddNewCardHandle = (): void => {
-    dispatch(addCard());
+    // dispatch(addCard());
   };
+
+  const formik = useFormik({
+    initialValues: {
+      question: '',
+      answer: '',
+    },
+    onSubmit: values => {
+      dispatch(addCard({ ...values, cardsPack_id }));
+      formik.resetForm();
+    },
+  });
 
   const packTitle = isMyPack ? (
     <TableButton
@@ -71,7 +87,22 @@ export const Cards: FC = () => {
       </div>
 
       {packTitle}
-
+      <CardsModal formik={formik}>
+        <FormControl variant="standard" fullWidth>
+          <TextField
+            label="Question"
+            type="text"
+            margin="dense"
+            {...formik.getFieldProps('question')}
+          />
+          <TextField
+            label="Answer"
+            type="text"
+            margin="dense"
+            {...formik.getFieldProps('answer')}
+          />
+        </FormControl>
+      </CardsModal>
       <div className={styles.interaction}>
         <Search
           width="100%"
