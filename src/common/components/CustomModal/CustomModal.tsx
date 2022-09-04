@@ -6,14 +6,13 @@ import styles from './CustomModal.module.scss';
 
 type ModalWindowProps = {
   children: ReactNode;
-  value: boolean;
 };
 
-export const CustomModal: FC<ModalWindowProps> = ({ children, value }) => {
-  const [active, setActive] = React.useState(false);
+export const CustomModal: FC<ModalWindowProps> = ({ children }) => {
+  const [active, setActive] = React.useState(true);
 
   const handleActive = (): void => {
-    setActive(value);
+    setActive(false);
   };
 
   return (

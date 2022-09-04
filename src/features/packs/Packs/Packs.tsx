@@ -4,6 +4,7 @@ import { Table, TableContainer } from '@mui/material';
 import { Navigate } from 'react-router-dom';
 
 import { CustomModal } from '../../../common/components';
+import { PacksModals } from '../../modals/PacksModals/PacksModals';
 
 import styles from './Packs.module.scss';
 
@@ -93,7 +94,7 @@ export const Packs: FC = () => {
   };
 
   const handleActiveModal = (): void => {
-    setActiveModal(true);
+    setActiveModal(!activeModal);
   };
 
   useEffect(() => {
@@ -117,10 +118,11 @@ export const Packs: FC = () => {
         nameButton="Add new pack"
         onAddClick={handleActiveModal}
       />
-      <CustomModal value={activeModal}>
-        <h2>Add Pack</h2>
-        <div> Modal Window on the spot</div>
-      </CustomModal>
+      {activeModal && (
+        <CustomModal>
+          <PacksModals nameModalsPack="Add Pack" titlePack="" />
+        </CustomModal>
+      )}
       <div className={styles.interaction}>
         <Search getData={getPacks} searchParam="packName" queryParams={queryParams} />
         <FilteredButton />
