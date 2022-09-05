@@ -21,7 +21,10 @@ export const NumberOfCards: FC = () => {
   const max = useAppSelector(getMaxPacksCount);
   const queryParams = useAppSelector(getPackQueryParams);
 
-  const [value, setValue] = useState<number[]>([0, max || MAX_NUMBER_OF_PACKS]);
+  const [value, setValue] = useState<number[]>([
+    queryParams.min || 0,
+    queryParams.max || MAX_NUMBER_OF_PACKS,
+  ]);
   const [timerId, setTimerId] = useState(0);
 
   const handleChange = (event: Event, newValue: number | number[]): (() => void) => {
