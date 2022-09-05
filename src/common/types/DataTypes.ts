@@ -20,6 +20,7 @@ export type RecoverPasswordType = {
   from: string;
   message: string;
 };
+
 export type PacksParamsType = {
   packName?: string;
   min?: number;
@@ -35,9 +36,9 @@ export type CardsPackType = {
   private?: boolean;
   _id?: string;
 };
-export type AddCardsPackType = {
-  cardsPack: CardsPackType;
-};
+export type AddCardsPackType = CardsPackType;
+export type UpdatePackType = { _id: string; name: string };
+
 export type CardsParamsType = {
   cardQuestion?: string;
   cardsPack_id: string;

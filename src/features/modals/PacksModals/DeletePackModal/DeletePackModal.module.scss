@@ -59,15 +59,6 @@
     animation: flicker 1s infinite; /* Параметры анимации */
   }
 
-  @keyframes flicker {
-    from {
-      color: red;
-    }
-    to {
-      color: black;
-    }
-  }
-
   .modalsCheckbox {
     width: 100%;
     box-sizing: border-box;

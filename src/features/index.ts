@@ -65,3 +65,4 @@ export {
   getCardsPackId,
   getCardsPageCount,
 } from './cards';
+export { DefaultModal, DeletePackModal, AddUpdatePackModal } from './modals';

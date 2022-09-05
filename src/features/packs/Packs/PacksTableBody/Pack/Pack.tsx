@@ -1,18 +1,23 @@
-import React, { FC, useState } from 'react';
+import { FC } from 'react';
 
 import { IconButton, TableCell, TableRow } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 
-import { CustomModal } from '../../../../../common/components';
-import { PacksModals } from '../../../../modals/PacksModals/PacksModals';
 import styles from '../../Packs.module.scss';
 
 import DeleteICon from 'assets/images/Delete.svg';
 import EditIcon from 'assets/images/Edit.svg';
 import TeacherIcon from 'assets/images/teacher.svg';
-import { Path } from 'common';
-import { changePacksName, getCardsQueryParams, setCardsParams } from 'features';
-import { useAppDispatch, useAppSelector } from 'hooks';
+import { Modal, Path } from 'common';
+import {
+  AddUpdatePackModal,
+  changePacksName,
+  deletePack,
+  getCardsQueryParams,
+  setCardsParams,
+  DeletePackModal,
+} from 'features';
+import { useAppDispatch, useAppSelector, useModal } from 'hooks';
 
 type Props = {
   packId: string;
@@ -25,10 +30,12 @@ type Props = {
 
 export const Pack: FC<Props> = ({ packId, name, created, updated, cards, isMyCard }) => {
   const dispatch = useAppDispatch();
-  const [activeModal, setActiveModal] = useState(false);
-  const [activeModal1, setActiveModal1] = useState(false);
 
   const navigate = useNavigate();
+
+  const { open, openEdit, openModal, closeModal, openEditModal, closeEditModal } =
+    useModal();
+
   const queryParams = useAppSelector(getCardsQueryParams);
 
   const onGetCards = (): void => {
@@ -37,24 +44,21 @@ export const Pack: FC<Props> = ({ packId, name, created, updated, cards, isMyCar
     navigate(Path.CARDS);
   };
 
-  const onDeletePackClick = (): void => {
-    setActiveModal(!activeModal);
+  const onPackNameChange = async (name: string): Promise<void> => {
+    await dispatch(changePacksName({ _id: packId, name }));
 
-    // dispatch(deletePack(packId));
-  };
-  const onEditPackClick = (): void => {
-    setActiveModal1(!activeModal1);
+    closeModal();
   };
 
-  const onPackNameChange = (): void => {
-    dispatch(changePacksName(packId));
+  const onDeletePackClick = async (): Promise<void> => {
+    await dispatch(deletePack(packId));
+
+    closeEditModal();
   };
 
   return (
     <TableRow sx={{ height: '48px' }}>
-      <TableCell className={styles.tableFirstCellBody} onClick={onEditPackClick}>
-        {name}
-      </TableCell>
+      <TableCell className={styles.tableFirstCellBody}>{name}</TableCell>
       <TableCell className={styles.tableSecondCellBody}>{cards}</TableCell>
       <TableCell className={styles.tableThirdCellBody}>{updated}</TableCell>
       <TableCell className={styles.tableFourthCellBody}>{created}</TableCell>
@@ -68,25 +72,28 @@ export const Pack: FC<Props> = ({ packId, name, created, updated, cards, isMyCar
         </IconButton>
 
         {isMyCard && (
-          <IconButton onClick={onPackNameChange}>
+          <IconButton onClick={openModal}>
             <img alt="Edit Button" src={EditIcon} />
+            <AddUpdatePackModal
+              packTitle={Modal.EDIT_PACK}
+              onClick={onPackNameChange}
+              open={open}
+              closeModal={closeModal}
+            />
           </IconButton>
         )}
 
         {isMyCard && (
-          <IconButton onClick={onDeletePackClick}>
+          <IconButton onClick={openEditModal}>
             <img alt="Delete Button" src={DeleteICon} />
+            <DeletePackModal
+              title={Modal.DELETE_PACK}
+              name={name}
+              onClick={onDeletePackClick}
+              open={openEdit}
+              closeModal={closeEditModal}
+            />
           </IconButton>
-        )}
-        {activeModal && (
-          <CustomModal>
-            <PacksModals nameModalsPack="Delete Pack" titlePack={name} />
-          </CustomModal>
-        )}
-        {activeModal1 && (
-          <CustomModal>
-            <PacksModals nameModalsPack="Edit Pack" titlePack={name} />
-          </CustomModal>
         )}
       </TableCell>
     </TableRow>

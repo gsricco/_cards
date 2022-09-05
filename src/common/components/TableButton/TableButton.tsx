@@ -19,7 +19,7 @@ type Props = {
 export const TableButton: FC<Props> = ({ title, nameButton, onAddClick, menuMyPack }) => {
   const { show, onButtonIconClick } = useShow();
 
-  const onCreatePackClick = (): void => {
+  const onOpenModalClick = (): void => {
     onAddClick();
   };
 
@@ -31,6 +31,7 @@ export const TableButton: FC<Props> = ({ title, nameButton, onAddClick, menuMyPa
         onClick={onButtonIconClick}
       >
         {title}
+
         {menuMyPack && (
           <Icon>
             <div className={styles.wrap}>
@@ -44,7 +45,7 @@ export const TableButton: FC<Props> = ({ title, nameButton, onAddClick, menuMyPa
       <Button
         className={styles.tableButton}
         variant="contained"
-        onClick={onCreatePackClick}
+        onClick={onOpenModalClick}
       >
         {nameButton}
       </Button>

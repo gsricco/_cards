@@ -1,10 +1,7 @@
-import React, { ChangeEvent, FC, useEffect, useState } from 'react';
+import { ChangeEvent, FC, useEffect, useState } from 'react';
 
-import { Table, TableContainer } from '@mui/material';
+import { IconButton, Table, TableContainer } from '@mui/material';
 import { Navigate } from 'react-router-dom';
-
-import { CustomModal } from '../../../common/components';
-import { PacksModals } from '../../modals/PacksModals/PacksModals';
 
 import styles from './Packs.module.scss';
 
@@ -14,15 +11,18 @@ import {
   MenuPageCount,
   NumberOfCards,
   Paginator,
-  Path,
   Search,
   sortPacks,
-  SortPacks,
   TableButton,
   TableHeader,
+  SortPacks,
+  Path,
+  Modal,
 } from 'common';
 import { MIN_SELECT_VALUE } from 'common/constants/constants';
 import {
+  AddUpdatePackModal,
+  addPacks,
   getCardPacksTotalCount,
   getIsLoggedIn,
   getPackQueryParams,
@@ -32,7 +32,7 @@ import {
   PacksTableBody,
   setPacksParams,
 } from 'features';
-import { useAppDispatch, useAppSelector } from 'hooks';
+import { useModal, useAppDispatch, useAppSelector } from 'hooks';
 
 export const Packs: FC = () => {
   const dispatch = useAppDispatch();
@@ -44,7 +44,7 @@ export const Packs: FC = () => {
   const pageCount = useAppSelector(getPacksPageCount);
 
   const [changeSortPack, setChangeSortPack] = useState(true);
-  const [activeModal, setActiveModal] = useState(false);
+  const { open, openModal, closeModal } = useModal();
 
   const getSortDatePack = (): void => {
     sortPacks(
@@ -76,6 +76,7 @@ export const Packs: FC = () => {
       queryParams,
     );
   };
+
   const resetFilter = (): void => {
     dispatch(
       setPacksParams({
@@ -93,8 +94,10 @@ export const Packs: FC = () => {
     dispatch(setPacksParams({ ...queryParams, page }));
   };
 
-  const handleActiveModal = (): void => {
-    setActiveModal(!activeModal);
+  const onAddNewPackClick = async (name: string): Promise<void> => {
+    await dispatch(addPacks({ name }));
+
+    closeModal();
   };
 
   useEffect(() => {
@@ -113,16 +116,20 @@ export const Packs: FC = () => {
 
   return (
     <div className={styles.container}>
-      <TableButton
-        title="Packs list"
-        nameButton="Add new pack"
-        onAddClick={handleActiveModal}
-      />
-      {activeModal && (
-        <CustomModal>
-          <PacksModals nameModalsPack="Add Pack" titlePack="" />
-        </CustomModal>
-      )}
+      <IconButton onClick={openModal}>
+        <TableButton
+          title="Packs list"
+          nameButton="Add new pack"
+          onAddClick={openModal}
+        />
+        <AddUpdatePackModal
+          packTitle={Modal.ADD_NEW_PACK}
+          onClick={onAddNewPackClick}
+          open={open}
+          closeModal={closeModal}
+        />
+      </IconButton>
+
       <div className={styles.interaction}>
         <Search getData={getPacks} searchParam="packName" queryParams={queryParams} />
         <FilteredButton />

@@ -16,7 +16,7 @@ export {
   MenuPageCount,
 } from './components';
 
-export { Path, RequestStatus, SortPacks } from './enums';
+export { Path, RequestStatus, SortPacks, Modal } from './enums';
 export { handleServerNetworkError, setNameEmail, sortPacks } from './utils';
 
 export type {
@@ -60,4 +60,5 @@ export type {
   CardsParamsType,
   CreateCardType,
   CardsType,
+  UpdatePackType,
 } from './types';

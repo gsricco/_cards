@@ -42,5 +42,6 @@ export type {
   CreateCardType,
   CardsParamsType,
   AddCardsPackType,
+  UpdatePackType,
 } from './DataTypes';
 export { Nullable } from './Nullable';

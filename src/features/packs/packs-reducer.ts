@@ -9,6 +9,8 @@ import {
   PacksActionTypes,
   PacksResponseType,
   CardsPacksType,
+  AddCardsPackType,
+  UpdatePackType,
   handleServerNetworkError,
 } from 'common';
 
@@ -60,18 +62,20 @@ export const getPacks = (): AppThunk => async (dispatch, getState) => {
     dispatch(setAppStatus(RequestStatus.SUCCEEDED));
   }
 };
-export const addPacks = (): AppThunk => async dispatch => {
-  dispatch(setAppStatus(RequestStatus.LOADING));
-  try {
-    await packsAPI.addPack();
+export const addPacks =
+  (cardsPack: AddCardsPackType): AppThunk =>
+  async dispatch => {
+    dispatch(setAppStatus(RequestStatus.LOADING));
+    try {
+      await packsAPI.addPack(cardsPack);
 
-    dispatch(getPacks());
-  } catch (error) {
-    handleServerNetworkError(error as AxiosError | Error, dispatch);
-  } finally {
-    dispatch(setAppStatus(RequestStatus.SUCCEEDED));
-  }
-};
+      dispatch(getPacks());
+    } catch (error) {
+      handleServerNetworkError(error as AxiosError | Error, dispatch);
+    } finally {
+      dispatch(setAppStatus(RequestStatus.SUCCEEDED));
+    }
+  };
 export const deletePack =
   (id: string): AppThunk =>
   async dispatch => {
@@ -88,12 +92,12 @@ export const deletePack =
     }
   };
 export const changePacksName =
-  (id: string): AppThunk =>
+  (data: UpdatePackType): AppThunk =>
   async dispatch => {
     dispatch(setAppStatus(RequestStatus.LOADING));
 
     try {
-      await packsAPI.updatePackName(id);
+      await packsAPI.updatePackName(data);
 
       dispatch(getPacks());
     } catch (error) {
