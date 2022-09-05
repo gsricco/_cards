@@ -5,16 +5,17 @@ import { IconButton, Typography } from '@mui/material';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 
+import styles from './DefaultModal.module.scss';
+
 const style = {
   position: 'absolute' as 'absolute',
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  width: 400,
+  width: '395px',
   bgcolor: 'background.paper',
-  border: '2px solid #000',
+  borderRadius: '2px',
   boxShadow: 24,
-  p: 4,
 };
 
 type PropsType = {
@@ -30,17 +31,18 @@ export const DefaultModal: FC<PropsType> = ({ children, title, open, closeModal 
       open={open}
       aria-labelledby="modal-modal-title"
       aria-describedby="modal-modal-description"
-      sx={style}
       onClose={closeModal}
     >
       <div>
-        <div>
-          <Typography>{title}</Typography>
-          <IconButton onClick={closeModal}>
-            <CloseIcon />
-          </IconButton>
-        </div>
-        <Box>{children}</Box>
+        <Box sx={style}>
+          <div className={styles.titleModals}>
+            <Typography>{title}</Typography>
+            <IconButton onClick={closeModal}>
+              <CloseIcon />
+            </IconButton>
+          </div>
+          <Box>{children}</Box>
+        </Box>
       </div>
     </Modal>
   );

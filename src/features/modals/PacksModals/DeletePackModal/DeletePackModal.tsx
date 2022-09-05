@@ -26,7 +26,8 @@ export const DeletePackModal: FC<Props> = ({
       <div className={styles.modalsContainer}>
         <div className={styles.textDelete}>
           <span>
-            Do you really want to remove <b>{name}?</b>
+            Do you really want to remove
+            <b> {name}?</b>
             <br /> All cards will be deleted.
           </span>
         </div>
@@ -45,7 +46,7 @@ export const DeletePackModal: FC<Props> = ({
             className={styles.modalsButtonDelete}
             type="submit"
             variant="contained"
-            color="warning"
+            color="primary"
             onClick={onClick}
           >
             Delete

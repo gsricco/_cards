@@ -1,9 +1,10 @@
 import { FC } from 'react';
 
-import { Checkbox, Input } from '@mui/material';
+import { Checkbox, FormControl, Input, InputLabel } from '@mui/material';
 import Button from '@mui/material/Button';
+import FormControlLabel from '@mui/material/FormControlLabel';
 
-import styles from '../DeletePackModal/DeletePackModal.module.scss';
+import styles from './AddUpdatePackModal.module.scss';
 
 import { DefaultModal } from 'features';
 import { useInput } from 'hooks';
@@ -25,22 +26,23 @@ export const AddUpdatePackModal: FC<Props> = ({
 
   const handleClick = (): void => {
     onClick(title);
-
     setTitle('');
   };
 
   return (
     <DefaultModal title={packTitle} open={open} closeModal={closeModal}>
       <div className={styles.modalsContainer}>
-        <div className={styles.textDelete}>
-          <span>
-            <b>{packTitle}</b>
-            <br />
-          </span>
-        </div>
-
-        <Input value={title} onChange={changeTitle} />
-        <Checkbox />
+        <FormControl variant="standard" className={styles.fieldsContainer}>
+          <InputLabel htmlFor="input-with-icon-adornment" className={styles.fieldsTitle}>
+            Name pack
+          </InputLabel>
+          <Input value={title} onChange={changeTitle} className={styles.fields} />
+        </FormControl>
+        <FormControlLabel
+          className={styles.modalsCheckbox}
+          control={<Checkbox defaultChecked />}
+          label="Private pack"
+        />
         <div className={styles.buttonContainer}>
           <Button
             className={styles.modalsButton}
@@ -52,7 +54,7 @@ export const AddUpdatePackModal: FC<Props> = ({
             Cancel
           </Button>
           <Button
-            className={styles.modalsButtonDelete}
+            className={styles.modalsButton}
             type="submit"
             variant="contained"
             color="primary"
