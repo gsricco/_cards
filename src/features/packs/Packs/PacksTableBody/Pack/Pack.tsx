@@ -33,7 +33,7 @@ export const Pack: FC<Props> = ({ packId, name, created, updated, cards, isMyCar
 
   const navigate = useNavigate();
 
-  const { open, openEdit, openModal, closeModal, openEditModal, closeEditModal } =
+  const { open, openEdit, openModal, openEditModal, closeModal, closeEditModal } =
     useModal();
 
   const queryParams = useAppSelector(getCardsQueryParams);
@@ -72,8 +72,10 @@ export const Pack: FC<Props> = ({ packId, name, created, updated, cards, isMyCar
         </IconButton>
 
         {isMyCard && (
-          <IconButton onClick={openModal}>
-            <img alt="Edit Button" src={EditIcon} />
+          <IconButton>
+            <div onClick={openModal} role="presentation">
+              <img alt="Edit Button" src={EditIcon} />
+            </div>
             <AddUpdatePackModal
               packTitle={Modal.EDIT_PACK}
               onClick={onPackNameChange}
@@ -84,8 +86,11 @@ export const Pack: FC<Props> = ({ packId, name, created, updated, cards, isMyCar
         )}
 
         {isMyCard && (
-          <IconButton onClick={openEditModal}>
-            <img alt="Delete Button" src={DeleteICon} />
+          <IconButton>
+            <div onClick={openEditModal} role="presentation">
+              <img alt="Delete Button" src={DeleteICon} />
+            </div>
+
             <DeletePackModal
               title={Modal.DELETE_PACK}
               name={name}

@@ -116,7 +116,7 @@ export const Packs: FC = () => {
 
   return (
     <div className={styles.container}>
-      <IconButton onClick={openModal}>
+      <IconButton>
         <TableButton
           title="Packs list"
           nameButton="Add new pack"
