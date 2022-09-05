@@ -1,6 +1,6 @@
-import { ChangeEvent, FC } from 'react';
+import React, { ChangeEvent, FC, useState } from 'react';
 
-import { Table, TableContainer, TextField } from '@mui/material';
+import { Button, Table, TableContainer, TextField } from '@mui/material';
 import FormControl from '@mui/material/FormControl';
 import { useFormik } from 'formik';
 import { Link, Navigate } from 'react-router-dom';
@@ -11,10 +11,9 @@ import styles from './Cards.module.scss';
 import { CardsTableBody } from './CardsTableBody';
 
 import arrowImage from 'assets/images/Arrow.png';
-import { Paginator, Path, Search, TableButton, TableHeader } from 'common';
+import { MenuPageCount, Paginator, Path, Search, TableButton, TableHeader } from 'common';
 import {
   addCard,
-  // addCard,
   getCards,
   getCardsPackId,
   getCardsPage,
@@ -39,12 +38,18 @@ export const Cards: FC = () => {
   const isMyPack = useAppSelector(getId) === useAppSelector(getCardUserId);
   const cardsPack_id = useAppSelector(getCardsPackId);
 
+  const [openModal, setOpenModal] = useState(false);
+  const handleOpen = (): void => setOpenModal(true);
+  const handleClose = (): void => {
+    setOpenModal(false);
+  };
+
   const onPageChange = (_: ChangeEvent<unknown>, page: number): void => {
     dispatch(setCardsParams({ ...queryParams, page, cardsPack_id }));
   };
 
   const onAddNewCardHandle = (): void => {
-    // dispatch(addCard());
+    handleOpen();
   };
 
   const formik = useFormik({
@@ -55,6 +60,7 @@ export const Cards: FC = () => {
     onSubmit: values => {
       dispatch(addCard({ ...values, cardsPack_id }));
       formik.resetForm();
+      handleClose();
     },
   });
 
@@ -87,8 +93,8 @@ export const Cards: FC = () => {
       </div>
 
       {packTitle}
-      <CardsModal formik={formik}>
-        <FormControl variant="standard" fullWidth>
+      <CardsModal handleClose={handleClose} open={openModal} formik={formik}>
+        <FormControl className={styles.form} variant="standard" fullWidth>
           <TextField
             label="Question"
             type="text"
@@ -101,6 +107,9 @@ export const Cards: FC = () => {
             margin="dense"
             {...formik.getFieldProps('answer')}
           />
+          <Button className={styles.formBtn} type="submit" variant="contained">
+            Save
+          </Button>
         </FormControl>
       </CardsModal>
       <div className={styles.interaction}>
@@ -130,6 +139,7 @@ export const Cards: FC = () => {
         page={page}
         setPage={onPageChange}
       />
+      <MenuPageCount pageCount={pageCount} />
     </div>
   );
 };

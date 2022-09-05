@@ -11,6 +11,7 @@ import {
   CardsType,
   handleServerNetworkError,
   CreateCardType,
+  UpdateCardDataType,
 } from 'common';
 
 const initialState = {
@@ -75,12 +76,12 @@ export const addCard =
     }
   };
 export const changeCard =
-  (_id: string): AppThunk =>
+  (data: UpdateCardDataType): AppThunk =>
   async dispatch => {
     dispatch(setAppStatus(RequestStatus.LOADING));
 
     try {
-      await cardsAPI.updateCard({ _id, question: 'change?', answer: 'change' });
+      await cardsAPI.updateCard({ ...data });
 
       dispatch(getCards());
     } catch (error) {
