@@ -1,6 +1,6 @@
 import { ChangeEvent, FC, useEffect, useState } from 'react';
 
-import { IconButton, Table, TableContainer } from '@mui/material';
+import { Table, TableContainer } from '@mui/material';
 import { Navigate } from 'react-router-dom';
 
 import styles from './Packs.module.scss';
@@ -9,20 +9,20 @@ import FilterRemoveBtn from 'assets/images/FilterRemoveBtn.svg';
 import {
   FilteredButton,
   MenuPageCount,
+  Modal,
   NumberOfCards,
   Paginator,
+  Path,
   Search,
   sortPacks,
+  SortPacks,
   TableButton,
   TableHeader,
-  SortPacks,
-  Path,
-  Modal,
 } from 'common';
 import { MIN_SELECT_VALUE } from 'common/constants/constants';
 import {
-  AddUpdatePackModal,
   addPacks,
+  AddUpdatePackModal,
   getCardPacksTotalCount,
   getIsLoggedIn,
   getPackQueryParams,
@@ -32,7 +32,7 @@ import {
   PacksTableBody,
   setPacksParams,
 } from 'features';
-import { useModal, useAppDispatch, useAppSelector } from 'hooks';
+import { useAppDispatch, useAppSelector, useModal } from 'hooks';
 
 export const Packs: FC = () => {
   const dispatch = useAppDispatch();
@@ -116,7 +116,7 @@ export const Packs: FC = () => {
 
   return (
     <div className={styles.container}>
-      <IconButton>
+      <div>
         <TableButton
           title="Packs list"
           nameButton="Add new pack"
@@ -128,7 +128,7 @@ export const Packs: FC = () => {
           open={open}
           closeModal={closeModal}
         />
-      </IconButton>
+      </div>
 
       <div className={styles.interaction}>
         <Search getData={getPacks} searchParam="packName" queryParams={queryParams} />
