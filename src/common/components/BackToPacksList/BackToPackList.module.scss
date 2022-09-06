@@ -1,0 +1,26 @@
+@import "src/assets/styles/sass/mixins";
+
+.arrowToBack {
+  display: flex;
+  width: 200px;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 10px 0 15px 0;
+
+  & a{
+    text-decoration: none;
+    font-family: $mainFont;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+  }
+
+  & img {
+    width: 14px;
+  }
+  & span {
+    margin: 0 10px;
+  }
+
+}
