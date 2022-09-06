@@ -8,15 +8,14 @@ import styles from '../../Packs.module.scss';
 import DeleteICon from 'assets/images/Delete.svg';
 import EditIcon from 'assets/images/Edit.svg';
 import TeacherIcon from 'assets/images/teacher.svg';
-import { Modal, Path } from 'common';
+import { Modal, Path, RemoveModal } from 'common';
 import {
   changePacksName,
   deletePack,
   getCardsQueryParams,
   setCardsParams,
-  DeletePackModal,
+  PacksModal,
 } from 'features';
-import { AddUpdatePackModal } from 'features/modals/PacksModals/AddUpdatePackModal/AddUpdatePackModal';
 import { useAppDispatch, useAppSelector, useModal } from 'hooks';
 
 type Props = {
@@ -31,12 +30,11 @@ type Props = {
 export const Pack: FC<Props> = ({ packId, name, created, updated, cards, isMyCard }) => {
   const dispatch = useAppDispatch();
 
+  const queryParams = useAppSelector(getCardsQueryParams);
   const navigate = useNavigate();
 
   const { open, openEdit, openModal, openEditModal, closeModal, closeEditModal } =
     useModal();
-
-  const queryParams = useAppSelector(getCardsQueryParams);
 
   const onGetCards = (): void => {
     dispatch(setCardsParams({ ...queryParams, cardsPack_id: packId, pageCount: 5 }));
@@ -76,7 +74,8 @@ export const Pack: FC<Props> = ({ packId, name, created, updated, cards, isMyCar
             <div onClick={openModal} role="presentation">
               <img alt="Edit Button" src={EditIcon} />
             </div>
-            <AddUpdatePackModal
+
+            <PacksModal
               packTitle={Modal.EDIT_PACK}
               onClick={onPackNameChange}
               open={open}
@@ -91,7 +90,7 @@ export const Pack: FC<Props> = ({ packId, name, created, updated, cards, isMyCar
               <img alt="Delete Button" src={DeleteICon} />
             </div>
 
-            <DeletePackModal
+            <RemoveModal
               title={Modal.DELETE_PACK}
               name={name}
               onClick={onDeletePackClick}

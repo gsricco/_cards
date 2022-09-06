@@ -14,7 +14,3 @@ export type LoginType = {
 export type NewPasswordType = {
   password: string;
 };
-export type cardsModalType = {
-  question: string;
-  answer: string;
-};

@@ -3,21 +3,6 @@
 .modalsContainer {
   @include modalsContainer();
 
-  .fieldsTitle {
-    font-weight: 400;
-    font-size: 13px;
-    line-height: 20px;
-    opacity: 0.5;
-    padding: 0 24px;
-  }
-
-  .fields {
-    font-size: 16px;
-    font-weight: 500;
-    line-height: 24px;
-    padding: 0 24px;
-  }
-
   .modalsCheckbox {
     width: 200px;
     box-sizing: border-box;
@@ -31,9 +16,5 @@
 
   .buttonContainer {
     @include buttonModals-container();
-
-    .modalsButton {
-      @include button-modals();
-    }
   }
 }

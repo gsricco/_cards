@@ -1,2 +1,2 @@
-export { DeletePackModal } from './PacksModals/DeletePackModal/DeletePackModal';
-export { CardsModal } from './CardsModals/CardsModal';
+export { CardsModal } from './CardsModal/CardsModal';
+export { PacksModal } from './PacksModal/PacksModal';

@@ -14,10 +14,21 @@ export {
   TableButton,
   NumberOfCards,
   MenuPageCount,
+  ModalButton,
+  CancelModalButton,
+  RemoveModal,
+  CustomModal,
+  ModalInput,
 } from './components';
 
 export { Path, RequestStatus, SortPacks, Modal } from './enums';
-export { handleServerNetworkError, setNameEmail, sortPacks } from './utils';
+export {
+  handleServerNetworkError,
+  setNameEmail,
+  sortPacks,
+  loadState,
+  saveState,
+} from './utils';
 
 export type {
   AppThunk,

@@ -5,8 +5,13 @@ import styles from '../Packs.module.scss';
 import FilterRemoveBtn from 'assets/images/FilterRemoveBtn.svg';
 import { FilteredButton, Modal, NumberOfCards, Search, TableButton } from 'common';
 import { MIN_SELECT_VALUE } from 'common/constants/constants';
-import { addPacks, getPacks, setPacksParams, getPackQueryParams } from 'features';
-import { AddUpdatePackModal } from 'features/modals/PacksModals/AddUpdatePackModal/AddUpdatePackModal';
+import {
+  addPacks,
+  getPacks,
+  setPacksParams,
+  getPackQueryParams,
+  PacksModal,
+} from 'features';
 import { useAppDispatch, useAppSelector, useModal } from 'hooks';
 
 export const PacksSettings: FC = () => {
@@ -42,7 +47,7 @@ export const PacksSettings: FC = () => {
           nameButton="Add new pack"
           onAddClick={openModal}
         />
-        <AddUpdatePackModal
+        <PacksModal
           packTitle={Modal.ADD_NEW_PACK}
           onClick={onAddNewPackClick}
           open={open}

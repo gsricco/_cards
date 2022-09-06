@@ -12,3 +12,7 @@ export { TableHeader } from './TableHeader';
 export { SelectHeader } from './Select';
 export { TableButton } from './TableButton';
 export { MenuPageCount } from './MenuPageCount';
+export { ModalButton, CancelModalButton } from './Buttons';
+export { CustomModal } from './CustomModal/CustomModal';
+export { RemoveModal } from './RemoveModal';
+export { ModalInput } from './ModalInput';

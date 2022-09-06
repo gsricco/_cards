@@ -1,24 +1,16 @@
-import React, { FC, useState } from 'react';
+import { FC } from 'react';
 
-import {
-  Button,
-  FormControl,
-  IconButton,
-  TableCell,
-  TableRow,
-  TextField,
-} from '@mui/material';
-import { useFormik } from 'formik';
+import { IconButton, TableCell, TableRow } from '@mui/material';
 
 import styles from '../../Cards.module.scss';
 
-import { Grade } from './Grade/Grade';
+import { Grade } from './Grade';
 
 import DeleteICon from 'assets/images/Delete.svg';
 import EditIcon from 'assets/images/Edit.svg';
-import { changeCard, deleteCard, getCardUserId, getId } from 'features';
-import { CardsModal } from 'features/modals';
-import { useAppDispatch, useAppSelector } from 'hooks';
+import { Modal, RemoveModal } from 'common';
+import { CardsModal, changeCard, deleteCard, getCardUserId, getId } from 'features';
+import { useAppDispatch, useAppSelector, useModal } from 'hooks';
 
 type Props = {
   question: string;
@@ -34,75 +26,62 @@ export const Card: FC<Props> = ({ id, question, answer, updated, grade }) => {
   const packUserId = useAppSelector(getCardUserId);
   const userId = useAppSelector(getId);
 
-  const [openModal, setOpenModal] = useState(false);
-  const [openModalDelete, setOpenModalDelete] = useState(false);
-  const handleOpen = (): void => setOpenModal(true);
-  const handleClose = (): void => setOpenModal(false);
-  const handleOpenDelete = (): void => setOpenModalDelete(true);
-  const handleCloseDelete = (): void => setOpenModalDelete(false);
+  const { open, openEdit, openModal, openEditModal, closeModal, closeEditModal } =
+    useModal();
 
-  const onDeleteCardClick = (): void => {
-    handleOpenDelete();
-    // dispatch(deleteCard(id));
+  const onDeleteCardClick = async (): Promise<void> => {
+    await dispatch(deleteCard(id));
+
+    closeEditModal();
   };
 
-  const formik = useFormik({
-    initialValues: {
-      question,
-      answer,
-    },
-    onSubmit: values => {
-      dispatch(changeCard({ ...values, _id: id }));
-      formik.resetForm();
-      handleClose();
-      handleCloseDelete();
-    },
-  });
+  const onCardChange = async (question: string, answer: string): Promise<void> => {
+    await dispatch(changeCard({ question, answer, _id: id }));
+
+    closeModal();
+  };
 
   return (
-    <>
-      <TableRow sx={{ height: '48px' }}>
-        <TableCell className={styles.tableCellBody}>{question}</TableCell>
-        <TableCell className={styles.tableCellBody}>{answer}</TableCell>
-        <TableCell className={styles.tableCellBody}>{updated}</TableCell>
-        <TableCell className={styles.tableCellBody}>
-          <Grade grade={grade} />
-        </TableCell>
-        <TableCell>
-          {packUserId === userId && (
-            <IconButton onClick={handleOpen}>
-              <img alt="Edit Button" src={EditIcon} />
-            </IconButton>
-          )}
+    <TableRow sx={{ height: '48px' }}>
+      <TableCell className={styles.tableCellBody}>{question}</TableCell>
+      <TableCell className={styles.tableCellBody}>{answer}</TableCell>
+      <TableCell className={styles.tableCellBody}>{updated}</TableCell>
+      <TableCell className={styles.tableCellBody}>
+        <Grade grade={grade} />
+      </TableCell>
 
-          {packUserId === userId && (
-            <IconButton onClick={onDeleteCardClick}>
+      <TableCell>
+        {packUserId === userId && (
+          <IconButton>
+            <div onClick={openModal} role="presentation">
+              <img alt="Edit Button" src={EditIcon} />
+            </div>
+
+            <CardsModal
+              packTitle={Modal.EDIT_CARD}
+              onClick={onCardChange}
+              open={open}
+              closeModal={closeModal}
+            />
+          </IconButton>
+        )}
+
+        {packUserId === userId && (
+          <IconButton>
+            <div onClick={openEditModal} role="presentation">
               <img alt="Delete Button" src={DeleteICon} />
-            </IconButton>
-          )}
-        </TableCell>
-      </TableRow>
-      <CardsModal handleClose={handleClose} open={openModal} formik={formik}>
-        <FormControl variant="standard" fullWidth>
-          <TextField
-            label="Question"
-            type="text"
-            margin="dense"
-            {...formik.getFieldProps('question')}
-          />
-          <TextField
-            label="Answer"
-            type="text"
-            margin="dense"
-            {...formik.getFieldProps('answer')}
-          />
-        </FormControl>
-      </CardsModal>
-      <CardsModal handleClose={handleCloseDelete} open={openModalDelete} formik={formik}>
-        <div>Do you really want to remove Card Name? All cards will be deleted.</div>
-        <Button onClick={handleCloseDelete}>Cancel</Button>
-        <Button onClick={() => dispatch(deleteCard(id))}>Delete</Button>
-      </CardsModal>
-    </>
+            </div>
+
+            <RemoveModal
+              title={Modal.DELETE_CARD}
+              name={question}
+              onClick={onDeleteCardClick}
+              open={openEdit}
+              closeModal={closeEditModal}
+            />
+          </IconButton>
+        )}
+      </TableCell>
+    </TableRow>
   );
 };

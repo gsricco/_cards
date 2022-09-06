@@ -1,20 +1,19 @@
-import { ChangeEvent, FC, useEffect } from 'react';
+import { FC, useEffect } from 'react';
 
 import { Table, TableContainer } from '@mui/material';
 import { Navigate } from 'react-router-dom';
 
 import styles from './Packs.module.scss';
-import { PacksSettings } from './PacksSettings/PacksSettings';
-import { PacksTableHeader } from './PacksTableHeader/PacksTableHeader';
+import { PacksFooter } from './PacksFooter';
+import { PacksSettings } from './PacksSettings';
+import { PacksTableHeader } from './PacksTableHeader';
 
-import { MenuPageCount, Paginator, Path } from 'common';
+import { Path } from 'common';
 import { MIN_SELECT_VALUE } from 'common/constants/constants';
 import {
-  getCardPacksTotalCount,
   getIsLoggedIn,
   getPackQueryParams,
   getPacksPageCount,
-  getPage,
   PacksTableBody,
   setPacksParams,
 } from 'features';
@@ -24,14 +23,8 @@ export const Packs: FC = () => {
   const dispatch = useAppDispatch();
 
   const isLoggedIn = useAppSelector(getIsLoggedIn);
-  const page = useAppSelector(getPage);
-  const cardPacksTotalCount = useAppSelector(getCardPacksTotalCount);
   const queryParams = useAppSelector(getPackQueryParams);
   const pageCount = useAppSelector(getPacksPageCount);
-
-  const onPageChange = (_: ChangeEvent<unknown>, page: number): void => {
-    dispatch(setPacksParams({ ...queryParams, page }));
-  };
 
   useEffect(() => {
     dispatch(
@@ -56,15 +49,7 @@ export const Packs: FC = () => {
           <PacksTableBody />
         </Table>
       </TableContainer>
-      <div className={styles.pageManagement}>
-        <Paginator
-          pageCount={pageCount}
-          totalElements={cardPacksTotalCount}
-          page={page}
-          setPage={onPageChange}
-        />
-        <MenuPageCount pageCount={pageCount} />
-      </div>
+      <PacksFooter />
     </div>
   );
 };

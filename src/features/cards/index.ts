@@ -17,3 +17,4 @@ export {
   getCardsPackId,
   getCardsPageCount,
 } from './cards-selectors';
+export { Cards } from './Cards';

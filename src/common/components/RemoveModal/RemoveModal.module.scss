@@ -1,4 +1,4 @@
-@import "src/assets/styles/sass/mixins";
+@import "../../../assets/styles/sass/mixins";
 
 .modalsContainer {
   @include modalsContainer();
@@ -17,16 +17,5 @@
 
   .buttonContainer {
     @include buttonModals-container();
-
-    .modalsButton {
-      @include button-modals();
-    }
-
-    .modalsButtonDelete {
-      @include button-modals();
-      opacity: 1;
-      background: #FF3636;
-      box-shadow: 0 4px 18px rgba(255, 54, 54, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.3);
-    }
   }
 }

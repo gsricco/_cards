@@ -64,5 +64,6 @@ export {
   getCardUserId,
   getCardsPackId,
   getCardsPageCount,
+  Cards,
 } from './cards';
-export { DeletePackModal } from './modals';
+export { CardsModal, PacksModal } from './modals';

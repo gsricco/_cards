@@ -5,10 +5,9 @@ import {
 } from 'redux';
 import thunk from 'redux-thunk';
 
-import { loadState, saveState } from '../common/utils/local-storage';
-
 import { appReducer } from './app-reducer';
 
+import { loadState, saveState } from 'common';
 import { authReducer, forgotReducer, cardsReducer, packsReducer } from 'features';
 
 const reducers = combineReducers({

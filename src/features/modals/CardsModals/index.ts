@@ -1,1 +1,0 @@
-export { CardsModal } from './CardsModal';

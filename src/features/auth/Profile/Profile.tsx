@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
 
 import { Button, Container, Grid, Paper, Typography } from '@mui/material';
 import { Link, Navigate } from 'react-router-dom';

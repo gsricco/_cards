@@ -2,10 +2,9 @@ import { FC } from 'react';
 
 import { Navigate, Route, Routes } from 'react-router-dom';
 
-import { Cards } from '../../../features/cards/Cards/Cards';
-
 import { Error404, Path } from 'common';
 import {
+  Cards,
   CheckEmail,
   ForgotPassword,
   Login,
