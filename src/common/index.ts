@@ -19,6 +19,7 @@ export {
   RemoveModal,
   CustomModal,
   ModalInput,
+  BackToPackList,
 } from './components';
 
 export { Path, RequestStatus, SortPacks, Modal } from './enums';

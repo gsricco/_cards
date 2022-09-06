@@ -16,3 +16,4 @@ export { ModalButton, CancelModalButton } from './Buttons';
 export { CustomModal } from './CustomModal/CustomModal';
 export { RemoveModal } from './RemoveModal';
 export { ModalInput } from './ModalInput';
+export { BackToPackList } from './BackToPacksList';
