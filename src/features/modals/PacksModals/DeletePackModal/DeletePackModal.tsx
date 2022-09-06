@@ -2,7 +2,7 @@ import { FC } from 'react';
 
 import Button from '@mui/material/Button';
 
-import { DefaultModal } from '../../DefaultModal';
+import { PacksModals } from '../PacksModals';
 
 import styles from './DeletePackModal.module.scss';
 
@@ -22,7 +22,7 @@ export const DeletePackModal: FC<Props> = ({
   name,
 }) => {
   return (
-    <DefaultModal title={title} open={open} closeModal={closeModal}>
+    <PacksModals title={title} open={open} closeModal={closeModal}>
       <div className={styles.modalsContainer}>
         <div className={styles.textDelete}>
           <span>
@@ -53,6 +53,6 @@ export const DeletePackModal: FC<Props> = ({
           </Button>
         </div>
       </div>
-    </DefaultModal>
+    </PacksModals>
   );
 };

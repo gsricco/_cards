@@ -4,7 +4,7 @@ import { Checkbox, FormControl, Input, InputLabel } from '@mui/material';
 import Button from '@mui/material/Button';
 import FormControlLabel from '@mui/material/FormControlLabel';
 
-import { DefaultModal } from '../../DefaultModal';
+import { PacksModals } from '../PacksModals';
 
 import styles from './AddUpdatePackModal.module.scss';
 
@@ -31,7 +31,7 @@ export const AddUpdatePackModal: FC<Props> = ({
   };
 
   return (
-    <DefaultModal title={packTitle} open={open} closeModal={closeModal}>
+    <PacksModals title={packTitle} open={open} closeModal={closeModal}>
       <div className={styles.modalsContainer}>
         <FormControl variant="standard" className={styles.fieldsContainer}>
           <InputLabel htmlFor="input-with-icon-adornment" className={styles.fieldsTitle}>
@@ -65,6 +65,6 @@ export const AddUpdatePackModal: FC<Props> = ({
           </Button>
         </div>
       </div>
-    </DefaultModal>
+    </PacksModals>
   );
 };

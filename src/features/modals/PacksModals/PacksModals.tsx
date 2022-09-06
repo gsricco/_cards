@@ -5,7 +5,7 @@ import { IconButton, Typography } from '@mui/material';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 
-import styles from './DefaultModal.module.scss';
+import styles from './PacksModals.module.scss';
 
 const style = {
   position: 'absolute' as 'absolute',
@@ -25,7 +25,7 @@ type PropsType = {
   closeModal: () => void;
 };
 
-export const DefaultModal: FC<PropsType> = ({ children, title, open, closeModal }) => {
+export const PacksModals: FC<PropsType> = ({ children, title, open, closeModal }) => {
   return (
     <Modal
       open={open}
