@@ -7,7 +7,7 @@ interface ReturnType {
 }
 
 export const useInput = (): ReturnType => {
-  const [title, setTitle] = useState('');
+  const [title, setTitle] = useState('СЮДА НАДО ИМЯ ПАКА');
 
   const changeTitle = (event: ChangeEvent<HTMLInputElement>): void => {
     setTitle(event.currentTarget.value);

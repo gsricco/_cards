@@ -10,13 +10,13 @@ import EditIcon from 'assets/images/Edit.svg';
 import TeacherIcon from 'assets/images/teacher.svg';
 import { Modal, Path } from 'common';
 import {
-  AddUpdatePackModal,
   changePacksName,
   deletePack,
   getCardsQueryParams,
   setCardsParams,
   DeletePackModal,
 } from 'features';
+import { AddUpdatePackModal } from 'features/modals/PacksModals/AddUpdatePackModal/AddUpdatePackModal';
 import { useAppDispatch, useAppSelector, useModal } from 'hooks';
 
 type Props = {

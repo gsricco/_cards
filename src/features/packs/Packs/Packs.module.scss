@@ -1,13 +1,11 @@
 @import "src/assets/styles/sass/mixins";
 
-
 .container {
   height: 590px;
   width: 1048px;
   margin: 80px auto 0 auto;
 
   .interaction {
-
     height: 100px;
     display: flex;
     flex-direction: row;
@@ -41,7 +39,6 @@
 .tableFirstCellBody, .tableFourthCellBody {
   max-width: 220px !important;
   min-width: 220px !important;
-
   word-wrap: break-word !important;
 }
 
