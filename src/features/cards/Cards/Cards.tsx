@@ -42,6 +42,7 @@ export const Cards: FC = () => {
           <CardsTableBody />
         </Table>
       </TableContainer>
+
       <CardsFooter />
     </div>
   );

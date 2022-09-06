@@ -3,6 +3,7 @@ import { FC } from 'react';
 import styles from '../Cards.module.scss';
 
 import { Modal, Search, TableButton } from 'common';
+import { EMPTY_STRING } from 'common/constants/constants';
 import {
   getCards,
   CardsModal,
@@ -54,6 +55,8 @@ export const CardsSettings: FC = () => {
           packTitle={Modal.ADD_NEW_CARD}
           onClick={onAddNewCardClick}
           open={open}
+          name={EMPTY_STRING}
+          answer={EMPTY_STRING}
         />
       </div>
 

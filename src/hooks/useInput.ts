@@ -1,17 +1,17 @@
-import { ChangeEvent, Dispatch, SetStateAction, useState } from 'react';
+import { ChangeEvent, useState } from 'react';
+
+import { EMPTY_STRING } from 'common/constants/constants';
 
 interface ReturnType {
   title: string;
   changeTitle: (event: ChangeEvent<HTMLInputElement>) => void;
-  setTitle: Dispatch<SetStateAction<string>>;
   secondTitle: string;
   changeSecondTitle: (event: ChangeEvent<HTMLInputElement>) => void;
-  setSecondTitle: Dispatch<SetStateAction<string>>;
 }
 
-export const useInput = (): ReturnType => {
-  const [title, setTitle] = useState('');
-  const [secondTitle, setSecondTitle] = useState('');
+export const useInput = (name?: string, answer?: string): ReturnType => {
+  const [title, setTitle] = useState(name || EMPTY_STRING);
+  const [secondTitle, setSecondTitle] = useState(answer || EMPTY_STRING);
 
   const changeTitle = (event: ChangeEvent<HTMLInputElement>): void => {
     setTitle(event.currentTarget.value);
@@ -26,7 +26,5 @@ export const useInput = (): ReturnType => {
     title,
     changeSecondTitle,
     changeTitle,
-    setTitle,
-    setSecondTitle,
   };
 };

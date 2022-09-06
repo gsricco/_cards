@@ -2,7 +2,7 @@ import { FC } from 'react';
 
 import styles from './CardsModal.module.scss';
 
-import { CancelModalButton, ModalButton, CustomModal, ModalInput } from 'common';
+import { CancelModalButton, CustomModal, ModalButton, ModalInput } from 'common';
 import { useInput } from 'hooks';
 
 type Props = {
@@ -10,16 +10,22 @@ type Props = {
   packTitle: string;
   open: boolean;
   closeModal: () => void;
+  name: string;
+  answer: string;
 };
 
-export const CardsModal: FC<Props> = ({ onClick, closeModal, open, packTitle }) => {
-  const { title, setTitle, changeTitle, changeSecondTitle, secondTitle, setSecondTitle } =
-    useInput();
+export const CardsModal: FC<Props> = ({
+  onClick,
+  closeModal,
+  open,
+  packTitle,
+  name,
+  answer,
+}) => {
+  const { title, secondTitle, changeTitle, changeSecondTitle } = useInput(name, answer);
 
   const handleClick = (): void => {
     onClick(title, secondTitle);
-    setTitle('');
-    setSecondTitle('');
   };
 
   return (

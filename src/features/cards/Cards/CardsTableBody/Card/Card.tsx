@@ -62,6 +62,8 @@ export const Card: FC<Props> = ({ id, question, answer, updated, grade }) => {
               onClick={onCardChange}
               open={open}
               closeModal={closeModal}
+              name={question}
+              answer={answer}
             />
           </IconButton>
         )}

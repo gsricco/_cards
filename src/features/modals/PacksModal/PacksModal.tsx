@@ -5,7 +5,7 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 
 import styles from './PacksModal.module.scss';
 
-import { CustomModal, CancelModalButton, ModalButton, ModalInput } from 'common';
+import { CancelModalButton, CustomModal, ModalButton, ModalInput } from 'common';
 import { useInput } from 'hooks';
 
 type Props = {
@@ -13,14 +13,14 @@ type Props = {
   onClick: (name: string) => void;
   open: boolean;
   closeModal: () => void;
+  name: string;
 };
 
-export const PacksModal: FC<Props> = ({ packTitle, onClick, open, closeModal }) => {
-  const { title, setTitle, changeTitle } = useInput();
+export const PacksModal: FC<Props> = ({ packTitle, onClick, open, closeModal, name }) => {
+  const { title, changeTitle } = useInput(name);
 
   const handleClick = (): void => {
     onClick(title);
-    setTitle('');
   };
 
   return (

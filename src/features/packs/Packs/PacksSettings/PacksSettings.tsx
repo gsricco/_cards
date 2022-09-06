@@ -4,7 +4,7 @@ import styles from '../Packs.module.scss';
 
 import FilterRemoveBtn from 'assets/images/FilterRemoveBtn.svg';
 import { FilteredButton, Modal, NumberOfCards, Search, TableButton } from 'common';
-import { MIN_SELECT_VALUE } from 'common/constants/constants';
+import { EMPTY_STRING, MIN_SELECT_VALUE } from 'common/constants/constants';
 import {
   addPacks,
   getPacks,
@@ -52,6 +52,7 @@ export const PacksSettings: FC = () => {
           onClick={onAddNewPackClick}
           open={open}
           closeModal={closeModal}
+          name={EMPTY_STRING}
         />
       </div>
       <div className={styles.interaction}>

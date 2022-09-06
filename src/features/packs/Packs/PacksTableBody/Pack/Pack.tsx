@@ -80,6 +80,7 @@ export const Pack: FC<Props> = ({ packId, name, created, updated, cards, isMyCar
               onClick={onPackNameChange}
               open={open}
               closeModal={closeModal}
+              name={name}
             />
           </IconButton>
         )}

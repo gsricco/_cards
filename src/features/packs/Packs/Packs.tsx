@@ -43,12 +43,14 @@ export const Packs: FC = () => {
   return (
     <div className={styles.container}>
       <PacksSettings />
+
       <TableContainer className={styles.tableContainer}>
         <Table className={styles.table} aria-label="simple table">
           <PacksTableHeader />
           <PacksTableBody />
         </Table>
       </TableContainer>
+
       <PacksFooter />
     </div>
   );
