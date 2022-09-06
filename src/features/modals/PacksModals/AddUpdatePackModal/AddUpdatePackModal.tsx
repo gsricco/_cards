@@ -4,9 +4,10 @@ import { Checkbox, FormControl, Input, InputLabel } from '@mui/material';
 import Button from '@mui/material/Button';
 import FormControlLabel from '@mui/material/FormControlLabel';
 
+import { DefaultModal } from '../../DefaultModal';
+
 import styles from './AddUpdatePackModal.module.scss';
 
-import { DefaultModal } from 'features';
 import { useInput } from 'hooks';
 
 type Props = {

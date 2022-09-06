@@ -2,9 +2,9 @@ import { FC } from 'react';
 
 import Button from '@mui/material/Button';
 
-import styles from './DeletePackModal.module.scss';
+import { DefaultModal } from '../../DefaultModal';
 
-import { DefaultModal } from 'features';
+import styles from './DeletePackModal.module.scss';
 
 type Props = {
   name: string;

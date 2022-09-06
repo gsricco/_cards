@@ -3,6 +3,8 @@ import { ChangeEvent, FC, useEffect, useState } from 'react';
 import { Table, TableContainer } from '@mui/material';
 import { Navigate } from 'react-router-dom';
 
+import { AddUpdatePackModal } from '../../modals/PacksModals/AddUpdatePackModal/AddUpdatePackModal';
+
 import styles from './Packs.module.scss';
 
 import FilterRemoveBtn from 'assets/images/FilterRemoveBtn.svg';
@@ -22,7 +24,6 @@ import {
 import { MIN_SELECT_VALUE } from 'common/constants/constants';
 import {
   addPacks,
-  AddUpdatePackModal,
   getCardPacksTotalCount,
   getIsLoggedIn,
   getPackQueryParams,
