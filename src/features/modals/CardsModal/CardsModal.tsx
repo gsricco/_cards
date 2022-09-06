@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, KeyboardEvent } from 'react';
 
 import styles from './CardsModal.module.scss';
 
@@ -28,11 +28,27 @@ export const CardsModal: FC<Props> = ({
     onClick(title, secondTitle);
   };
 
+  const onKeyDownClick = (event: KeyboardEvent<HTMLInputElement>): void => {
+    if (event.key === 'Enter') {
+      handleClick();
+    }
+  };
+
   return (
     <CustomModal title={packTitle} open={open} closeModal={closeModal}>
       <div className={styles.modalsContainer}>
-        <ModalInput title={title} changeTitle={changeTitle} label="Question" />
-        <ModalInput title={secondTitle} changeTitle={changeSecondTitle} label="Answer" />
+        <ModalInput
+          title={title}
+          changeTitle={changeTitle}
+          label="Question"
+          onKeyDown={onKeyDownClick}
+        />
+        <ModalInput
+          title={secondTitle}
+          changeTitle={changeSecondTitle}
+          label="Answer"
+          onKeyDown={onKeyDownClick}
+        />
 
         <div className={styles.buttonContainer}>
           <CancelModalButton onClick={closeModal} />

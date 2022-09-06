@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, KeyboardEvent } from 'react';
 
 import { Checkbox } from '@mui/material';
 import FormControlLabel from '@mui/material/FormControlLabel';
@@ -23,10 +23,21 @@ export const PacksModal: FC<Props> = ({ packTitle, onClick, open, closeModal, na
     onClick(title);
   };
 
+  const onKeyDownClick = (event: KeyboardEvent<HTMLInputElement>): void => {
+    if (event.key === 'Enter') {
+      handleClick();
+    }
+  };
+
   return (
     <CustomModal title={packTitle} open={open} closeModal={closeModal}>
       <div className={styles.modalsContainer}>
-        <ModalInput title={title} changeTitle={changeTitle} label="Name pack" />
+        <ModalInput
+          title={title}
+          changeTitle={changeTitle}
+          label="Name pack"
+          onKeyDown={onKeyDownClick}
+        />
         <FormControlLabel
           className={styles.modalsCheckbox}
           control={<Checkbox defaultChecked />}
