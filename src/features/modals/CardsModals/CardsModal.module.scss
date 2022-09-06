@@ -1,0 +1,19 @@
+.CardsModalContainer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 395px;
+  height: 396px;
+  background-color: #FFFF;
+  border-radius: 2px;
+  box-shadow: 1px 1px 2px rgb(0 0 0 / 20%), -1px -1px 2px rgb(0 0 0 / 20%);
+  padding: 40px;
+
+   .CardsModalHeader{
+     display: flex;
+     flex-direction: row;
+     justify-content: space-between;
+     align-items: center;
+   }
+}
