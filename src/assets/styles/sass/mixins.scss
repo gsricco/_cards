@@ -101,7 +101,7 @@
   width: 100%;
   justify-content: space-between;
   box-sizing: border-box;
-  padding: 0 24px 40px;
+  //padding: 0 24px 0px;
 }
 @mixin button-modals() {
   width: 127px !important;
@@ -122,6 +122,7 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
+  padding: 30px 24px 50px 24px;
 
   .fieldsContainer {
     display: flex;
