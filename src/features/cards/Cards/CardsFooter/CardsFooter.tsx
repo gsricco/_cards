@@ -1,13 +1,13 @@
 import { ChangeEvent, FC } from 'react';
 
-import { MenuPageCount, Paginator } from 'common';
+import { Paginator } from 'common';
 import {
-  setCardsParams,
   getCardsPackId,
   getCardsPage,
   getCardsPageCount,
   getCardsQueryParams,
   getCardsTotalCount,
+  setCardsParams,
 } from 'features';
 import { useAppDispatch, useAppSelector } from 'hooks';
 
@@ -25,14 +25,11 @@ export const CardsFooter: FC = () => {
   };
 
   return (
-    <>
-      <Paginator
-        pageCount={pageCount}
-        totalElements={cardTotalCount}
-        page={page}
-        setPage={onPageChange}
-      />
-      <MenuPageCount pageCount={pageCount} />
-    </>
+    <Paginator
+      pageCount={pageCount}
+      totalElements={cardTotalCount}
+      page={page}
+      setPage={onPageChange}
+    />
   );
 };

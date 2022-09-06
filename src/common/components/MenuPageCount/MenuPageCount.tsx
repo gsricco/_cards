@@ -7,17 +7,18 @@ import { getPackQueryParams, setPacksParams } from 'features';
 import { useAppDispatch, useAppSelector } from 'hooks';
 
 type Props = {
-  pageCount: number;
+  pageCount?: number;
 };
 
 export const MenuPageCount: FC<Props> = ({ pageCount }) => {
   const dispatch = useAppDispatch();
-  const queryParams = useAppSelector(getPackQueryParams);
+
+  const packQueryParams = useAppSelector(getPackQueryParams);
 
   const changeCardsSelectHandler = (event: SelectChangeEvent): void => {
     const pageCount = +event.target.value;
 
-    dispatch(setPacksParams({ ...queryParams, pageCount }));
+    dispatch(setPacksParams({ ...packQueryParams, pageCount }));
   };
 
   return (
