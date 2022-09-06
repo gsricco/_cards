@@ -36,7 +36,7 @@ export const TableButton: FC<Props> = ({ title, nameButton, onAddClick, menuMyPa
           <Icon>
             <div className={styles.wrap}>
               <img src={iconMenuMyPack} alt="Icon" />
-              {show && <SelectMyCards stylesRules={styles.customSelect} />}
+              {show && <SelectMyCards title={title} stylesRules={styles.customSelect} />}
             </div>
           </Icon>
         )}

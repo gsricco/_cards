@@ -3,6 +3,7 @@
 .modalsContainer {
   @include modalsContainer();
 
+
   .modalsCheckbox {
     width: 200px;
     box-sizing: border-box;
@@ -16,5 +17,6 @@
 
   .buttonContainer {
     @include buttonModals-container();
+    margin-top: 30px;
   }
 }
