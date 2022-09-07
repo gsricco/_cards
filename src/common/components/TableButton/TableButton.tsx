@@ -8,9 +8,9 @@ import {
   deletePack,
   getCardsPackId,
   PacksModal,
+  RemoveModal,
 } from '../../../features';
 import { Modal } from '../../enums';
-import { RemoveModal } from '../RemoveModal';
 import { SelectMyCards } from '../Select/SelectMyCards';
 
 import styles from './TableButton.module.scss';

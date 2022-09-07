@@ -12,7 +12,7 @@ import {
   getPackQueryParams,
   PacksModal,
 } from 'features';
-import { useAppDispatch, useAppSelector, useModal } from 'hooks';
+import { useAppDispatch, useModal, useAppSelector } from 'hooks';
 
 export const PacksSettings: FC = () => {
   const dispatch = useAppDispatch();

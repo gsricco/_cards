@@ -1,15 +1,14 @@
 import { FC } from 'react';
 
 import { Button, Container, Grid, Paper, Typography } from '@mui/material';
-import { Link, Navigate } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 
 import styles from './Profile.module.scss';
 
-import arrowImage from 'assets/images/Arrow.png';
 import iconLogout from 'assets/images/logout.svg';
 import photoIconImage from 'assets/images/PhotoIconPhotos.png';
 import profileUserImage from 'assets/images/UserAvatar.png';
-import { EditableSpan, Path } from 'common';
+import { EditableSpan, Path, BackToPackList } from 'common';
 import { getEmail, getIsLoggedIn, logout } from 'features';
 import { useAppDispatch, useAppSelector } from 'hooks';
 
@@ -29,12 +28,8 @@ export const Profile: FC = () => {
 
   return (
     <Container maxWidth="md" className={styles.container}>
-      <div className={styles.profileReturnBack}>
-        <img alt="arrow" src={arrowImage} className={styles.profileReturnBackImg} />
-        <Link to={Path.PACKS} className={styles.loginForgotPassword}>
-          <span className={styles.profileReturnBackText}> Back to Packs List</span>
-        </Link>
-      </div>
+      <BackToPackList />
+
       <Grid item className={styles.gridItem}>
         <Paper className={styles.gridItemPaper}>
           <Typography className={styles.gridItemHeader} variant="h2" component="h2">

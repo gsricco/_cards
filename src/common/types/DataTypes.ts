@@ -65,3 +65,8 @@ export type UpdateCardDataType = {
   question?: string;
   comments?: string;
 };
+
+export type UpdateGradeDataType = {
+  grade: number;
+  card_id: string;
+};

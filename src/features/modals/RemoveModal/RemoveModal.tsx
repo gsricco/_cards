@@ -1,8 +1,10 @@
 import { FC } from 'react';
 
+import { CustomModal } from '../CustomModal';
+
 import styles from './RemoveModal.module.scss';
 
-import { CancelModalButton, ModalButton, CustomModal } from 'common';
+import { CancelModalButton, ModalButton } from 'common';
 
 type Props = {
   name: string;

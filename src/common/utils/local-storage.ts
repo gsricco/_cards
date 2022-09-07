@@ -1,6 +1,6 @@
 import { AppRootState } from 'common';
 
-export const loadState = (): undefined => {
+export const loadState = (): any => {
   try {
     const serializedState = localStorage.getItem('state');
 

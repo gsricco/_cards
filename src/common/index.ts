@@ -16,9 +16,8 @@ export {
   MenuPageCount,
   ModalButton,
   CancelModalButton,
-  RemoveModal,
-  CustomModal,
   ModalInput,
+  BackToPackList,
 } from './components';
 
 export { Path, RequestStatus, SortPacks, Modal } from './enums';

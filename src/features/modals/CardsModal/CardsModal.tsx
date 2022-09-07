@@ -1,8 +1,10 @@
 import { FC, KeyboardEvent } from 'react';
 
+import { CustomModal } from '../CustomModal';
+
 import styles from './CardsModal.module.scss';
 
-import { CancelModalButton, CustomModal, ModalButton, ModalInput } from 'common';
+import { CancelModalButton, ModalButton, ModalInput } from 'common';
 import { useInput } from 'hooks';
 
 type Props = {

@@ -66,4 +66,4 @@ export {
   getCardsPageCount,
   Cards,
 } from './cards';
-export { CardsModal, PacksModal } from './modals';
+export { CardsModal, PacksModal, RemoveModal, CustomModal } from './modals';

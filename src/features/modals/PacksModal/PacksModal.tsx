@@ -3,9 +3,11 @@ import { FC, KeyboardEvent } from 'react';
 import { Checkbox } from '@mui/material';
 import FormControlLabel from '@mui/material/FormControlLabel';
 
+import { CustomModal } from '../CustomModal';
+
 import styles from './PacksModal.module.scss';
 
-import { CancelModalButton, CustomModal, ModalButton, ModalInput } from 'common';
+import { CancelModalButton, ModalButton, ModalInput } from 'common';
 import { useInput } from 'hooks';
 
 type Props = {
