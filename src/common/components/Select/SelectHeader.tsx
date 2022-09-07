@@ -15,9 +15,10 @@ import { useAppDispatch } from 'hooks';
 
 type SelectType = {
   stylesRules?: string;
+  onCloseSelect: () => void;
 };
 
-export const SelectHeader: FC<SelectType> = ({ stylesRules }) => {
+export const SelectHeader: FC<SelectType> = ({ stylesRules, onCloseSelect }) => {
   const dispatch = useAppDispatch();
 
   const navigate = useNavigate();
@@ -30,7 +31,10 @@ export const SelectHeader: FC<SelectType> = ({ stylesRules }) => {
   };
 
   return (
-    <Paper className={`${styles.menuContainer} ${stylesRules}`}>
+    <Paper
+      className={`${styles.menuContainer} ${stylesRules}`}
+      onMouseLeave={onCloseSelect}
+    >
       <MenuList>
         <MenuItem onClick={onHandlerClick}>
           <img src={iconProfile} alt="icon" />
