@@ -1,0 +1,54 @@
+@import "../../assets/styles/sass/mixins";
+
+.container {
+  height: 590px;
+  width: 1048px;
+  margin: 80px auto 0 auto;
+
+  .learnPage {
+
+    .learnPackName {
+      font-family: $mainFont;
+      font-style: normal;
+      font-weight: 600;
+      font-size: 22px;
+      line-height: 27px;
+      box-sizing: border-box;
+      padding: 10px;
+    }
+
+    .tableContainer {
+      @include table-container(439px);
+
+      .learnQuestion {
+        @include learnAnswerQuestion();
+      }
+
+      .numberAttempts {
+        font-family: $mainFont;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 24px;
+        opacity: 0.5;
+        text-align: left;
+        box-sizing: border-box;
+        padding: 0 0 30px 35px;
+      }
+
+      .showButton {
+        @include button-modals();
+        width: 373px !important;
+        text-transform: none;
+        box-sizing: border-box;
+        margin-bottom: 50px;
+      }
+
+      .learnAnswer {
+        @include learnAnswerQuestion();
+        padding: 0 0 10px 35px;
+
+      }
+    }
+  }
+}

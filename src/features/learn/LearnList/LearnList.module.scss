@@ -1,0 +1,21 @@
+@import "../../../assets/styles/sass/mixins";
+
+.learnList {
+  display: flex;
+  flex-direction: column;
+  font-family: $mainFont;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
+  text-align: left;
+  padding: 10px 0 35px 35px;
+
+  .learnListRadio {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: start;
+    margin-top: 10px;
+  }
+}

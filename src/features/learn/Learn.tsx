@@ -5,6 +5,7 @@ import Button from '@mui/material/Button';
 import { getPackCards } from '../cards';
 import { setLearnGrade } from '../cards/cards-reducer';
 
+import styles from './Learn.module.scss';
 import { LearnList } from './LearnList/LearnList';
 
 import { BackToPackList, CardsType } from 'common';
@@ -38,25 +39,50 @@ export const Learn: FC = () => {
   };
 
   return (
-    <div style={{ marginTop: '150px' }}>
+    <div className={styles.container}>
       <BackToPackList />
-      <div>
-        LearnPage
-        <div>{card.question}</div>
-        <div>
-          {!isChecked && <Button onClick={() => setIsChecked(true)}>check</Button>}
+      <div className={styles.learnPage}>
+        <div className={styles.learnPackName}>Learn “Pack Name”</div>
+        <div className={styles.tableContainer}>
+          <div className={styles.learnQuestion}>
+            <b>Question: </b>
+            {card.question}
+          </div>
+          <div className={styles.numberAttempts}>
+            Количество попыток ответов на вопрос: <b>10</b>
+          </div>
+          <div>
+            {!isChecked && (
+              <Button
+                className={styles.showButton}
+                onClick={() => setIsChecked(true)}
+                variant="contained"
+              >
+                Show answer
+              </Button>
+            )}
+          </div>
+          {isChecked && (
+            <>
+              <div className={styles.learnAnswer}>
+                <b>Answer: </b>
+                {card.answer}
+              </div>
+
+              <LearnList setGrade={setGrade} />
+
+              <div>
+                <Button
+                  className={styles.showButton}
+                  onClick={onNext}
+                  variant="contained"
+                >
+                  Next
+                </Button>
+              </div>
+            </>
+          )}
         </div>
-        {isChecked && (
-          <>
-            <div>{card.answer}</div>
-
-            <LearnList setGrade={setGrade} />
-
-            <div>
-              <Button onClick={onNext}>next</Button>
-            </div>
-          </>
-        )}
       </div>
     </div>
   );
