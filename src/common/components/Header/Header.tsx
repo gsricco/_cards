@@ -45,7 +45,12 @@ export const Header: FC = () => {
             <span className={styles.headerUserName}>{name}</span>
             <div className={styles.wrap}>
               <img className={styles.headerUserAvatar} src={UserAvatar} alt="logo" />
-              {show && <SelectHeader stylesRules={styles.customSelect} />}
+              {show && (
+                <SelectHeader
+                  stylesRules={styles.customSelect}
+                  onCloseSelect={onButtonIconClick}
+                />
+              )}
             </div>
           </Typography>
         ) : (
