@@ -3,19 +3,19 @@ import { FC } from 'react';
 import { Icon, Typography } from '@mui/material';
 import Button from '@mui/material/Button';
 
+import { SelectMyCards } from '../Select/SelectMyCards';
+
+import styles from './TableButton.module.scss';
+
+import iconMenuMyPack from 'assets/images/menuMyPack.svg';
+import { Modal } from 'common';
 import {
   changePacksName,
   deletePack,
   getCardsPackId,
   PacksModal,
   RemoveModal,
-} from '../../../features';
-import { Modal } from '../../enums';
-import { SelectMyCards } from '../Select/SelectMyCards';
-
-import styles from './TableButton.module.scss';
-
-import iconMenuMyPack from 'assets/images/menuMyPack.svg';
+} from 'features';
 import { useAppDispatch, useAppSelector, useModal, useShow } from 'hooks';
 
 type Props = {
@@ -25,9 +25,11 @@ type Props = {
   menuMyPack?: boolean;
 };
 export const TableButton: FC<Props> = ({ title, nameButton, onAddClick, menuMyPack }) => {
+  const dispatch = useAppDispatch();
+
   const { show, onButtonIconClick } = useShow();
   const { open, openEdit, closeModal, closeEditModal } = useModal();
-  const dispatch = useAppDispatch();
+
   const packId = useAppSelector(getCardsPackId);
 
   const onOpenModalClick = (): void => {
@@ -59,7 +61,7 @@ export const TableButton: FC<Props> = ({ title, nameButton, onAddClick, menuMyPa
           <Icon>
             <div className={styles.wrap}>
               <img src={iconMenuMyPack} alt="Icon" />
-              {show && <SelectMyCards stylesRules={styles.customSelect} />}
+              {show && <SelectMyCards title={title} stylesRules={styles.customSelect} />}
             </div>
           </Icon>
         )}

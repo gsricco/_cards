@@ -22,12 +22,13 @@ import { useAppDispatch, useAppSelector, useModal } from 'hooks';
 type SelectType = {
   stylesRules?: string;
   title: string;
-  onCloseSelect: () => void;
 };
 
-export const SelectMyCards: FC<SelectType> = ({ stylesRules, title, onCloseSelect }) => {
+export const SelectMyCards: FC<SelectType> = ({ stylesRules, title }) => {
   const dispatch = useAppDispatch();
+
   const packId = useAppSelector(getCardsPackId);
+
   const { open, openEdit, openModal, openEditModal, closeModal, closeEditModal } =
     useModal();
 
@@ -44,10 +45,7 @@ export const SelectMyCards: FC<SelectType> = ({ stylesRules, title, onCloseSelec
 
   return (
     <>
-      <Paper
-        className={`${styles.menuContainer} ${stylesRules}`}
-        onMouseLeave={onCloseSelect}
-      >
+      <Paper className={`${styles.menuContainer} ${stylesRules}`}>
         <MenuList>
           <MenuItem>
             <div onClick={openModal} role="presentation">
