@@ -13,9 +13,9 @@ import {
   changePacksName,
   deletePack,
   getCardsQueryParams,
-  setCardsParams,
   PacksModal,
   RemoveModal,
+  setCardsParams,
 } from 'features';
 import { useAppDispatch, useAppSelector, useModal } from 'hooks';
 
@@ -55,15 +55,32 @@ export const Pack: FC<Props> = ({ packId, name, created, updated, cards, isMyCar
     closeEditModal();
   };
 
+  const onStartLearnClick = (): void => {
+    navigate(Path.LEARN);
+  };
+
   return (
     <TableRow sx={{ height: '48px' }}>
-      <TableCell className={styles.tableFirstCellBody}>{name}</TableCell>
+      <TableCell className={styles.tableFirstCellBody}>
+        <div onClick={onGetCards} role="presentation">
+          {name}
+        </div>
+        <PacksModal
+          packTitle={Modal.EDIT_PACK}
+          onClick={onPackNameChange}
+          open={open}
+          closeModal={closeModal}
+          name={name}
+        />
+      </TableCell>
+
       <TableCell className={styles.tableSecondCellBody}>{cards}</TableCell>
       <TableCell className={styles.tableThirdCellBody}>{updated}</TableCell>
       <TableCell className={styles.tableFourthCellBody}>{created}</TableCell>
+
       <TableCell sx={{ p: '5px 16px', width: '130px' }}>
         <IconButton
-          onClick={onGetCards}
+          onClick={onStartLearnClick}
           className={styles.teachIcon}
           disabled={cards === 0 && !isMyCard}
         >

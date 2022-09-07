@@ -1,6 +1,7 @@
 import { AxiosError } from 'axios';
 
 import { cardsAPI } from 'api';
+import { gradeAPI } from 'api/gradeAPI';
 import { setAppStatus } from 'app';
 import {
   CardsResponseType,
@@ -9,10 +10,11 @@ import {
   AppThunk,
   RequestStatus,
   CardsType,
-  handleServerNetworkError,
   CreateCardType,
   UpdateCardDataType,
+  handleServerNetworkError,
 } from 'common';
+import { UpdateGradeDataType } from 'common/types/DataTypes';
 
 const initialState = {
   cards: [] as CardsType[],
@@ -34,6 +36,15 @@ export const cardsReducer = (
     case 'CARDS/SET-CARDS':
     case 'CARDS/SET-CARDS-PARAMS':
       return { ...state, ...action.payload };
+    case 'CARDS/SET-LEARN-GRADE':
+      return {
+        ...state,
+        cards: state.cards.map(card =>
+          card._id === action.payload.card_id
+            ? { ...card, grade: action.payload.grade }
+            : card,
+        ),
+      };
     default:
       return state;
   }
@@ -43,6 +54,8 @@ export const setCards = (data: CardsResponseType) =>
   ({ type: 'CARDS/SET-CARDS', payload: data } as const);
 export const setCardsParams = (params: CardsParamsType) =>
   ({ type: 'CARDS/SET-CARDS-PARAMS', payload: { queryParams: params } } as const);
+export const updateCardGrade = (data: UpdateGradeDataType) =>
+  ({ type: 'CARDS/SET-LEARN-GRADE', payload: data } as const);
 
 export const getCards = (): AppThunk => async (dispatch, getState) => {
   const params = getState().cards.queryParams;
@@ -95,6 +108,21 @@ export const deleteCard =
 
     try {
       await cardsAPI.removeCard(id);
+
+      dispatch(getCards());
+    } catch (error) {
+      handleServerNetworkError(error as AxiosError | Error, dispatch);
+    } finally {
+      dispatch(setAppStatus(RequestStatus.SUCCEEDED));
+    }
+  };
+export const setLearnGrade =
+  (data: UpdateGradeDataType): AppThunk =>
+  async dispatch => {
+    dispatch(setAppStatus(RequestStatus.LOADING));
+
+    try {
+      await gradeAPI.updateGrade(data);
 
       dispatch(getCards());
     } catch (error) {

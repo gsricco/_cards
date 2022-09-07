@@ -7,7 +7,6 @@ import thunk from 'redux-thunk';
 
 import { appReducer } from './app-reducer';
 
-import { loadState, saveState } from 'common';
 import { authReducer, forgotReducer, cardsReducer, packsReducer } from 'features';
 
 const reducers = combineReducers({
@@ -18,12 +17,7 @@ const reducers = combineReducers({
   cards: cardsReducer,
 });
 
-const persistedState = loadState();
-
-export const store = createStore(reducers, persistedState, applyMiddleware(thunk));
-store.subscribe(() => {
-  saveState(store.getState());
-});
+export const store = createStore(reducers, applyMiddleware(thunk));
 
 // @ts-ignore
 window.store = store;

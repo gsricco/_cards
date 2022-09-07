@@ -13,14 +13,16 @@ import { useShow } from 'hooks';
 type Props = {
   title: string;
   nameButton: string;
-  onAddClick: () => void;
+  onAddClick?: () => void;
   menuMyPack?: boolean;
 };
 export const TableButton: FC<Props> = ({ title, nameButton, onAddClick, menuMyPack }) => {
   const { show, onButtonIconClick } = useShow();
 
   const onOpenModalClick = (): void => {
-    onAddClick();
+    if (onAddClick) {
+      onAddClick();
+    }
   };
 
   return (

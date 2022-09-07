@@ -13,6 +13,7 @@ import {
   Profile,
   Registration,
 } from 'features';
+import { Learn } from 'features/learn/Learn';
 
 export const RoutesPage: FC = () => {
   const routes = [
@@ -25,6 +26,7 @@ export const RoutesPage: FC = () => {
     { path: Path.ERROR_404, component: <Error404 /> },
     { path: Path.PACKS, component: <Packs /> },
     { path: Path.CARDS, component: <Cards /> },
+    { path: Path.LEARN, component: <Learn /> },
   ];
 
   return (

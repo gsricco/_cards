@@ -38,11 +38,7 @@ export const CardsSettings: FC = () => {
       menuMyPack
     />
   ) : (
-    <TableButton
-      title="Friend’s Pack"
-      nameButton="Learn to pack"
-      onAddClick={openModal}
-    />
+    <TableButton title="Friend’s Pack" nameButton="Learn to pack" />
   );
 
   return (
