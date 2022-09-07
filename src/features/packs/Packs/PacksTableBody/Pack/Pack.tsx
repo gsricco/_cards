@@ -8,13 +8,14 @@ import styles from '../../Packs.module.scss';
 import DeleteICon from 'assets/images/Delete.svg';
 import EditIcon from 'assets/images/Edit.svg';
 import TeacherIcon from 'assets/images/teacher.svg';
-import { Modal, Path, RemoveModal } from 'common';
+import { Modal, Path } from 'common';
 import {
   changePacksName,
   deletePack,
   getCardsQueryParams,
   setCardsParams,
   PacksModal,
+  RemoveModal,
 } from 'features';
 import { useAppDispatch, useAppSelector, useModal } from 'hooks';
 

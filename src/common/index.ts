@@ -16,8 +16,6 @@ export {
   MenuPageCount,
   ModalButton,
   CancelModalButton,
-  RemoveModal,
-  CustomModal,
   ModalInput,
   BackToPackList,
 } from './components';

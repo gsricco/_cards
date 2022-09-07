@@ -4,21 +4,20 @@ import MenuItem from '@mui/material/MenuItem';
 import MenuList from '@mui/material/MenuList';
 import Paper from '@mui/material/Paper';
 
-import {
-  changePacksName,
-  deletePack,
-  getCardsPackId,
-  PacksModal,
-} from '../../../features';
-import { useAppDispatch, useAppSelector, useModal } from '../../../hooks';
-import { RemoveModal } from '../RemoveModal';
-
 import styles from './Select.module.scss';
 
 import iconDelete from 'assets/images/Delete.svg';
 import iconEdit from 'assets/images/Edit.svg';
 import iconLearn from 'assets/images/teacher.svg';
-import { Modal } from 'common/enums';
+import { Modal } from 'common';
+import {
+  changePacksName,
+  deletePack,
+  getCardsPackId,
+  PacksModal,
+  RemoveModal,
+} from 'features';
+import { useAppDispatch, useAppSelector, useModal } from 'hooks';
 
 type SelectType = {
   stylesRules?: string;

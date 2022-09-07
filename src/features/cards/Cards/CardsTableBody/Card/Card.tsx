@@ -8,8 +8,15 @@ import { Grade } from './Grade';
 
 import DeleteICon from 'assets/images/Delete.svg';
 import EditIcon from 'assets/images/Edit.svg';
-import { Modal, RemoveModal } from 'common';
-import { CardsModal, changeCard, deleteCard, getCardUserId, getId } from 'features';
+import { Modal } from 'common';
+import {
+  CardsModal,
+  changeCard,
+  deleteCard,
+  getCardUserId,
+  getId,
+  RemoveModal,
+} from 'features';
 import { useAppDispatch, useAppSelector, useModal } from 'hooks';
 
 type Props = {
