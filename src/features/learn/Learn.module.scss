@@ -8,6 +8,8 @@
   .learnPage {
 
     .learnPackName {
+      width: 439px;
+      margin: auto;
       font-family: $mainFont;
       font-style: normal;
       font-weight: 600;
@@ -15,6 +17,7 @@
       line-height: 27px;
       box-sizing: border-box;
       padding: 10px;
+      word-wrap: break-word !important;
     }
 
     .tableContainer {

@@ -4,6 +4,7 @@ import Button from '@mui/material/Button';
 
 import { getPackCards } from '../cards';
 import { setLearnGrade } from '../cards/cards-reducer';
+import { getCardPacks } from '../packs';
 
 import styles from './Learn.module.scss';
 import { LearnList } from './LearnList/LearnList';
@@ -16,10 +17,12 @@ export const Learn: FC = () => {
   const dispatch = useAppDispatch();
 
   const cards = useAppSelector(getPackCards);
+  const packs = useAppSelector(getCardPacks);
 
   const [isChecked, setIsChecked] = useState(false);
   const [grade, setGrade] = useState(1);
   const [card, setCard] = useState<CardsType>(getCard(cards));
+  const { name } = packs.filter(p => p._id === card.cardsPack_id)[0];
 
   const onNext = (): void => {
     setIsChecked(false);
@@ -34,7 +37,7 @@ export const Learn: FC = () => {
     <div className={styles.container}>
       <BackToPackList />
       <div className={styles.learnPage}>
-        <div className={styles.learnPackName}>Learn “Pack Name”</div>
+        <div className={styles.learnPackName}>Learn “{name}”</div>
         <div className={styles.tableContainer}>
           <div className={styles.learnQuestion}>
             <b>Question: </b>
