@@ -7,13 +7,13 @@ import styles from '../Cards.module.scss';
 import { Modal, Path, Search, TableButton } from 'common';
 import { EMPTY_STRING } from 'common/constants/constants';
 import {
-  getCards,
-  CardsModal,
-  getId,
-  getCardUserId,
-  getCardsQueryParams,
   addCard,
+  CardsModal,
+  getCards,
   getCardsPackId,
+  getCardsQueryParams,
+  getCardUserId,
+  getId,
 } from 'features';
 import { useAppDispatch, useAppSelector, useModal } from 'hooks';
 

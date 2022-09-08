@@ -31,7 +31,7 @@ export const Learn: FC = () => {
 
   const onNext = (): void => {
     setIsChecked(false);
-    dispatch(setLearnGrade({ card_id: card._id, grade }));
+    dispatch(setLearnGrade({ card_id: card?._id, grade }));
 
     if (cards.length > 0) {
       setCard(getCard(cards));
@@ -46,7 +46,7 @@ export const Learn: FC = () => {
         <div className={styles.tableContainer}>
           <div className={styles.learnQuestion}>
             <b>Question: </b>
-            {card.question}
+            <span>{card.question}</span>
           </div>
           <div className={styles.numberAttempts}>
             Количество попыток ответов на вопрос: <b>10</b>
