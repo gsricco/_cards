@@ -7,7 +7,7 @@ import styles from './RemoveModal.module.scss';
 import { CancelModalButton, ModalButton } from 'common';
 
 type Props = {
-  name: string;
+  name: string | undefined;
   title: string;
   onClick: () => void;
   open: boolean;

@@ -15,7 +15,7 @@ type Props = {
   onClick: (name: string) => void;
   open: boolean;
   closeModal: () => void;
-  name: string;
+  name: string | undefined;
 };
 
 export const PacksModal: FC<Props> = ({ packTitle, onClick, open, closeModal, name }) => {

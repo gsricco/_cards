@@ -1,6 +1,6 @@
 import { ChangeEvent, FC } from 'react';
 
-import { Paginator } from 'common';
+import { MenuPageCount, Paginator } from 'common';
 import {
   getCardsPackId,
   getCardsPage,
@@ -25,11 +25,14 @@ export const CardsFooter: FC = () => {
   };
 
   return (
-    <Paginator
-      pageCount={pageCount}
-      totalElements={cardTotalCount}
-      page={page}
-      setPage={onPageChange}
-    />
+    <div style={{ display: 'flex', paddingBottom: '20px' }}>
+      <Paginator
+        pageCount={pageCount}
+        totalElements={cardTotalCount}
+        page={page}
+        setPage={onPageChange}
+      />
+      <MenuPageCount pageCount={pageCount} />
+    </div>
   );
 };

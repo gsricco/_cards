@@ -12,6 +12,7 @@ import { Modal, Path } from 'common';
 import {
   changePacksName,
   deletePack,
+  getCards,
   getCardsQueryParams,
   PacksModal,
   RemoveModal,
@@ -45,7 +46,6 @@ export const Pack: FC<Props> = ({ packId, name, created, updated, cards, isMyCar
         pageCount: 5,
       }),
     );
-
     navigate(`${Path.CARDS}/${packId}`);
   };
 
@@ -61,7 +61,15 @@ export const Pack: FC<Props> = ({ packId, name, created, updated, cards, isMyCar
     closeEditModal();
   };
 
-  const onStartLearnClick = (): void => {
+  const onStartLearnClick = async (): Promise<void> => {
+    dispatch(
+      setCardsParams({
+        ...queryParams,
+        cardsPack_id: packId,
+        pageCount: 5,
+      }),
+    );
+    await dispatch(getCards());
     navigate(`${Path.LEARN}/${packId}`);
   };
 
