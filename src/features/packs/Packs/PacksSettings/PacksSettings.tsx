@@ -4,15 +4,9 @@ import styles from '../Packs.module.scss';
 
 import FilterRemoveBtn from 'assets/images/FilterRemoveBtn.svg';
 import { FilteredButton, Modal, NumberOfCards, Search, TableButton } from 'common';
-import { EMPTY_STRING, MIN_SELECT_VALUE } from 'common/constants/constants';
-import {
-  addPacks,
-  getPacks,
-  setPacksParams,
-  getPackQueryParams,
-  PacksModal,
-} from 'features';
-import { useAppDispatch, useModal, useAppSelector } from 'hooks';
+import { EMPTY_STRING } from 'common/constants/constants';
+import { addPacks, getPackQueryParams, getPacks, PacksModal } from 'features';
+import { useAppDispatch, useAppSelector, useModal } from 'hooks';
 
 export const PacksSettings: FC = () => {
   const dispatch = useAppDispatch();
@@ -27,16 +21,7 @@ export const PacksSettings: FC = () => {
   };
 
   const resetFilter = (): void => {
-    dispatch(
-      setPacksParams({
-        sortPacks: undefined,
-        min: 0,
-        max: 110,
-        page: undefined,
-        packName: undefined,
-        pageCount: MIN_SELECT_VALUE,
-      }),
-    );
+    window.location.reload();
   };
 
   return (

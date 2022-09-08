@@ -1,8 +1,10 @@
 import { FC } from 'react';
 
+import { useNavigate } from 'react-router-dom';
+
 import styles from '../Cards.module.scss';
 
-import { Modal, Search, TableButton } from 'common';
+import { Modal, Path, Search, TableButton } from 'common';
 import { EMPTY_STRING } from 'common/constants/constants';
 import {
   getCards,
@@ -23,6 +25,7 @@ export const CardsSettings: FC = () => {
   const cardsPack_id = useAppSelector(getCardsPackId);
 
   const { open, openModal, closeModal } = useModal();
+  const navigate = useNavigate();
 
   const onAddNewCardClick = async (question: string, answer: string): Promise<void> => {
     await dispatch(addCard({ question, answer, cardsPack_id }));
@@ -30,31 +33,38 @@ export const CardsSettings: FC = () => {
     closeModal();
   };
 
+  const onStartLearnClick = (): void => {
+    navigate(`${Path.LEARN}/${cardsPack_id}`);
+  };
+
   const packTitle = isMyPack ? (
-    <TableButton
-      title="My Pack"
-      nameButton="Add new card"
-      onAddClick={openModal}
-      menuMyPack
-    />
+    <div>
+      <TableButton
+        title="My Pack"
+        nameButton="Add new card"
+        onAddClick={openModal}
+        menuMyPack
+      />
+      <CardsModal
+        closeModal={closeModal}
+        packTitle={Modal.ADD_NEW_CARD}
+        onClick={onAddNewCardClick}
+        open={open}
+        name={EMPTY_STRING}
+        answer={EMPTY_STRING}
+      />
+    </div>
   ) : (
-    <TableButton title="Friend’s Pack" nameButton="Learn to pack" />
+    <TableButton
+      title="Friend’s Pack"
+      nameButton="Learn to pack"
+      onAddClick={onStartLearnClick}
+    />
   );
 
   return (
     <>
-      <div>
-        {packTitle}
-
-        <CardsModal
-          closeModal={closeModal}
-          packTitle={Modal.ADD_NEW_CARD}
-          onClick={onAddNewCardClick}
-          open={open}
-          name={EMPTY_STRING}
-          answer={EMPTY_STRING}
-        />
-      </div>
+      {packTitle}
 
       <div className={styles.interaction}>
         <Search

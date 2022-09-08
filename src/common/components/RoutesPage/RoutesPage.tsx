@@ -25,8 +25,8 @@ export const RoutesPage: FC = () => {
     { path: Path.CHECK_EMAIL, component: <CheckEmail /> },
     { path: Path.ERROR_404, component: <Error404 /> },
     { path: Path.PACKS, component: <Packs /> },
-    { path: Path.CARDS, component: <Cards /> },
-    { path: Path.LEARN, component: <Learn /> },
+    { path: `${Path.CARDS}/:id`, component: <Cards /> },
+    { path: `${Path.LEARN}/:id`, component: <Learn /> },
   ];
 
   return (

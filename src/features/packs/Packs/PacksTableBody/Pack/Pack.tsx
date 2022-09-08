@@ -38,9 +38,15 @@ export const Pack: FC<Props> = ({ packId, name, created, updated, cards, isMyCar
     useModal();
 
   const onGetCards = (): void => {
-    dispatch(setCardsParams({ ...queryParams, cardsPack_id: packId, pageCount: 5 }));
+    dispatch(
+      setCardsParams({
+        ...queryParams,
+        cardsPack_id: packId,
+        pageCount: 5,
+      }),
+    );
 
-    navigate(Path.CARDS);
+    navigate(`${Path.CARDS}/${packId}`);
   };
 
   const onPackNameChange = async (name: string): Promise<void> => {
@@ -56,7 +62,7 @@ export const Pack: FC<Props> = ({ packId, name, created, updated, cards, isMyCar
   };
 
   const onStartLearnClick = (): void => {
-    navigate(Path.LEARN);
+    navigate(`${Path.LEARN}/${packId}`);
   };
 
   return (
@@ -65,13 +71,6 @@ export const Pack: FC<Props> = ({ packId, name, created, updated, cards, isMyCar
         <div onClick={onGetCards} role="presentation">
           {name}
         </div>
-        <PacksModal
-          packTitle={Modal.EDIT_PACK}
-          onClick={onPackNameChange}
-          open={open}
-          closeModal={closeModal}
-          name={name}
-        />
       </TableCell>
 
       <TableCell className={styles.tableSecondCellBody}>{cards}</TableCell>
