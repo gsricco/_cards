@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from 'react';
+import { FC, useState } from 'react';
 
 import Button from '@mui/material/Button';
 
@@ -18,16 +18,8 @@ export const Learn: FC = () => {
   const cards = useAppSelector(getPackCards);
 
   const [isChecked, setIsChecked] = useState(false);
-  const [first, setFirst] = useState(true);
   const [grade, setGrade] = useState(1);
   const [card, setCard] = useState<CardsType>(getCard(cards));
-
-  useEffect(() => {
-    if (first) {
-      dispatch(setLearnGrade({ card_id: card._id, grade: 1 }));
-      setFirst(false);
-    }
-  }, [first]);
 
   const onNext = (): void => {
     setIsChecked(false);

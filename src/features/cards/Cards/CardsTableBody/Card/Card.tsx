@@ -2,7 +2,6 @@ import { FC } from 'react';
 
 import { IconButton, TableCell, TableRow } from '@mui/material';
 
-import { Grade } from '../../../../learn/Grade/Grade';
 import styles from '../../Cards.module.scss';
 
 import DeleteICon from 'assets/images/Delete.svg';
@@ -16,6 +15,7 @@ import {
   getId,
   RemoveModal,
 } from 'features';
+import { Grade } from 'features/learn/Grade/Grade';
 import { useAppDispatch, useAppSelector, useModal } from 'hooks';
 
 type Props = {

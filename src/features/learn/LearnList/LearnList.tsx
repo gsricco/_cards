@@ -5,13 +5,7 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 
 import styles from './LearnList.module.scss';
 
-const grades = [
-  { value: 1, text: 'Did not know' },
-  { value: 2, text: 'Forgot' },
-  { value: 3, text: 'A lot of thought' },
-  { value: 4, text: 'Confused' },
-  { value: 5, text: 'Knew the answer' },
-];
+import { GRADES, KEY } from 'common/constants/constants';
 
 type Props = {
   setGrade: Dispatch<SetStateAction<number>>;
@@ -30,9 +24,9 @@ export const LearnList: FC<Props> = ({ setGrade }) => {
         defaultValue={1}
         onChange={onGradeSetChange}
       >
-        {grades.map(grade => (
+        {GRADES.map(grade => (
           <FormControlLabel
-            key={Math.random()}
+            key={KEY}
             value={grade.value}
             control={<Radio />}
             label={grade.text}
