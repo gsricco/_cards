@@ -2,31 +2,27 @@ import { FC, useState } from 'react';
 
 import Button from '@mui/material/Button';
 
-import { getPackCards } from '../cards';
-import { setLearnGrade } from '../cards/cards-reducer';
-import { getCardPacks } from '../packs';
-
 import styles from './Learn.module.scss';
-import { LearnList } from './LearnList/LearnList';
+import { LearnList } from './LearnList';
 
-import { BackToPackList, CardsType } from 'common';
-import { getCard } from 'common/utils/get-card-utils';
+import { BackToPackList, getCard } from 'common';
+import { getPackCards, setLearnGrade } from 'features';
 import { useAppDispatch, useAppSelector } from 'hooks';
+import { usePackName } from 'hooks/usePackName';
 
 export const Learn: FC = () => {
   const dispatch = useAppDispatch();
 
   const cards = useAppSelector(getPackCards);
-  const packs = useAppSelector(getCardPacks);
 
   const [isChecked, setIsChecked] = useState(false);
   const [grade, setGrade] = useState(1);
-  const [card, setCard] = useState<CardsType>(getCard(cards));
-  const { name } = packs.filter(p => p._id === card.cardsPack_id)[0];
+
+  const { name, setCard, card } = usePackName();
 
   const onNext = (): void => {
     setIsChecked(false);
-    dispatch(setLearnGrade({ card_id: card?._id, grade }));
+    dispatch(setLearnGrade({ card_id: card._id, grade }));
 
     if (cards.length > 0) {
       setCard(getCard(cards));
