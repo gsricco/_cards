@@ -4,7 +4,6 @@ export const MAX_NUMBER_OF_PACKS = 110;
 export const MIN_SELECT_VALUE = 5;
 export const EMPTY_STRING = '';
 export const MAX_GRADE = 6;
-export const KEY = Math.random().toString();
 export const GRADES = [
   { value: 1, text: 'Did not know' },
   { value: 2, text: 'Forgot' },
