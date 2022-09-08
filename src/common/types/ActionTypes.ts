@@ -14,8 +14,8 @@ import {
   setPacksPage,
   setPacksParams,
   setPacksPageCount,
+  updateCardGrade,
 } from 'features';
-import { updateCardGrade } from 'features/cards/cards-reducer';
 
 export type ForgotActionsType =
   | ReturnType<typeof setNewName>

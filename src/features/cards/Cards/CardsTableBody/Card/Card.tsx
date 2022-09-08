@@ -14,9 +14,9 @@ import {
   getCardUserId,
   getId,
   RemoveModal,
+  Grade,
 } from 'features';
-import { Grade } from 'features/learn/Grade/Grade';
-import { useAppDispatch, useAppSelector, useModal } from 'hooks';
+import { useAppSelector, useAppDispatch, useModal } from 'hooks';
 
 type Props = {
   question: string;

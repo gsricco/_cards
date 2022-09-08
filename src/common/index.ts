@@ -21,13 +21,7 @@ export {
 } from './components';
 
 export { Path, RequestStatus, SortPacks, Modal } from './enums';
-export {
-  handleServerNetworkError,
-  setNameEmail,
-  sortPacks,
-  loadState,
-  saveState,
-} from './utils';
+export { handleServerNetworkError, setNameEmail, sortPacks, getCard } from './utils';
 
 export type {
   AppThunk,
@@ -71,4 +65,6 @@ export type {
   CreateCardType,
   CardsType,
   UpdatePackType,
+  UpdateGradeDataType,
+  UpdateGradeResponseType,
 } from './types';

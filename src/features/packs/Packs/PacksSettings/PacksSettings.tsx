@@ -6,7 +6,7 @@ import FilterRemoveBtn from 'assets/images/FilterRemoveBtn.svg';
 import { FilteredButton, Modal, NumberOfCards, Search, TableButton } from 'common';
 import { EMPTY_STRING } from 'common/constants/constants';
 import { addPacks, getPackQueryParams, getPacks, PacksModal } from 'features';
-import { useAppDispatch, useAppSelector, useModal } from 'hooks';
+import { useAppSelector, useAppDispatch, useModal } from 'hooks';
 
 export const PacksSettings: FC = () => {
   const dispatch = useAppDispatch();

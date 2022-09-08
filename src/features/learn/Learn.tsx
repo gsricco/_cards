@@ -2,14 +2,11 @@ import { FC, useState } from 'react';
 
 import Button from '@mui/material/Button';
 
-import { getPackCards } from '../cards';
-import { setLearnGrade } from '../cards/cards-reducer';
-
 import styles from './Learn.module.scss';
-import { LearnList } from './LearnList/LearnList';
+import { LearnList } from './LearnList';
 
-import { BackToPackList, CardsType } from 'common';
-import { getCard } from 'common/utils/get-card-utils';
+import { BackToPackList, getCard, CardsType } from 'common';
+import { setLearnGrade, getPackCards } from 'features';
 import { useAppDispatch, useAppSelector } from 'hooks';
 
 export const Learn: FC = () => {
@@ -23,7 +20,7 @@ export const Learn: FC = () => {
 
   const onNext = (): void => {
     setIsChecked(false);
-    dispatch(setLearnGrade({ card_id: card?._id, grade }));
+    dispatch(setLearnGrade({ card_id: card._id, grade }));
 
     if (cards.length > 0) {
       setCard(getCard(cards));

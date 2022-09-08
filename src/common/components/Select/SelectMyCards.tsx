@@ -17,7 +17,7 @@ import {
   PacksModal,
   RemoveModal,
 } from 'features';
-import { useAppDispatch, useAppSelector, useModal } from 'hooks';
+import { useAppSelector, useAppDispatch, useModal } from 'hooks';
 
 type SelectType = {
   stylesRules?: string;

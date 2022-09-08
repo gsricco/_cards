@@ -4,12 +4,11 @@ import { IconButton, Typography } from '@mui/material';
 import Button from '@mui/material/Button';
 import { useNavigate } from 'react-router-dom';
 
-import DeleteICon from '../../../assets/images/Delete.svg';
-import EditIcon from '../../../assets/images/Edit.svg';
-import TeacherIcon from '../../../assets/images/teacher.svg';
-
 import styles from './TableButton.module.scss';
 
+import DeleteICon from 'assets/images/Delete.svg';
+import EditIcon from 'assets/images/Edit.svg';
+import TeacherIcon from 'assets/images/teacher.svg';
 import { Modal, Path } from 'common';
 import {
   changePacksName,
@@ -19,7 +18,7 @@ import {
   PacksModal,
   RemoveModal,
 } from 'features';
-import { useAppDispatch, useAppSelector, useModal } from 'hooks';
+import { useAppSelector, useAppDispatch, useModal } from 'hooks';
 
 type Props = {
   title: string | undefined;
@@ -27,6 +26,7 @@ type Props = {
   onAddClick?: () => void;
   menuMyPack?: boolean;
 };
+
 export const TableButton: FC<Props> = ({ title, nameButton, onAddClick, menuMyPack }) => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();

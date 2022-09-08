@@ -1,8 +1,6 @@
-import { UpdateGradeResponseType } from '../common/types/ResponseTypes';
-
 import { instanceHeroku } from './instance';
 
-import { UpdateGradeDataType } from 'common/types/DataTypes';
+import { UpdateGradeResponseType, UpdateGradeDataType } from 'common';
 
 export const gradeAPI = {
   updateGrade: (data: UpdateGradeDataType) =>

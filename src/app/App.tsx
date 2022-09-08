@@ -20,7 +20,7 @@ export const App: FC = () => {
     if (!isLoggedIn) {
       dispatch(initialized());
     }
-  }, [dispatch, isLoggedIn]);
+  }, [isLoggedIn]);
 
   if (!isInitialized) {
     return (

@@ -6,6 +6,8 @@ export {
   changeCard,
   addCard,
   setCardsParams,
+  updateCardGrade,
+  setLearnGrade,
 } from './cards-reducer';
 
 export {

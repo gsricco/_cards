@@ -7,8 +7,8 @@ import {
   PacksParamsType,
   PacksResponseType,
   UpdatePackResponseType,
+  UpdatePackType,
 } from 'common';
-import { UpdatePackType } from 'common/types/DataTypes';
 
 export const packsAPI = {
   getPacks: (params: PacksParamsType) =>
