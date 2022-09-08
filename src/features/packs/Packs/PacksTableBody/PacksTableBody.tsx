@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import { TableBody, TableCell, TableRow } from '@mui/material';
+import { TableCell, TableBody, TableRow } from '@mui/material';
 
 import { Pack } from './Pack';
 

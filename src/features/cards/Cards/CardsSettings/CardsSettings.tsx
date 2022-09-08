@@ -15,7 +15,7 @@ import {
   getCardUserId,
   getId,
 } from 'features';
-import { useAppDispatch, useAppSelector, useModal } from 'hooks';
+import { useAppSelector, useAppDispatch, useModal } from 'hooks';
 
 export const CardsSettings: FC = () => {
   const dispatch = useAppDispatch();

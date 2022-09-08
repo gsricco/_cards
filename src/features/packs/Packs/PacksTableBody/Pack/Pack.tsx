@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import { IconButton, TableCell, TableRow } from '@mui/material';
+import { TableCell, IconButton, TableRow } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 
 import styles from '../../Packs.module.scss';
@@ -18,7 +18,7 @@ import {
   RemoveModal,
   setCardsParams,
 } from 'features';
-import { useAppDispatch, useAppSelector, useModal } from 'hooks';
+import { useAppDispatch, useModal, useAppSelector } from 'hooks';
 
 type Props = {
   packId: string;
@@ -69,6 +69,7 @@ export const Pack: FC<Props> = ({ packId, name, created, updated, cards, isMyCar
         pageCount: 5,
       }),
     );
+
     await dispatch(getCards());
     navigate(`${Path.LEARN}/${packId}`);
   };

@@ -1,7 +1,6 @@
 import { AxiosError } from 'axios';
 
-import { cardsAPI } from 'api';
-import { gradeAPI } from 'api/gradeAPI';
+import { cardsAPI, gradeAPI } from 'api';
 import { setAppStatus } from 'app';
 import {
   CardsResponseType,
@@ -12,9 +11,9 @@ import {
   CardsType,
   CreateCardType,
   UpdateCardDataType,
+  UpdateGradeDataType,
   handleServerNetworkError,
 } from 'common';
-import { UpdateGradeDataType } from 'common/types/DataTypes';
 
 const initialState = {
   cards: [] as CardsType[],

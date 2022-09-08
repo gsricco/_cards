@@ -29,6 +29,7 @@ export type {
   CreateCardResponseType,
   CardsResponseType,
   CardsType,
+  UpdateGradeResponseType,
 } from './ResponseTypes';
 export type {
   LoginDataType,
@@ -43,5 +44,6 @@ export type {
   CardsParamsType,
   AddCardsPackType,
   UpdatePackType,
+  UpdateGradeDataType,
 } from './DataTypes';
 export { Nullable } from './Nullable';
