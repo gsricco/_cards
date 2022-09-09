@@ -14,6 +14,7 @@ import {
   getCardsQueryParams,
   getCardUserId,
   getId,
+  setCardsParams,
 } from 'features';
 import { useAppDispatch, useAppSelector, useModal } from 'hooks';
 
@@ -33,7 +34,16 @@ export const CardsSettings: FC = () => {
     closeModal();
   };
 
-  const onStartLearnClick = (): void => {
+  const onStartLearnClick = async (): Promise<void> => {
+    dispatch(
+      setCardsParams({
+        ...queryParams,
+        cardsPack_id,
+        pageCount: 22,
+      }),
+    );
+
+    await dispatch(getCards());
     navigate(`${Path.LEARN}/${cardsPack_id}`);
   };
 

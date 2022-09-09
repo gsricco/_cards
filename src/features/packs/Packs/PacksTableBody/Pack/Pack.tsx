@@ -66,7 +66,7 @@ export const Pack: FC<Props> = ({ packId, name, created, updated, cards, isMyCar
       setCardsParams({
         ...queryParams,
         cardsPack_id: packId,
-        pageCount: 5,
+        pageCount: 22,
       }),
     );
 
