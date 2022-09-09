@@ -1,6 +1,6 @@
 import { ChangeEvent, FC } from 'react';
 
-import { MenuPageCount, Paginator } from 'common';
+import { Paginator } from 'common';
 import {
   getCardsPackId,
   getCardsPage,
@@ -32,7 +32,6 @@ export const CardsFooter: FC = () => {
         page={page}
         setPage={onPageChange}
       />
-      <MenuPageCount pageCount={pageCount} />
     </div>
   );
 };

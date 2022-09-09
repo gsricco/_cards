@@ -1,19 +1,30 @@
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
 
 import { Table, TableContainer } from '@mui/material';
-import { Navigate } from 'react-router-dom';
+import { Navigate, useParams } from 'react-router-dom';
 
 import styles from './Cards.module.scss';
 import { CardsFooter } from './CardsFooter';
 import { CardsSettings } from './CardsSettings';
 import { CardsTableBody } from './CardsTableBody';
 
-import { Path, TableHeader, BackToPackList } from 'common';
-import { getIsLoggedIn } from 'features';
-import { useAppSelector } from 'hooks';
+import { BackToPackList, Path, TableHeader } from 'common';
+import { getCardsPackId, getIsLoggedIn, setCardsParams } from 'features';
+import { useAppDispatch, useAppSelector } from 'hooks';
 
 export const Cards: FC = () => {
+  const dispatch = useAppDispatch();
+
   const isLoggedIn = useAppSelector(getIsLoggedIn);
+  const cardsPack_id = useAppSelector(getCardsPackId);
+
+  const { id } = useParams();
+
+  useEffect(() => {
+    if (!cardsPack_id && id) {
+      dispatch(setCardsParams({ cardsPack_id: id }));
+    }
+  }, []);
 
   if (!isLoggedIn) {
     return <Navigate to={Path.LOGIN} />;
