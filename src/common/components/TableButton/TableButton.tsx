@@ -73,7 +73,7 @@ export const TableButton: FC<Props> = ({ title, nameButton, onAddClick, menuMyPa
             >
               <img alt="Teacher Button" src={TeacherIcon} />
             </IconButton>
-            <IconButton>
+            <IconButton className={styles.EditIcon}>
               <div onClick={openModal} role="presentation">
                 <img alt="Edit Button" src={EditIcon} />
               </div>
@@ -86,7 +86,7 @@ export const TableButton: FC<Props> = ({ title, nameButton, onAddClick, menuMyPa
                 name={title}
               />
             </IconButton>
-            <IconButton>
+            <IconButton className={styles.DeleteICon}>
               <div onClick={openEditModal} role="presentation">
                 <img alt="Delete Button" src={DeleteICon} />
               </div>
