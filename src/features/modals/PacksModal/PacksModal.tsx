@@ -42,7 +42,7 @@ export const PacksModal: FC<Props> = ({ packTitle, onClick, open, closeModal, na
         />
         <FormControlLabel
           className={styles.modalsCheckbox}
-          control={<Checkbox defaultChecked size="small" />}
+          control={<Checkbox size="small" />}
           label="Private pack"
         />
         <div className={styles.buttonContainer}>

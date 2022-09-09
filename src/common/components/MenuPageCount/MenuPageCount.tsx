@@ -2,6 +2,8 @@ import { FC } from 'react';
 
 import { Box, FormControl, MenuItem, Select, SelectChangeEvent } from '@mui/material';
 
+import { getStatus } from 'app';
+import { RequestStatus } from 'common';
 import { MIN_SELECT_VALUE } from 'common/constants/constants';
 import { getPackQueryParams, setPacksParams } from 'features';
 import { useAppDispatch, useAppSelector } from 'hooks';
@@ -14,6 +16,7 @@ export const MenuPageCount: FC<Props> = ({ pageCount }) => {
   const dispatch = useAppDispatch();
 
   const packQueryParams = useAppSelector(getPackQueryParams);
+  const status = useAppSelector(getStatus);
 
   const changeCardsSelectHandler = (event: SelectChangeEvent): void => {
     const pageCount = +event.target.value;
@@ -23,7 +26,12 @@ export const MenuPageCount: FC<Props> = ({ pageCount }) => {
 
   return (
     <Box sx={{ minWidth: 120 }}>
-      <FormControl sx={{ mt: '35px' }} size="small" variant="outlined">
+      <FormControl
+        sx={{ mt: '35px' }}
+        size="small"
+        variant="outlined"
+        disabled={status === RequestStatus.LOADING}
+      >
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"

@@ -22,6 +22,12 @@
         width: 40px;
         height: 36px;
       }
+
+      .filterRemoveBtnDisabled {
+        width: 40px;
+        height: 36px;
+        opacity: 0.2;
+      }
     }
   }
 
@@ -29,6 +35,18 @@
     @include table-container(1048px);
 
     .teachIcon {
+      &:disabled {
+        opacity: 0.2;
+      }
+    }
+
+    .editIcon {
+      &:disabled {
+        opacity: 0.2;
+      }
+    }
+
+    .deleteICon {
       &:disabled {
         opacity: 0.2;
       }

@@ -2,6 +2,10 @@ import { ChangeEvent, FC } from 'react';
 
 import { Pagination } from '@mui/material';
 
+import { getStatus } from 'app';
+import { RequestStatus } from 'common';
+import { useAppSelector } from 'hooks';
+
 type PaginatorProps = {
   pageCount: number;
   totalElements: number;
@@ -16,6 +20,7 @@ export const Paginator: FC<PaginatorProps> = ({
   setPage,
 }) => {
   const pageNumbers = Math.ceil(totalElements / pageCount);
+  const status = useAppSelector(getStatus);
 
   return (
     <Pagination
@@ -28,6 +33,7 @@ export const Paginator: FC<PaginatorProps> = ({
       onChange={setPage}
       showFirstButton
       showLastButton
+      disabled={status === RequestStatus.LOADING}
     />
   );
 };

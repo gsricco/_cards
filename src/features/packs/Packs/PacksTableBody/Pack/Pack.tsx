@@ -1,14 +1,15 @@
 import { FC } from 'react';
 
-import { TableCell, IconButton, TableRow } from '@mui/material';
+import { IconButton, TableCell, TableRow } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 
 import styles from '../../Packs.module.scss';
 
+import { getStatus } from 'app';
 import DeleteICon from 'assets/images/Delete.svg';
 import EditIcon from 'assets/images/Edit.svg';
 import TeacherIcon from 'assets/images/teacher.svg';
-import { Modal, Path } from 'common';
+import { Modal, Path, RequestStatus } from 'common';
 import {
   changePacksName,
   deletePack,
@@ -18,7 +19,7 @@ import {
   RemoveModal,
   setCardsParams,
 } from 'features';
-import { useAppDispatch, useModal, useAppSelector } from 'hooks';
+import { useAppDispatch, useAppSelector, useModal } from 'hooks';
 
 type Props = {
   packId: string;
@@ -33,6 +34,7 @@ export const Pack: FC<Props> = ({ packId, name, created, updated, cards, isMyCar
   const dispatch = useAppDispatch();
 
   const queryParams = useAppSelector(getCardsQueryParams);
+  const status = useAppSelector(getStatus);
   const navigate = useNavigate();
 
   const { open, openEdit, openModal, openEditModal, closeModal, closeEditModal } =
@@ -90,13 +92,16 @@ export const Pack: FC<Props> = ({ packId, name, created, updated, cards, isMyCar
         <IconButton
           onClick={onStartLearnClick}
           className={styles.teachIcon}
-          disabled={cards === 0 && !isMyCard}
+          disabled={(cards === 0 && !isMyCard) || status === RequestStatus.LOADING}
         >
           <img alt="Teacher Button" src={TeacherIcon} />
         </IconButton>
 
         {isMyCard && (
-          <IconButton>
+          <IconButton
+            disabled={status === RequestStatus.LOADING}
+            className={styles.editIcon}
+          >
             <div onClick={openModal} role="presentation">
               <img alt="Edit Button" src={EditIcon} />
             </div>
@@ -112,7 +117,10 @@ export const Pack: FC<Props> = ({ packId, name, created, updated, cards, isMyCar
         )}
 
         {isMyCard && (
-          <IconButton>
+          <IconButton
+            disabled={status === RequestStatus.LOADING}
+            className={styles.deleteICon}
+          >
             <div onClick={openEditModal} role="presentation">
               <img alt="Delete Button" src={DeleteICon} />
             </div>

@@ -2,16 +2,26 @@ import { FC } from 'react';
 
 import styles from '../Packs.module.scss';
 
+import { getStatus } from 'app';
 import FilterRemoveBtn from 'assets/images/FilterRemoveBtn.svg';
-import { FilteredButton, Modal, NumberOfCards, Search, TableButton } from 'common';
+import {
+  FilteredButton,
+  Modal,
+  NumberOfCards,
+  RequestStatus,
+  Search,
+  TableButton,
+} from 'common';
 import { EMPTY_STRING } from 'common/constants/constants';
 import { addPacks, getPackQueryParams, getPacks, PacksModal } from 'features';
-import { useAppSelector, useAppDispatch, useModal } from 'hooks';
+import { useAppDispatch, useAppSelector, useModal } from 'hooks';
 
 export const PacksSettings: FC = () => {
   const dispatch = useAppDispatch();
 
   const queryParams = useAppSelector(getPackQueryParams);
+  const status = useAppSelector(getStatus);
+
   const { open, openModal, closeModal } = useModal();
 
   const onAddNewPackClick = async (name: string): Promise<void> => {
@@ -44,9 +54,18 @@ export const PacksSettings: FC = () => {
         <Search getData={getPacks} searchParam="packName" queryParams={queryParams} />
         <FilteredButton />
         <NumberOfCards />
-        <button className={styles.buttonRemoveBtn} type="button" onClick={resetFilter}>
+        <button
+          className={styles.buttonRemoveBtn}
+          type="button"
+          onClick={resetFilter}
+          disabled={status === RequestStatus.LOADING}
+        >
           <img
-            className={styles.filterRemoveBtn}
+            className={
+              status === RequestStatus.LOADING
+                ? styles.filterRemoveBtnDisabled
+                : styles.filterRemoveBtn
+            }
             src={FilterRemoveBtn}
             alt="delete filter button"
           />

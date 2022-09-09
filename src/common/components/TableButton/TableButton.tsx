@@ -6,10 +6,11 @@ import { useNavigate } from 'react-router-dom';
 
 import styles from './TableButton.module.scss';
 
+import { getStatus } from 'app';
 import DeleteICon from 'assets/images/Delete.svg';
 import EditIcon from 'assets/images/Edit.svg';
 import TeacherIcon from 'assets/images/teacher.svg';
-import { Modal, Path } from 'common';
+import { Modal, Path, RequestStatus } from 'common';
 import {
   changePacksName,
   deletePack,
@@ -18,7 +19,7 @@ import {
   PacksModal,
   RemoveModal,
 } from 'features';
-import { useAppSelector, useAppDispatch, useModal } from 'hooks';
+import { useAppDispatch, useAppSelector, useModal } from 'hooks';
 
 type Props = {
   title: string | undefined;
@@ -31,6 +32,7 @@ export const TableButton: FC<Props> = ({ title, nameButton, onAddClick, menuMyPa
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const cards = useAppSelector(getPackCards);
+  const status = useAppSelector(getStatus);
 
   const { open, openEdit, openModal, openEditModal, closeModal, closeEditModal } =
     useModal();
@@ -69,11 +71,14 @@ export const TableButton: FC<Props> = ({ title, nameButton, onAddClick, menuMyPa
             <IconButton
               onClick={onStartLearnClick}
               className={styles.teachIcon}
-              disabled={cards.length === 0}
+              disabled={cards.length === 0 || status === RequestStatus.LOADING}
             >
               <img alt="Teacher Button" src={TeacherIcon} />
             </IconButton>
-            <IconButton className={styles.EditIcon}>
+            <IconButton
+              className={styles.EditIcon}
+              disabled={status === RequestStatus.LOADING}
+            >
               <div onClick={openModal} role="presentation">
                 <img alt="Edit Button" src={EditIcon} />
               </div>
@@ -86,7 +91,10 @@ export const TableButton: FC<Props> = ({ title, nameButton, onAddClick, menuMyPa
                 name={title}
               />
             </IconButton>
-            <IconButton className={styles.DeleteICon}>
+            <IconButton
+              className={styles.DeleteICon}
+              disabled={status === RequestStatus.LOADING}
+            >
               <div onClick={openEditModal} role="presentation">
                 <img alt="Delete Button" src={DeleteICon} />
               </div>
@@ -107,6 +115,7 @@ export const TableButton: FC<Props> = ({ title, nameButton, onAddClick, menuMyPa
         className={styles.tableButton}
         variant="contained"
         onClick={onOpenModalClick}
+        disabled={status === RequestStatus.LOADING}
       >
         {nameButton}
       </Button>

@@ -7,7 +7,8 @@ import Paper from '@mui/material/Paper';
 
 import styles from './Search.module.scss';
 
-import { AppThunk, CardsParamsType, PacksParamsType } from 'common';
+import { getStatus } from 'app';
+import { AppThunk, CardsParamsType, PacksParamsType, RequestStatus } from 'common';
 import { DELAY_TIME } from 'common/constants/constants';
 import { getCardsPackId, setCardsParams, setPacksParams } from 'features';
 import { useAppDispatch, useAppSelector } from 'hooks';
@@ -23,6 +24,7 @@ export const Search: FC<Props> = ({ getData, searchParam, queryParams, width }) 
   const dispatch = useAppDispatch();
 
   const cardsPack_id = useAppSelector(getCardsPackId);
+  const status = useAppSelector(getStatus);
 
   const handleChangeInput = (e: ChangeEvent<HTMLInputElement>): void => {
     if (searchParam === 'packName') {
@@ -54,6 +56,7 @@ export const Search: FC<Props> = ({ getData, searchParam, queryParams, width }) 
           <SearchIcon />
         </IconButton>
         <InputBase
+          disabled={status === RequestStatus.LOADING}
           className={styles.searchInput}
           placeholder="Provide your text"
           inputProps={{ 'aria-label': 'search' }}

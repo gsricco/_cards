@@ -5,6 +5,8 @@ import ButtonGroup from '@mui/material/ButtonGroup';
 
 import styles from './FilteredButton.module.scss';
 
+import { getStatus } from 'app';
+import { RequestStatus } from 'common';
 import { getId, getPackQueryParams, setPacksParams } from 'features';
 import { useAppDispatch, useAppSelector } from 'hooks';
 
@@ -13,6 +15,7 @@ export const FilteredButton: FC = () => {
 
   const packsQueryParams = useAppSelector(getPackQueryParams);
   const user_id = useAppSelector(getId);
+  const status = useAppSelector(getStatus);
 
   const [value, setValue] = useState(false);
 
@@ -27,7 +30,10 @@ export const FilteredButton: FC = () => {
   };
 
   return (
-    <ButtonGroup className={styles.filteredContainer}>
+    <ButtonGroup
+      className={styles.filteredContainer}
+      disabled={status === RequestStatus.LOADING}
+    >
       <span>Show packs cards</span>
       <Button
         onClick={getMyPacks}

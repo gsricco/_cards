@@ -5,6 +5,8 @@ import Slider from '@mui/material/Slider';
 
 import styles from './NumberOfCards.module.scss';
 
+import { getStatus } from 'app';
+import { RequestStatus } from 'common';
 import { DELAY_TIME, MAX_NUMBER_OF_PACKS } from 'common/constants/constants';
 import {
   getMaxPacksCount,
@@ -20,6 +22,7 @@ export const NumberOfCards: FC = () => {
   const min = useAppSelector(getMinPacksCount);
   const max = useAppSelector(getMaxPacksCount);
   const queryParams = useAppSelector(getPackQueryParams);
+  const status = useAppSelector(getStatus);
 
   const [value, setValue] = useState<number[]>([
     queryParams.min || 0,
@@ -46,6 +49,7 @@ export const NumberOfCards: FC = () => {
       <Box className={styles.discreteItems}>
         <div className={styles.discreteField}>{value[0]}</div>
         <Slider
+          disabled={status === RequestStatus.LOADING}
           min={min}
           max={max}
           className={styles.slider}
