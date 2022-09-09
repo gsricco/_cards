@@ -3,7 +3,7 @@
 
 .container {
   height: 590px;
-  width: 1008px;
+  width: 1048px;
   margin: 80px auto 0 auto;
 
   .profileReturnBack {
@@ -31,9 +31,9 @@
     }
   }
 
-  .form{
+  .form {
 
-    .formBtn{
+    .formBtn {
       @include button-container();
       width: 170px;
       display: flex;
@@ -53,7 +53,7 @@
   }
 
   .tableContainer {
-    @include table-container(1008px);
+    @include table-container(1048px);
 
   }
 
@@ -66,8 +66,9 @@
     width: 171px;
   }
 }
-.tableCellBody{
+
+.tableCellBody {
   max-width: 200px;
   overflow: hidden;
-  text-overflow: ellipsis!important;
+  text-overflow: ellipsis !important;
 }
