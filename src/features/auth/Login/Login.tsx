@@ -15,6 +15,7 @@ import { useAppDispatch, useAppSelector } from 'hooks';
 
 export const Login: FC = () => {
   const dispatch = useAppDispatch();
+
   const isLoggedIn = useAppSelector(getIsLoggedIn);
 
   if (isLoggedIn) {

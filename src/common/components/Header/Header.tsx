@@ -12,7 +12,7 @@ import styles from './Header.module.scss';
 import { getStatus } from 'app';
 import logo from 'assets/images/cardLogo.png';
 import UserAvatar from 'assets/images/UserAvatar.png';
-import { SelectHeader, Path, RequestStatus } from 'common';
+import { Select, Path, RequestStatus } from 'common';
 import { getIsLoggedIn, getName } from 'features';
 import { useAppSelector, useShow } from 'hooks';
 
@@ -45,7 +45,7 @@ export const Header: FC = () => {
             <span className={styles.headerUserName}>{name}</span>
             <div className={styles.wrap}>
               <img className={styles.headerUserAvatar} src={UserAvatar} alt="logo" />
-              {show && <SelectHeader stylesRules={styles.customSelect} />}
+              {show && <Select stylesRules={styles.customSelect} />}
             </div>
           </Typography>
         ) : (

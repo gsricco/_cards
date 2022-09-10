@@ -19,8 +19,9 @@ export const Paginator: FC<PaginatorProps> = ({
   page,
   setPage,
 }) => {
-  const pageNumbers = Math.ceil(totalElements / pageCount);
   const status = useAppSelector(getStatus);
+
+  const pageNumbers = Math.ceil(totalElements / pageCount);
 
   return (
     <Pagination

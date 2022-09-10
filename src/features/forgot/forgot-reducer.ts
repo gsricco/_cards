@@ -33,8 +33,8 @@ export const forgotReducer = (
   }
 };
 
-export const setNewName = (data: UpdateUserDataType) =>
-  ({ type: 'FORGOT/SET-NEW-NAME', payload: data } as const);
+export const setNewName = (payload: UpdateUserDataType) =>
+  ({ type: 'FORGOT/SET-NEW-NAME', payload } as const);
 export const setNewPassword = (password: string) =>
   ({ type: 'FORGOT/SET-NEW-PASSWORD', payload: { password } } as const);
 export const recoverNewPassword = (email: string) =>

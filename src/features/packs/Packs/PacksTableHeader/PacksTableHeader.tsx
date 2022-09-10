@@ -7,8 +7,9 @@ import { useAppDispatch, useAppSelector } from 'hooks';
 export const PacksTableHeader: FC = () => {
   const dispatch = useAppDispatch();
 
-  const [changeSortPack, setChangeSortPack] = useState(true);
   const queryParams = useAppSelector(getPackQueryParams);
+
+  const [changeSortPack, setChangeSortPack] = useState(true);
 
   const getSortDatePack = (): void => {
     sortPacks(

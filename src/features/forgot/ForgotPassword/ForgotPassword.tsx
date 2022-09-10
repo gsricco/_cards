@@ -20,6 +20,7 @@ export const ForgotPassword: FC = () => {
 
   const onFormSubmit = (email: string): void => {
     dispatch(recoverPassword(email));
+
     navigate(Path.CHECK_EMAIL);
   };
 

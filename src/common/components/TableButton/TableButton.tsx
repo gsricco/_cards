@@ -30,14 +30,15 @@ type Props = {
 
 export const TableButton: FC<Props> = ({ title, nameButton, onAddClick, menuMyPack }) => {
   const dispatch = useAppDispatch();
+
   const navigate = useNavigate();
+
   const cards = useAppSelector(getPackCards);
   const status = useAppSelector(getStatus);
+  const packId = useAppSelector(getCardsPackId);
 
   const { open, openEdit, openModal, openEditModal, closeModal, closeEditModal } =
     useModal();
-
-  const packId = useAppSelector(getCardsPackId);
 
   const onOpenModalClick = (): void => {
     if (onAddClick) {

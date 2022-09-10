@@ -49,12 +49,12 @@ export const cardsReducer = (
   }
 };
 
-export const setCards = (data: CardsResponseType) =>
-  ({ type: 'CARDS/SET-CARDS', payload: data } as const);
-export const setCardsParams = (params: CardsParamsType) =>
-  ({ type: 'CARDS/SET-CARDS-PARAMS', payload: { queryParams: params } } as const);
-export const updateCardGrade = (data: UpdateGradeDataType) =>
-  ({ type: 'CARDS/SET-LEARN-GRADE', payload: data } as const);
+export const setCards = (payload: CardsResponseType) =>
+  ({ type: 'CARDS/SET-CARDS', payload } as const);
+export const setCardsParams = (queryParams: CardsParamsType) =>
+  ({ type: 'CARDS/SET-CARDS-PARAMS', payload: { queryParams } } as const);
+export const updateCardGrade = (payload: UpdateGradeDataType) =>
+  ({ type: 'CARDS/SET-LEARN-GRADE', payload } as const);
 
 export const getCards = (): AppThunk => async (dispatch, getState) => {
   const params = getState().cards.queryParams;

@@ -12,8 +12,8 @@ import {
   Packs,
   Profile,
   Registration,
+  Learn,
 } from 'features';
-import { Learn } from 'features/learn/Learn';
 
 export const RoutesPage: FC = () => {
   const routes = [

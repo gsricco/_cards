@@ -1,1 +1,1 @@
-export { SelectHeader } from './SelectHeader';
+export { Select } from './Select';

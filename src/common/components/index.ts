@@ -9,7 +9,7 @@ export { NumberOfCards } from './NumberOfCards';
 export { FilteredButton } from './FilteredButton';
 export { Search } from './Search';
 export { TableHeader } from './TableHeader';
-export { SelectHeader } from './Select';
+export { Select } from './Select';
 export { TableButton } from './TableButton';
 export { MenuPageCount } from './MenuPageCount';
 export { ModalButton, CancelModalButton } from './Buttons';

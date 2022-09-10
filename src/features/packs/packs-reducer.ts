@@ -39,14 +39,14 @@ export const packsReducer = (
   }
 };
 
-export const setPacks = (data: PacksResponseType) =>
-  ({ type: 'PACKS/SET-PACKS', payload: data } as const);
+export const setPacks = (payload: PacksResponseType) =>
+  ({ type: 'PACKS/SET-PACKS', payload } as const);
 export const setPacksPage = (page: number) =>
   ({ type: 'PACKS/SET-PACKS-PAGE', payload: { page } } as const);
 export const setPacksPageCount = (pageCount: number) =>
   ({ type: 'PACKS/SET-PACKS-PAGE-COUNT', payload: { pageCount } } as const);
-export const setPacksParams = (params: PacksParamsType) =>
-  ({ type: 'PACKS/SET-PACKS-PARAMS', payload: { queryParams: params } } as const);
+export const setPacksParams = (queryParams: PacksParamsType) =>
+  ({ type: 'PACKS/SET-PACKS-PARAMS', payload: { queryParams } } as const);
 
 export const getPacks = (): AppThunk => async (dispatch, getState) => {
   const params = getState().packs.queryParams;

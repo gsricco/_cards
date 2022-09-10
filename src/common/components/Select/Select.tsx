@@ -17,7 +17,7 @@ type SelectType = {
   stylesRules?: string;
 };
 
-export const SelectHeader: FC<SelectType> = ({ stylesRules }) => {
+export const Select: FC<SelectType> = ({ stylesRules }) => {
   const dispatch = useAppDispatch();
 
   const navigate = useNavigate();

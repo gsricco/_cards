@@ -7,8 +7,7 @@ import { LearnList } from './LearnList';
 
 import { BackToPackList, getCard } from 'common';
 import { getPackCards, setLearnGrade } from 'features';
-import { useAppDispatch, useAppSelector } from 'hooks';
-import { usePackName } from 'hooks/usePackName';
+import { useAppDispatch, usePackName, useAppSelector } from 'hooks';
 
 export const Learn: FC = () => {
   const dispatch = useAppDispatch();

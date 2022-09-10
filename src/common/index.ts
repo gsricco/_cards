@@ -10,7 +10,7 @@ export {
   FilteredButton,
   Search,
   TableHeader,
-  SelectHeader,
+  Select,
   TableButton,
   NumberOfCards,
   MenuPageCount,
