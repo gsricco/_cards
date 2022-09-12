@@ -17,12 +17,14 @@
     align-items: center;
 
     .wrap  {
-      .teachIcon:hover,.EditIcon:hover,.DeleteICon:hover, {
+      .teachIcon,.EditIcon,.DeleteICon {
+        width: 30px;
+        height: 30px;
+      }
+      .teachIcon:hover,.EditIcon:hover,.DeleteICon:hover {
         background: #DADADA;
       }
   }
-
-
   .customSelect {
     height: 150px;
     left: -100px;

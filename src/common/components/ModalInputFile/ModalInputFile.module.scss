@@ -1,0 +1,33 @@
+@import "../../../assets/styles/sass/mixins";
+
+.uploadTitilePicture{
+  display: flex;
+  width: 347px;
+  justify-content: space-between;
+  align-items: flex-end;
+  font-family: $mainFont;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+  padding: 20px 0 5px 0;
+
+  .uploadButton {
+    @include button-modals();
+    width:120px!important;
+    height: 20px!important;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    text-decoration-line: underline;
+  }
+}
+
+.uploadFieldPictures{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 347px;
+  height: 119px;
+  background: #D9D9D9;
+}
