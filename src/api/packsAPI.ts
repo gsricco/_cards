@@ -1,4 +1,4 @@
-import { instanceHeroku } from './instance';
+import { instance } from './instance';
 
 import {
   AddCardsPackType,
@@ -12,14 +12,14 @@ import {
 
 export const packsAPI = {
   getPacks: (params: PacksParamsType) =>
-    instanceHeroku.get<PacksResponseType>('cards/pack', { params }),
+    instance.get<PacksResponseType>('cards/pack', { params }),
 
   addPack: (cardsPack: AddCardsPackType) =>
-    instanceHeroku.post<AddPackResponseType>('cards/pack', { cardsPack }),
+    instance.post<AddPackResponseType>('cards/pack', { cardsPack }),
 
   updatePackName: (cardsPack: UpdatePackType) =>
-    instanceHeroku.put<UpdatePackResponseType>('cards/pack', { cardsPack }),
+    instance.put<UpdatePackResponseType>('cards/pack', { cardsPack }),
 
   deletePack: (id: string) =>
-    instanceHeroku.delete<DeletePackResponseType>(`cards/pack?id=${id}`),
+    instance.delete<DeletePackResponseType>(`cards/pack?id=${id}`),
 };
