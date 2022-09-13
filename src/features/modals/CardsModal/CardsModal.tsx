@@ -7,12 +7,11 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 
-import { ModalInputFile } from '../../../common/components/ModalInputFile/ModalInputFile';
 import { CustomModal } from '../CustomModal';
 
 import styles from './CardsModal.module.scss';
 
-import { CancelModalButton, ModalButton, ModalInput } from 'common';
+import { CancelModalButton, ModalButton, ModalInput, ModalInputFile } from 'common';
 import { useInput } from 'hooks';
 
 type Props = {
@@ -33,11 +32,9 @@ export const CardsModal: FC<Props> = ({
   answer,
 }) => {
   const { title, secondTitle, changeSecondTitle, changeTitle } = useInput(name, answer);
-
   const [typeQuestion, setTypeQuestion] = useState('text');
 
-  // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-  const handleChange = (event: SelectChangeEvent) => {
+  const handleChange = (event: SelectChangeEvent): void => {
     setTypeQuestion(event.target.value as string);
   };
 
@@ -50,8 +47,6 @@ export const CardsModal: FC<Props> = ({
       handleClick();
     }
   };
-
-  // console.log(typeQuestion);
 
   return (
     <CustomModal title={packTitle} open={open} closeModal={closeModal}>

@@ -1,4 +1,4 @@
-export { handleServerNetworkError } from './error-utils';
-export { setNameEmail } from './name-email-utils';
-export { sortPacks } from './sort-utils';
-export { getCard } from './get-card-utils';
+export { handleServerNetworkError } from './error';
+export { setNameEmail } from './setNameEmail';
+export { sortPacks } from './sortPacks';
+export { getCard } from './getCard';

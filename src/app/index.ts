@@ -8,5 +8,5 @@ export {
   setAppInitialized,
   initialized,
   setAppInfo,
-} from './app-reducer';
-export { getIsInitialized, getStatus, getError, getInfo } from './app-selectors';
+} from './appReducer';
+export { getIsInitialized, getStatus, getError, getInfo } from './appSelectors';

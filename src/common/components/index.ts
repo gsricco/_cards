@@ -15,3 +15,4 @@ export { MenuPageCount } from './MenuPageCount';
 export { ModalButton, CancelModalButton } from './Buttons';
 export { ModalInput } from './ModalInput';
 export { BackToPackList } from './BackToPacksList';
+export { ModalInputFile } from './ModalInputFile';

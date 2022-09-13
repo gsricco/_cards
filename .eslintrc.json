@@ -45,6 +45,7 @@
   "rules": {
     "no-underscore-dangle": "off",
     "camelcase": "off",
+    "jsx-a11y/label-has-associated-control": "off",
     "import/order": [
       "error",
       {

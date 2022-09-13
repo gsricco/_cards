@@ -10,7 +10,7 @@ export {
   getPacks,
   setPacksParams,
   setPacksPageCount,
-} from './packs-reducer';
+} from './packsReducer';
 export {
   getCardPacks,
   getCardPacksTotalCount,
@@ -19,4 +19,4 @@ export {
   getPacksPageCount,
   getPackQueryParams,
   getPage,
-} from './packs-selectors';
+} from './packsSelectors';

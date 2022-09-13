@@ -2,9 +2,9 @@ import { FC, useEffect } from 'react';
 
 import { CircularProgress } from '@mui/material';
 
-import { initialized } from './app-reducer';
-import { getIsInitialized } from './app-selectors';
 import styles from './App.module.css';
+import { initialized } from './appReducer';
+import { getIsInitialized } from './appSelectors';
 
 import { Header, InfoSnackbar, RoutesPage } from 'common';
 import { getIsLoggedIn } from 'features';

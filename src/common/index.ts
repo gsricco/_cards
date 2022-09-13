@@ -18,6 +18,7 @@ export {
   CancelModalButton,
   ModalInput,
   BackToPackList,
+  ModalInputFile,
 } from './components';
 
 export { Path, RequestStatus, SortPacks, Modal } from './enums';

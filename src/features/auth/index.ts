@@ -11,11 +11,11 @@ export {
   setName,
   setEmail,
   setId,
-} from './auth-reduser';
+} from './authReduser';
 export {
   getIsLoggedIn,
   getIsRegistration,
   getName,
   getEmail,
   getId,
-} from './auth-selectors';
+} from './authSelectors';

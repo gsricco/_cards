@@ -8,7 +8,7 @@ export {
   setCardsParams,
   updateCardGrade,
   setLearnGrade,
-} from './cards-reducer';
+} from './cardsReducer';
 
 export {
   getCardsPage,
@@ -18,5 +18,5 @@ export {
   getCardsQueryParams,
   getCardsPackId,
   getCardsPageCount,
-} from './cards-selectors';
+} from './cardsSelectors';
 export { Cards } from './Cards';

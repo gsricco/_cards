@@ -4,7 +4,7 @@ import { Container, Grid, Paper, Typography } from '@mui/material';
 import { Formik } from 'formik';
 import { Link, useNavigate } from 'react-router-dom';
 
-import { recoverPassword } from '../forgot-reducer';
+import { recoverPassword } from '../forgotReducer';
 
 import styles from './ForgotPassword.module.scss';
 import { ForgotPasswordForm } from './ForgotPasswordForm';

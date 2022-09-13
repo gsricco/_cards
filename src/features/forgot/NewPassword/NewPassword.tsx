@@ -4,7 +4,7 @@ import { FormLabel, Grid } from '@mui/material';
 import { Formik } from 'formik';
 import { useNavigate, useParams } from 'react-router-dom';
 
-import { updatePassword } from '../forgot-reducer';
+import { updatePassword } from '../forgotReducer';
 
 import styles from './NewPassword.module.scss';
 import { NewPasswordForm } from './NewPasswordForm';

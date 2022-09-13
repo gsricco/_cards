@@ -9,4 +9,4 @@ export {
   setNewName,
   updateUser,
   updatePassword,
-} from './forgot-reducer';
+} from './forgotReducer';

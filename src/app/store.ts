@@ -5,7 +5,7 @@ import {
 } from 'redux';
 import thunk from 'redux-thunk';
 
-import { appReducer } from './app-reducer';
+import { appReducer } from './appReducer';
 
 import { authReducer, forgotReducer, cardsReducer, packsReducer } from 'features';
 
