@@ -8,6 +8,7 @@ import styles from '../../Packs.module.scss';
 import { getStatus } from 'app';
 import DeleteICon from 'assets/images/Delete.svg';
 import EditIcon from 'assets/images/Edit.svg';
+import ImagePack from 'assets/images/Mask.svg';
 import TeacherIcon from 'assets/images/teacher.svg';
 import { Modal, Path, RequestStatus } from 'common';
 import {
@@ -79,6 +80,7 @@ export const Pack: FC<Props> = ({ packId, name, created, updated, cards, isMyCar
   return (
     <TableRow sx={{ height: '48px' }}>
       <TableCell className={styles.tableFirstCellBody}>
+        <img className={styles.PackImg} alt="PacksImage" src={ImagePack} />
         <div onClick={onGetCards} role="presentation">
           {name}
         </div>

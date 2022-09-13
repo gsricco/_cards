@@ -1,4 +1,4 @@
-import { instanceHeroku } from './instance';
+import { instance } from './instance';
 
 import {
   InfoResponseType,
@@ -9,12 +9,12 @@ import {
 } from 'common';
 
 export const authAPI = {
-  me: () => instanceHeroku.post<MeResponseType>('auth/me'),
+  me: () => instance.post<MeResponseType>('auth/me'),
 
-  login: (data: LoginDataType) => instanceHeroku.post<MeResponseType>('auth/login', data),
+  login: (data: LoginDataType) => instance.post<MeResponseType>('auth/login', data),
 
-  logout: () => instanceHeroku.delete<InfoResponseType>('auth/me'),
+  logout: () => instance.delete<InfoResponseType>('auth/me'),
 
   register: (data: RegisterDataType) =>
-    instanceHeroku.post<RegisterResponseType>('auth/register', data),
+    instance.post<RegisterResponseType>('auth/register', data),
 };
