@@ -17,4 +17,15 @@
   .buttonContainer {
     @include buttonModals-container();
   }
+
+  .PackCoverHeader{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .PackCover {
+    width: 347px !important;
+    height: 119px !important;
+  }
 }

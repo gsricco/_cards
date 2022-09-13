@@ -1,4 +1,4 @@
-import { FC, KeyboardEvent } from 'react';
+import React, { FC, KeyboardEvent } from 'react';
 
 import { Checkbox } from '@mui/material';
 import FormControlLabel from '@mui/material/FormControlLabel';
@@ -7,7 +7,7 @@ import { CustomModal } from '../CustomModal';
 
 import styles from './PacksModal.module.scss';
 
-import { CancelModalButton, ModalButton, ModalInput } from 'common';
+import { CancelModalButton, ModalButton, ModalInput, ModalInputFile } from 'common';
 import { useInput } from 'hooks';
 
 type Props = {
@@ -34,6 +34,7 @@ export const PacksModal: FC<Props> = ({ packTitle, onClick, open, closeModal, na
   return (
     <CustomModal title={packTitle} open={open} closeModal={closeModal}>
       <div className={styles.modalsContainer}>
+        <ModalInputFile label="Cover" />
         <ModalInput
           title={title}
           changeTitle={changeTitle}

@@ -6,9 +6,9 @@ import { useNavigate } from 'react-router-dom';
 import styles from '../../Packs.module.scss';
 
 import { getStatus } from 'app';
+import CoverPack from 'assets/images/CoverPack.svg';
 import DeleteICon from 'assets/images/Delete.svg';
 import EditIcon from 'assets/images/Edit.svg';
-import ImagePack from 'assets/images/Mask.svg';
 import TeacherIcon from 'assets/images/teacher.svg';
 import { Modal, Path, RequestStatus } from 'common';
 import {
@@ -20,7 +20,7 @@ import {
   RemoveModal,
   setCardsParams,
 } from 'features';
-import { useAppSelector, useAppDispatch, useModal } from 'hooks';
+import { useAppDispatch, useAppSelector, useModal } from 'hooks';
 
 type Props = {
   packId: string;
@@ -29,9 +29,18 @@ type Props = {
   updated: string;
   created: string;
   isMyCard: boolean;
+  deckCover?: string;
 };
 
-export const Pack: FC<Props> = ({ packId, name, created, updated, cards, isMyCard }) => {
+export const Pack: FC<Props> = ({
+  packId,
+  name,
+  created,
+  updated,
+  cards,
+  isMyCard,
+  deckCover,
+}) => {
   const dispatch = useAppDispatch();
 
   const queryParams = useAppSelector(getCardsQueryParams);
@@ -81,7 +90,7 @@ export const Pack: FC<Props> = ({ packId, name, created, updated, cards, isMyCar
     <TableRow sx={{ height: '48px' }}>
       <TableCell className={styles.tableFirstCellBody}>
         <div className={styles.tableFirstCellBodyContent}>
-          <img className={styles.PackImg} alt="PacksImage" src={ImagePack} />
+          <img className={styles.PackImg} alt="PacksImage" src={deckCover || CoverPack} />
           <div onClick={onGetCards} role="presentation">
             {name}
           </div>

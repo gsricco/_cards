@@ -4,7 +4,7 @@ import Button from '@mui/material/Button';
 
 import styles from './ModalInputFile.module.scss';
 
-import defaultAva from 'assets/images/notFound.png';
+import defaultCover from 'assets/images/defaultCover.svg';
 
 const MAX_FILE_SIZE = 4000000;
 
@@ -13,7 +13,7 @@ type Props = {
 };
 
 export const ModalInputFile: FC<Props> = ({ label }) => {
-  const [picQuestion, setPicQuestion] = useState(defaultAva);
+  const [picQuestion, setPicQuestion] = useState(defaultCover);
   const [isPicQuestion, setIsPicQuestion] = useState(false);
 
   const uploadHandler = (e: ChangeEvent<HTMLInputElement>): void => {
@@ -57,8 +57,8 @@ export const ModalInputFile: FC<Props> = ({ label }) => {
       </label>
       <label htmlFor="picture" className={styles.uploadFieldPictures}>
         <img
-          src={isPicQuestion ? defaultAva : picQuestion}
-          style={{ maxWidth: '340px', maxHeight: '115px' }}
+          src={isPicQuestion ? defaultCover : picQuestion}
+          style={{ maxWidth: '347px', maxHeight: '120px' }}
           onError={errorHandler}
           alt="ava"
         />
