@@ -80,9 +80,11 @@ export const Pack: FC<Props> = ({ packId, name, created, updated, cards, isMyCar
   return (
     <TableRow sx={{ height: '48px' }}>
       <TableCell className={styles.tableFirstCellBody}>
-        <img className={styles.PackImg} alt="PacksImage" src={ImagePack} />
-        <div onClick={onGetCards} role="presentation">
-          {name}
+        <div className={styles.tableFirstCellBodyContent}>
+          <img className={styles.PackImg} alt="PacksImage" src={ImagePack} />
+          <div onClick={onGetCards} role="presentation">
+            {name}
+          </div>
         </div>
       </TableCell>
 
