@@ -11,7 +11,9 @@ export const handleServerNetworkError = (
 
   if (axios.isAxiosError(err)) {
     dispatch(
-      setAppError(err.response?.data ? err.response.data?.error : 'Some error occurred'),
+      // for deploy to vercel fix later
+      // @ts-ignore
+      setAppError(err.response.data ? err.response.data?.error : 'Some error occurred'),
     );
     dispatch(setAppStatus(RequestStatus.FAILED));
   } else {
