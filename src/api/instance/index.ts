@@ -1,1 +1,1 @@
-export { instance, instanceHeroku } from './instance';
+export { instance } from './instance';
