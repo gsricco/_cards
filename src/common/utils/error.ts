@@ -11,7 +11,7 @@ export const handleServerNetworkError = (
 
   if (axios.isAxiosError(err)) {
     dispatch(
-      setAppError(err.response!.data ? err.response!.data.error : 'Some error occurred'),
+      setAppError(err.response?.data ? err.response.data?.error : 'Some error occurred'),
     );
     dispatch(setAppStatus(RequestStatus.FAILED));
   } else {
