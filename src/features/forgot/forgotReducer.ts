@@ -4,12 +4,12 @@ import { forgotAPI } from 'api';
 import { setAppInfo, setAppStatus } from 'app';
 import {
   AppThunk,
+  ForgotActionsType,
+  handleServerNetworkError,
   RequestStatus,
   UpdatePasswordDataType,
   UpdateUserDataType,
   UserType,
-  ForgotActionsType,
-  handleServerNetworkError,
 } from 'common';
 import { setName } from 'features';
 
@@ -17,6 +17,7 @@ const initialState = {
   email: '',
   password: '',
   user: {} as UserType,
+  avatar: '',
 };
 
 export const forgotReducer = (
@@ -27,6 +28,7 @@ export const forgotReducer = (
     case 'FORGOT/SET-NEW-NAME':
     case 'FORGOT/SET-NEW-PASSWORD':
     case 'FORGOT/RECOVER-NEW-PASSWORD':
+    case 'FORGOT/SET-NEW-AVATAR':
       return { ...state, ...action.payload };
     default:
       return state;
@@ -39,6 +41,8 @@ export const setNewPassword = (password: string) =>
   ({ type: 'FORGOT/SET-NEW-PASSWORD', payload: { password } } as const);
 export const recoverNewPassword = (email: string) =>
   ({ type: 'FORGOT/RECOVER-NEW-PASSWORD', payload: { email } } as const);
+export const setNewAvatar = (avatar: string) =>
+  ({ type: 'FORGOT/SET-NEW-AVATAR', payload: { avatar } } as const);
 
 export const updateUser =
   (data: UpdateUserDataType): AppThunk =>
@@ -49,7 +53,7 @@ export const updateUser =
     try {
       await forgotAPI.updateUserName({ name });
 
-      dispatch(setNewName({ name, avatar: '' }));
+      dispatch(setNewName({ name }));
       dispatch(setName(name));
     } catch (error) {
       handleServerNetworkError(error as AxiosError | Error, dispatch);
@@ -91,5 +95,22 @@ export const recoverPassword =
       dispatch(setAppStatus(RequestStatus.SUCCEEDED));
     }
   };
+export const updateAvatarUser =
+  (data: UpdateUserDataType): AppThunk =>
+  async dispatch => {
+    const { name, avatar } = { ...data };
 
+    dispatch(setAppStatus(RequestStatus.LOADING));
+    try {
+      await forgotAPI.updateUserName({ name, avatar });
+      console.log(data.avatar);
+      if (avatar) {
+        dispatch(setNewAvatar(avatar));
+      }
+    } catch (error) {
+      handleServerNetworkError(error as AxiosError | Error, dispatch);
+    } finally {
+      dispatch(setAppStatus(RequestStatus.SUCCEEDED));
+    }
+  };
 type InitialStateType = typeof initialState;

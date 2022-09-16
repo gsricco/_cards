@@ -12,7 +12,7 @@ import styles from './Header.module.scss';
 import { getStatus } from 'app';
 import logo from 'assets/images/cardLogo.png';
 import UserAvatar from 'assets/images/UserAvatar.png';
-import { Select, Path, RequestStatus } from 'common';
+import { Path, RequestStatus, Select } from 'common';
 import { getIsLoggedIn, getName } from 'features';
 import { useAppSelector, useShow } from 'hooks';
 
@@ -24,7 +24,9 @@ export const Header: FC = () => {
   const status = useAppSelector(getStatus);
   const name = useAppSelector(getName);
   const isLoggedIn = useAppSelector(getIsLoggedIn);
+  const userAvatar = useAppSelector(state => state.forgot.avatar);
 
+  console.log(userAvatar);
   const onSignInButtonClick = (): void => {
     navigate(Path.LOGIN);
   };
@@ -44,7 +46,11 @@ export const Header: FC = () => {
           >
             <span className={styles.headerUserName}>{name}</span>
             <div className={styles.wrap}>
-              <img className={styles.headerUserAvatar} src={UserAvatar} alt="logo" />
+              <img
+                className={styles.headerUserAvatar}
+                src={userAvatar || UserAvatar}
+                alt="logo"
+              />
               {show && <Select stylesRules={styles.customSelect} />}
             </div>
           </Typography>

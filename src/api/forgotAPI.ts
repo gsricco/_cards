@@ -17,4 +17,7 @@ export const forgotAPI = {
 
   recoverPassword: (data: RecoverPasswordType) =>
     instance.post<InfoResponseType>('auth/forgot', data),
+
+  // updateAvatar: (data: UpdateUserDataType) =>
+  //   axios.post('https://dry-forest-56016.herokuapp.com/file', data),
 };
