@@ -1,3 +1,5 @@
+import { setNewAvatar } from '../../features/forgot/forgotReducer';
+
 import { setAppError, setAppInfo, setAppInitialized, setAppStatus } from 'app';
 import {
   recoverNewPassword,
@@ -12,15 +14,16 @@ import {
   setNewPassword,
   setPacks,
   setPacksPage,
-  setPacksParams,
   setPacksPageCount,
+  setPacksParams,
   updateCardGrade,
 } from 'features';
 
 export type ForgotActionsType =
   | ReturnType<typeof setNewName>
   | ReturnType<typeof setNewPassword>
-  | ReturnType<typeof recoverNewPassword>;
+  | ReturnType<typeof recoverNewPassword>
+  | ReturnType<typeof setNewAvatar>;
 export type AuthActionsType =
   | ReturnType<typeof setIsLoggedIn>
   | ReturnType<typeof setIsRegistration>
