@@ -1,8 +1,10 @@
 import { FC, useState } from 'react';
 
-import { SortPacks, sortPacks, TableHeader } from 'common';
-import { getPackQueryParams } from 'features';
-import { useAppDispatch, useAppSelector } from 'hooks';
+import { TableHeader } from 'common/components/TableHeader/TableHeader';
+import { SortPacks } from 'common/enums/sortPacks';
+import { sortPacks } from 'common/utils/sortPacks';
+import { getPackQueryParams } from 'features/packs/packsSelectors';
+import { useAppDispatch, useAppSelector } from 'hooks/redux-hooks';
 
 export const PacksTableHeader: FC = () => {
   const dispatch = useAppDispatch();

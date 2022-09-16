@@ -9,7 +9,7 @@ export type RegisterDataType = {
 };
 export type UpdateUserDataType = {
   name: string;
-  avatar?: string;
+  avatar: string;
 };
 export type UpdatePasswordDataType = {
   password: string;

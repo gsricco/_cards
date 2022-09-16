@@ -4,7 +4,8 @@ import { CustomModal } from '../CustomModal';
 
 import styles from './RemoveModal.module.scss';
 
-import { CancelModalButton, ModalButton } from 'common';
+import { CancelModalButton } from 'common/components/Buttons/CancelModalButton/CancelModalButton';
+import { ModalButton } from 'common/components/Buttons/ModalButton/ModalButton';
 
 type Props = {
   name: string | undefined;

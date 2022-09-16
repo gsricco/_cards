@@ -1,4 +1,4 @@
-import React, { FC, KeyboardEvent } from 'react';
+import { FC, KeyboardEvent } from 'react';
 
 import { Checkbox } from '@mui/material';
 import FormControlLabel from '@mui/material/FormControlLabel';
@@ -7,8 +7,11 @@ import { CustomModal } from '../CustomModal';
 
 import styles from './PacksModal.module.scss';
 
-import { CancelModalButton, ModalButton, ModalInput, ModalInputFile } from 'common';
-import { useInput } from 'hooks';
+import { CancelModalButton } from 'common/components/Buttons/CancelModalButton/CancelModalButton';
+import { ModalButton } from 'common/components/Buttons/ModalButton/ModalButton';
+import { ModalInput } from 'common/components/ModalInput/ModalInput';
+import { ModalInputFile } from 'common/components/ModalInputFile/ModalInputFile';
+import { useInput } from 'hooks/useInput';
 
 type Props = {
   packTitle: string;

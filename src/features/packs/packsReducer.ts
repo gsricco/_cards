@@ -1,18 +1,17 @@
 import { AxiosError } from 'axios';
 
-import { packsAPI } from 'api';
-import { setAppStatus } from 'app';
+import { packsAPI } from 'api/packsAPI';
+import { setAppStatus } from 'app/appReducer';
+import { RequestStatus } from 'common/enums/requestStatus';
+import { PacksActionTypes } from 'common/types/ActionTypes';
+import { AppThunk } from 'common/types/AppTypes';
 import {
-  AppThunk,
-  RequestStatus,
-  PacksParamsType,
-  PacksActionTypes,
-  PacksResponseType,
-  CardsPacksType,
   AddCardsPackType,
+  PacksParamsType,
   UpdatePackType,
-  handleServerNetworkError,
-} from 'common';
+} from 'common/types/DataTypes';
+import { CardsPacksType, PacksResponseType } from 'common/types/ResponseTypes';
+import { handleServerNetworkError } from 'common/utils/error';
 
 const initialState = {
   cardPacks: [] as CardsPacksType[],

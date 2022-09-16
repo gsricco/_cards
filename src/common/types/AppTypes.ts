@@ -8,7 +8,7 @@ import {
   PacksActionTypes,
 } from './ActionTypes';
 
-import { store } from 'app';
+import { store } from 'app/store';
 
 type ActionsTypes =
   | AuthActionsType

@@ -2,14 +2,14 @@ import { FC } from 'react';
 
 import { TableBody, TableCell, TableRow } from '@mui/material';
 
-import { Pack } from './Pack';
+import { Pack } from './Pack/Pack';
 
-import { getCardPacks, getId } from 'features';
-import { useAppSelector } from 'hooks';
+import { getId } from 'features/auth/authSelectors';
+import { getCardPacks } from 'features/packs/packsSelectors';
+import { useAppSelector } from 'hooks/redux-hooks';
 
 export const PacksTableBody: FC = () => {
   const packs = useAppSelector(getCardPacks);
-
   const userId = useAppSelector(getId);
 
   if (packs.length === 0) {

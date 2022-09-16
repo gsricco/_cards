@@ -1,7 +1,8 @@
 import { ChangeEvent, KeyboardEvent, useState } from 'react';
 
-import { getName, updateUser } from 'features';
-import { useAppDispatch, useAppSelector } from 'hooks';
+import { getAvatar, getName } from 'features/auth/authSelectors';
+import { updateUser } from 'features/forgot/forgotReducer';
+import { useAppDispatch, useAppSelector } from 'hooks/redux-hooks';
 
 interface ReturnType {
   editMode: boolean;
@@ -14,7 +15,9 @@ interface ReturnType {
 
 export const useChangeSpan = (): ReturnType => {
   const dispatch = useAppDispatch();
+
   const name = useAppSelector(getName);
+  const avatar = useAppSelector(getAvatar);
 
   const [editMode, setEditMode] = useState(false);
   const [title, setTitle] = useState(name);
@@ -24,10 +27,8 @@ export const useChangeSpan = (): ReturnType => {
   };
 
   const activateViewMode = (): void => {
-    if (title) {
-      setEditMode(false);
-      dispatch(updateUser({ name: title }));
-    }
+    setEditMode(false);
+    dispatch(updateUser({ name: title, avatar }));
   };
 
   const changeTitle = (event: ChangeEvent<HTMLInputElement>): void => {

@@ -1,1 +1,0 @@
-export { CardsSettings } from './CardsSettings';

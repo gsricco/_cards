@@ -7,11 +7,15 @@ import Paper from '@mui/material/Paper';
 
 import styles from './Search.module.scss';
 
-import { getStatus } from 'app';
-import { AppThunk, CardsParamsType, PacksParamsType, RequestStatus } from 'common';
+import { getStatus } from 'app/appSelectors';
 import { DELAY_TIME } from 'common/constants/constants';
-import { getCardsPackId, setCardsParams, setPacksParams } from 'features';
-import { useAppDispatch, useAppSelector } from 'hooks';
+import { RequestStatus } from 'common/enums/requestStatus';
+import { AppThunk } from 'common/types/AppTypes';
+import { CardsParamsType, PacksParamsType } from 'common/types/DataTypes';
+import { setCardsParams } from 'features/cards/cardsReducer';
+import { getCardsPackId } from 'features/cards/cardsSelectors';
+import { setPacksParams } from 'features/packs/packsReducer';
+import { useAppDispatch, useAppSelector } from 'hooks/redux-hooks';
 
 type Props = {
   width?: string;

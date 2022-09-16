@@ -1,4 +1,4 @@
-import React, { FC, KeyboardEvent, useState } from 'react';
+import { FC, KeyboardEvent, useState } from 'react';
 
 import { SelectChangeEvent } from '@mui/material';
 import Box from '@mui/material/Box';
@@ -11,8 +11,11 @@ import { CustomModal } from '../CustomModal';
 
 import styles from './CardsModal.module.scss';
 
-import { CancelModalButton, ModalButton, ModalInput, ModalInputFile } from 'common';
-import { useInput } from 'hooks';
+import { CancelModalButton } from 'common/components/Buttons/CancelModalButton/CancelModalButton';
+import { ModalButton } from 'common/components/Buttons/ModalButton/ModalButton';
+import { ModalInput } from 'common/components/ModalInput/ModalInput';
+import { ModalInputFile } from 'common/components/ModalInputFile/ModalInputFile';
+import { useInput } from 'hooks/useInput';
 
 type Props = {
   onClick: (title: string, secondTitle: string) => void;

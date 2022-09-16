@@ -8,8 +8,11 @@ import { Link } from 'react-router-dom';
 
 import styles from '../Login.module.scss';
 
-import { Path, LoginType, EmailForm, PasswordForm } from 'common';
-import { useShow } from 'hooks';
+import { EmailForm } from 'common/components/Forms/EmailForm';
+import { PasswordForm } from 'common/components/Forms/PasswordForm';
+import { Path } from 'common/enums/path';
+import { LoginType } from 'common/types/FormikTypes';
+import { useShow } from 'hooks/useShow';
 
 type Props = {
   formik: FormikProps<LoginType>;

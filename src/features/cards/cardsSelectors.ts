@@ -1,4 +1,6 @@
-import { AppRootState, CardsParamsType, CardsType } from 'common';
+import { AppRootState } from 'common/types/AppTypes';
+import { CardsParamsType } from 'common/types/DataTypes';
+import { CardsType } from 'common/types/ResponseTypes';
 
 export const getPackCards = (state: AppRootState): CardsType[] => state.cards.cards;
 export const getCardsPage = (state: AppRootState): number => state.cards.page;

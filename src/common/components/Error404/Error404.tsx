@@ -6,9 +6,9 @@ import { Link } from 'react-router-dom';
 import styles from './Error404.module.scss';
 
 import Error404Image from 'assets/images/404.svg';
-import { Path } from 'common';
-import { getIsLoggedIn } from 'features';
-import { useAppSelector } from 'hooks';
+import { Path } from 'common/enums/path';
+import { getIsLoggedIn } from 'features/auth/authSelectors';
+import { useAppSelector } from 'hooks/redux-hooks';
 
 export const Error404: FC = () => {
   const isLoggedIn = useAppSelector(getIsLoggedIn);

@@ -6,20 +6,19 @@ import { useNavigate } from 'react-router-dom';
 
 import styles from './TableButton.module.scss';
 
-import { getStatus } from 'app';
+import { getStatus } from 'app/appSelectors';
 import DeleteICon from 'assets/images/Delete.svg';
 import EditIcon from 'assets/images/Edit.svg';
 import TeacherIcon from 'assets/images/teacher.svg';
-import { Modal, Path, RequestStatus } from 'common';
-import {
-  changePacksName,
-  deletePack,
-  getCardsPackId,
-  getPackCards,
-  PacksModal,
-  RemoveModal,
-} from 'features';
-import { useAppDispatch, useAppSelector, useModal } from 'hooks';
+import { Modal } from 'common/enums/modal';
+import { Path } from 'common/enums/path';
+import { RequestStatus } from 'common/enums/requestStatus';
+import { getCardsPackId, getPackCards } from 'features/cards/cardsSelectors';
+import { PacksModal } from 'features/modals/PacksModal/PacksModal';
+import { RemoveModal } from 'features/modals/RemoveModal/RemoveModal';
+import { changePacksName, deletePack } from 'features/packs/packsReducer';
+import { useAppDispatch, useAppSelector } from 'hooks/redux-hooks';
+import { useModal } from 'hooks/useModal';
 
 type Props = {
   title: string | undefined;

@@ -5,13 +5,16 @@ import Grid from '@mui/material/Grid';
 import { Formik } from 'formik';
 import { Navigate } from 'react-router-dom';
 
+import { register } from '../authReduser';
+import { getIsRegistration } from '../authSelectors';
+
 import styles from './Registration.module.scss';
-import { RegistrationForm } from './RegistrationForm';
+import { RegistrationForm } from './RegistrationForm/RegistrationForm';
 import { validateRegistration } from './validateRegistration';
 
-import { Path, RegistrationType } from 'common';
-import { register, getIsRegistration } from 'features';
-import { useAppDispatch, useAppSelector } from 'hooks';
+import { Path } from 'common/enums/path';
+import { RegistrationType } from 'common/types/FormikTypes';
+import { useAppDispatch, useAppSelector } from 'hooks/redux-hooks';
 
 export const Registration: FC = () => {
   const dispatch = useAppDispatch();

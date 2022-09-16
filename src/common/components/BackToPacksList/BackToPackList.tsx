@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import styles from './BackToPackList.module.scss';
 
 import arrowImage from 'assets/images/Arrow.png';
-import { Path } from 'common';
+import { Path } from 'common/enums/path';
 
 export const BackToPackList: FC = () => {
   return (

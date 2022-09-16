@@ -6,9 +6,11 @@ import styles from './App.module.css';
 import { initialized } from './appReducer';
 import { getIsInitialized } from './appSelectors';
 
-import { Header, InfoSnackbar, RoutesPage } from 'common';
-import { getIsLoggedIn } from 'features';
-import { useAppDispatch, useAppSelector } from 'hooks';
+import { Header } from 'common/components/Header/Header';
+import { InfoSnackbar } from 'common/components/InfoSnackbar/InfoSnackbar';
+import { RoutesPage } from 'common/components/RoutesPage/RoutesPage';
+import { getIsLoggedIn } from 'features/auth/authSelectors';
+import { useAppDispatch, useAppSelector } from 'hooks/redux-hooks';
 
 export const App: FC = () => {
   const dispatch = useAppDispatch();

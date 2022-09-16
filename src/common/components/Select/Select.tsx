@@ -9,9 +9,9 @@ import styles from './Select.module.scss';
 
 import iconLogout from 'assets/images/logout.svg';
 import iconProfile from 'assets/images/user.svg';
-import { Path } from 'common';
-import { logout } from 'features';
-import { useAppDispatch } from 'hooks';
+import { Path } from 'common/enums/path';
+import { logout } from 'features/auth/authReduser';
+import { useAppDispatch } from 'hooks/redux-hooks';
 
 type SelectType = {
   stylesRules?: string;

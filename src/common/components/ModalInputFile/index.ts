@@ -1,1 +1,0 @@
-export { ModalInputFile } from './ModalInputFile';

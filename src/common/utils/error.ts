@@ -1,7 +1,8 @@
 import axios, { AxiosError } from 'axios';
 
-import { setAppError, setAppStatus } from 'app';
-import { AppDispatch, RequestStatus } from 'common';
+import { setAppError, setAppStatus } from 'app/appReducer';
+import { RequestStatus } from 'common/enums/requestStatus';
+import { AppDispatch } from 'common/types/AppTypes';
 
 export const handleServerNetworkError = (
   error: Error | AxiosError<{ error: string }>,

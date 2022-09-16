@@ -5,16 +5,16 @@ import Slider from '@mui/material/Slider';
 
 import styles from './NumberOfCards.module.scss';
 
-import { getStatus } from 'app';
-import { RequestStatus } from 'common';
+import { getStatus } from 'app/appSelectors';
 import { DELAY_TIME, MAX_NUMBER_OF_PACKS } from 'common/constants/constants';
+import { RequestStatus } from 'common/enums/requestStatus';
+import { setPacksParams } from 'features/packs/packsReducer';
 import {
   getMaxPacksCount,
   getMinPacksCount,
   getPackQueryParams,
-  setPacksParams,
-} from 'features';
-import { useAppDispatch, useAppSelector } from 'hooks';
+} from 'features/packs/packsSelectors';
+import { useAppDispatch, useAppSelector } from 'hooks/redux-hooks';
 
 export const NumberOfCards: FC = () => {
   const dispatch = useAppDispatch();

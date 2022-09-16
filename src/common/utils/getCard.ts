@@ -1,5 +1,5 @@
-import { CardsType } from 'common';
 import { MAX_GRADE } from 'common/constants/constants';
+import { CardsType } from 'common/types/ResponseTypes';
 
 export const getCard = (cards: CardsType[]): CardsType => {
   const sum = cards.reduce(

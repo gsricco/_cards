@@ -4,19 +4,21 @@ import { useNavigate } from 'react-router-dom';
 
 import styles from '../Cards.module.scss';
 
-import { Modal, Path, Search, TableButton } from 'common';
+import { Search } from 'common/components/Search/Search';
+import { TableButton } from 'common/components/TableButton/TableButton';
 import { EMPTY_STRING } from 'common/constants/constants';
+import { Modal } from 'common/enums/modal';
+import { Path } from 'common/enums/path';
+import { getId } from 'features/auth/authSelectors';
+import { addCard, getCards, setCardsParams } from 'features/cards/cardsReducer';
 import {
-  addCard,
-  CardsModal,
-  getCards,
   getCardsPackId,
   getCardsQueryParams,
   getCardUserId,
-  getId,
-  setCardsParams,
-} from 'features';
-import { useAppDispatch, useAppSelector, useModal } from 'hooks';
+} from 'features/cards/cardsSelectors';
+import { CardsModal } from 'features/modals/CardsModal/CardsModal';
+import { useAppDispatch, useAppSelector } from 'hooks/redux-hooks';
+import { useModal } from 'hooks/useModal';
 
 export const CardsSettings: FC = () => {
   const dispatch = useAppDispatch();

@@ -1,12 +1,10 @@
-import { authAPI } from 'api';
-import {
-  AppReducerActionType,
-  AppThunk,
-  Nullable,
-  RequestStatus,
-  setNameEmail,
-} from 'common';
-import { setIsLoggedIn, setId } from 'features';
+import { authAPI } from 'api/authAPI';
+import { RequestStatus } from 'common/enums/requestStatus';
+import { AppReducerActionType } from 'common/types/ActionTypes';
+import { AppThunk } from 'common/types/AppTypes';
+import { Nullable } from 'common/types/Nullable';
+import { setNameEmail } from 'common/utils/setNameEmail';
+import { setAvatar, setId, setIsLoggedIn } from 'features/auth/authReduser';
 
 const initialState = {
   status: RequestStatus.IDLE,
@@ -44,7 +42,9 @@ export const initialized = (): AppThunk => async dispatch => {
     const res = await authAPI.me();
 
     setNameEmail(res.data, dispatch);
+
     dispatch(setId(res.data._id));
+    dispatch(setAvatar(res.data.avatar));
     dispatch(setIsLoggedIn(true));
     dispatch(setAppInitialized(true));
   } finally {

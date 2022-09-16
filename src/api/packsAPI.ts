@@ -1,14 +1,16 @@
-import { instance } from './instance';
+import { instance } from './instance/instance';
 
 import {
   AddCardsPackType,
+  PacksParamsType,
+  UpdatePackType,
+} from 'common/types/DataTypes';
+import {
   AddPackResponseType,
   DeletePackResponseType,
-  PacksParamsType,
   PacksResponseType,
   UpdatePackResponseType,
-  UpdatePackType,
-} from 'common';
+} from 'common/types/ResponseTypes';
 
 export const packsAPI = {
   getPacks: (params: PacksParamsType) =>

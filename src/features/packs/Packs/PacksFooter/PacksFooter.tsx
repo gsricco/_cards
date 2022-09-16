@@ -2,15 +2,16 @@ import { ChangeEvent, FC } from 'react';
 
 import styles from '../Packs.module.scss';
 
-import { MenuPageCount, Paginator } from 'common';
+import { MenuPageCount } from 'common/components/MenuPageCount/MenuPageCount';
+import { Paginator } from 'common/components/Paginator/Paginator';
+import { setPacksParams } from 'features/packs/packsReducer';
 import {
-  setPacksParams,
   getCardPacksTotalCount,
   getPackQueryParams,
   getPacksPageCount,
   getPage,
-} from 'features';
-import { useAppDispatch, useAppSelector } from 'hooks';
+} from 'features/packs/packsSelectors';
+import { useAppDispatch, useAppSelector } from 'hooks/redux-hooks';
 
 export const PacksFooter: FC = () => {
   const dispatch = useAppDispatch();

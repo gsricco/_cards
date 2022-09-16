@@ -2,9 +2,9 @@ import { ChangeEvent, FC } from 'react';
 
 import { Pagination } from '@mui/material';
 
-import { getStatus } from 'app';
-import { RequestStatus } from 'common';
-import { useAppSelector } from 'hooks';
+import { getStatus } from 'app/appSelectors';
+import { RequestStatus } from 'common/enums/requestStatus';
+import { useAppSelector } from 'hooks/redux-hooks';
 
 type PaginatorProps = {
   pageCount: number;

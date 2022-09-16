@@ -6,17 +6,15 @@ import styles from '../../Cards.module.scss';
 
 import DeleteICon from 'assets/images/Delete.svg';
 import EditIcon from 'assets/images/Edit.svg';
-import { Modal } from 'common';
-import {
-  CardsModal,
-  changeCard,
-  deleteCard,
-  getCardUserId,
-  getId,
-  RemoveModal,
-  Grade,
-} from 'features';
-import { useAppSelector, useAppDispatch, useModal } from 'hooks';
+import { Modal } from 'common/enums/modal';
+import { getId } from 'features/auth/authSelectors';
+import { changeCard, deleteCard } from 'features/cards/cardsReducer';
+import { getCardUserId } from 'features/cards/cardsSelectors';
+import { Grade } from 'features/learn/Grade/Grade';
+import { CardsModal } from 'features/modals/CardsModal/CardsModal';
+import { RemoveModal } from 'features/modals/RemoveModal/RemoveModal';
+import { useAppDispatch, useAppSelector } from 'hooks/redux-hooks';
+import { useModal } from 'hooks/useModal';
 
 type Props = {
   question: string;

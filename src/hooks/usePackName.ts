@@ -2,8 +2,10 @@ import { Dispatch, SetStateAction, useState } from 'react';
 
 import { useAppSelector } from './redux-hooks';
 
-import { CardsType, getCard } from 'common';
-import { getCardPacks, getPackCards } from 'features';
+import { CardsType } from 'common/types/ResponseTypes';
+import { getCard } from 'common/utils/getCard';
+import { getPackCards } from 'features/cards/cardsSelectors';
+import { getCardPacks } from 'features/packs/packsSelectors';
 
 interface ReturnType {
   name: string;

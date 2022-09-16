@@ -7,14 +7,18 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import { useNavigate } from 'react-router-dom';
 
+import { Select } from '../Select/Select';
+
 import styles from './Header.module.scss';
 
-import { getStatus } from 'app';
+import { getStatus } from 'app/appSelectors';
 import logo from 'assets/images/cardLogo.png';
 import UserAvatar from 'assets/images/UserAvatar.png';
-import { Path, RequestStatus, Select } from 'common';
-import { getIsLoggedIn, getName } from 'features';
-import { useAppSelector, useShow } from 'hooks';
+import { Path } from 'common/enums/path';
+import { RequestStatus } from 'common/enums/requestStatus';
+import { getAvatar, getIsLoggedIn, getName } from 'features/auth/authSelectors';
+import { useAppSelector } from 'hooks/redux-hooks';
+import { useShow } from 'hooks/useShow';
 
 export const Header: FC = () => {
   const { show, onButtonIconClick } = useShow();
@@ -24,9 +28,8 @@ export const Header: FC = () => {
   const status = useAppSelector(getStatus);
   const name = useAppSelector(getName);
   const isLoggedIn = useAppSelector(getIsLoggedIn);
-  const userAvatar = useAppSelector(state => state.forgot.avatar);
+  const avatar = useAppSelector(getAvatar);
 
-  console.log(userAvatar);
   const onSignInButtonClick = (): void => {
     navigate(Path.LOGIN);
   };
@@ -48,7 +51,7 @@ export const Header: FC = () => {
             <div className={styles.wrap}>
               <img
                 className={styles.headerUserAvatar}
-                src={userAvatar || UserAvatar}
+                src={avatar || UserAvatar}
                 alt="logo"
               />
               {show && <Select stylesRules={styles.customSelect} />}

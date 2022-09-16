@@ -5,7 +5,8 @@ import { Form, FormikProps } from 'formik';
 
 import styles from '../ForgotPassword.module.scss';
 
-import { EmailForm, ForgotPasswordType } from 'common';
+import { EmailForm } from 'common/components/Forms/EmailForm';
+import { ForgotPasswordType } from 'common/types/FormikTypes';
 
 type Props = {
   formik: FormikProps<ForgotPasswordType>;

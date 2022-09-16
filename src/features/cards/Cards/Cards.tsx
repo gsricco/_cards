@@ -3,14 +3,19 @@ import { FC, useEffect } from 'react';
 import { Table, TableContainer } from '@mui/material';
 import { Navigate, useParams } from 'react-router-dom';
 
-import styles from './Cards.module.scss';
-import { CardsFooter } from './CardsFooter';
-import { CardsSettings } from './CardsSettings';
-import { CardsTableBody } from './CardsTableBody';
+import { setCardsParams } from '../cardsReducer';
+import { getCardsPackId } from '../cardsSelectors';
 
-import { BackToPackList, Path, TableHeader } from 'common';
-import { getCardsPackId, getIsLoggedIn, setCardsParams } from 'features';
-import { useAppDispatch, useAppSelector } from 'hooks';
+import styles from './Cards.module.scss';
+import { CardsFooter } from './CardsFooter/CardsFooter';
+import { CardsSettings } from './CardsSettings/CardsSettings';
+import { CardsTableBody } from './CardsTableBody/CardsTableBody';
+
+import { BackToPackList } from 'common/components/BackToPacksList/BackToPackList';
+import { TableHeader } from 'common/components/TableHeader/TableHeader';
+import { Path } from 'common/enums/path';
+import { getIsLoggedIn } from 'features/auth/authSelectors';
+import { useAppDispatch, useAppSelector } from 'hooks/redux-hooks';
 
 export const Cards: FC = () => {
   const dispatch = useAppDispatch();

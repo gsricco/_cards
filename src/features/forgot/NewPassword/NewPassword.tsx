@@ -7,11 +7,12 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { updatePassword } from '../forgotReducer';
 
 import styles from './NewPassword.module.scss';
-import { NewPasswordForm } from './NewPasswordForm';
+import { NewPasswordForm } from './NewPasswordForm/NewPasswordForm';
 import { validateNewPassword } from './validateNewPassword';
 
-import { NewPasswordType, Path } from 'common';
-import { useAppDispatch } from 'hooks';
+import { Path } from 'common/enums/path';
+import { NewPasswordType } from 'common/types/FormikTypes';
+import { useAppDispatch } from 'hooks/redux-hooks';
 
 export const NewPassword: FC = () => {
   const dispatch = useAppDispatch();

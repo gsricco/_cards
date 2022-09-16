@@ -6,8 +6,11 @@ import { Link } from 'react-router-dom';
 
 import styles from '../Registration.module.scss';
 
-import { Path, RegistrationType, EmailForm, PasswordForm } from 'common';
-import { useShow } from 'hooks';
+import { EmailForm } from 'common/components/Forms/EmailForm';
+import { PasswordForm } from 'common/components/Forms/PasswordForm';
+import { Path } from 'common/enums/path';
+import { RegistrationType } from 'common/types/FormikTypes';
+import { useShow } from 'hooks/useShow';
 
 type Props = {
   formik: FormikProps<RegistrationType>;

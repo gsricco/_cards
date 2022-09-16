@@ -1,19 +1,19 @@
 import { AxiosError } from 'axios';
 
-import { cardsAPI, gradeAPI } from 'api';
-import { setAppStatus } from 'app';
+import { cardsAPI } from 'api/cardsAPI';
+import { gradeAPI } from 'api/gradeAPI';
+import { setAppStatus } from 'app/appReducer';
+import { RequestStatus } from 'common/enums/requestStatus';
+import { CardsActionTypes } from 'common/types/ActionTypes';
+import { AppThunk } from 'common/types/AppTypes';
 import {
-  CardsResponseType,
   CardsParamsType,
-  CardsActionTypes,
-  AppThunk,
-  RequestStatus,
-  CardsType,
   CreateCardType,
   UpdateCardDataType,
   UpdateGradeDataType,
-  handleServerNetworkError,
-} from 'common';
+} from 'common/types/DataTypes';
+import { CardsResponseType, CardsType } from 'common/types/ResponseTypes';
+import { handleServerNetworkError } from 'common/utils/error';
 
 const initialState = {
   cards: [] as CardsType[],

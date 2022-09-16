@@ -5,10 +5,12 @@ import ButtonGroup from '@mui/material/ButtonGroup';
 
 import styles from './FilteredButton.module.scss';
 
-import { getStatus } from 'app';
-import { RequestStatus } from 'common';
-import { getId, getPackQueryParams, setPacksParams } from 'features';
-import { useAppDispatch, useAppSelector } from 'hooks';
+import { getStatus } from 'app/appSelectors';
+import { RequestStatus } from 'common/enums/requestStatus';
+import { getId } from 'features/auth/authSelectors';
+import { setPacksParams } from 'features/packs/packsReducer';
+import { getPackQueryParams } from 'features/packs/packsSelectors';
+import { useAppDispatch, useAppSelector } from 'hooks/redux-hooks';
 
 export const FilteredButton: FC = () => {
   const dispatch = useAppDispatch();

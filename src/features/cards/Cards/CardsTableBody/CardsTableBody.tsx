@@ -2,10 +2,10 @@ import { FC } from 'react';
 
 import { TableBody, TableCell, TableRow } from '@mui/material';
 
-import { Card } from './Card';
+import { Card } from './Card/Card';
 
-import { getPackCards } from 'features';
-import { useAppSelector } from 'hooks';
+import { getPackCards } from 'features/cards/cardsSelectors';
+import { useAppSelector } from 'hooks/redux-hooks';
 
 export const CardsTableBody: FC = () => {
   const cards = useAppSelector(getPackCards);

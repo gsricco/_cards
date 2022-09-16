@@ -6,7 +6,7 @@ import FormControl from '@mui/material/FormControl';
 import styles from './EditableSpan.module.scss';
 
 import pencilIcon from 'assets/images/pencil.png';
-import { useChangeSpan } from 'hooks';
+import { useChangeSpan } from 'hooks/useChangeSpan';
 
 export const EditableSpan: FC = () => {
   const {

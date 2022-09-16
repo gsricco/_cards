@@ -1,1 +1,0 @@
-export { PacksSettings } from './PacksSettings';

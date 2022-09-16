@@ -2,11 +2,12 @@ import { FC } from 'react';
 
 import { Box, FormControl, MenuItem, Select, SelectChangeEvent } from '@mui/material';
 
-import { getStatus } from 'app';
-import { RequestStatus } from 'common';
+import { getStatus } from 'app/appSelectors';
 import { MIN_SELECT_VALUE } from 'common/constants/constants';
-import { getPackQueryParams, setPacksParams } from 'features';
-import { useAppDispatch, useAppSelector } from 'hooks';
+import { RequestStatus } from 'common/enums/requestStatus';
+import { setPacksParams } from 'features/packs/packsReducer';
+import { getPackQueryParams } from 'features/packs/packsSelectors';
+import { useAppDispatch, useAppSelector } from 'hooks/redux-hooks';
 
 type Props = {
   pageCount?: number;

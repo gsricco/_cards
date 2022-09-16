@@ -1,5 +1,7 @@
-import { SortPacks, AppDispatch, PacksParamsType, CardsParamsType } from 'common';
-import { setPacksParams } from 'features';
+import { SortPacks } from 'common/enums/sortPacks';
+import { AppDispatch } from 'common/types/AppTypes';
+import { CardsParamsType, PacksParamsType } from 'common/types/DataTypes';
+import { setPacksParams } from 'features/packs/packsReducer';
 
 export const sortPacks = (
   dispatch: AppDispatch,

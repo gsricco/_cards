@@ -1,5 +1,3 @@
-import { Nullable } from './Nullable';
-
 export type UserType = {
   _id: string;
   email: string;
@@ -11,7 +9,7 @@ export type UserType = {
   created: string;
   updated: string;
   __v: number;
-  avatar: Nullable<string>;
+  avatar: string;
 } & TokenType;
 export type RegisterResponseType = {
   addedUser: UserType;

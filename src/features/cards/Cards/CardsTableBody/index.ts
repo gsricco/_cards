@@ -1,1 +1,0 @@
-export { CardsTableBody } from './CardsTableBody';

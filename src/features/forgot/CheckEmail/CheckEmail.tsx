@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import styles from './CheckEmail.module.scss';
 
 import checkEmailImage from 'assets/images/CheckEmail.png';
-import { Path } from 'common';
+import { Path } from 'common/enums/path';
 
 export const CheckEmail: FC = () => {
   return (

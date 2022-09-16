@@ -1,15 +1,15 @@
 import { ChangeEvent, FC } from 'react';
 
-import { Paginator } from 'common';
+import { Paginator } from 'common/components/Paginator/Paginator';
+import { setCardsParams } from 'features/cards/cardsReducer';
 import {
   getCardsPackId,
   getCardsPage,
   getCardsPageCount,
   getCardsQueryParams,
   getCardsTotalCount,
-  setCardsParams,
-} from 'features';
-import { useAppDispatch, useAppSelector } from 'hooks';
+} from 'features/cards/cardsSelectors';
+import { useAppDispatch, useAppSelector } from 'hooks/redux-hooks';
 
 export const CardsFooter: FC = () => {
   const dispatch = useAppDispatch();

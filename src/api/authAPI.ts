@@ -1,12 +1,11 @@
-import { instance } from './instance';
+import { instance } from './instance/instance';
 
+import { LoginDataType, RegisterDataType } from 'common/types/DataTypes';
 import {
   InfoResponseType,
-  LoginDataType,
   MeResponseType,
-  RegisterDataType,
   RegisterResponseType,
-} from 'common';
+} from 'common/types/ResponseTypes';
 
 export const authAPI = {
   me: () => instance.post<MeResponseType>('auth/me'),

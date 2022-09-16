@@ -2,19 +2,20 @@ import { FC } from 'react';
 
 import styles from '../Packs.module.scss';
 
-import { getStatus } from 'app';
+import { getStatus } from 'app/appSelectors';
 import FilterRemoveBtn from 'assets/images/FilterRemoveBtn.svg';
-import {
-  FilteredButton,
-  Modal,
-  NumberOfCards,
-  RequestStatus,
-  Search,
-  TableButton,
-} from 'common';
+import { FilteredButton } from 'common/components/FilteredButton/FilteredButton';
+import { NumberOfCards } from 'common/components/NumberOfCards/NumberOfCards';
+import { Search } from 'common/components/Search/Search';
+import { TableButton } from 'common/components/TableButton/TableButton';
 import { EMPTY_STRING } from 'common/constants/constants';
-import { addPacks, getPackQueryParams, getPacks, PacksModal } from 'features';
-import { useAppDispatch, useAppSelector, useModal } from 'hooks';
+import { Modal } from 'common/enums/modal';
+import { RequestStatus } from 'common/enums/requestStatus';
+import { PacksModal } from 'features/modals/PacksModal/PacksModal';
+import { addPacks, getPacks } from 'features/packs/packsReducer';
+import { getPackQueryParams } from 'features/packs/packsSelectors';
+import { useAppDispatch, useAppSelector } from 'hooks/redux-hooks';
+import { useModal } from 'hooks/useModal';
 
 export const PacksSettings: FC = () => {
   const dispatch = useAppDispatch();

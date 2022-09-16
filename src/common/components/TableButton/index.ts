@@ -1,1 +1,0 @@
-export { TableButton } from './TableButton';

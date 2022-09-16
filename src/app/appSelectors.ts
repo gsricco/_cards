@@ -1,4 +1,6 @@
-import { AppRootState, Nullable, RequestStatus } from 'common';
+import { RequestStatus } from 'common/enums/requestStatus';
+import { AppRootState } from 'common/types/AppTypes';
+import { Nullable } from 'common/types/Nullable';
 
 export const getIsInitialized = (state: AppRootState): boolean => state.app.isInitialized;
 export const getStatus = (state: AppRootState): RequestStatus => state.app.status;

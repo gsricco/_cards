@@ -1,14 +1,16 @@
-import { instance } from './instance';
+import { instance } from './instance/instance';
 
 import {
   CardsParamsType,
+  CreateCardType,
+  UpdateCardDataType,
+} from 'common/types/DataTypes';
+import {
   CardsResponseType,
   CreateCardResponseType,
-  CreateCardType,
   RemoveCardResponseType,
-  UpdateCardDataType,
   UpdateCardResponseType,
-} from 'common';
+} from 'common/types/ResponseTypes';
 
 export const cardsAPI = {
   getCards: (params: CardsParamsType) =>

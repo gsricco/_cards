@@ -1,12 +1,11 @@
-import { instance } from './instance';
+import { instance } from './instance/instance';
 
 import {
-  InfoResponseType,
   RecoverPasswordType,
   UpdatePasswordDataType,
   UpdateUserDataType,
-  UpdateUserResponseType,
-} from 'common';
+} from 'common/types/DataTypes';
+import { InfoResponseType, UpdateUserResponseType } from 'common/types/ResponseTypes';
 
 export const forgotAPI = {
   updateUserName: (data: UpdateUserDataType) =>
@@ -17,7 +16,4 @@ export const forgotAPI = {
 
   recoverPassword: (data: RecoverPasswordType) =>
     instance.post<InfoResponseType>('auth/forgot', data),
-
-  // updateAvatar: (data: UpdateUserDataType) =>
-  //   axios.post('https://dry-forest-56016.herokuapp.com/file', data),
 };

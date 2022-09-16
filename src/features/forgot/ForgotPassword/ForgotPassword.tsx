@@ -7,11 +7,12 @@ import { Link, useNavigate } from 'react-router-dom';
 import { recoverPassword } from '../forgotReducer';
 
 import styles from './ForgotPassword.module.scss';
-import { ForgotPasswordForm } from './ForgotPasswordForm';
+import { ForgotPasswordForm } from './ForgotPasswordForm/ForgotPasswordForm';
 import { validateForgotPassword } from './validateForgotPassword';
 
-import { Path, ForgotPasswordType } from 'common';
-import { useAppDispatch } from 'hooks';
+import { Path } from 'common/enums/path';
+import { ForgotPasswordType } from 'common/types/FormikTypes';
+import { useAppDispatch } from 'hooks/redux-hooks';
 
 export const ForgotPassword: FC = () => {
   const dispatch = useAppDispatch();

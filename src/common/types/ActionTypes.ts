@@ -1,35 +1,36 @@
-import { setNewAvatar } from '../../features/forgot/forgotReducer';
-
-import { setAppError, setAppInfo, setAppInitialized, setAppStatus } from 'app';
+import { setAppError, setAppInfo, setAppInitialized, setAppStatus } from 'app/appReducer';
 import {
-  recoverNewPassword,
-  setCards,
-  setCardsParams,
+  setAvatar,
   setEmail,
   setId,
   setIsLoggedIn,
   setIsRegistration,
   setName,
+} from 'features/auth/authReduser';
+import { setCards, setCardsParams, updateCardGrade } from 'features/cards/cardsReducer';
+import {
+  recoverNewPassword,
   setNewName,
   setNewPassword,
+} from 'features/forgot/forgotReducer';
+import {
   setPacks,
   setPacksPage,
   setPacksPageCount,
   setPacksParams,
-  updateCardGrade,
-} from 'features';
+} from 'features/packs/packsReducer';
 
 export type ForgotActionsType =
   | ReturnType<typeof setNewName>
   | ReturnType<typeof setNewPassword>
-  | ReturnType<typeof recoverNewPassword>
-  | ReturnType<typeof setNewAvatar>;
+  | ReturnType<typeof recoverNewPassword>;
 export type AuthActionsType =
   | ReturnType<typeof setIsLoggedIn>
   | ReturnType<typeof setIsRegistration>
   | ReturnType<typeof setName>
   | ReturnType<typeof setEmail>
-  | ReturnType<typeof setId>;
+  | ReturnType<typeof setId>
+  | ReturnType<typeof setAvatar>;
 export type AppReducerActionType =
   | ReturnType<typeof setAppStatus>
   | ReturnType<typeof setAppError>

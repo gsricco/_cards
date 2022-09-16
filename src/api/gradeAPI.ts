@@ -1,6 +1,7 @@
-import { instance } from './instance';
+import { instance } from './instance/instance';
 
-import { UpdateGradeResponseType, UpdateGradeDataType } from 'common';
+import { UpdateGradeDataType } from 'common/types/DataTypes';
+import { UpdateGradeResponseType } from 'common/types/ResponseTypes';
 
 export const gradeAPI = {
   updateGrade: (data: UpdateGradeDataType) =>

@@ -2,18 +2,18 @@ import { FC } from 'react';
 
 import { Navigate, Route, Routes } from 'react-router-dom';
 
-import { Error404, Path } from 'common';
-import {
-  Cards,
-  CheckEmail,
-  ForgotPassword,
-  Login,
-  NewPassword,
-  Packs,
-  Profile,
-  Registration,
-  Learn,
-} from 'features';
+import { Error404 } from '../Error404/Error404';
+
+import { Path } from 'common/enums/path';
+import { Login } from 'features/auth/Login/Login';
+import { Profile } from 'features/auth/Profile/Profile';
+import { Registration } from 'features/auth/Registration/Registration';
+import { Cards } from 'features/cards/Cards/Cards';
+import { CheckEmail } from 'features/forgot/CheckEmail/CheckEmail';
+import { ForgotPassword } from 'features/forgot/ForgotPassword/ForgotPassword';
+import { NewPassword } from 'features/forgot/NewPassword/NewPassword';
+import { Learn } from 'features/learn/Learn';
+import { Packs } from 'features/packs/Packs/Packs';
 
 export const RoutesPage: FC = () => {
   const routes = [

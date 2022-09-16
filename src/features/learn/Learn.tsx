@@ -3,11 +3,14 @@ import { FC, useState } from 'react';
 import Button from '@mui/material/Button';
 
 import styles from './Learn.module.scss';
-import { LearnList } from './LearnList';
+import { LearnList } from './LearnList/LearnList';
 
-import { BackToPackList, getCard } from 'common';
-import { getPackCards, setLearnGrade } from 'features';
-import { useAppDispatch, usePackName, useAppSelector } from 'hooks';
+import { BackToPackList } from 'common/components/BackToPacksList/BackToPackList';
+import { getCard } from 'common/utils/getCard';
+import { setLearnGrade } from 'features/cards/cardsReducer';
+import { getPackCards } from 'features/cards/cardsSelectors';
+import { useAppDispatch, useAppSelector } from 'hooks/redux-hooks';
+import { usePackName } from 'hooks/usePackName';
 
 export const Learn: FC = () => {
   const dispatch = useAppDispatch();

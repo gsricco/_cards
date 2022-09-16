@@ -3,21 +3,19 @@ import { FC, useEffect } from 'react';
 import { Table, TableContainer } from '@mui/material';
 import { Navigate } from 'react-router-dom';
 
-import styles from './Packs.module.scss';
-import { PacksFooter } from './PacksFooter';
-import { PacksSettings } from './PacksSettings';
-import { PacksTableHeader } from './PacksTableHeader';
+import { setPacksParams } from '../packsReducer';
+import { getPacksPageCount, getPackQueryParams } from '../packsSelectors';
 
-import { Path } from 'common';
+import styles from './Packs.module.scss';
+import { PacksFooter } from './PacksFooter/PacksFooter';
+import { PacksSettings } from './PacksSettings/PacksSettings';
+import { PacksTableBody } from './PacksTableBody/PacksTableBody';
+import { PacksTableHeader } from './PacksTableHeader/PacksTableHeader';
+
 import { MIN_SELECT_VALUE } from 'common/constants/constants';
-import {
-  getIsLoggedIn,
-  getPackQueryParams,
-  getPacksPageCount,
-  PacksTableBody,
-  setPacksParams,
-} from 'features';
-import { useAppDispatch, useAppSelector } from 'hooks';
+import { Path } from 'common/enums/path';
+import { getIsLoggedIn } from 'features/auth/authSelectors';
+import { useAppDispatch, useAppSelector } from 'hooks/redux-hooks';
 
 export const Packs: FC = () => {
   const dispatch = useAppDispatch();

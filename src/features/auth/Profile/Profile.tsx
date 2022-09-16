@@ -3,16 +3,20 @@ import { ChangeEvent, FC, useState } from 'react';
 import { Button, Container, Grid, IconButton, Paper, Typography } from '@mui/material';
 import { Navigate } from 'react-router-dom';
 
-import { updateAvatarUser } from '../../forgot/forgotReducer';
+import { logout } from '../authReduser';
+import { getAvatar, getEmail, getIsLoggedIn, getName } from '../authSelectors';
 
 import styles from './Profile.module.scss';
 
 import iconLogout from 'assets/images/logout.svg';
 import photoIconImage from 'assets/images/PhotoIconPhotos.png';
 import defaultAva from 'assets/images/UserAvatar.png';
-import { BackToPackList, EditableSpan, Path } from 'common';
-import { getEmail, getIsLoggedIn, getName, logout } from 'features';
-import { useAppDispatch, useAppSelector } from 'hooks';
+import { BackToPackList } from 'common/components/BackToPacksList/BackToPackList';
+import { EditableSpan } from 'common/components/EditableSpan/EditableSpan';
+import { Path } from 'common/enums/path';
+import { uploadHandler } from 'common/utils/convertPhoto';
+import { updateUser } from 'features/forgot/forgotReducer';
+import { useAppDispatch, useAppSelector } from 'hooks/redux-hooks';
 
 export const Profile: FC = () => {
   const dispatch = useAppDispatch();
@@ -20,36 +24,17 @@ export const Profile: FC = () => {
   const isLoggedIn = useAppSelector(getIsLoggedIn);
   const email = useAppSelector(getEmail);
   const name = useAppSelector(getName);
-  const userAvatar = useAppSelector(state => state.forgot.user.avatar);
-  const [ava, setAva] = useState(userAvatar);
+  const userAvatar = useAppSelector(getAvatar);
 
-  // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-  const uploadHandler = (e: ChangeEvent<HTMLInputElement>) => {
-    if (e.target.files && e.target.files.length) {
-      const file = e.target.files[0];
+  const [ava, setAva] = useState<string>(userAvatar);
 
-      console.log(file.name);
-      // eslint-disable-next-line no-magic-numbers
-      if (file.size < 4000000) {
-        convertFileToBase64(file, (file64: string) => {
-          setAva(file64);
-          dispatch(updateAvatarUser({ name, avatar: file64 }));
-        });
-      } else {
-        console.error('Error: ', 'Файл слишком большого размера');
-      }
-    }
+  const fileCallback = (avatar: string): void => {
+    setAva(avatar);
+    dispatch(updateUser({ name, avatar }));
   };
 
-  const convertFileToBase64 = (file: File, callBack: (value: string) => void): void => {
-    const reader = new FileReader();
-
-    reader.onloadend = () => {
-      const file64 = reader.result as string;
-
-      callBack(file64);
-    };
-    reader.readAsDataURL(file);
+  const onUploadPicture = (event: ChangeEvent<HTMLInputElement>): void => {
+    uploadHandler(event, fileCallback);
   };
 
   const onLogoutClick = (): void => {
@@ -78,7 +63,11 @@ export const Profile: FC = () => {
                 alt="avatar"
               />
               <label>
-                <input type="file" onChange={uploadHandler} style={{ display: 'none' }} />
+                <input
+                  type="file"
+                  onChange={onUploadPicture}
+                  style={{ display: 'none' }}
+                />
                 <IconButton component="span">
                   <img
                     className={styles.gridItemIcon}

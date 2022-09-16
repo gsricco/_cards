@@ -7,7 +7,10 @@ import thunk from 'redux-thunk';
 
 import { appReducer } from './appReducer';
 
-import { authReducer, forgotReducer, cardsReducer, packsReducer } from 'features';
+import { authReducer } from 'features/auth/authReduser';
+import { cardsReducer } from 'features/cards/cardsReducer';
+import { forgotReducer } from 'features/forgot/forgotReducer';
+import { packsReducer } from 'features/packs/packsReducer';
 
 const reducers = combineReducers({
   auth: authReducer,

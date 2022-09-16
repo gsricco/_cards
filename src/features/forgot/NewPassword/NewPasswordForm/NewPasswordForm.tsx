@@ -6,8 +6,9 @@ import { Form, FormikProps } from 'formik';
 
 import styles from '../NewPassword.module.scss';
 
-import { NewPasswordType, PasswordForm } from 'common';
-import { useShow } from 'hooks';
+import { PasswordForm } from 'common/components/Forms/PasswordForm';
+import { NewPasswordType } from 'common/types/FormikTypes';
+import { useShow } from 'hooks/useShow';
 
 type Props = {
   formik: FormikProps<NewPasswordType>;

@@ -3,8 +3,9 @@ import { FC, forwardRef, SyntheticEvent } from 'react';
 import MuiAlert, { AlertProps } from '@mui/material/Alert';
 import Snackbar from '@mui/material/Snackbar';
 
-import { getError, getInfo, setAppError, setAppInfo } from 'app';
-import { useAppDispatch, useAppSelector } from 'hooks';
+import { setAppError, setAppInfo } from 'app/appReducer';
+import { getError, getInfo } from 'app/appSelectors';
+import { useAppDispatch, useAppSelector } from 'hooks/redux-hooks';
 
 const Alert = forwardRef<HTMLDivElement, AlertProps>(function Alert(props, ref) {
   return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
