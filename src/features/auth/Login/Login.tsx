@@ -29,7 +29,7 @@ export const Login: FC = () => {
     <Grid container justifyContent="center" className={styles.loginContainer}>
       <Grid item justifyContent="center">
         <FormLabel>
-          <p className={styles.loginHeaderText}>Sign in</p>
+          <p className={styles.loginHeaderText}>Sign in(Email:hihello@mail.ru, Password:hihello@mail.ru)</p>
         </FormLabel>
         <Formik
           initialValues={{ email: '', password: '', rememberMe: false } as LoginType}
